@@ -8,7 +8,7 @@
     $id = isset($_POST["id"]) ? $_POST["id"] : "";
     $username = isset($_POST["username"]) ? $_POST["username"] : "";
     $fullname = isset($_POST["fullname"]) ? $_POST["fullname"] : "";
-    $gender = isset($_POST["gender"]) ? $_POST["gender"] : "";
+    $gender = isset($_POST["gender"]) ? intval($_POST["gender"]) : "";
     $position = isset($_POST["position"]) ? intval($_POST["position"]) : "";
     $department = isset($_POST["department"]) ? $_POST["department"] : "";
     $avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "";
