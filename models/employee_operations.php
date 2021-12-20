@@ -7,11 +7,10 @@
     class EmployeeOperations implements Operations {
         function create($employee) {
             $conn = getConnection();
-            $sql = "insert into employee values(?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "insert into employee values(?, ?, ?, ?, ?, ?, ?)";
             $stm = $conn->prepare($sql);
             $stm->bind_param("sssisssi", $employee->getId(), $employee->getUsername(), $employee->getFullname(),
-            $employee->getGender(), $employee->getPosition(), $employee->getDepartment(), $employee->getAvatar(),
-            $employee->getDayOff());
+            $employee->getPosition(), $employee->getDepartment(), $employee->getAvatar(), $employee->getDayOff());
             if (!$stm->execute()) {
                 die("Employee creating is failed: " . $stm->error);
             }
@@ -35,7 +34,6 @@
                         $row["id"],
                         $row["username"],
                         $row["fullname"],
-                        $row["gender"],
                         $row["position"],
                         $row["department"],
                         $row["avatar"],
@@ -58,7 +56,6 @@
                         $row["id"],
                         $row["username"],
                         $row["fullname"],
-                        $row["gender"],
                         $row["position"],
                         $row["department"],
                         $row["avatar"],
@@ -72,12 +69,12 @@
     
         function update($employee) {
             $conn = getConnection();
-            $sql = "update employee set username = ?, fullname = ?, gender = ?, position = ?,
+            $sql = "update employee set username = ?, fullname = ?, position = ?,
             department = ?, avatar = ?, day_off = ? where id = ?";
             $stm = $conn->prepare($sql);
             $stm->bind_param("ssisssii", $employee->getUsername(), $employee->getFullname(),
-            $employee->getGender(), $employee->getPosition(), $employee->getDepartment(),
-            $employee->getAvatar(), $employee->getDayOff(), $employee->getId());
+            $employee->getPosition(), $employee->getDepartment(), $employee->getAvatar(),
+            $employee->getDayOff(), $employee->getId());
             if (!$stm->execute()) {
                 die("Employee updating is failed: " . $stm->error);
             }

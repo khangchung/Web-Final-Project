@@ -3,17 +3,15 @@
         private $id;
         private $username;
         private $fullname;
-        private $gender;
         private $position;
         private $department;
         private $avatar;
         private $day_off;
 
-        function __construct($id, $username, $fullname, $gender, $position, $department, $avatar ,$day_off) {
+        function __construct($id, $username, $fullname, $position, $department, $avatar ,$day_off) {
             $this->id = $id;
             $this->username = $username;
             $this->fullname = $fullname;
-            $this->gender = $gender;
             $this->position = $position;
             $this->department = $department;
             $this->avatar = $avatar;
@@ -30,10 +28,6 @@
 
         function getFullname() {
             return $this->fullname;
-        }
-
-        function getGender() {
-            return $this->gender;
         }
 
         function getPosition() {
@@ -62,10 +56,6 @@
 
         function setFullname() {
             $this->fullname = $fullname;
-        }
-
-        function setGender() {
-            $this->gender = $gender;
         }
 
         function setPosition() {
