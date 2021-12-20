@@ -3,8 +3,8 @@
     require_once("../../models/account_operations.php");
     require_once("../../models/account.php");
 
-    $username = isset($_GET["username"]) ? $_GET["username"] : "";
-    $priority = isset($_GET["priority"]) ? $_GET["priority"] : "";
+    $username = isset($_POST["username"]) ? $_POST["username"] : "";
+    $priority = isset($_POST["priority"]) ? $_POST["priority"] : "";
     if (!empty($id) && !empty($priority)) {
         $accountOperations = new AccountOperations;
         $password = password_hash($username, PASSWORD_DEFAULT);
