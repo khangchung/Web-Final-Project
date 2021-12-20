@@ -17,8 +17,8 @@
     if (!empty($id) && !empty($username) && !empty($fullname) && !empty($gender) && !empty($position) 
     && !empty($department) && !empty($avatar) && !empty($day_off)) {
         $password = password_hash($username, PASSWORD_DEFAULT);
-        $AO = new AccountOperations;
-        $account_result = $AO->create(new Account($username, $password, $position));
+        $accountOperations = new AccountOperations;
+        $account_result = $accountOperations->create(new Account($username, $password, $position));
         if ($account_result) {
             $employee = new Employee($id, $username, $fullname, $gender, $position, $department, $avatar, 
             $day_off);
