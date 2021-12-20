@@ -13,7 +13,7 @@
     if (!empty($employee_id)) {
         $absence = new Absence($id, $employee_id, $created_date, $start_date, $end_date, $reason, 1, $attachment);
         $absenceOperations = new AbsenceOperations;
-        $result = $absenceOperations->update();
+        $result = $absenceOperations->update($absence);
         $_SESSION["flag"] = $result;
         header("location: ../../views/admin/offday_manager.php");
     } else {
