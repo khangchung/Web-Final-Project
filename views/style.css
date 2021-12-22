@@ -376,4 +376,16 @@ body {
 #task_info tr td:first-child{
     font-weight: bold;
 }
+/* hover icon xóa, sửa */
+.bi:hover{
+    opacity: 0.8;
+}
+/* disable input */
+input:disabled, textarea:disabled{
+    cursor: not-allowed;
+}
+/*  */
+h1{
+    text-transform: uppercase;
+}
 

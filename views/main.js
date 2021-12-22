@@ -67,5 +67,9 @@ $(document).ready(function(){
     $('#offday_manager tbody tr').click(function() {
         window.location = "details_offday.php"; 
     });
+    //Admin xem thông tin chi tiết phòng ban
+    $('#department_manager tbody tr').click(function() {
+        window.location = "details_department.php"; 
+    });
 });
 

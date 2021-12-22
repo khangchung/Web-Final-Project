@@ -42,9 +42,9 @@
                 <form action="">
                     <div class="form-group">
                         <label for="fullname">Họ & tên</label>
-                        <input type="text" id="fullname" class="form-control">
+                        <input type="text" id="fullname" name="fullname" class="form-control">
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="birth">Ngày sinh</label> 
                         <input type="date" class="form-control" name="" id="birth">
                     </div>
@@ -58,40 +58,31 @@
                             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                             <label class="form-check-label" for="inlineRadio2">Nữ</label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="username">Tên tài khoản</label>
-                        <input type="text" id="username" class="form-control">
+                        <input type="text" id="username" name="username" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="department">Tên phòng ban</label>
-                        <select class="selectpicker form-control">
-                            <option>Phòng kinh doanh</option>
-                            <option>Phòng phân tích</option>
-                            <option>Phòng thiết kế</option>
-                            <option>Phòng lập trình</option>
-                            <option>Phòng hành chính</option>
+                        <select class="selectpicker form-control" name="department_name">
+                            <option value="Phòng kinh doanh">Phòng kinh doanh</option>
+                            <option value="Phòng phân tích">Phòng phân tích</option>
+                            <option value="Phòng thiết kế">Phòng thiết kế</option>
+                            <option value="Phòng lập trình">Phòng lập trình</option>
+                            <option value="Phòng hành chính">Phòng hành chính</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="type_employee">Loại nhân viên</label> 
-                        <select class="selectpicker form-control">
-                            <option>Front-end Developer</option>
-                            <option>Backend Developer</option>
-                            <option>Full-Stack Developer</option>
-                            <option>Mobile Developer</option>
-                            <option>Game Developer</option>
-                            <option>UI designer</option>
-                            <option>UX designer</option>
-                            <option>Data Scientist</option>
-                            <option>Business Analysis (BA)</option>
-                            <option>Tester</option>
-                            
+                        <label for="type_employee">Vị trí</label> 
+                        <select class="selectpicker form-control" name="type_employee">
+                            <option value="Nhân viên">Nhân viên</option>
+                            <option value="Trưởng phòng">Trưởng phòng</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for=""></label>
-                        <button type="submit" class="btn btn-info">Thêm nhân viên</button>
+                        <button type="submit" class="btn btn-info mt-5 p-3">Thêm nhân viên</button>
                     </div>
                 </form>
             

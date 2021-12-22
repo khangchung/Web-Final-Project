@@ -55,10 +55,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>A001</td>
-                            <td>Nguyễn Văn A</td>
-                            <td>Thiết kế</td>
+                            <td name="">1</td>
+                            <td name="employee_id">A001</td>
+                            <td name="fullname">Nguyễn Văn A</td>
+                            <td name="department_name">Thiết kế</td>
                             <td>
                                 <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
                                 <a href="edit_employee.php">

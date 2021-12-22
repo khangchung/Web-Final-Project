@@ -65,33 +65,14 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>A001</td>
-                            <td>Nguyễn Minh Thuận</td>
-                            <td>Thiết kế</td>
-                            <td>1/12/2021</td>
-                            <td>2</td>
-                            <td>Nghỉ bệnh</td>
-                            <td class="text-success">Approved</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>A001</td>
-                            <td>Nguyễn Minh Thuận</td>
-                            <td>Thiết kế</td>
-                            <td>1/12/2021</td>
-                            <td>2</td>
-                            <td>Nghỉ bệnh</td>
-                            <td class="text-success">Approved</td>
-                        </tr><tr>
-                            <td>1</td>
-                            <td>A001</td>
-                            <td>Nguyễn Minh Thuận</td>
-                            <td>Thiết kế</td>
-                            <td>1/12/2021</td>
-                            <td>2</td>
-                            <td>Nghỉ bệnh</td>
-                            <td class="text-success">Approved</td>
+                            <td name="">1</td>
+                            <td name="employee_id">A001</td>
+                            <td name="fullname">Nguyễn Minh Thuận</td>
+                            <td name="department_name">Thiết kế</td>
+                            <td name="date_submit">1/12/2021</td>
+                            <td name="count_offday">2</td>
+                            <td name="reason_offday">Nghỉ bệnh</td>
+                            <td name="status_offday" class="text-success">Approved</td>
                         </tr>
                         
                     </tbody>

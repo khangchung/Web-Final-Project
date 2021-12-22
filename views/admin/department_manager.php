@@ -42,7 +42,7 @@
                         Thêm phòng ban
                     </button>
                 </a>
-                <h2 style="margin-bottom: 30px">Danh sách phòng ban</h2>
+                <h1 style="margin-bottom: 30px">Danh sách phòng ban</h1>
                 <table>
                     <thead>
                         <tr>
@@ -55,10 +55,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>PB001</td>
-                            <td>Phòng tài chính</td>
-                            <td>Nguyễn Minh Thuận</td>
+                            <td name="">1</td>
+                            <td name="department_id">PB001</td>
+                            <td name="department_name">Phòng tài chính</td>
+                            <td name="department_monitor">Nguyễn Minh Thuận</td>
                             <td>
                                 <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
                                 <a href="edit_department.php">

@@ -37,52 +37,52 @@
         ?>
         <div class="page-wrap">
             <div class="m-5" >
-                <h2 style="margin-bottom: 30px">Thông tin ngày nghỉ</h2>
+                <h1 style="margin-bottom: 30px">Thông tin ngày nghỉ</h1>
                 
                 
                 <div class="form-group">
                     <label for="fullname">Họ và tên</label> 
-                    <input type="text" class="form-control" name="" id="fullname" value="Nguyễn Minh Thuận">
+                    <input type="text" class="form-control" name="fullname" id="fullname" value="Nguyễn Minh Thuận" disabled>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="birth">Ngày sinh</label> 
                     <input type="text" class="form-control" name="" id="birth" value="21/07/1999">
                 </div>
                 <div class="form-group">
                     <label for="gender">Giới tính</label> 
                     <input type="text" class="form-control" name="" id="gender" value="Nam">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="department">Phòng ban</label> 
-                    <input type="text" class="form-control" name="" id="department" value="Thiết kế">
+                    <input type="text" class="form-control" name="department_name" id="department_name" value="Thiết kế" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="type_employee">Ngày nộp đơn</label> 
-                    <input type="date" class="form-control" name="" id="type_employee" value="Thực tập">
+                    <label for="date_submit">Ngày nộp đơn</label> 
+                    <input type="text" class="form-control" name="date_submit" id="date_submit" value="21/12/2021" disabled>
                 </div>
                 <div class="form-group">
                     <label for="count_offday">Số ngày nghỉ</label> 
-                    <input type="number" class="form-control" name="" id="count_offday" value="Thực tập">
+                    <input type="number" class="form-control" name="count_offday" id="count_offday" value="2" disabled>
                 </div>                 
                 <div class="form-group">
                     <label for="start_offday">Ngày bắt đầu nghỉ</label> 
-                    <input type="date" class="form-control" name="" id="start_offday" value="Thực tập">
+                    <input type="text" class="form-control" name="start_offday" id="start_offday" value="22/12/2021" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="end_offday">Ngày bắt đầu nghỉ</label> 
-                    <input type="date" class="form-control" name="" id="end_offday" value="Thực tập">
+                    <label for="end_offday">Ngày đi làm lại</label> 
+                    <input type="text" class="form-control" name="end_offday" id="end_offday" value="24/12/2021" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="reason">Lý do</label>
-                    <textarea id="reason" class="form-control"></textarea>
+                    <label for="reason_offday">Lý do</label>
+                    <textarea id="reason_offday" class="form-control" name="reason_offday" disabled>Nghỉ bệnh</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="file">Tệp đính kèm (nếu có)</label>
-                    <a href="https://www.w3schools.com" class="form-control-file" id="file">tepdinhkem.rar</a>
+                    <label for="attachments_offday">Tệp đính kèm (nếu có)</label>
+                    <a href="https://www.w3schools.com" class="form-control-file" name="attachments_offday" id="attachments_offday">tepdinhkem.rar</a>
                 </div>
                 <div class="form-group">
                     <label for=""></label> 
-                    <button type="submit" class=" btn btn-info mt-2">Duyệt</button>
+                    <button type="submit" class=" btn btn-info mt-2 p-3">Duyệt đơn</button>
                 </div>
             </div>
         </div>      
