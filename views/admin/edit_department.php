@@ -41,20 +41,30 @@
                 <h1 class="text-center mb-5" >Sửa thông tin phòng ban</h1>
                 <form action="">
                     <div class="form-group">
-                        <label for="department_name">Tên phòng ban</label>
-                        <input type="text" id="department_name" class="form-control">
+                        <label for="department">Tên phòng ban</label>
+                        <select class="selectpicker form-control" name="department_name">
+                            <option value="Phòng kinh doanh">Phòng kinh doanh</option>
+                            <option value="Phòng phân tích">Phòng phân tích</option>
+                            <option value="Phòng thiết kế">Phòng thiết kế</option>
+                            <option value="Phòng lập trình">Phòng lập trình</option>
+                            <option value="Phòng hành chính">Phòng hành chính</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="department_id">Mã phòng ban</label> 
-                        <input type="date" class="form-control" name="" id="department_id">
+                        <input type="text" class="form-control" name="department_id" id="department_id">
                     </div>
                     <div class="form-group">
                         <label for="department_desc">Mô tả</label>
-                        <textarea type="text" id="department_desc" class="form-control"></textarea>
+                        <textarea type="text" class="form-control" name="department_desc" id="department_desc" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="total_room">Số phòng</label> 
+                        <input type="number" class="form-control" name="total_department" id="total_department">
                     </div>
                     <div class="form-group">
                         <label for=""></label>
-                        <button type="submit" class="btn btn-info">Thêm phòng ban</button>
+                        <button type="submit" class="btn btn-info mt-5 p-3">Thêm phòng ban</button>
                     </div>
                 </form>
             

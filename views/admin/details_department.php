@@ -38,33 +38,27 @@
         <div class="page-wrap">
             
             <div class="m-5" id="">
-                <h1 class=" mb-5" >Thêm phòng ban</h1>
+                <h1 class="text-center mb-5" >Thông tin phòng ban</h1>
                 <form action="">
                     <div class="form-group">
-                        <label for="department">Tên phòng ban</label>
-                        <select class="selectpicker form-control" name="department_name">
-                            <option value="Phòng kinh doanh">Phòng kinh doanh</option>
-                            <option value="Phòng phân tích">Phòng phân tích</option>
-                            <option value="Phòng thiết kế">Phòng thiết kế</option>
-                            <option value="Phòng lập trình">Phòng lập trình</option>
-                            <option value="Phòng hành chính">Phòng hành chính</option>
-                        </select>
+                        <label for="department_id">Tên phòng ban</label> 
+                        <input type="text" class="form-control" name="department_name" id="department_name" value="Phòng kinh doanh" disabled>
                     </div>
                     <div class="form-group">
                         <label for="department_id">Mã phòng ban</label> 
-                        <input type="text" class="form-control" name="department_id" id="department_id">
+                        <input type="text" class="form-control" name="department_id" id="department_id" value="PB01" disabled>
                     </div>
                     <div class="form-group">
                         <label for="department_desc">Mô tả</label>
-                        <textarea type="text" id="department_desc" name="department_desc" class="form-control"></textarea>
+                        <textarea type="text" class="form-control" name="department_desc" id="department_desc" class="form-control" value="Phòng ban 01" disabled></textarea>
                     </div>
                     <div class="form-group">
                         <label for="total_department">Số phòng</label> 
-                        <input type="number" class="form-control" name="total_department" id="total_department">
+                        <input type="number" class="form-control" name="total_department" id="total_department" value="3" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="add_department"></label>
-                        <button type="submit" id="add_department" class="btn btn-info mt-5 p-3">Thêm phòng ban</button>
+                        <label for=""></label>
+                        <button type="submit" class="btn btn-info mt-5 p-3">Thêm phòng ban</button>
                     </div>
                 </form>
             

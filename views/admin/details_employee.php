@@ -37,36 +37,36 @@
         ?>
         <div class="page-wrap">
             <div class="m-5" >
-                <h2 style="margin-bottom: 30px">Thông tin nhân viên</h2>
+                <h1 class="mb-5">Thông tin nhân viên</h1>
                 
                 
                 <div class="form-group">
                     <label for="fullname">Họ và tên</label> 
-                    <input type="text" class="form-control" name="" id="fullname" value="Nguyễn Minh Thuận">
+                    <input type="text" class="form-control" name="fullname" id="fullname" value="Nguyễn Minh Thuận" disabled>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="birth">Ngày sinh</label> 
                     <input type="text" class="form-control" name="" id="birth" value="21/07/1999">
                 </div>
                 <div class="form-group">
                     <label for="gender">Giới tính</label> 
                     <input type="text" class="form-control" name="" id="gender" value="Nam">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="username">Tên tài khoản</label> 
-                    <input type="text" class="form-control" name="" id="username" value="minhthuan1111">
+                    <input type="text" class="form-control" name="username" id="username" value="minhthuan1111" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="department">Phòng ban</label> 
-                    <input type="text" class="form-control" name="" id="department" value="Thiết kế">
+                    <label for="department_name">Phòng ban</label> 
+                    <input type="text" class="form-control" name="department_name" id="department_name" value="Thiết kế" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="type_employee">Loại nhân viên</label> 
-                    <input type="text" class="form-control" name="" id="type_employee" value="Thực tập">
+                    <label for="type_employee">Vị trí</label> 
+                    <input type="text" class="form-control" name="" id="type_employee" value="Nhân viên" disabled>
                 </div>
                 <div class="form-group">
                     <label for=""></label> 
-                    <button type="submit" class=" btn btn-info mt-2">Reset mật khẩu</button>
+                    <button type="submit" class=" btn btn-info mt-5 p-3">Reset mật khẩu</button>
                 </div>
             </div>
         </div>      
