@@ -38,7 +38,7 @@
     }
 
     if (isset($_SESSION["flag"])) {
-        header("location: employee/" . $_SESSION["flag"] . ".php");
+        header("location: " . $_SESSION["flag"] . "/index.php");
     } else {
         header("location: ../../views/login.php");
     }
