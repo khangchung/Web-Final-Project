@@ -43,11 +43,11 @@
                     <div class="form-group">
                         <label for="department">Tên phòng ban</label>
                         <select class="selectpicker form-control" name="name">
-                            <option value="Phòng kinh doanh">Phòng kinh doanh</option>
-                            <option value="Phòng phân tích">Phòng phân tích</option>
-                            <option value="Phòng thiết kế">Phòng thiết kế</option>
-                            <option value="Phòng lập trình">Phòng lập trình</option>
-                            <option value="Phòng hành chính">Phòng hành chính</option>
+                            <option value="Business">Phòng kinh doanh</option>
+                            <option value="Analysis">Phòng phân tích</option>
+                            <option value="Design">Phòng thiết kế</option>
+                            <option value="IT">Phòng lập trình</option>
+                            <option value="Administration">Phòng hành chính</option>
                         </select>
                     </div>
                     <div class="form-group">
