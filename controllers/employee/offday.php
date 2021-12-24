@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once("../../models/absence_operations.php");
+    
     $absenceOperations = new AbsenceOperations;
     $absenceManager = $absenceOperations->read();
     $absenceList = $absenceManager->getList();
