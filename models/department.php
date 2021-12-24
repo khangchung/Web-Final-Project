@@ -14,7 +14,7 @@
             return $this->name;
         }
 
-        function getpDescription() {
+        function getDescription() {
             return $this->description;
         }
 
