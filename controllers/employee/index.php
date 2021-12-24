@@ -4,7 +4,7 @@
     require_once("../../models/task_operations.php");
     
     $employeeOperations = new EmployeeOperations;
-    $employeeManager = $employeeManager->read();
+    $employeeManager = $employeeOperations->read();
     $employeeList = $employeeManager->getList();
     foreach ($employeeList as $employee) {
         if ($employee->getUsername() == $_SESSION["username"]) {
