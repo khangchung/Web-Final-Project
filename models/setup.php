@@ -6,7 +6,15 @@
         $manager = $EO->read();
         $prefix = strtoupper($department_name[0]);
         $number = count($manager->getList()) + 1;
-        $id = $prefix . $number;
+        if ($number > 0 && $number <= 9) {
+            $id = $prefix . "00" . $number;
+        } else
+        if ($number > 9 && $number <= 99) {
+            $id = $prefix . "0" . $number;
+        } else
+        if ($number > 99 && $number <= 999) {
+            $id = $prefix . $number;
+        }
         return $id;
     }
     
