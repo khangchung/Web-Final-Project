@@ -39,7 +39,7 @@
             
             <div class="m-5" id="">
                 <h1 class="text-center mb-5" >Thêm nhân viên</h1>
-                <form action="">
+                <form action="../../controllers/admin/add_employee.php" method="POST">
                     <div class="form-group">
                         <label for="fullname">Họ & tên</label>
                         <input type="text" id="fullname" name="fullname" class="form-control">
@@ -65,19 +65,19 @@
                     </div>
                     <div class="form-group">
                         <label for="department">Tên phòng ban</label>
-                        <select class="selectpicker form-control" name="department_name">
-                            <option value="Phòng kinh doanh">Phòng kinh doanh</option>
-                            <option value="Phòng phân tích">Phòng phân tích</option>
-                            <option value="Phòng thiết kế">Phòng thiết kế</option>
-                            <option value="Phòng lập trình">Phòng lập trình</option>
-                            <option value="Phòng hành chính">Phòng hành chính</option>
+                        <select name="department" class="selectpicker form-control" name="department_name">
+                            <option value="Business">Phòng kinh doanh</option>
+                            <option value="Analysis">Phòng phân tích</option>
+                            <option value="Design">Phòng thiết kế</option>
+                            <option value="IT">Phòng lập trình</option>
+                            <option value="Administration">Phòng hành chính</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="type_employee">Vị trí</label> 
-                        <select class="selectpicker form-control" name="type_employee">
-                            <option value="Nhân viên">Nhân viên</option>
-                            <option value="Trưởng phòng">Trưởng phòng</option>
+                        <select class="selectpicker form-control" name="position">
+                            <option value="2">Nhân viên</option>
+                            <option value="1">Trưởng phòng</option>
                         </select>
                     </div>
                     <div class="form-group">
