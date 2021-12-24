@@ -1,8 +1,7 @@
 <?php
     session_start();
     require_once("../../models/department_operations.php");
-    require_once("../../models/department.php");
-
+    
     $name = isset($_POST["name"]) ? $_POST["name"] : "";
     $desc = isset($_POST["desc"]) ? $_POST["desc"] : "";
     $room = isset($_POST["room"]) ? intval($_POST["room"]) : "";

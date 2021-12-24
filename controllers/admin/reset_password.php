@@ -1,7 +1,6 @@
 <?php
     session_start();
     require_once("../../models/account_operations.php");
-    require_once("../../models/account.php");
 
     $username = isset($_POST["username"]) ? $_POST["username"] : "";
     $priority = isset($_POST["priority"]) ? $_POST["priority"] : "";

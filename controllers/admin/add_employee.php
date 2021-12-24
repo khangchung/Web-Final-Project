@@ -2,8 +2,6 @@
     session_start();
     require_once("../../models/employee_operations.php");
     require_once("../../models/account_operations.php");
-    require_once("../../models/employee.php");
-    require_once("../../models/account.php");
 
     $id = isset($_POST["id"]) ? $_POST["id"] : "";
     $username = isset($_POST["username"]) ? $_POST["username"] : "";
