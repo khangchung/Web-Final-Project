@@ -2,8 +2,8 @@
     session_start();
     require_once("../../models/employee_operations.php");
     require_once("../../models/account_operations.php");
+    require_once("../../models/setup.php");
 
-    $id = isset($_POST["id"]) ? $_POST["id"] : "";
     $username = isset($_POST["username"]) ? $_POST["username"] : "";
     $fullname = isset($_POST["fullname"]) ? $_POST["fullname"] : "";
     $position = isset($_POST["position"]) ? intval($_POST["position"]) : "";
@@ -11,11 +11,13 @@
     $avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "";
     $day_off = isset($_POST["day_off"]) ? intval($_POST["day_off"]) : "";
 
-    if (!empty($id) && !empty($username) && !empty($fullname) && !empty($position) 
-    && !empty($department) && !empty($avatar) && !empty($day_off)) {
+    if (!empty($username) && !empty($fullname) && !empty($position) && !empty($department)) {
         $password = password_hash($username, PASSWORD_DEFAULT);
         $accountOperations = new AccountOperations;
         $account_result = $accountOperations->create(new Account($username, $password, $position));
+        $id = getNextID($department);
+        $avatar = "";
+        $day_off = $position == 1 ? 15 : 12;
         if ($account_result) {
             $employee = new Employee($id, $username, $fullname, $position, $department, $avatar, 
             $day_off);
