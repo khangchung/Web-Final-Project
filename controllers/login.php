@@ -12,33 +12,35 @@
     
     $AO = new AccountOperations();
     $manager = $AO->read_one($username);
-    
-    foreach ($manager->getList() as $account) {
+    $accountList = $manager->getList();
+    $position = "";
+
+    foreach ($accountList as $account) {
         if ($account->getUsername() == $username && $account->getPassword() == $password) {
         // if ($account->getUsername() == $username && password_verify($password, $account->getPassword())) {
             if ($account->getPriority() == 0) {
                 $_SESSION["username"] = $username;
                 $_SESSION["priority"] = $priority;
-                $_SESSION["position"] = "admin";
-                header("location: admin/index.php");
+                $position = "admin";
+                break;
             } else
             if ($account->getPriority() == 1) {
                 $_SESSION["username"] = $username;
                 $_SESSION["priority"] = $priority;
-                $_SESSION["position"] = "monitor";
-                header("location: monitor/index.php");
+                $position = "monitor";
+                break;
             } else
             if ($account->getPriority() == 2) {
                 $_SESSION["username"] = $username;
                 $_SESSION["priority"] = $priority;
-                $_SESSION["position"] = "employee";
-                header("location: employee/index.php");
+                $position = "employee";
+                break;
             }
         }
     }
 
-    if (isset($_SESSION["position"])) {
-        header("location: " . $_SESSION["position"] . "/index.php");
+    if (!empty($position)) {
+        header("location: " . $position . "/index.php");
     } else {
         header("location: ../../views/login.php");
     }
