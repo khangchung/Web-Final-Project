@@ -1,7 +1,6 @@
 <?php
     session_start();
     require_once("../../models/account_operations.php");
-    require_once("../../models/account.php");
     $old_password = isset($_POST["old_password"]) ? $_POST["old_password"] : "";
     $new_password = isset($_POST["new_password"]) ? $_POST["new_password"] : "";
     if (!empty($old_password) && !empty($new_password)) {
