@@ -19,26 +19,26 @@
             if ($account->getPriority() == 0) {
                 $_SESSION["username"] = $username;
                 $_SESSION["priority"] = $priority;
-                $_SESSION["flag"] = "admin";
+                $_SESSION["position"] = "admin";
                 header("location: admin/index.php");
             } else
             if ($account->getPriority() == 1) {
                 $_SESSION["username"] = $username;
                 $_SESSION["priority"] = $priority;
-                $_SESSION["flag"] = "monitor";
+                $_SESSION["position"] = "monitor";
                 header("location: monitor/index.php");
             } else
             if ($account->getPriority() == 2) {
                 $_SESSION["username"] = $username;
                 $_SESSION["priority"] = $priority;
-                $_SESSION["flag"] = "employee";
+                $_SESSION["position"] = "employee";
                 header("location: employee/index.php");
             }
         }
     }
 
-    if (isset($_SESSION["flag"])) {
-        header("location: " . $_SESSION["flag"] . "/index.php");
+    if (isset($_SESSION["position"])) {
+        header("location: " . $_SESSION["position"] . "/index.php");
     } else {
         header("location: ../../views/login.php");
     }
