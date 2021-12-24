@@ -39,10 +39,10 @@
             
             <div class="m-5" id="">
                 <h1 class=" mb-5" >Thêm phòng ban</h1>
-                <form action="">
+                <form action="../../controllers/admin/add_department.php" method="POST">
                     <div class="form-group">
                         <label for="department">Tên phòng ban</label>
-                        <select class="selectpicker form-control" name="department_name">
+                        <select class="selectpicker form-control" name="name">
                             <option value="Phòng kinh doanh">Phòng kinh doanh</option>
                             <option value="Phòng phân tích">Phòng phân tích</option>
                             <option value="Phòng thiết kế">Phòng thiết kế</option>
@@ -52,15 +52,15 @@
                     </div>
                     <div class="form-group">
                         <label for="department_id">Mã phòng ban</label> 
-                        <input type="text" class="form-control" name="department_id" id="department_id">
+                        <input type="text" class="form-control" id="department_id">
                     </div>
                     <div class="form-group">
                         <label for="department_desc">Mô tả</label>
-                        <textarea type="text" id="department_desc" name="department_desc" class="form-control"></textarea>
+                        <textarea type="text" id="department_desc" name="desc" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="total_department">Số phòng</label> 
-                        <input type="number" class="form-control" name="total_department" id="total_department">
+                        <input type="number" class="form-control" name="room" id="total_department">
                     </div>
                     <div class="form-group">
                         <label for="add_department"></label>
