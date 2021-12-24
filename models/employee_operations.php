@@ -9,7 +9,7 @@
             $conn = getConnection();
             $sql = "insert into employee values(?, ?, ?, ?, ?, ?, ?)";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("sssisssi", $employee->getId(), $employee->getUsername(), $employee->getFullname(),
+            $stm->bind_param("sssissi", $employee->getId(), $employee->getUsername(), $employee->getFullname(),
             $employee->getPosition(), $employee->getDepartment(), $employee->getAvatar(), $employee->getDayOff());
             if (!$stm->execute()) {
                 die("Employee creating is failed: " . $stm->error);
