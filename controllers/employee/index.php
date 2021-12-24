@@ -14,6 +14,13 @@
     }
     $taskOperations = new TaskOperations;
     $taskManager =  $taskOperations->read();
-    $_SESSION["task"] = $taskManager->getList();
+    $taskList = $taskManager->getList();
+    $data = array();
+    foreach ($taskList as $task) {
+        if ($task->getReceiver() == $_SESSION["information"]->getId()) {
+            array_push($data, $task);
+        }
+    }
+    $_SESSION["task"] = $data;
     header("location: ../../views/employee/index.php");
 ?>
