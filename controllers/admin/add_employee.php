@@ -12,7 +12,7 @@
     $day_off = isset($_POST["day_off"]) ? intval($_POST["day_off"]) : "";
 
     if (!empty($username) && !empty($fullname) && !empty($position) && !empty($department)) {
-        $password = password_hash($username, PASSWORD_DEFAULT);
+        $password = password_hash($username, PASSWORD_BCRYPT);
         $accountOperations = new AccountOperations;
         $account_result = $accountOperations->create(new Account($username, $password, $position));
         $id = getNextID($department);
