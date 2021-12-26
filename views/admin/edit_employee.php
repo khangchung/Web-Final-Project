@@ -1,3 +1,27 @@
+    <?php
+        session_start();
+        $dictionary = array(
+            "Business" => "Phòng kinh doanh",
+            "Analysis" => "Phòng kinh doanh",
+            "Desgin" => "Phòng kinh doanh",
+            "IT" => "Phòng kinh doanh",
+            "Administration" => "Phòng kinh doanh"
+        );
+        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
+        $id = isset($_GET["id"]) ? $_GET["id"] : "";
+        if (!empty($employees) && !empty($id)) {
+            for ($i=0; $i < count($employees); $i++) { 
+                if ($employees[i]->getId() == $id) {
+                    $employee = $employees[i];
+                    $postion = "Nhân viên";
+                    if ($employee->getPosition() == 1) {
+                        $postion = "Trưởng phòng";
+                    }
+                    break;
+                }
+            }
+        }
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -36,56 +60,51 @@
             require_once('../includes/sidebar_admin.php');
         ?>
         <div class="page-wrap">
-            
             <div class="m-5" id="">
                 <h1 class="text-center mb-5" >Sửa thông tin nhân viên</h1>
-                <form action="">
-                    <div class="form-group">
-                        <label for="fullname">Họ & tên</label>
-                        <input type="text" id="fullname" name="fullname" class="form-control">
-                    </div>
-                    <!-- <div class="form-group">
-                        <label for="birth">Ngày sinh</label> 
-                        <input type="date" class="form-control" name="" id="birth">
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Giới tính</label>
-                        <div class="form-check form-check-inline mr-5">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                            <label class="form-check-label" for="inlineRadio1">Nam</label>
-                        </div>
-                        <div class="form-check form-check-inline ml-0">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
-                        </div>
-                    </div> -->
-                    <div class="form-group">
-                        <label for="username">Tên tài khoản</label>
-                        <input type="text" id="username" name="username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="department">Tên phòng ban</label>
-                        <select class="selectpicker form-control" name="department_name">
-                            <option value="Phòng kinh doanh">Phòng kinh doanh</option>
-                            <option value="Phòng phân tích">Phòng phân tích</option>
-                            <option value="Phòng thiết kế">Phòng thiết kế</option>
-                            <option value="Phòng lập trình">Phòng lập trình</option>
-                            <option value="Phòng hành chính">Phòng hành chính</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="type_employee">Vị trí</label> 
-                        <select class="selectpicker form-control" name="type_employee">
-                            <option value="Nhân viên">Nhân viên</option>
-                            <option value="Trưởng phòng">Trưởng phòng</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for=""></label>
-                        <button type="submit" class="btn btn-info  mt-5 p-2 px-4">Xác nhận</button>
-                    </div>
-                </form>
-            
+                <?php
+                    if (isset($employee) && isset($postion)) {
+                    ?>
+                        <form action="../../controllers/admin/edit_employee.php" method="POST">
+                            <div class="form-group">
+                                <label for="id">Mã nhân viên</label>
+                                <input type="text" id="id" name="id" class="form-control" value="<?= $employee->getId() ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="fullname">Họ & tên</label>
+                                <input type="text" id="fullname" name="fullname" class="form-control" value="<?= $employee->getFullname() ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="username">Tên tài khoản</label>
+                                <input type="text" id="username" name="username" class="form-control" value="<?= $employee->getUsername() ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="department">Tên phòng ban</label>
+                                <select class="selectpicker form-control" name="department">
+                                    <option value="<?= $employee->getDepartment() ?>" selected><?= $dictionary[$employee->getDepartment()] ?></option>
+                                    <option value="Business">Phòng kinh doanh</option>
+                                    <option value="Analysis">Phòng phân tích</option>
+                                    <option value="Design">Phòng thiết kế</option>
+                                    <option value="IT">Phòng lập trình</option>
+                                    <option value="Administration">Phòng hành chính</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="position">Vị trí</label> 
+                                <select class="selectpicker form-control" name="position">
+                                <option value="<?= $employee->getPosition() ?>" selected><?= $postion ?></option>
+                                    <option value="2">Nhân viên</option>
+                                    <option value="1">Trưởng phòng</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for=""></label>
+                                <button type="submit" class="btn btn-info  mt-5 p-2 px-4">Xác nhận</button>
+                            </div>
+                        </form>
+                    <?php
+                    }
+                ?>
         </div> 
     </body>
     </html>
