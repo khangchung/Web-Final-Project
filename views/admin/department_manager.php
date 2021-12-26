@@ -1,3 +1,13 @@
+    <?php
+        session_start();
+        $dictionary = array(
+            "Business" => "Phòng kinh doanh",
+            "Analysis" => "Phòng kinh doanh",
+            "Desgin" => "Phòng kinh doanh",
+            "IT" => "Phòng kinh doanh",
+            "Administration" => "Phòng kinh doanh"
+        )
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -47,26 +57,34 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã phòng ban</th>
                             <th>Tên phòng ban</th>
-                            <th>Tên trưởng phòng</th>
-                            <th>Chức năng</th>
+                            <th>Mô tả</th>
+                            <th>Số phòng</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td name="">1</td>
-                            <td name="department_id">PB001</td>
-                            <td name="department_name">Phòng tài chính</td>
-                            <td name="department_monitor">Nguyễn Minh Thuận</td>
-                            <td>
-                                <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
-                                <a href="edit_department.php">
-                                    <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
-                                </a>
-                            </td>
-                            </td>
-                        </tr>
+                        <?php
+                            $deparments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
+                            if (!empty($deparments)) {
+                                for ($i=0; $i < count($deparments); $i++) { 
+                                ?>
+                                    <tr>
+                                        <td><?= $i+1 ?></td>
+                                        <td><?= $dictionary[$deparments[i]->getName()] ?></td>
+                                        <td><?= $deparments[i]->getDescription() ?></td>
+                                        <td><?= $deparments[i]->getRoom() ?></td>
+                                        <td>
+                                            <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
+                                            <a href="edit_department.php?id=<?= $deparments[i]->getName() ?>">
+                                                <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
+                                            </a>
+                                        </td>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
