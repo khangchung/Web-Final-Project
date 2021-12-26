@@ -1,5 +1,6 @@
     <?php
         session_start();
+        header("location: ../../controllers/admin/index.php");
     ?>
     <!DOCTYPE html>
     <html lang="en">
