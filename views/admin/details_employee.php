@@ -1,6 +1,13 @@
     <?php
         session_start();
         require_once("../../models/employee.php");
+        $dictionary = array(
+            "Business" => "Phòng kinh doanh",
+            "Analysis" => "Phòng phân tích",
+            "Design" => "Phòng thiết kế",
+            "IT" => "Phòng lập trình",
+            "Administration" => "Phòng hành chính"
+        );
         $employee = isset($_SESSION["employee"]) ? unserialize($_SESSION["employee"]) : "";
     ?>
     <!DOCTYPE html>
@@ -60,7 +67,7 @@
                         </div>
                         <div class="form-group">
                             <label for="department">Phòng ban</label> 
-                            <input type="text" class="form-control" id="department" value="<?= $employee->getDepartment() ?>" disabled>
+                            <input type="text" class="form-control" id="department" value="<?= $dictionary[$employee->getDepartment()] ?>" disabled>
                         </div>
                         <div class="form-group">
                             <label for="position">Vị trí</label> 
