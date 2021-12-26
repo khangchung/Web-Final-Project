@@ -1,11 +1,12 @@
     <?php
         session_start();
+        require_once("../../models/department.php");
         $dictionary = array(
             "Business" => "Phòng kinh doanh",
-            "Analysis" => "Phòng kinh doanh",
-            "Desgin" => "Phòng kinh doanh",
-            "IT" => "Phòng kinh doanh",
-            "Administration" => "Phòng kinh doanh"
+            "Analysis" => "Phòng phân tích",
+            "Design" => "Phòng thiết kế",
+            "IT" => "Phòng lập trình",
+            "Administration" => "Phòng hành chính"
         )
     ?>
     <!DOCTYPE html>
@@ -60,22 +61,24 @@
                             <th>Tên phòng ban</th>
                             <th>Mô tả</th>
                             <th>Số phòng</th>
+                            <th>Chức năng</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                             $deparments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
                             if (!empty($deparments)) {
-                                for ($i=0; $i < count($deparments); $i++) { 
+                                for ($i=0; $i < count($deparments); $i++) {
+                                    $deparment = unserialize($deparments[$i]);
                                 ?>
                                     <tr>
                                         <td><?= $i+1 ?></td>
-                                        <td><?= $dictionary[$deparments[$i]->getName()] ?></td>
-                                        <td><?= $deparments[$i]->getDescription() ?></td>
-                                        <td><?= $deparments[$i]->getRoom() ?></td>
+                                        <td><?= $dictionary[$deparment->getName()] ?></td>
+                                        <td><?= $deparment->getDescription() ?></td>
+                                        <td><?= $deparment->getRoom() ?></td>
                                         <td>
                                             <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
-                                            <a href="edit_department.php?id=<?= $deparments[$i]->getName() ?>">
+                                            <a href="edit_department.php?id=<?= $deparment->getName() ?>">
                                                 <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
                                             </a>
                                         </td>
