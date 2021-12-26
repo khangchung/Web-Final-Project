@@ -1,3 +1,6 @@
+    <?php
+        session_start();
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -54,19 +57,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td name="">1</td>
-                            <td name="employee_id">A001</td>
-                            <td name="fullname">Nguyễn Văn A</td>
-                            <td name="department_name">Thiết kế</td>
-                            <td>
-                                <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
-                                <a href="edit_employee.php">
-                                    <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        
+                        <?php
+                        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
+                        if (!empty($employees)) {
+                            for ($i=0; $i < count($employees); $i++) { 
+                            ?>
+                                <tr>
+                                    <td><?= $i+1 ?></td>
+                                    <td><?= $employees[i]->getId() ?></td>
+                                    <td><?= $employees[i]->getFullname() ?></td>
+                                    <td><?= $employees[i]->getDepartment() ?></td>
+                                    <td>
+                                        <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
+                                        <a href="edit_employee.php?id=<?= $employees[i]->getId() ?>">
+                                            <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                        }  
+                        ?>                      
                         
                     </tbody>
                 </table>
