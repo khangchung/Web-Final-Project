@@ -12,7 +12,7 @@
         if (!empty($employees) && !empty($id)) {
             for ($i=0; $i < count($employees); $i++) { 
                 if ($employees[i]->getId() == $id) {
-                    $employee = $employees[i];
+                    $employee = unserialize($employees[$i]);
                     $postion = "Nhân viên";
                     if ($employee->getPosition() == 1) {
                         $postion = "Trưởng phòng";
@@ -68,7 +68,7 @@
                         <form action="../../controllers/admin/edit_employee.php" method="POST">
                             <div class="form-group">
                                 <label for="id">Mã nhân viên</label>
-                                <input type="text" id="id" name="id" class="form-control" value="<?= $employee->getId() ?>">
+                                <input type="text" id="id" name="id" class="form-control" value="<?= $employee->getId() ?>" disabled>
                             </div>
                             <div class="form-group">
                                 <label for="fullname">Họ & tên</label>
