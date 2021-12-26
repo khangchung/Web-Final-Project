@@ -1,5 +1,6 @@
     <?php
         session_start();
+        require_once("../../models/employee.php");
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -60,16 +61,17 @@
                         <?php
                         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
                         if (!empty($employees)) {
-                            for ($i=0; $i < count($employees); $i++) { 
+                            for ($i=0; $i < count($employees); $i++) {
+                                $employee = unserialize($employees[$i]);
                             ?>
                                 <tr>
                                     <td><?= $i+1 ?></td>
-                                    <td><?= $employees[$i]->getId() ?></td>
-                                    <td><?= $employees[$i]->getFullname() ?></td>
-                                    <td><?= $employees[$i]->getDepartment() ?></td>
+                                    <td><?= $employee->getId() ?></td>
+                                    <td><?= $employee->getFullname() ?></td>
+                                    <td><?= $employee->getDepartment() ?></td>
                                     <td>
                                         <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
-                                        <a href="edit_employee.php?id=<?= $employees[$i]->getId() ?>">
+                                        <a href="edit_employee.php?id=<?= $employee->getId() ?>">
                                             <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
                                         </a>
                                     </td>
