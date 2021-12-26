@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+    <?php
+        session_start();
+    ?>
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -36,38 +39,32 @@
             require_once('../includes/sidebar_admin.php');
         ?>
         <div class="page-wrap">
-            
             <div class="m-5" id="">
                 <h1 class="text-center mb-5" >Sửa thông tin phòng ban</h1>
-                <form action="">
+                <form action="../../controllers/edit_department.php" method="POST">
                     <div class="form-group">
-                        <label for="department">Tên phòng ban</label>
-                        <select class="selectpicker form-control" name="department_name">
-                            <option value="Phòng kinh doanh">Phòng kinh doanh</option>
-                            <option value="Phòng phân tích">Phòng phân tích</option>
-                            <option value="Phòng thiết kế">Phòng thiết kế</option>
-                            <option value="Phòng lập trình">Phòng lập trình</option>
-                            <option value="Phòng hành chính">Phòng hành chính</option>
+                        <label for="department_name">Tên phòng ban</label>
+                        <select class="selectpicker form-control" id="department_name" name="name">
+                            <option value="Business">Phòng kinh doanh</option>
+                            <option value="Analysis">Phòng phân tích</option>
+                            <option value="Design">Phòng thiết kế</option>
+                            <option value="IT">Phòng lập trình</option>
+                            <option value="Administration">Phòng hành chính</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="department_id">Mã phòng ban</label> 
-                        <input type="text" class="form-control" name="department_id" id="department_id">
-                    </div>
-                    <div class="form-group">
                         <label for="department_desc">Mô tả</label>
-                        <textarea type="text" class="form-control" name="department_desc" id="department_desc" class="form-control"></textarea>
+                        <textarea type="text" class="form-control" name="desc" id="department_desc" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="total_room">Số phòng</label> 
-                        <input type="number" class="form-control" name="total_department" id="total_department">
+                        <label for="room_number">Số phòng</label> 
+                        <input type="number" class="form-control" name="room" id="room_number">
                     </div>
                     <div class="form-group">
                         <label for=""></label>
                         <button type="submit" class="btn btn-info mt-5 p-3">Thêm phòng ban</button>
                     </div>
                 </form>
-            
-        </div> 
+        </div>
     </body>
     </html>
