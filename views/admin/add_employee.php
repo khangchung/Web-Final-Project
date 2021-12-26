@@ -1,3 +1,6 @@
+    <?php
+        session_start();
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -44,21 +47,6 @@
                         <label for="fullname">Họ & tên</label>
                         <input type="text" id="fullname" name="fullname" class="form-control">
                     </div>
-                    <!-- <div class="form-group">
-                        <label for="birth">Ngày sinh</label> 
-                        <input type="date" class="form-control" name="" id="birth">
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Giới tính</label>
-                        <div class="form-check form-check-inline mr-5">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                            <label class="form-check-label" for="inlineRadio1">Nam</label>
-                        </div>
-                        <div class="form-check form-check-inline ml-0">
-                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
-                        </div>
-                    </div> -->
                     <div class="form-group">
                         <label for="username">Tên tài khoản</label>
                         <input type="text" id="username" name="username" class="form-control">
