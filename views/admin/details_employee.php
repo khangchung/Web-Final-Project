@@ -1,6 +1,6 @@
     <?php
         session_start();
-        $employee = isset($_SESSION["employee"]) ? $_SESSION["employee"] : "";
+        $employee = isset($_SESSION["employee"]) ? unserialize($_SESSION["employee"]) : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -48,28 +48,30 @@
                         if ($employee->getPosition() == 1) {
                             $position = "Trưởng phòng";
                         }
+                        ?>
+                        <div class="form-group">
+                            <label for="fullname">Họ và tên</label> 
+                            <input type="text" class="form-control" id="fullname" value="<?= $employee->getFullname() ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Tên tài khoản</label> 
+                            <input type="text" class="form-control" id="username" value="<?= $employee->getUsername() ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Phòng ban</label> 
+                            <input type="text" class="form-control" id="department" value="<?= $employee->getDepartment() ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Vị trí</label> 
+                            <input type="text" class="form-control" id="position" value="<?= $position ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for=""></label> 
+                            <button type="submit" class=" btn btn-info mt-5 p-3">Reset mật khẩu</button>
+                        </div>
+                        <?php
                     }
                 ?>
-                <div class="form-group">
-                    <label for="fullname">Họ và tên</label> 
-                    <input type="text" class="form-control" id="fullname" value="<?= $employee->getFullname() ?>" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="username">Tên tài khoản</label> 
-                    <input type="text" class="form-control" id="username" value="<?= $employee->getUsername() ?>" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="department">Phòng ban</label> 
-                    <input type="text" class="form-control" id="department" value="<?= $employee->getDepartment() ?>" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="position">Vị trí</label> 
-                    <input type="text" class="form-control" id="position" value="<?= $position ?>" disabled>
-                </div>
-                <div class="form-group">
-                    <label for=""></label> 
-                    <button type="submit" class=" btn btn-info mt-5 p-3">Reset mật khẩu</button>
-                </div>
             </div>
         </div>      
     </body>
