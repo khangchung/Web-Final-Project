@@ -15,12 +15,6 @@
     $account = $manager->getList()[0];
     $position = "";
 
-    $hash = $account->getPassword();
-    die(var_dump($username) . "\n" .
-        var_dump($password) . "\n" .
-        var_dump($account->getPassword()) . "\n" .
-        var_dump(password_verify($password, $hash)));
-    // if ($account->getUsername() == $username && $account->getPassword() == $password) {
     if ($account->getUsername() == $username && password_verify($password, $account->getPassword())) {
         if ($account->getPriority() == 0) {
             $_SESSION["username"] = $username;
