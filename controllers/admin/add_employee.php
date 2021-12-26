@@ -12,9 +12,8 @@
     $day_off = isset($_POST["day_off"]) ? intval($_POST["day_off"]) : "";
 
     if (!empty($username) && !empty($fullname) && !empty($position) && !empty($department)) {
-        $password = password_hash($username, PASSWORD_BCRYPT);
         $accountOperations = new AccountOperations;
-        $account_result = $accountOperations->create(new Account($username, $password, $position));
+        $account_result = $accountOperations->create(new Account($username, $username, $position));
         $id = getNextID($department);
         $avatar = "";
         $day_off = $position == 1 ? 15 : 12;
