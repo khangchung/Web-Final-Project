@@ -1,3 +1,7 @@
+    <?php
+        session_start();
+        require_once("../../models/setup.php");
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -64,17 +68,49 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td name="">1</td>
-                            <td name="employee_id">A001</td>
-                            <td name="fullname">Nguyễn Minh Thuận</td>
-                            <td name="department_name">Thiết kế</td>
-                            <td name="date_submit">1/12/2021</td>
-                            <td name="count_offday">2</td>
-                            <td name="reason_offday">Nghỉ bệnh</td>
-                            <td name="status_offday" class="text-success">Approved</td>
-                        </tr>
-                        
+                        <?php
+                            $absences = isset($_SESSION["absences"]) ? $_SESSION["absences"] : "";
+                            $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
+                            if (!empty($absences) && !empty($employees)) {
+                                for ($i=0; $i < count($absences); $i++) {
+                                    for ($i=0; $i < count($employees); $i++) { 
+                                        if ($employees[i]->getId() == $absences[i]->getEmployeeId()) {
+                                            $fullname = $employees[i]->getFullname();
+                                            $department = $employees[i]->getDepartment();
+                                            break;
+                                        }
+                                    }
+
+                                    $status = $absences[i]->getStatus();
+                                    $text = "Chờ duyệt";
+                                    $text_color = "warning";
+                                    if ($status == 1) {
+                                        $text_color = "success";
+                                        $text = "Đã duyệt";
+                                    } else
+                                    if ($status == -1) {
+                                        $text_color = "danger";
+                                        $text = "Không duyệt";
+                                    }
+                                    ?>
+                                        <tr>
+                                            <td><?= $i+1 ?></td>
+                                            <td><?= $absences[i]->getEmployeeId() ?></td>
+                                            <td><?= $fullname ?></td>
+                                            <td><?= $department ?></td>
+                                            <td><?= $absences[i]->getCreatedDate() ?></td>
+                                            <td>
+                                                <?php getDateDistance($absences[i]->getStartDate(), $absences[i]->getEndDate()) ?>
+                                            </td>
+                                            <td><?= $absences[i]->getReason() ?></td>
+                                            <td class="text-<?= $text_color ?>">
+                                                <?= $text ?>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                }
+                            }
+                        ?>                        
                     </tbody>
                 </table>
             </div>
