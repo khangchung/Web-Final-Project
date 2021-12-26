@@ -1,3 +1,9 @@
+    <?php
+        session_start();
+        require_once("../../models/setup.php");
+        $absence = isset($_SESSION["absence"]) ? $_SESSION["absence"] : "";
+        $employee = isset($_SESSION["employee"]) ? $_SESSION["employee"] : "";
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -38,52 +44,58 @@
         <div class="page-wrap">
             <div class="m-5" >
                 <h1 style="margin-bottom: 30px">Thông tin ngày nghỉ</h1>
+                <?php
+                    if (!empty($absence) && !empty($employee)) {
+                        for ($i=0; $i < count($employee); $i++) { 
+                            if ($employee->getId() == $absence->getEmployeeId()) {
+                                $fullname = $employee->getFullname();
+                                $department = $employee->getDepartment();
+                                break;
+                            }
+                        }
+                    ?>
+                    <div class="form-group">
+                        <label for="fullname">Họ và tên</label> 
+                        <input type="text" class="form-control" id="fullname" value="<?= $fullname ?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Phòng ban</label> 
+                        <input type="text" class="form-control" id="department" value="<?= $department ?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_submit">Ngày nộp đơn</label> 
+                        <input type="text" class="form-control" id="date_submit" value="<?= $absence->getCreateDate() ?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="count_offday">Số ngày nghỉ</label> 
+                        <input type="number" class="form-control" id="count_offday" 
+                        value="<?php getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>" 
+                        disabled>
+                    </div>                 
+                    <div class="form-group">
+                        <label for="start_offday">Ngày bắt đầu nghỉ</label> 
+                        <input type="text" class="form-control" id="start_offday" value="<?= $absence->getStartDate() ?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="end_offday">Ngày đi làm lại</label> 
+                        <input type="text" class="form-control" id="end_offday" value="<?= $absence->getEndDate() ?>" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason_offday">Lý do</label>
+                        <textarea id="reason_offday" class="form-control" disabled><?= $absence->getReason() ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="attachments_offday">Tệp đính kèm (nếu có)</label>
+                        <a href="<?= $absence->getAttachment() ?>" class="form-control-file" id="attachments_offday">Download here.</a>
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>" class="btn btn-info my-2 p-3">Duyệt đơn</a>
+                    </div>
+                    <?php
+                    }
+                ?>
                 
-                
-                <div class="form-group">
-                    <label for="fullname">Họ và tên</label> 
-                    <input type="text" class="form-control" name="fullname" id="fullname" value="Nguyễn Minh Thuận" disabled>
-                </div>
-                <!-- <div class="form-group">
-                    <label for="birth">Ngày sinh</label> 
-                    <input type="text" class="form-control" name="" id="birth" value="21/07/1999">
-                </div>
-                <div class="form-group">
-                    <label for="gender">Giới tính</label> 
-                    <input type="text" class="form-control" name="" id="gender" value="Nam">
-                </div> -->
-                <div class="form-group">
-                    <label for="department">Phòng ban</label> 
-                    <input type="text" class="form-control" name="department_name" id="department_name" value="Thiết kế" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="date_submit">Ngày nộp đơn</label> 
-                    <input type="text" class="form-control" name="date_submit" id="date_submit" value="21/12/2021" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="count_offday">Số ngày nghỉ</label> 
-                    <input type="number" class="form-control" name="count_offday" id="count_offday" value="2" disabled>
-                </div>                 
-                <div class="form-group">
-                    <label for="start_offday">Ngày bắt đầu nghỉ</label> 
-                    <input type="text" class="form-control" name="start_offday" id="start_offday" value="22/12/2021" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="end_offday">Ngày đi làm lại</label> 
-                    <input type="text" class="form-control" name="end_offday" id="end_offday" value="24/12/2021" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="reason_offday">Lý do</label>
-                    <textarea id="reason_offday" class="form-control" name="reason_offday" disabled>Nghỉ bệnh</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="attachments_offday">Tệp đính kèm (nếu có)</label>
-                    <a href="https://www.w3schools.com" class="form-control-file" name="attachments_offday" id="attachments_offday">tepdinhkem.rar</a>
-                </div>
-                <div class="form-group">
-                    <label for=""></label> 
-                    <button type="submit" class=" btn btn-info my-2 p-3">Duyệt đơn</button>
-                </div>
             </div>
         </div>      
     </body>
