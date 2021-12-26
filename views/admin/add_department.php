@@ -51,10 +51,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="department_id">Mã phòng ban</label> 
-                        <input type="text" class="form-control" id="department_id">
-                    </div>
-                    <div class="form-group">
                         <label for="department_desc">Mô tả</label>
                         <textarea type="text" id="department_desc" name="desc" class="form-control"></textarea>
                     </div>

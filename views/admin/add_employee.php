@@ -38,7 +38,7 @@
         <div class="page-wrap">
             
             <div class="m-5" id="">
-                <h1 class="text-center mb-5" >Thêm nhân viên</h1>
+                <h1 class=" mb-5" >Thêm nhân viên</h1>
                 <form action="../../controllers/admin/add_employee.php" method="POST">
                     <div class="form-group">
                         <label for="fullname">Họ & tên</label>

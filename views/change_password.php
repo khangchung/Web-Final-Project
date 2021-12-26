@@ -46,7 +46,6 @@
                 </div>
                 <div class="field btn_changePass">
                     <input type="button" value="Xác nhận">
-                    <input type="button" value="Thoát">
                 </div>
             </form>
         </div>

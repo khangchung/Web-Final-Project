@@ -64,8 +64,8 @@
                         <input type="text" name="" id="" value="51702192" disabled>
                     </div>
                     <div class="info_wrap_body-item">
-                        <label for="">Loại nhân viên</label> <br>
-                        <input type="text" name="" id="" value="Bình thường" disabled> 
+                        <label for="">Vị trí</label> <br>
+                        <input type="text" name="" id="" value="Trưởng phòng" disabled> 
                     </div>
                     <div class="info_wrap_body-item">
                         <label for="">Tên phòng ban</label> <br>

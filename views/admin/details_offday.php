@@ -82,7 +82,7 @@
                 </div>
                 <div class="form-group">
                     <label for=""></label> 
-                    <button type="submit" class=" btn btn-info mt-2 p-3">Duyệt đơn</button>
+                    <button type="submit" class=" btn btn-info my-2 p-3">Duyệt đơn</button>
                 </div>
             </div>
         </div>      

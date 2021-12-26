@@ -45,20 +45,12 @@
                         <input type="text" class="form-control" name="department_name" id="department_name" value="Phòng kinh doanh" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="department_id">Mã phòng ban</label> 
-                        <input type="text" class="form-control" name="department_id" id="department_id" value="PB01" disabled>
-                    </div>
-                    <div class="form-group">
                         <label for="department_desc">Mô tả</label>
                         <textarea type="text" class="form-control" name="department_desc" id="department_desc" class="form-control" value="Phòng ban 01" disabled></textarea>
                     </div>
                     <div class="form-group">
                         <label for="total_department">Số phòng</label> 
                         <input type="number" class="form-control" name="total_department" id="total_department" value="3" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for=""></label>
-                        <button type="submit" class="btn btn-info mt-5 p-3">Thêm phòng ban</button>
                     </div>
                 </form>
             
