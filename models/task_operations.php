@@ -42,7 +42,7 @@
                         $row["created_date"],
                         $row["deadline"]
                     );
-                    $manager->add($task);
+                    $manager->add(serialize($task));
                 }
             }
             return $manager;
@@ -65,7 +65,7 @@
                         $row["created_date"],
                         $row["deadline"]
                     );
-                    $manager->add($task);
+                    $manager->add(serialize($task));
                 }
             }
             return $manager;

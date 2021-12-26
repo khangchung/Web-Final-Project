@@ -34,7 +34,7 @@
                         $row["comment"],
                         $row["attachment"]
                     );
-                    $manager->add($task_log);
+                    $manager->add(serialize($task_log));
                 }
             }
             return $manager;
@@ -52,7 +52,7 @@
                         $row["comment"],
                         $row["attachment"]
                     );
-                    $manager->add($task_log);
+                    $manager->add(serialize($task_log));
                 }
             }
             return $manager;

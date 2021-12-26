@@ -42,7 +42,7 @@
                         $row["status"],
                         $row["attachment"]
                     );
-                    $manager->add($absence);
+                    $manager->add(serialize($absence));
                 }
             }
             return $manager;
@@ -65,7 +65,7 @@
                         $row["status"],
                         $row["attachment"]
                     );
-                    $manager->add($absence);
+                    $manager->add(serialize($absence));
                 }
             }
             return $manager;

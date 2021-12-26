@@ -34,7 +34,7 @@
                         $row["description"],
                         $row["room"]
                     );
-                    $manager->add($department);
+                    $manager->add(serialize($department));
                 }
             }
             return $manager;
@@ -52,7 +52,7 @@
                         $row["description"],
                         $row["room"]
                     );
-                    $manager->add($department);
+                    $manager->add(serialize($department));
                 }
             }
             return $manager;
