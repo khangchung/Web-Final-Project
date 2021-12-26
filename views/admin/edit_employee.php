@@ -11,7 +11,7 @@
         $id = isset($_GET["id"]) ? $_GET["id"] : "";
         if (!empty($employees) && !empty($id)) {
             for ($i=0; $i < count($employees); $i++) { 
-                if ($employees[i]->getId() == $id) {
+                if ($employees[$i]->getId() == $id) {
                     $employee = unserialize($employees[$i]);
                     $postion = "Nhân viên";
                     if ($employee->getPosition() == 1) {
