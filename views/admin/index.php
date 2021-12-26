@@ -1,6 +1,5 @@
     <?php
         session_start();
-        header("location: ../../controllers/admin/index.php");
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -65,12 +64,12 @@
                             ?>
                                 <tr>
                                     <td><?= $i+1 ?></td>
-                                    <td><?= $employees[i]->getId() ?></td>
-                                    <td><?= $employees[i]->getFullname() ?></td>
-                                    <td><?= $employees[i]->getDepartment() ?></td>
+                                    <td><?= $employees[$i]->getId() ?></td>
+                                    <td><?= $employees[$i]->getFullname() ?></td>
+                                    <td><?= $employees[$i]->getDepartment() ?></td>
                                     <td>
                                         <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
-                                        <a href="edit_employee.php?id=<?= $employees[i]->getId() ?>">
+                                        <a href="edit_employee.php?id=<?= $employees[$i]->getId() ?>">
                                             <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
                                         </a>
                                     </td>

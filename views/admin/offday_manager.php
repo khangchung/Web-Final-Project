@@ -75,13 +75,13 @@
                                 for ($i=0; $i < count($absences); $i++) {
                                     for ($i=0; $i < count($employees); $i++) { 
                                         if ($employees[i]->getId() == $absences[i]->getEmployeeId()) {
-                                            $fullname = $employees[i]->getFullname();
-                                            $department = $employees[i]->getDepartment();
+                                            $fullname = $employees[$i]->getFullname();
+                                            $department = $employees[$i]->getDepartment();
                                             break;
                                         }
                                     }
 
-                                    $status = $absences[i]->getStatus();
+                                    $status = $absences[$i]->getStatus();
                                     $text = "Chờ duyệt";
                                     $text_color = "warning";
                                     if ($status == 1) {
@@ -95,14 +95,14 @@
                                     ?>
                                         <tr>
                                             <td><?= $i+1 ?></td>
-                                            <td><?= $absences[i]->getEmployeeId() ?></td>
+                                            <td><?= $absences[$i]->getEmployeeId() ?></td>
                                             <td><?= $fullname ?></td>
                                             <td><?= $department ?></td>
-                                            <td><?= $absences[i]->getCreatedDate() ?></td>
+                                            <td><?= $absences[$i]->getCreatedDate() ?></td>
                                             <td>
                                                 <?php getDateDistance($absences[i]->getStartDate(), $absences[i]->getEndDate()) ?>
                                             </td>
-                                            <td><?= $absences[i]->getReason() ?></td>
+                                            <td><?= $absences[$i]->getReason() ?></td>
                                             <td class="text-<?= $text_color ?>">
                                                 <?= $text ?>
                                             </td>

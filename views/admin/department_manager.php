@@ -70,12 +70,12 @@
                                 ?>
                                     <tr>
                                         <td><?= $i+1 ?></td>
-                                        <td><?= $dictionary[$deparments[i]->getName()] ?></td>
-                                        <td><?= $deparments[i]->getDescription() ?></td>
-                                        <td><?= $deparments[i]->getRoom() ?></td>
+                                        <td><?= $dictionary[$deparments[$i]->getName()] ?></td>
+                                        <td><?= $deparments[$i]->getDescription() ?></td>
+                                        <td><?= $deparments[$i]->getRoom() ?></td>
                                         <td>
                                             <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
-                                            <a href="edit_department.php?id=<?= $deparments[i]->getName() ?>">
+                                            <a href="edit_department.php?id=<?= $deparments[$i]->getName() ?>">
                                                 <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
                                             </a>
                                         </td>
