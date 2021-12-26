@@ -4,7 +4,7 @@
     function getNextID($department_name) {
         $EO = new EmployeeOperations;
         $manager = $EO->read();
-        $prefix = strtoupper($department_name[0]);
+        $prefix = strtoupper(substr($department_name, 0, 2));
         $number = count($manager->getList()) + 1;
         if ($number > 0 && $number <= 9) {
             $id = $prefix . "00" . $number;
