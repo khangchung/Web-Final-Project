@@ -1,4 +1,15 @@
-<!DOCTYPE html>
+    <?php
+        session_start();
+        require_once("../../models/department.php");
+        $dictionary = array(
+            "Business" => "Phòng kinh doanh",
+            "Analysis" => "Phòng phân tích",
+            "Design" => "Phòng thiết kế",
+            "IT" => "Phòng lập trình",
+            "Administration" => "Phòng hành chính"
+        )
+    ?>
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -36,24 +47,29 @@
             require_once('../includes/sidebar_admin.php');
         ?>
         <div class="page-wrap">
-            
             <div class="m-5" id="">
                 <h1 class="text-center mb-5" >Thông tin phòng ban</h1>
-                <form action="">
-                    <div class="form-group">
-                        <label for="department_id">Tên phòng ban</label> 
-                        <input type="text" class="form-control" name="department_name" id="department_name" value="Phòng kinh doanh" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="department_desc">Mô tả</label>
-                        <textarea type="text" class="form-control" name="department_desc" id="department_desc" class="form-control" value="Phòng ban 01" disabled></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="total_department">Số phòng</label> 
-                        <input type="number" class="form-control" name="total_department" id="total_department" value="3" disabled>
-                    </div>
-                </form>
-            
+                <?php
+                    $department = isset($_SESSION["department"]) ? unserialize($_SESSION["department"]) : "";
+                    if (!empty($department)) {
+                    ?>
+                        <form action="">
+                            <div class="form-group">
+                                <label for="department_id">Tên phòng ban</label> 
+                                <input type="text" class="form-control" id="department_name" value="<?= $dictionary[$department->getName()] ?>" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="department_desc">Mô tả</label>
+                                <textarea type="text" class="form-control" id="department_desc" class="form-control" value="<?= $department->getDescription() ?>" disabled></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="room_number">Số phòng</label>
+                                <input type="number" class="form-control" id="room_number" value="<?= $department->getRoom() ?>" disabled>
+                            </div>
+                        </form>
+                    <?php
+                    }
+                ?>
         </div> 
     </body>
     </html>
