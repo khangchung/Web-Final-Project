@@ -64,7 +64,7 @@
                             for ($i=0; $i < count($employees); $i++) {
                                 $employee = unserialize($employees[$i]);
                             ?>
-                                <tr>
+                                <tr id="<?= $employee->getId() ?>">
                                     <td><?= $i+1 ?></td>
                                     <td><?= $employee->getId() ?></td>
                                     <td><?= $employee->getFullname() ?></td>
