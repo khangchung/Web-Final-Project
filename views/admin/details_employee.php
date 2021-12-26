@@ -1,3 +1,7 @@
+    <?php
+        session_start();
+        $employee = isset($_SESSION["employee"]) ? $_SESSION["employee"] : "";
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -38,36 +42,36 @@
         <div class="page-wrap">
             <div class="m-5" >
                 <h1 class="mb-5">Thông tin nhân viên</h1>
-                
-                
-                <div class="form-group">
-                    <label for="fullname">Họ và tên</label> 
-                    <input type="text" class="form-control" name="fullname" id="fullname" value="Nguyễn Minh Thuận" disabled>
-                </div>
-                <!-- <div class="form-group">
-                    <label for="birth">Ngày sinh</label> 
-                    <input type="text" class="form-control" name="" id="birth" value="21/07/1999">
-                </div>
-                <div class="form-group">
-                    <label for="gender">Giới tính</label> 
-                    <input type="text" class="form-control" name="" id="gender" value="Nam">
-                </div> -->
-                <div class="form-group">
-                    <label for="username">Tên tài khoản</label> 
-                    <input type="text" class="form-control" name="username" id="username" value="minhthuan1111" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="department_name">Phòng ban</label> 
-                    <input type="text" class="form-control" name="department_name" id="department_name" value="Thiết kế" disabled>
-                </div>
-                <div class="form-group">
-                    <label for="type_employee">Vị trí</label> 
-                    <input type="text" class="form-control" name="" id="type_employee" value="Nhân viên" disabled>
-                </div>
-                <div class="form-group">
-                    <label for=""></label> 
-                    <button type="submit" class=" btn btn-info mt-5 p-3">Reset mật khẩu</button>
-                </div>
+                <?php
+                    if (!empty($employee)) {
+                        $position = "Nhân viên";
+                        if ($employee->getPosition() == 1) {
+                            $position = "Trưởng phòng";
+                        }
+                    ?>
+                        <div class="form-group">
+                            <label for="fullname">Họ và tên</label> 
+                            <input type="text" class="form-control" id="fullname" value="<?= $employee->getFullname() ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Tên tài khoản</label> 
+                            <input type="text" class="form-control" id="username" value="<?= $employee->getUsername() ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Phòng ban</label> 
+                            <input type="text" class="form-control" id="department" value="<?= $employee->getDepartment() ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Vị trí</label> 
+                            <input type="text" class="form-control" id="position" value="<?= $position ?>" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for=""></label> 
+                            <button type="submit" class=" btn btn-info mt-5 p-3">Reset mật khẩu</button>
+                        </div>
+                    <?php
+                    }
+                ?>
             </div>
         </div>      
     </body>
