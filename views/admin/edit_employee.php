@@ -1,5 +1,6 @@
     <?php
         session_start();
+        require_once("../../models/employee.php");
         $dictionary = array(
             "Business" => "Phòng kinh doanh",
             "Analysis" => "Phòng kinh doanh",
@@ -10,9 +11,9 @@
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
         $id = isset($_GET["id"]) ? $_GET["id"] : "";
         if (!empty($employees) && !empty($id)) {
-            for ($i=0; $i < count($employees); $i++) { 
-                if ($employees[$i]->getId() == $id) {
-                    $employee = unserialize($employees[$i]);
+            for ($i=0; $i < count($employees); $i++) {
+                $employee = unserialize($employees[$i]);
+                if ($employee->getId() == $id) {
                     $postion = "Nhân viên";
                     if ($employee->getPosition() == 1) {
                         $postion = "Trưởng phòng";
