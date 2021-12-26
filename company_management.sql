@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 20, 2021 at 10:59 AM
+-- Generation Time: Dec 26, 2021 at 12:25 PM
 -- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,7 @@ CREATE TABLE `absence` (
   `created_date` date DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
+  `num_of_day` int(2) NOT NULL,
   `reason` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
   `attachment` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
@@ -46,7 +47,7 @@ CREATE TABLE `absence` (
 
 CREATE TABLE `account` (
   `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `priority` int(1) DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -55,9 +56,9 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`username`, `password`, `priority`) VALUES
-('admin', '123456', 0),
-('employee', '123456', 2),
-('monitor', '123456', 1);
+('admin', '$2y$10$UKNuwtMlJFaCMwOSAu07buy/ZHfHzN.eBxi5PpYjtP3N81eqbDjLe', 0),
+('employee', '$2y$10$UsLAZ0tULAWrI/6cYiGUB.GjIIV.ppS3JsOrLz2xlvKiR38McsiYq', 2),
+('monitor', '$2y$10$AOt3x4UOaclo.fE3FJ5o8uvsB2Q0Az19jbtsDxvyqkQ0Cq6FRcLYa', 1);
 
 -- --------------------------------------------------------
 
@@ -70,6 +71,17 @@ CREATE TABLE `department` (
   `description` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `room` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `department`
+--
+
+INSERT INTO `department` (`name`, `description`, `room`) VALUES
+('Administration', 'Phụ trách hành chính', 5),
+('Analysis', 'Phụ trách phân tích', 2),
+('Business', 'Phụ trách kinh doanh', 1),
+('Design', 'Phụ trách thiết kế', 3),
+('IT', 'Phụ trách lập trình', 4);
 
 -- --------------------------------------------------------
 
@@ -86,6 +98,14 @@ CREATE TABLE `employee` (
   `avatar` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `day_off` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `username`, `fullname`, `position`, `department`, `avatar`, `day_off`) VALUES
+('A002', 'employee', 'employee', 2, 'Analysis', '', 12),
+('D003', 'monitor', 'monitor', 1, 'Design', '', 15);
 
 -- --------------------------------------------------------
 
