@@ -1,5 +1,6 @@
     <?php
         session_start();
+        require_once("../../models/employee.php");
         $employee = isset($_SESSION["employee"]) ? unserialize($_SESSION["employee"]) : "";
     ?>
     <!DOCTYPE html>
