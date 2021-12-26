@@ -39,7 +39,7 @@
                         $row["avatar"],
                         $row["day_off"]
                     );
-                    $manager->add($employee);
+                    $manager->add(serialize($employee));
                 }
             }
             return $manager;
@@ -61,7 +61,7 @@
                         $row["avatar"],
                         $row["day_off"]
                     );
-                    $manager->add($employee);
+                    $manager->add(serialize($employee));
                 }
             }
             return $manager;
