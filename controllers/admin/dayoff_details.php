@@ -6,7 +6,7 @@
     if (!empty($id)) {
         $absenceOperations = new AbsenceOperations;
         $absenceManager = $absenceOperations->read_one($id);
-        $_SESSION["absences"] = $absenceManager->getList()[0];
+        $_SESSION["absence"] = $absenceManager->getList()[0];
         header("location: ../../views/admin/details_offday.php");
     } else {
         $_SESSION["flag"] = false;
