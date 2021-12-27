@@ -103,7 +103,7 @@
                                                     <td><?= $absence->getEmployeeId() ?></td>
                                                     <td><?= $employee->getFullname() ?></td>
                                                     <td><?= $dictionary[$employee->getDepartment()] ?></td>
-                                                    <td><?= $absence->getCreatedDate() ?></td>
+                                                    <td><?= dateFormatter($absence->getCreatedDate()) ?></td>
                                                     <td>
                                                         <?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>
                                                     </td>
