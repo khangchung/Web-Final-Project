@@ -7,8 +7,9 @@
     $employeeManager = $employeeOperations->read();
     $employeeList = $employeeManager->getList();
     foreach ($employeeList as $employee) {
+        $employee = unserialize($employee);
         if ($employee->getUsername() == $_SESSION["username"]) {
-            $_SESSION["information"] = $employee;
+            $_SESSION["information"] = serialize($employee);
             break;
         }
     }
@@ -17,8 +18,9 @@
     $taskList = $taskManager->getList();
     $data = array();
     foreach ($taskList as $task) {
+        $task = unserialize($task);
         if ($task->getCreator() == $_SESSION["information"]->getId()) {
-            array_push($data, $task);
+            array_push($data, serialize($task));
         }
     }
     $_SESSION["task"] = $data;
