@@ -1,5 +1,15 @@
     <?php
         session_start();
+        $dictionary = array(
+            "Business" => "Phòng kinh doanh",
+            "Analysis" => "Phòng phân tích",
+            "Design" => "Phòng thiết kế",
+            "IT" => "Phòng lập trình",
+            "Administration" => "Phòng hành chính"
+        );
+        $name = isset($_GET["name"]) ? $_GET["name"] : "";
+        $desc = isset($_GET["desc"]) ? $_GET["desc"] : "";
+        $room = isset($_GET["room"]) ? $_GET["room"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -45,6 +55,7 @@
                     <div class="form-group">
                         <label for="department_name">Tên phòng ban</label>
                         <select class="selectpicker form-control" id="department_name" name="name">
+                            <option value="<?= $name ?>" selected><?= $dictionary[$name] ?></option>
                             <option value="Business">Phòng kinh doanh</option>
                             <option value="Analysis">Phòng phân tích</option>
                             <option value="Design">Phòng thiết kế</option>
@@ -54,11 +65,13 @@
                     </div>
                     <div class="form-group">
                         <label for="department_desc">Mô tả</label>
-                        <textarea type="text" class="form-control" name="desc" id="department_desc" class="form-control"></textarea>
+                        <textarea type="text" class="form-control" name="desc" id="department_desc" class="form-control">
+                            <?= $desc ?>
+                        </textarea>
                     </div>
                     <div class="form-group">
                         <label for="room_number">Số phòng</label> 
-                        <input type="number" class="form-control" name="room" id="room_number">
+                        <input type="number" class="form-control" name="room" id="room_number" value="<?= $room ?>">
                     </div>
                     <div class="form-group">
                         <label for=""></label>
