@@ -1,5 +1,6 @@
     <?php
         session_start();
+        require_once("../../models/department.php");
         $dictionary = array(
             "Business" => "Phòng kinh doanh",
             "Analysis" => "Phòng phân tích",
@@ -7,9 +8,8 @@
             "IT" => "Phòng lập trình",
             "Administration" => "Phòng hành chính"
         );
+        $deparments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
         $name = isset($_GET["name"]) ? $_GET["name"] : "";
-        $desc = isset($_GET["desc"]) ? $_GET["desc"] : "";
-        $room = isset($_GET["room"]) ? $_GET["room"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -51,33 +51,43 @@
         <div class="page-wrap">
             <div class="m-5" id="">
                 <h1 class="text-center mb-5" >Sửa thông tin phòng ban</h1>
-                <form action="../../controllers/edit_department.php" method="POST">
-                    <div class="form-group">
-                        <label for="department_name">Tên phòng ban</label>
-                        <select class="selectpicker form-control" id="department_name" name="name">
-                            <option value="<?= $name ?>" selected><?= $dictionary[$name] ?></option>
-                            <option value="Business">Phòng kinh doanh</option>
-                            <option value="Analysis">Phòng phân tích</option>
-                            <option value="Design">Phòng thiết kế</option>
-                            <option value="IT">Phòng lập trình</option>
-                            <option value="Administration">Phòng hành chính</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="department_desc">Mô tả</label>
-                        <textarea type="text" class="form-control" name="desc" id="department_desc" class="form-control">
-                            <?= $desc ?>
-                        </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="room_number">Số phòng</label> 
-                        <input type="number" class="form-control" name="room" id="room_number" value="<?= $room ?>">
-                    </div>
-                    <div class="form-group">
-                        <label for=""></label>
-                        <button type="submit" class="btn btn-info mt-5 p-3">Thêm phòng ban</button>
-                    </div>
-                </form>
+                <?php
+                    if (!empty($deparments)) {
+                        foreach ($deparments as $deparment) {
+                            $deparment = unserialize($deparment);
+                            if ($deparment->getName() == $name) {
+                            ?>
+                                <form action="../../controllers/edit_department.php" method="POST">
+                                    <div class="form-group">
+                                        <label for="department_name">Tên phòng ban</label>
+                                        <select class="selectpicker form-control" id="department_name" name="name">
+                                            <option value="<?= $name ?>" selected><?= $dictionary[$name] ?></option>
+                                            <option value="Business">Phòng kinh doanh</option>
+                                            <option value="Analysis">Phòng phân tích</option>
+                                            <option value="Design">Phòng thiết kế</option>
+                                            <option value="IT">Phòng lập trình</option>
+                                            <option value="Administration">Phòng hành chính</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="department_desc">Mô tả</label>
+                                        <textarea type="text" class="form-control" name="desc" id="department_desc" class="form-control"><?= $deparment->getDescription() ?></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="room_number">Số phòng</label> 
+                                        <input type="number" class="form-control" name="room" id="room_number" 
+                                        value="<?= $deparment->getRoom() ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""></label>
+                                        <button type="submit" class="btn btn-info mt-5 p-3">Thêm phòng ban</button>
+                                    </div>
+                                </form>
+                            <?php
+                            }
+                        }
+                    }
+                ?>
         </div>
     </body>
     </html>

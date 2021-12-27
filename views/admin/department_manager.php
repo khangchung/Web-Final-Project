@@ -7,7 +7,8 @@
             "Design" => "Phòng thiết kế",
             "IT" => "Phòng lập trình",
             "Administration" => "Phòng hành chính"
-        )
+        );
+        $deparments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -66,7 +67,6 @@
                     </thead>
                     <tbody>
                         <?php
-                            $deparments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
                             if (!empty($deparments)) {
                                 for ($i=0; $i < count($deparments); $i++) {
                                     $deparment = unserialize($deparments[$i]);
@@ -78,7 +78,7 @@
                                         <td><?= $deparment->getRoom() ?></td>
                                         <td>
                                             <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
-                                            <a href="edit_department.php?id=<?= $deparment->getName() ?>">
+                                            <a href="edit_department.php?name=<?= $deparment->getName() ?>">
                                                 <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
                                             </a>
                                         </td>
