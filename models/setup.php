@@ -22,7 +22,7 @@
         $datetime1 = date_create($start_date);
         $datetime2 = date_create($end_date);
         $interval = date_diff($datetime1, $datetime2);
-        return $interval->d;
+        return $interval->d + 1;
     }
 
     function fullnameFormatter($fullname) {
