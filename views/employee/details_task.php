@@ -91,6 +91,7 @@
                                 <td class="<?= $text_color ?>"><?= $status ?></td>
                             </tr>
                         </table>
+                        <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
                         <?php
                             if ($task->getStatus() == 0) {
                             ?>
