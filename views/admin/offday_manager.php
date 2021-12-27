@@ -82,15 +82,15 @@
                                     }
 
                                     $status = $absences[$i]->getStatus();
-                                    $text = "Chờ duyệt";
+                                    $text = "Waiting";
                                     $text_color = "warning";
                                     if ($status == 1) {
                                         $text_color = "success";
-                                        $text = "Đã duyệt";
+                                        $text = "Approved";
                                     } else
                                     if ($status == -1) {
                                         $text_color = "danger";
-                                        $text = "Không duyệt";
+                                        $text = "Refused";
                                     }
                                     ?>
                                         <tr>
