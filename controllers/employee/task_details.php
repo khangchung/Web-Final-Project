@@ -4,9 +4,10 @@
     
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
     if (!empty($id)) {
-        foreach ($_SESSION["task"] as $task) {
+        foreach ($_SESSION["tasks"] as $task) {
+            $task = unserialize($task);
             if ($task->getId() == $id) {
-                $_SESSION["task_details"] = $task;
+                $_SESSION["task"] = serialize($task);
                 break;
             }
         }
