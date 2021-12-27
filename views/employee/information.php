@@ -1,3 +1,15 @@
+    <?php
+        session_start();
+        require_once("../../models/employee.php");
+        $dictionary = array(
+            "Business" => "Phòng kinh doanh",
+            "Analysis" => "Phòng phân tích",
+            "Design" => "Phòng thiết kế",
+            "IT" => "Phòng lập trình",
+            "Administration" => "Phòng hành chính"
+        );
+        $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -51,26 +63,28 @@
 
                 <div class="info_wrap_body">
                     <h1 style="margin:10px 0 30px">THÔNG TIN CÁ NHÂN</h1>
-                    <div class="info_wrap_body-item">
-                        <label for="">Họ và tên</label> <br>
-                        <input type="text" name="" id="" value="Nguyễn Minh Thuận" disabled>
-                    </div>
-                    <div class="info_wrap_body-item">
-                        <label for="">Ngày sinh</label> <br>
-                        <input type="text" name="" id="" value="21/7/1999" disabled>
-                    </div>
-                    <div class="info_wrap_body-item">
-                        <label for="">Mã nhân viên</label> <br>
-                        <input type="text" name="" id="" value="51702192" disabled>
-                    </div>
-                    <div class="info_wrap_body-item">
-                        <label for="">Loại nhân viên</label> <br>
-                        <input type="text" name="" id="" value="Bình thường" disabled> 
-                    </div>
-                    <div class="info_wrap_body-item">
-                        <label for="">Tên phòng ban</label> <br>
-                        <input type="text" name="" id="" value="Phòng thiết kế" disabled>
-                    </div>
+                    <?php
+                        if (!empty($info)) {
+                        ?>
+                            <div class="info_wrap_body-item">
+                                <label for="">Họ và tên</label> <br>
+                                <input type="text" name="" id="" value="<?= $info->getFullname() ?>" disabled>
+                            </div>
+                            <div class="info_wrap_body-item">
+                                <label for="">Mã nhân viên</label> <br>
+                                <input type="text" name="" id="" value="<?= $info->getId() ?>" disabled>
+                            </div>
+                            <div class="info_wrap_body-item">
+                                <label for="">Vị trí</label> <br>
+                                <input type="text" name="" id="" value="Nhân viên" disabled> 
+                            </div>
+                            <div class="info_wrap_body-item">
+                                <label for="">Tên phòng ban</label> <br>
+                                <input type="text" name="" id="" value="<?= $dictionary[$info->getDepartment()] ?>" disabled>
+                            </div>
+                        <?php
+                        }
+                    ?>
                 </div>
             </div>
         </div>  
