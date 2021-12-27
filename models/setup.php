@@ -24,4 +24,17 @@
         $interval = date_diff($datetime1, $datetime2);
         return $interval->d;
     }
+
+    function fullnameFormatter($fullname) {
+        $result = "";
+        $words = explode(" ", $fullname);
+        foreach ($words as $word) {
+            $result .= strtolower($word);
+        }
+        return $result;
+    }
+
+    function getAvatarPath($department, $fullname) {
+        return "../../documents/" . strtolower($department) . "/" . fullnameFormatter($fullname) . "/avatar.jpg";
+    }
 ?>
