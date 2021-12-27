@@ -1,3 +1,8 @@
+    <?php
+        session_start();
+        require_once("../../models/task.php");
+        $tasks = isset($_SESSION["tasks"]) ? $_SESSION["tasks"] : "";
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -50,36 +55,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Thiết kế giỏ hàng</th>
-                            <td>7/11/2021</th>
-                            <td>14/11/2021</th>
-                            <td>New</th>
-                        </tr>
-                        <tr>
-                            <td>Thiết kế giỏ hàng</th>
-                            <td>7/11/2021</th>
-                            <td>14/11/2021</th>
-                            <td>New</th>
-                        </tr>
-                        <tr>
-                            <td>Thiết kế giỏ hàng</th>
-                            <td>7/11/2021</th>
-                            <td>14/11/2021</th>
-                            <td>New</th>
-                        </tr>
-                        <tr>
-                            <td>Thiết kế giỏ hàng</th>
-                            <td>7/11/2021</th>
-                            <td>14/11/2021</th>
-                            <td>New</th>
-                        </tr>
-                        <tr>
-                            <td>Thiết kế giỏ hàng</th>
-                            <td>7/11/2021</th>
-                            <td>14/11/2021</th>
-                            <td>New</th>
-                        </tr>
+                    <?php
+                        if (!empty($tasks)) {
+                            foreach ($tasks as $task) {
+                                $task = unserialize($task);
+                                $text_color = "primary";
+                                $status = "New";
+                                if ($task->getStatus() == 1) {
+                                    $status = "In progress";
+                                    $text_color = "secondary";
+                                } else
+                                if ($task->getStatus() == 3) {
+                                    $status = "Waiting";
+                                    $text_color = "warning";
+                                } else
+                                if ($task->getStatus() == 4) {
+                                    $status = "Rejected";
+                                    $text_color = "danger";
+                                } else
+                                if ($task->getStatus() == 5) {
+                                    $status = "Completed";
+                                    $text_color = "success";
+                                }
+                                ?>
+                                    <tr>
+                                        <td><?= $task->getTitle() ?></th>
+                                        <td><?= $task->getCreatedDate() ?></th>
+                                        <td><?= $task->getDeadline() ?></th>
+                                        <td class="text-<?= $text_color ?>"><?= $status ?></th>
+                                    </tr>
+                                <?php
+                            }
+                        }
+                    ?>
                     </tbody>
                 </table>
             </div>
