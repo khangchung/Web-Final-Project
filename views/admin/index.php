@@ -70,8 +70,14 @@
                         if (!empty($employees)) {
                             for ($i=0; $i < count($employees); $i++) {
                                 $employee = unserialize($employees[$i]);
+                                $test_color = "";
+                                $font_weight = "";
+                                if ($employee->getPosition() == 1) {
+                                    $test_color = "text-danger";
+                                    $font_weight = "font-weight-bold";
+                                }
                             ?>
-                                <tr id="<?= $employee->getId() ?>">
+                                <tr id="<?= $employee->getId() ?>" class="<?= $test_color?> <?= $font_weight ?>">
                                     <td><?= $i+1 ?></td>
                                     <td><?= $employee->getId() ?></td>
                                     <td><?= $employee->getFullname() ?></td>
