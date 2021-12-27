@@ -37,4 +37,8 @@
     function getAvatarPath($department, $fullname) {
         return "../../documents/" . strtolower($department) . "/" . fullnameFormatter($fullname) . "/avatar.jpg";
     }
+
+    function dateFormatter($dateString) {
+        return date("d/m/Y", strtotime($dateString));
+    }
 ?>
