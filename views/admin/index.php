@@ -1,6 +1,13 @@
     <?php
         session_start();
         require_once("../../models/employee.php");
+        $dictionary = array(
+            "Business" => "Phòng kinh doanh",
+            "Analysis" => "Phòng phân tích",
+            "Design" => "Phòng thiết kế",
+            "IT" => "Phòng lập trình",
+            "Administration" => "Phòng hành chính"
+        )
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -68,7 +75,7 @@
                                     <td><?= $i+1 ?></td>
                                     <td><?= $employee->getId() ?></td>
                                     <td><?= $employee->getFullname() ?></td>
-                                    <td><?= $employee->getDepartment() ?></td>
+                                    <td><?= $dictionary[$employee->getDepartment()] ?></td>
                                     <td>
                                         <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
                                         <a href="edit_employee.php?id=<?= $employee->getId() ?>">
