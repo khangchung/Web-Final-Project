@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+    <?php
+        session_start();
+        require_once("../../models/setup.php");
+        require_once("../../models/task.php");
+        $task = isset($_SESSION["task"]) ? unserialize($_SESSION["task"]) : "";
+    ?>
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -40,40 +46,71 @@
             <!--Xem thông tin chi tiết task -->
             <div id="task_info">
                 <h2 style="margin-bottom: 30px">THÔNG TIN CHI TIẾT TASK</h2>
-                <table class="text-left" >
-                    <tr>
-                        <td>Tên Task</td>
-                        <td>Thiết kế giỏ hàng</td>
-                    </tr>
-                    <tr>
-                        <td>Ngày bắt đầu</td>
-                        <td>7/11/2021</td>
-                    </tr>
-                    <tr>
-                        <td>Ngày hoàn thành</td>
-                        <td>14/11/2021</td>
-                    </tr>
-                    <tr>
-                        <td>Mô tả công việc</td>
-                        <td>
-                            Xây dựng trang giỏ hàng gồm các thông tin:
-                            <ul class="pl-5">
-                                <li>STT</li>
-                                <li>Ảnh đại diện</li>
-                                <li>Tên sản phẩm</li>
-                                <li>Số lượng</li>
-                                <li>Đơn giá</li>
-                                <li>Thành tiền</li>
-                                <li>Hành động</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Trạng thái</td>
-                        <td>New</td>
-                    </tr>
-                </table>
-                <button class="btn btn-primary d-block ml-auto mt-3 px-5">Start</button>
+                <?php
+                    if (!empty($task)) {
+                        $text_color = "primary";
+                        $status = "New";
+                        if ($task->getStatus() == 1) {
+                            $status = "In progress";
+                            $text_color = "secondary";
+                        } else
+                        if ($task->getStatus() == 3) {
+                            $status = "Waiting";
+                            $text_color = "warning";
+                        } else
+                        if ($task->getStatus() == 4) {
+                            $status = "Rejected";
+                            $text_color = "danger";
+                        } else
+                        if ($task->getStatus() == 5) {
+                            $status = "Completed";
+                            $text_color = "success";
+                        }    
+                    ?>
+                        <table class="text-left" >
+                            <tr>
+                                <td>Tên Task</td>
+                                <td><?= $task->getTitle() ?></td>
+                            </tr>
+                            <tr>
+                                <td>Ngày bắt đầu</td>
+                                <td><?= dateFormatter($task->getCreatedDate()) ?></td>
+                            </tr>
+                            <tr>
+                                <td>Ngày hoàn thành</td>
+                                <td><?= dateFormatter($task->getDeadline()) ?></td>
+                            </tr>
+                            <tr>
+                                <td>Mô tả công việc</td>
+                                <td>
+                                    <?= $task->getDescription() ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Trạng thái</td>
+                                <td class="<?= $text_color ?>"><?= $status ?></td>
+                            </tr>
+                        </table>
+                        <?php
+                            if ($task->getStatus() == 0) {
+                            ?>
+                                <button class="btn btn-primary d-block ml-auto mt-3 px-5">Start</button>
+                            <?php
+                            } else
+                            if ($task->getStatus() == 1) {
+                            ?>
+                                <!-- 
+                                    Xóa comment này và thêm form submit cho task log bao gồm:
+                                        - Thẻ input có name là comment
+                                        - Thẻ input có name là attachment
+                                 -->
+                                <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
+                            <?php
+                            }
+                        ?>
+                    <?php
+                    }
+                ?>
             </div>
 
         </div>   
