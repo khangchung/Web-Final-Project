@@ -1,3 +1,6 @@
+    <?php
+        session_start();
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -41,7 +44,7 @@
                     <div class="title">
                         <p>Đổi mật khẩu</p>
                     </div>
-                    <form action="#" class="login">
+                    <form action="../../controllers/employee/change_password.php" method="POST" class="login">
                         <div class="field">
                             <label for="">Nhập mật khẩu cũ</label>
                             <input type="password">
@@ -55,8 +58,8 @@
                             <input type="password">
                         </div>
                         <div class="field btn_changePass">
-                            <input type="button" value="Xác nhận">
-                            <input type="button" value="Thoát">
+                            <input type="submit" value="Xác nhận">
+                            <input type="reset" value="Làm mới">
                         </div>
                     </form>
                 </div>
