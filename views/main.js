@@ -40,18 +40,6 @@ function changeAvatar(){
         }
     })
 }
-// // Hiện form nộp đơn nghỉ phép
-// function showFormOffDay(){
-//     document.querySelector('.modal').style.display = 'block';
-// }
-// function closeForm(){
-//     document.querySelector('.modal').style.display = 'none';
-// }
-// // Hiện form thêm nhân viên
-// function addEmployee(){
-//     document.querySelector('.modal').style.display = 'block';
-// }
-// // 
 
 //JQUERY
 $(document).ready(function(){
@@ -61,7 +49,9 @@ $(document).ready(function(){
     });
     //Admin xem thông tin chi tiết của nhân viên
     $('#employee_manager tbody tr').click(function() {
-        window.location = "details_employee.php"; 
+        const employeeId = $(this).find(".employeeId").html();
+       
+        window.location = `details_employee.php?id=${employeeId}`; 
     });
     //Admin xem thông tin chi tiết ngày nghỉ
     $('#offday_manager tbody tr').click(function() {
@@ -69,7 +59,8 @@ $(document).ready(function(){
     });
     //Admin xem thông tin chi tiết phòng ban
     $('#department_manager tbody tr').click(function() {
-        window.location = "details_department.php"; 
+        const department = $(this).find(".id").html();
+        window.location = `details_department.php?name=${department}`; 
     });
 });
 

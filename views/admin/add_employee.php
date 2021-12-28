@@ -42,7 +42,10 @@
             
             <div class="m-5" id="">
                 <h1 class=" mb-5" >Thêm nhân viên</h1>
-                <form action="../../controllers/admin/add_employee.php" method="POST">
+                <!-- <div class="alert alert-success " role="alert">
+                Thêm nhân viên thành công
+                </div> -->
+                <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" method="POST">
                     <div class="form-group">
                         <label for="fullname">Họ & tên</label>
                         <input type="text" id="fullname" name="fullname" class="form-control">
@@ -76,4 +79,27 @@
             
         </div> 
     </body>
+
+    <!-- <script>
+        const addEmployeeForm = $(#addEmployeeForm)
+        addEmployeeForm.submit(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: addEmployeeForm.attr('method'),
+                url: addEmployeeForm.attr('action'),
+                data: addEmployeeForm.serialize(),
+                success: function (data) {
+                    console.log('Submission was successful.');
+                    console.log(data);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    console.log(data);
+                },
+            });
+        });
+
+    </script> -->
+
+
     </html>

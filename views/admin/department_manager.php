@@ -72,6 +72,7 @@
                                     $deparment = unserialize($deparments[$i]);
                                 ?>
                                     <tr>
+                                    <td class="id d-none" ><?= $deparment->getName() ?></td>
                                         <td><?= $i+1 ?></td>
                                         <td><?= $dictionary[$deparment->getName()] ?></td>
                                         <td><?= $deparment->getDescription() ?></td>

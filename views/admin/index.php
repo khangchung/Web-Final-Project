@@ -78,9 +78,9 @@
                                 }
                             ?>
                                 <tr id="<?= $employee->getId() ?>" class="<?= $test_color?> <?= $font_weight ?>">
-                                    <td><?= $i+1 ?></td>
-                                    <td><?= $employee->getId() ?></td>
-                                    <td><?= $employee->getFullname() ?></td>
+                                    <td><?= $i+1 ?></td>                                   
+                                    <td class="employeeId"><?= $employee->getId() ?></td>
+                                    <td ><?= $employee->getFullname() ?></td>
                                     <td><?= $dictionary[$employee->getDepartment()] ?></td>
                                     <td>
                                         <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>

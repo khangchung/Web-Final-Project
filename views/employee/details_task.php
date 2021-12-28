@@ -87,6 +87,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td>File đính kèm</td>
+                                <td>
+                                    <input type="file" class="form-control-file" >
+                                </td>
+                            </tr>
+                            <tr>
                                 <td>Trạng thái</td>
                                 <td class="<?= $text_color ?>"><?= $status ?></td>
                             </tr>
@@ -100,12 +106,24 @@
                             } else
                             if ($task->getStatus() == 1) {
                             ?>
+                                <form action="" class=" mt-5 p-3" >
+                                    <div class="form-group">
+                                        <label for="comment">Comment</label>
+                                        <input type="date" id="comment" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="file">Tệp đính kèm</label>
+                                        <input type="file" class="form-control-file" id="file">
+                                    </div>
+                                    <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
+
+                                </form>
+                                
                                 <!-- 
                                     Xóa comment này và thêm form submit cho task log bao gồm:
                                         - Thẻ input có name là comment
                                         - Thẻ input có name là attachment
                                  -->
-                                <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
                             <?php
                             }
                         ?>
