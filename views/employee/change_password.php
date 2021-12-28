@@ -47,11 +47,11 @@
                     <form action="../../controllers/employee/change_password.php" method="POST" class="login">
                         <div class="field">
                             <label for="">Nhập mật khẩu cũ</label>
-                            <input type="password">
+                            <input name="old_password" type="password">
                         </div>
                         <div class="field">
                             <label for="">Nhập mật khẩu mới</label>
-                            <input type="password">
+                            <input name="new_password" type="password">
                         </div>
                         <div class="field">
                             <label for="">Xác nhận mật khẩu mới</label>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="field btn_changePass">
                             <input type="submit" value="Xác nhận">
-                            <input type="reset" value="Làm mới">
+                            <input type="button" value="Làm mới">
                         </div>
                     </form>
                 </div>
