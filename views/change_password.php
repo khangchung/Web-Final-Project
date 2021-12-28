@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,17 +38,17 @@
             <div class="title">
                 <p>Đổi mật khẩu</p>
             </div>
-            <form action="./hiện_thôngtin.html" class="login">
+            <form action="../../controllers/change_password.php" method="POST" class="login">
                 <div class="field">
                     <label for="">Mật khẩu mới</label>
-                    <input type="password" placeholder="">
+                    <input name="new_password" type="password" placeholder="">
                 </div>
                 <div class="field">
-                    <label for="">Xác nhận mật khẩu mới</label>
+                    <label for="">Xác nhận mật khẩu</label>
                     <input type="password" placeholder="">
                 </div>
                 <div class="field btn_changePass">
-                    <input type="button" value="Xác nhận">
+                    <input type="submit" value="Xác nhận">
                 </div>
             </form>
         </div>
