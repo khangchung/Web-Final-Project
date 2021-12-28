@@ -80,8 +80,8 @@
         </div> 
     </body>
 
-    <!-- <script>
-        const addEmployeeForm = $(#addEmployeeForm)
+    <script>
+        const addEmployeeForm = $("#addEmployeeForm")
         addEmployeeForm.submit(function (e) {
             e.preventDefault();
             $.ajax({
@@ -99,7 +99,7 @@
             });
         });
 
-    </script> -->
+    </script>
 
 
     </html>

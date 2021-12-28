@@ -51,7 +51,7 @@ $(document).ready(function(){
     $('#employee_manager tbody tr').click(function() {
         const employeeId = $(this).find(".employeeId").html();
        
-        window.location = `details_employee.php?id=${employeeId}`; 
+        window.location = `../../controllers/admin/employee_details.php?id=${employeeId}`; 
     });
     //Admin xem thông tin chi tiết ngày nghỉ
     $('#offday_manager tbody tr').click(function() {
