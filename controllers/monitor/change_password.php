@@ -7,11 +7,10 @@
         $accountOperations = new AccountOperations;
         $accountManager = $accountOperations->read_one($_SESSION["username"]);
         $account = $accountManager->getList()[0];
-        if ($account->getPassword() == $old_password) {
-            $password = password_hash($new_password, PASSWORD_DEFAULT);
-            $account->setPassword($password);
+        if (password_verify($old_password, $account->getPassword())) {
+            $account->setPassword($new_password);
             $result = $accountOperations->update($account);
-            $_SESSION["flag"] = $result;    
+            $_SESSION["flag"] = $result;
         } else {
             $_SESSION["flag"] = false;
         }

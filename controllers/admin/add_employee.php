@@ -22,7 +22,10 @@
             $day_off);
             $employeeOperations = new EmployeeOperations;
             $result = $employeeOperations->create($employee);
-            $_SESSION["flag"] = $result;    
+            $_SESSION["flag"] = $result;
+            if ($resutlt) {
+                createEmployeeFolder($department, $fullname);
+            }
         } else {
             $_SESSION["flag"] = $account_result;
         }

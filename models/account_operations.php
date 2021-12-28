@@ -63,7 +63,7 @@
             $conn = getConnection();
             $sql = "update account set password = ?, priority = ? where username = ?";
             $stm = $conn->prepare($sql);
-            $password = password_hash($account->getPassword());
+            $password = password_hash($account->getPassword(), PASSWORD_BCRYPT);
             $stm->bind_param("sis", $password, $account->getPriority(), $account->getUsername());
             if (!$stm->execute()) {
                 die("Account updating is failed: " . $stm->error);

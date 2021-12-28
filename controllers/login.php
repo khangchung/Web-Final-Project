@@ -34,7 +34,15 @@
     }
 
     if (!empty($position)) {
-        header("location: " . $position . "/index.php");
+        if ($username == $password) {
+            if ($position == "admin") {
+                header("location: " . $position . "/index.php");
+            } else {
+                header("location: ../../views/change_password.php");
+            }
+        } else {
+            header("location: " . $position . "/index.php");
+        }
     } else {
         header("location: ../../views/login.php");
     }

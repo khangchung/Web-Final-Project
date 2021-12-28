@@ -25,7 +25,7 @@
         return $interval->d + 1;
     }
 
-    function fullnameFormatter($fullname) {
+    function nameFormatter($fullname) {
         $result = "";
         $words = explode(" ", $fullname);
         foreach ($words as $word) {
@@ -35,10 +35,24 @@
     }
 
     function getAvatarPath($department, $fullname) {
-        return "../../documents/" . strtolower($department) . "/" . fullnameFormatter($fullname) . "/avatar.jpg";
+        return "../../documents/" . strtolower($department) . "/" . nameFormatter($fullname) . "/avatar.jpg";
     }
 
     function dateFormatter($dateString) {
         return date("d/m/Y", strtotime($dateString));
+    }
+
+    function createEmployeeFolder($department, $fullname) {
+        $department = nameFormatter($department);
+        $fullname = nameFormatter($fullname);
+        $path = "../../documents/" . $department . "/" . $fullname;
+        $avatarDefaultPath = "../../views/images/avatar.jpg";
+        if (!file_exists($path)) {
+            mkdir($path);
+            if (copy($avatarDefaultPath, $path)) {
+                return true;
+            }
+        }
+        return false;
     }
 ?>
