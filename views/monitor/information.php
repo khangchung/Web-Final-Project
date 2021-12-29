@@ -1,3 +1,15 @@
+    <?php
+        session_start();
+        require_once("../../models/employee.php");
+        $dictionary = array(
+            "Business" => "Phòng kinh doanh",
+            "Analysis" => "Phòng phân tích",
+            "Design" => "Phòng thiết kế",
+            "IT" => "Phòng lập trình",
+            "Administration" => "Phòng hành chính"
+        );
+        $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -38,40 +50,42 @@
         <div class="page-wrap">
             <!-- Thông tin nhân viên -->
             <div class="info_wrap" style="margin-top: 50px;" >
-                <div class="info_wrap_header">
-                    <div class="info_wrap_header-avatar">
-                       <img src="/images/avatar.png " alt="">
+            <?php
+                if (!empty($info)) {
+                ?>
+                    <div class="info_wrap_header">
+                        <div class="info_wrap_header-avatar">
+                        <img src="<?= $info->getAvatar() ?>" alt="">
+                        </div>
+                        <div class="info_wrap_header-btn">
+                            <label for="file" onclick="changeAvatar();" class="info_wrap_header-change" id="uploadBtn">Cập nhật</label>
+                            <input type="file" id="file" style="display: none;">
+                            <input type="button" class="info_wrap_header-view" onclick="viewAvatar();" value="Xem">
+                        </div>
                     </div>
-                    <div class="info_wrap_header-btn">
-                        <label for="file" onclick="changeAvatar();" class="info_wrap_header-change" id="uploadBtn">Cập nhật</label>
-                        <input type="file" id="file" style="display: none;">
-                        <input type="button" class="info_wrap_header-view" onclick="viewAvatar();" value="Xem">
-                    </div>
-                </div>
 
-                <div class="info_wrap_body">
-                    <h1 style="margin:10px 0 30px">THÔNG TIN CÁ NHÂN</h1>
-                    <div class="info_wrap_body-item">
-                        <label for="">Họ và tên</label> <br>
-                        <input type="text" name="" id="" value="Nguyễn Minh Thuận" disabled>
+                    <div class="info_wrap_body">
+                        <h1 style="margin:10px 0 30px">THÔNG TIN CÁ NHÂN</h1>
+                        <div class="info_wrap_body-item">
+                            <label for="">Họ và tên</label> <br>
+                            <input type="text" name="" id="" value="<?= $info->getFullname() ?>" disabled>
+                        </div>
+                        <div class="info_wrap_body-item">
+                            <label for="">Mã nhân viên</label> <br>
+                            <input type="text" name="" id="" value="<?= $info->getId() ?>" disabled>
+                        </div>
+                        <div class="info_wrap_body-item">
+                            <label for="">Vị trí</label> <br>
+                            <input type="text" name="" id="" value="Trưởng phòng" disabled> 
+                        </div>
+                        <div class="info_wrap_body-item">
+                            <label for="">Tên phòng ban</label> <br>
+                            <input type="text" name="" id="" value="<?= $dictionary[$info->getDepartment()] ?>" disabled>
+                        </div>
                     </div>
-                    <div class="info_wrap_body-item">
-                        <label for="">Ngày sinh</label> <br>
-                        <input type="text" name="" id="" value="21/7/1999" disabled>
-                    </div>
-                    <div class="info_wrap_body-item">
-                        <label for="">Mã nhân viên</label> <br>
-                        <input type="text" name="" id="" value="51702192" disabled>
-                    </div>
-                    <div class="info_wrap_body-item">
-                        <label for="">Vị trí</label> <br>
-                        <input type="text" name="" id="" value="Trưởng phòng" disabled> 
-                    </div>
-                    <div class="info_wrap_body-item">
-                        <label for="">Tên phòng ban</label> <br>
-                        <input type="text" name="" id="" value="Phòng thiết kế" disabled>
-                    </div>
-                </div>
+                <?php
+                }
+            ?>
             </div>
         </div>  
         <div class="modal" id="avatar">
