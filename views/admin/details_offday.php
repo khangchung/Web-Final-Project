@@ -1,8 +1,10 @@
     <?php
         session_start();
+        require_once("../../models/absence.php");
+        require_once("../../models/employee.php");
         require_once("../../models/setup.php");
-        $absence = isset($_SESSION["absence"]) ? $_SESSION["absence"] : "";
-        $employee = isset($_SESSION["employee"]) ? $_SESSION["employee"] : "";
+        $absence = isset($_SESSION["absence"]) ? unserialize($_SESSION["absence"]) : "";
+        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -46,12 +48,12 @@
                 <h1 style="margin-bottom: 30px">Thông tin ngày nghỉ</h1>
                 <?php
                
-                    if (!empty($absence) && !empty($employee)) {   
-                        for ($i=0; $i < count($employee); $i++) { 
+                    if (!empty($absence) && !empty($employees)) {   
+                        foreach ($employees as $employee) {
+                            $employee = unserialize($employee);
                             if ($employee->getId() == $absence->getEmployeeId()) {
                                 $fullname = $employee->getFullname();
                                 $department = $employee->getDepartment();
-                                
                                 ?>
                                     <div class="form-group">
                                         <label for="fullname">Họ và tên</label> 
@@ -68,7 +70,7 @@
                                     <div class="form-group">
                                         <label for="count_offday">Số ngày nghỉ</label> 
                                         <input type="number" class="form-control" id="count_offday" 
-                                            value="<?php getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>" 
+                                            value="<?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>" 
                                             disabled>
                                     </div>                 
                                     <div class="form-group">
