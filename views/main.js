@@ -59,8 +59,8 @@ $(document).ready(function(){
     });
     //Admin xem thông tin chi tiết phòng ban
     $('#department_manager tbody tr').click(function() {
-        const department = $(this).find(".id").html();
-        window.location = `details_department.php?name=${department}`; 
+        const departmentName = $(this).find(".departmentName").attr("id");
+        window.location = `../../controllers/admin/department_details.php?name=${departmentName}`; 
     });
 });
 
