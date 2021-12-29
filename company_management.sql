@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2021 at 05:46 PM
+-- Generation Time: Dec 29, 2021 at 10:30 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.1.1
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `absence` (
   `id` int(5) NOT NULL,
-  `employee` char(5) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `employee_id` char(5) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_date` date DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
@@ -37,6 +37,20 @@ CREATE TABLE `absence` (
   `status` int(1) DEFAULT NULL,
   `attachment` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `absence`
+--
+
+INSERT INTO `absence` (`id`, `employee_id`, `created_date`, `start_date`, `end_date`, `reason`, `status`, `attachment`) VALUES
+(1, 'AD017', '2021-12-27', '2021-12-28', '2021-12-31', 'lý do xin nghỉ', 0, NULL),
+(2, 'AD018', '2021-12-27', '2021-12-28', '2021-12-30', 'lý do xin nghỉ', 0, NULL),
+(3, 'AD019', '2021-12-27', '2021-12-28', '2021-12-30', 'lý do xin nghỉ', 0, NULL),
+(4, 'AD020', '2021-12-27', '2021-12-28', '2021-12-30', 'lý do xin nghỉ', 0, NULL),
+(5, 'AN005', '2021-12-27', '2021-12-28', '2021-12-31', 'lý do xin nghỉ', -1, NULL),
+(6, 'BU001', '2021-12-27', '2021-12-28', '2022-01-01', 'lý do xin nghỉ', 1, NULL),
+(7, 'DE009', '2021-12-27', '2021-12-28', '2021-12-30', 'lý do xin nghỉ', 0, NULL),
+(8, 'IT013', '2021-12-27', '2021-12-28', '2021-12-29', 'lý do xin nghỉ', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -68,8 +82,8 @@ INSERT INTO `account` (`username`, `password`, `priority`) VALUES
 ('nguyenvanb', '$2y$10$kPNz.gG2tW1vtk2LVrTN8u5t/KRZTQ7VKg990DJZ.qUdEN2SnsYWG', 2),
 ('nguyenvanc', '$2y$10$FCMs9skc4KtAhmTKA/D3EOfbDIvtZdSCvLPs/h.KiNF8edHvTptY2', 2),
 ('nguyenvand', '$2y$10$2L0ll/QdCy.tPlq1x9nw9OaKyTV9nw5sqnNfqNFq.yxsp5T7h1Xue', 2),
-('tranvana', '$2y$10$aMjNDZNKZGeqImPW75Y9G.I2PX0ARcQCPgJZgXWqrRP13aBg/8wRS', 1),
-('tranvanb', '$2y$10$/2HABV8CtF86smcv1ED2Le3c7KFRJo5CAFzMj1lIGJcv.xPNI1KoG', 2),
+('tranvana', '$2y$10$ytWpk3Qei9TIeQtdxCwV4./gnh9QwUzjwg25ylWvuSVY0weIsAWyi', 1),
+('tranvanb', '$2y$10$UmXN.Cminc49R.B5REGFZe35J1KZqhUsShyq.bSdSuE/z8gdyQueG', 2),
 ('tranvanc', '$2y$10$Oi7KQ8OZG5Qt09vQuk876u.FQzlwIW5dn7vTkBkKoNht/0STa235q', 2),
 ('tranvand', '$2y$10$782IQ7bKqlm1LXukdSRmu.HXlN.cJGuHJpqkNaP866j3/IGOfz92e', 2),
 ('vothia', '$2y$10$FPECtKaYfH/omoDSyYR8beF1Yr9Q6Pg/8tPJD99FPM1QePgtvBICW', 1),
@@ -160,6 +174,13 @@ CREATE TABLE `task` (
   `deadline` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `task`
+--
+
+INSERT INTO `task` (`id`, `title`, `description`, `status`, `rate`, `creator`, `receiver`, `created_date`, `deadline`) VALUES
+(1, 'Phân tích abc', 'Đây là đoạn text dành cho mô tả', 0, 0, 'AN005', 'AN006', '2021-12-29', '2021-12-31');
+
 -- --------------------------------------------------------
 
 --
@@ -181,7 +202,7 @@ CREATE TABLE `task_log` (
 --
 ALTER TABLE `absence`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `absence_fk0` (`employee`);
+  ADD KEY `absence_fk0` (`employee_id`);
 
 --
 -- Indexes for table `account`
@@ -225,13 +246,13 @@ ALTER TABLE `task_log`
 -- AUTO_INCREMENT for table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -241,7 +262,7 @@ ALTER TABLE `task`
 -- Constraints for table `absence`
 --
 ALTER TABLE `absence`
-  ADD CONSTRAINT `absence_fk0` FOREIGN KEY (`employee`) REFERENCES `employee` (`id`);
+  ADD CONSTRAINT `absence_fk0` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`);
 
 --
 -- Constraints for table `employee`
