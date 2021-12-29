@@ -49,17 +49,19 @@ $(document).ready(function(){
     });
     //Admin xem thông tin chi tiết của nhân viên
     $('#employee_manager tbody tr').click(function() {
-        const employeeId = $(this).find(".employeeId").html();
+        const employeeId = $(this).closest('tr').attr('id');
         window.location = `../../controllers/admin/employee_details.php?id=${employeeId}`; 
     });
     //Admin xem thông tin chi tiết ngày nghỉ
     $('#offday_manager tbody tr').click(function() {
-        const offdayId = $(this).find(".offdayId").attr("id");
+        const offdayId = $(this).closest(".offdayId").attr("id");
+        console.log(offdayId)
         window.location = `../../controllers/admin/dayoff_details.php?id=${offdayId}`; 
     });
     //Admin xem thông tin chi tiết phòng ban
     $('#department_manager tbody tr').click(function() {
-        const departmentName = $(this).find(".departmentName").html();
+        const departmentName = $(this).closest('tr').attr('id');
+        
         window.location = `../../controllers/admin/department_details.php?name=${departmentName}`; 
     });
 

@@ -51,7 +51,6 @@
                 <h1 class="text-center mb-5" >Thông tin phòng ban</h1>
                 <?php
                     $department = isset($_SESSION["department"]) ? unserialize($_SESSION["department"]) : "";
-                   
                     if (!empty($department)) {
                     ?>
                         <form action="">

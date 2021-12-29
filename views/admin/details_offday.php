@@ -45,11 +45,13 @@
             <div class="m-5" >
                 <h1 style="margin-bottom: 30px">Thông tin ngày nghỉ</h1>
                 <?php
-                    if (!empty($absence) && !empty($employee)) {
+               
+                    if (!empty($absence) && !empty($employee)) {   
                         for ($i=0; $i < count($employee); $i++) { 
                             if ($employee->getId() == $absence->getEmployeeId()) {
                                 $fullname = $employee->getFullname();
                                 $department = $employee->getDepartment();
+                                
                                 ?>
                                     <div class="form-group">
                                         <label for="fullname">Họ và tên</label> 

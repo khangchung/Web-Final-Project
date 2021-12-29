@@ -77,9 +77,9 @@
                                     $font_weight = "font-weight-bold";
                                 }
                             ?>
-                                <tr id="<?= $employee->getId() ?>" class="<?= $test_color?> <?= $font_weight ?>">
+                                <tr id=<?= $employee->getId() ?> class="<?= $test_color?> <?= $font_weight ?>">
                                     <td><?= $i+1 ?></td>                                   
-                                    <td class="employeeId"><?= $employee->getId() ?></td>
+                                    <td><?= $employee->getId() ?></td>
                                     <td ><?= $employee->getFullname() ?></td>
                                     <td><?= $dictionary[$employee->getDepartment()] ?></td>
                                     <td>
