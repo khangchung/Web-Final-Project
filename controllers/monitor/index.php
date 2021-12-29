@@ -19,7 +19,7 @@
     $data = array();
     foreach ($taskList as $task) {
         $task = unserialize($task);
-        if ($task->getCreator() == $_SESSION["information"]->getId()) {
+        if ($task->getCreator() == unserialize($_SESSION["information"])->getId()) {
             array_push($data, serialize($task));
         }
     }
