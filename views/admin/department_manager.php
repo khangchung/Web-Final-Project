@@ -71,7 +71,7 @@
                                 for ($i=0; $i < count($deparments); $i++) {
                                     $deparment = unserialize($deparments[$i]);
                                 ?> 
-                                    <tr id=<?= $deparment->getName() ?>>
+                                    <tr id="<?= $deparment->getName() ?>">
                                         <td><?= $i+1 ?></td>
                                         <td><?= $dictionary[$deparment->getName()] ?></td>
                                         <td><?= $deparment->getDescription() ?></td>
