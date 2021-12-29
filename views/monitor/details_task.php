@@ -79,6 +79,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>Tệp đính kèm</td>
+                        <td>
+                            <a href="#">tepdinhkem.rar</a>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Trạng thái</td>
                         <td>New</td>
                     </tr>
