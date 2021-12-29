@@ -8,7 +8,7 @@
     $data = array();
     foreach ($absenceList as $absence) {
         if ($absence->getEmployeeId() == $_SESSION["information"]->getId()) {
-            array_push($data, $absence);
+            array_push($data, serialize($absence));
         }
     }
     $_SESSION["absence"] = $data;
