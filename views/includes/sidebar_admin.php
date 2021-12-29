@@ -8,7 +8,7 @@
                 <div class="sidebar_list">
                     <ul>
                         <li class="sidebar_item" >
-                            <a href="index.php">
+                            <a href="../../controllers/admin/index.php">
                                 <i class="bi bi-clipboard-data"></i>
                                 Quản lý Nhân viên
                             </a>
