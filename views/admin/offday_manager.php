@@ -98,7 +98,7 @@
                                         $employee = unserialize($employees[$j]);
                                         if ($employee->getId() == $absence->getEmployeeId()) {
                                             ?>
-                                                <tr id="<?= $absence->getId() ?>">
+                                                <tr class="offdayId" id="<?= $absence->getId() ?>">
                                                     <td><?= $i+1 ?></td>
                                                     <td><?= $absence->getEmployeeId() ?></td>
                                                     <td><?= $employee->getFullname() ?></td>

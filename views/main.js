@@ -55,7 +55,8 @@ $(document).ready(function(){
     });
     //Admin xem thông tin chi tiết ngày nghỉ
     $('#offday_manager tbody tr').click(function() {
-        window.location = "details_offday.php"; 
+        const employeeId = $(this).find(".offdayId").attr("id");
+        window.location = `../../controllers/admin/dayoff_details.php?id=${employeeId}`; 
     });
     //Admin xem thông tin chi tiết phòng ban
     $('#department_manager tbody tr').click(function() {
