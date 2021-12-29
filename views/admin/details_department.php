@@ -61,7 +61,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="department_desc">Mô tả</label>
-                                <textarea type="text" class="form-control" id="department_desc" class="form-control" value="<?= $department->getDescription() ?>" disabled></textarea>
+                                <textarea type="text" class="form-control" id="department_desc" class="form-control" disabled><?= $department->getDescription() ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="room_number">Số phòng</label>
