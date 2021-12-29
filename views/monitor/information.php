@@ -45,7 +45,7 @@
     </head>
     <body>
         <?php
-            require_once('../includes/sidebar_employee.php');
+            require_once('../includes/sidebar_monitor.php');
         ?>
         <div class="page-wrap">
             <!-- Thông tin nhân viên -->
