@@ -43,9 +43,9 @@
                         Nộp đơn nghỉ phép
                     </button>
                 </a>
-                <div class="offDay_body">
-                   <div class="offDay_body-manage">
-                        <h3 style="margin-bottom: 20px;">Quản lý ngày nghỉ</h3>
+                <div>
+                   <div>
+                        <h3>Quản lý ngày nghỉ</h3>
                         <table>
                             <thead>
                                 <tr>
@@ -67,7 +67,7 @@
                             </tbody>
                         </table>
                    </div>
-                   <div class="offDay_body-history" style="margin-top: 50px;">
+                   <div class="mt-5">
                         <h3>Lịch sử ngày nghỉ</h3>
                         <table>
                             <thead>
@@ -108,6 +108,35 @@
                                     <td>8/10/2021</td>
                                     <td>9/10/2021</td>
                                     <td class="text-danger">Refused</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                   </div>
+                   <div class="mt-5" id="offday_manager_moniter">
+                        <h3>Duyệt đơn nghỉ phép</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã nhân viên</th>
+                                    <th>Họ và tên</th>
+                                    <th>Phòng ban</th>
+                                    <th>Ngày nộp đơn</th>
+                                    <th>Số ngày nghỉ</th>
+                                    <th>Lý do</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>5102192</td>
+                                    <td>Nguyễn Minh Thuận</td>
+                                    <td>Phân tích</td>
+                                    <td>1/12/2021</td>
+                                    <td>3</td>
+                                    <td>Nghỉ bệnh</td> 
+                                    <td>Waiting</td>
                                 </tr>
                             </tbody>
                         </table>

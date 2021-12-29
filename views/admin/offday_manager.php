@@ -47,17 +47,7 @@
         <title>Giao diện</title>
     </head>
     <body>
-        <script>
-            $(document).ready(function(){
-    //Nhân viên xem thông tin chi tiết task
-    
-    //Admin xem thông tin chi tiết ngày nghỉ
-    $('#offday_manager tbody tr').click(function() {
-        window.location = "details_offday.php"; 
-    });
-});
-
-        </script>
+        
         <?php
             require_once('../includes/sidebar_admin.php');
         ?>

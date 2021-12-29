@@ -54,13 +54,18 @@ $(document).ready(function(){
     });
     //Admin xem thông tin chi tiết ngày nghỉ
     $('#offday_manager tbody tr').click(function() {
-        const employeeId = $(this).find(".offdayId").attr("id");
-        window.location = `../../controllers/admin/dayoff_details.php?id=${employeeId}`; 
+        const offdayId = $(this).find(".offdayId").attr("id");
+        window.location = `../../controllers/admin/dayoff_details.php?id=${offdayId}`; 
     });
     //Admin xem thông tin chi tiết phòng ban
     $('#department_manager tbody tr').click(function() {
-        const departmentName = $(this).find(".departmentName").html();;
+        const departmentName = $(this).find(".departmentName").html();
         window.location = `../../controllers/admin/department_details.php?name=${departmentName}`; 
+    });
+
+    $('#offday_manager_moniter tbody tr').click(function() {
+        // const offdayId = $(this).find(".offdayId").attr("id");
+        window.location = `details_offday.php`; 
     });
 });
 
