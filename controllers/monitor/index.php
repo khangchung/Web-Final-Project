@@ -23,6 +23,6 @@
             array_push($data, serialize($task));
         }
     }
-    $_SESSION["task"] = $data;
+    $_SESSION["tasks"] = $data;
     header("location: ../../views/monitor/index.php");
 ?>
