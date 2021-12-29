@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="sidebar_item">
-                <a href="../../controllers/monitor/offday.php">
+                <a href="../../controllers/monitor/dayoff.php">
                     <i class="bi bi-calendar2-month"></i>
                     Quản lý ngày nghỉ
                 </a>
