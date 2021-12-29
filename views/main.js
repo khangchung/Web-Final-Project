@@ -50,7 +50,6 @@ $(document).ready(function(){
     //Admin xem thông tin chi tiết của nhân viên
     $('#employee_manager tbody tr').click(function() {
         const employeeId = $(this).find(".employeeId").html();
-       
         window.location = `../../controllers/admin/employee_details.php?id=${employeeId}`; 
     });
     //Admin xem thông tin chi tiết ngày nghỉ
@@ -60,7 +59,7 @@ $(document).ready(function(){
     });
     //Admin xem thông tin chi tiết phòng ban
     $('#department_manager tbody tr').click(function() {
-        const departmentName = $(this).find(".departmentName").attr("id");
+        const departmentName = $(this).find(".departmentName").html();;
         window.location = `../../controllers/admin/department_details.php?name=${departmentName}`; 
     });
 });
