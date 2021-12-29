@@ -259,6 +259,7 @@ body {
 }
 .info_wrap_header-btn .info_wrap_header-change:hover,
 .info_wrap_header-btn .info_wrap_header-view:hover{
+    cursor: pointer;
     background-color: var(--main-color-hover);
     box-shadow: 2px 4px 4px var(--black-600);
 }
