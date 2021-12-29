@@ -4,7 +4,7 @@
     require_once("../../models/upload.php");
 
     $numOfDay = isset($_POST["num_of_day"]) ? $_POST["num_of_day"] : "";
-    $created_date = date("Y/m/d");
+    $created_date = date("Y-m-d");
     $start_date = isset($_POST["start_date"]) ? $_POST["start_date"] : "";
     $end_date = isset($_POST["end_date"]) ? $_POST["end_date"] : "";
     $reason = isset($_POST["reason"]) ? $_POST["reason"] : "";
