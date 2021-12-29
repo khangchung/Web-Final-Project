@@ -1,3 +1,11 @@
+    <?php
+        session_start();
+        require_once("../../models/setup.php");
+        require_once("../../models/employee.php");
+        require_once("../../models/task.php");
+        $tasks = isset($_SESSION["tasks"]) ? $_SESSION["tasks"] : "";
+        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
+    ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -50,13 +58,46 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Thiết kế giỏ hàng</th>
-                            <td>Nguyễn Minh Thuận</th>
-                            <td>14/11/2021</th>
-                            <td>New</th>
-                        </tr>
-                        
+                        <?php
+                            if (!empty($tasks) && !empty($employees)) {
+                                foreach ($tasks as $task) {
+                                    $task = unserialize($task);
+                                    $text_color = "primary";
+                                    $status = "New";
+                                    if ($task->getStatus() == 1) {
+                                        $status = "In progress";
+                                        $text_color = "secondary";
+                                    } else
+                                    if ($task->getStatus() == 3) {
+                                        $status = "Waiting";
+                                        $text_color = "warning";
+                                    } else
+                                    if ($task->getStatus() == 4) {
+                                        $status = "Rejected";
+                                        $text_color = "danger";
+                                    } else
+                                    if ($task->getStatus() == 5) {
+                                        $status = "Completed";
+                                        $text_color = "success";
+                                    }
+                                    foreach ($employees as $employee) {
+                                        $employee = unserialize($employee);
+                                        if ($task->getReceiver() == $employee->getId()) {
+                                            $fullname = $employee->getFullname();
+                                            ?>
+                                                <tr id="<?= $task->getId() ?>">
+                                                    <td><?= $task->getTitle() ?></th>
+                                                    <td><?= $fullname ?></th>
+                                                    <td><?= dateFormatter($task->getDeadline()) ?></th>
+                                                    <td class="text-<?= $text_color ?>"><?= $status ?></th>
+                                                </tr>
+                                            <?php
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        ?>                        
                     </tbody>
                 </table>
             </div>

@@ -6,6 +6,7 @@
     $employeeOperations = new EmployeeOperations;
     $employeeManager = $employeeOperations->read();
     $employeeList = $employeeManager->getList();
+
     foreach ($employeeList as $employee) {
         $employee = unserialize($employee);
         if ($employee->getUsername() == $_SESSION["username"]) {
@@ -13,16 +14,25 @@
             break;
         }
     }
+    $employee_data = array();
+    foreach ($employeeList as $employee) {
+        $employee = unserialize($employee);
+        if ($employee->getDepartment() == unserialize($_SESSION["information"])->getDepartment()
+            && $employee->getId() != unserialize($_SESSION["information"])->getId()) {
+            array_push($employee_data, serialize($employee));
+        }
+    }
+    $_SESSION["employees"] = $employee_data;
     $taskOperations = new TaskOperations;
     $taskManager =  $taskOperations->read();
     $taskList = $taskManager->getList();
-    $data = array();
+    $task_data = array();
     foreach ($taskList as $task) {
         $task = unserialize($task);
         if ($task->getCreator() == unserialize($_SESSION["information"])->getId()) {
-            array_push($data, serialize($task));
+            array_push($task_data, serialize($task));
         }
     }
-    $_SESSION["tasks"] = $data;
+    $_SESSION["tasks"] = $task_data;
     header("location: ../../views/monitor/index.php");
 ?>
