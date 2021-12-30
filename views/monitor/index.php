@@ -3,6 +3,7 @@
         require_once("../../models/setup.php");
         require_once("../../models/employee.php");
         require_once("../../models/task.php");
+        priorityChecker(1);
         $tasks = isset($_SESSION["tasks"]) ? $_SESSION["tasks"] : "";
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>

@@ -1,6 +1,8 @@
     <?php
         session_start();
         require_once("../../models/employee.php");
+        require_once("../../models/setup.php");
+        priorityChecker(2);
         $dictionary = array(
             "Business" => "Phòng kinh doanh",
             "Analysis" => "Phòng phân tích",

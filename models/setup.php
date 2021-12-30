@@ -55,4 +55,14 @@
         }
         return false;
     }
+
+    function priorityChecker($priority) {
+        if ($_SESSION["priority"] != $priority) {
+            if (isset($_SESSION["URL"])) {
+                header("location: " . $_SESSION["URL"]);
+            }
+        } else {
+            $_SESSION["URL"] = $_SERVER["REQUEST_URI"];
+        }
+    }
 ?>

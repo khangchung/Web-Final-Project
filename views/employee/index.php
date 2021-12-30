@@ -1,6 +1,8 @@
     <?php
         session_start();
         require_once("../../models/task.php");
+        require_once("../../models/setup.php");
+        priorityChecker(2);
         $tasks = isset($_SESSION["tasks"]) ? $_SESSION["tasks"] : "";
     ?>
     <!DOCTYPE html>

@@ -3,6 +3,7 @@
         require_once("../../models/absence.php");
         require_once("../../models/employee.php");
         require_once("../../models/setup.php");
+        priorityChecker(0);
         $absence = isset($_SESSION["absence"]) ? unserialize($_SESSION["absence"]) : "";
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>

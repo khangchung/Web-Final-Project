@@ -1,13 +1,15 @@
     <?php
         session_start();
+        require_once("../../models/setup.php");
         require_once("../../models/employee.php");
+        priorityChecker(0);
         $dictionary = array(
             "Business" => "Phòng kinh doanh",
             "Analysis" => "Phòng phân tích",
             "Design" => "Phòng thiết kế",
             "IT" => "Phòng lập trình",
             "Administration" => "Phòng hành chính"
-        )
+        );
     ?>
     <!DOCTYPE html>
     <html lang="en">

@@ -1,5 +1,7 @@
     <?php
         session_start();
+        require_once("../../models/setup.php");
+        priorityChecker(2);
     ?>
     <!DOCTYPE html>
     <html lang="en">
