@@ -10,7 +10,7 @@
             <li class="sidebar_item" >
                 <a href="../../controllers/monitor/index.php">
                     <i class="bi bi-clipboard-data"></i>
-                    Quản lý Task
+                    Quản lý nhiệm vụ
                 </a>
             </li>
             <li class="sidebar_item" >
