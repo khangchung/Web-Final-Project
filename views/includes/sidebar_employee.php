@@ -8,25 +8,25 @@
     <div class="sidebar_list">
         <ul>
             <li class="sidebar_item" >
-                <a href="index.php">
+                <a href="../../controllers/employee/index.php">
                     <i class="bi bi-clipboard-data"></i>
                     Quản lý Task
                 </a>
             </li>
             <li class="sidebar_item" >
-                <a href="information.php">
+                <a href="../../controllers/employee/information.php">
                     <i class="bi bi-person-lines-fill"></i>
                     thông tin cá nhân
                 </a>
             </li>
             <li class="sidebar_item">
-                <a href="offday_manager.php">
+                <a href="../../controllers/employee/dayoff.php">
                     <i class="bi bi-calendar2-month"></i>
                     Quản lý ngày nghỉ
                 </a>
             </li>
             <li class="sidebar_item">
-                <a href="change_password.php">
+                <a href="../../controllers/employee/change_password.php?option=0">
                     <i class="bi bi-file-earmark-lock"></i>
                         Đổi mật khẩu
                 </a>
