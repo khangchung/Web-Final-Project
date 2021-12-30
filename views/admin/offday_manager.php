@@ -99,7 +99,7 @@
                                                         <?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>
                                                     </td>
                                                     <td><?= $absence->getReason() ?></td>
-                                                    <td class="font-weight-bold text-<?= $text_color ?>">
+                                                    <td class="text-<?= $text_color ?>" style="font-weight: 500;">
                                                         <?= $text ?>
                                                     </td>
                                                 </tr>

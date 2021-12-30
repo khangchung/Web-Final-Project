@@ -38,7 +38,7 @@
             <div class="title">
                 <p>Đổi mật khẩu</p>
             </div>
-            <form action="../../controllers/change_password.php" method="POST" class="login">
+            <form action="../controllers/change_password.php" method="POST" class="login">
                 <div class="field">
                     <label for="">Mật khẩu mới</label>
                     <input name="new_password" type="password" placeholder="">
