@@ -89,7 +89,7 @@
                             <tr>
                                 <td>File đính kèm</td>
                                 <td>
-                                    <input type="file" class="form-control-file" >
+                                    <a href="#">dinhkem.rar</a>
                                 </td>
                             </tr>
                             <tr>
@@ -98,6 +98,19 @@
                             </tr>
                         </table>
                         <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
+                        <h3>Lịch sử nộp task</h3>
+                        <table class="text-left" >
+                            <tr>
+                                <td>Comment</td>
+                                <td>Tệp đính kèm</td>
+                            </tr>
+                            <tr>
+                                <td>Comment1</td>
+                                <td>
+                                    <a href="#">dinhkem1.rar</a>
+                                </td>
+                            </tr>
+                        </table>
                         <?php
                             if ($task->getStatus() == 0) {
                             ?>
@@ -116,14 +129,7 @@
                                         <input type="file" class="form-control-file" id="file">
                                     </div>
                                     <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
-
                                 </form>
-                                
-                                <!-- 
-                                    Xóa comment này và thêm form submit cho task log bao gồm:
-                                        - Thẻ input có name là comment
-                                        - Thẻ input có name là attachment
-                                 -->
                             <?php
                             }
                         ?>
