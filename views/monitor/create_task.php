@@ -38,7 +38,7 @@
         <div class="page-wrap">
             
             <div class="m-5" id="">
-                <h1 class=" mb-5" >Tạo task mới</h1>
+                <h1 class=" mb-5" >Thêm task</h1>
                 <form id="" action="" method="">
                     <div class="form-group">
                         <label for="task_name">Tên task</label>
