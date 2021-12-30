@@ -1,8 +1,9 @@
     <?php
         session_start();
-        require_once("../../models/setup.php");
         require_once("../../models/absence.php");
         require_once("../../models/employee.php");
+        require_once("../../models/setup.php");
+        priorityChecker(0);
         $dictionary = array(
             "Business" => "Phòng kinh doanh",
             "Analysis" => "Phòng phân tích",
@@ -98,7 +99,7 @@
                                                         <?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>
                                                     </td>
                                                     <td><?= $absence->getReason() ?></td>
-                                                    <td class="text-<?= $text_color ?>">
+                                                    <td class="font-weight-bold text-<?= $text_color ?>">
                                                         <?= $text ?>
                                                     </td>
                                                 </tr>

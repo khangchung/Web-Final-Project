@@ -1,6 +1,8 @@
     <?php
         session_start();
         require_once("../../models/task.php");
+        require_once("../../models/setup.php");
+        priorityChecker(2);
         $tasks = isset($_SESSION["tasks"]) ? $_SESSION["tasks"] : "";
     ?>
     <!DOCTYPE html>
@@ -44,11 +46,11 @@
             
             <!-- Quản lý task -->
             <div class="main_wrap" id="task_list">
-                <h2 style="margin-bottom: 30px">DANH SÁCH TASK</h2>
+                <h2 style="margin-bottom: 30px">DANH SÁCH NHIỆM VỤ</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Task</th>
+                            <th>Nhiệm vụ</th>
                             <th>Ngày bắt đầu</th>
                             <th>Ngày kết thúc</th>
                             <th>Trạng thái</th>

@@ -28,5 +28,5 @@
         }
         $_SESSION["employee_absence"] = $data2;   
     }
-    header("location: ../../views/employee/offday_manager.php");
+    header("location: ../../views/monitor/offday_manager.php");
 ?>

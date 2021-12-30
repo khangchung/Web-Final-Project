@@ -3,6 +3,7 @@
         require_once("../../models/setup.php");
         require_once("../../models/employee.php");
         require_once("../../models/task.php");
+        priorityChecker(1);
         $tasks = isset($_SESSION["tasks"]) ? $_SESSION["tasks"] : "";
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>
@@ -49,14 +50,14 @@
             <div class="main_wrap" id="task_list">
                 <a href="create_task.php" style="text-decoration: none;">
                     <button class="btn btn-info d-block ml-auto p-3 text-dark">
-                        Tạo task mới
+                        Thêm nhiệm vụ
                     </button>
                 </a>
-                <h2 style="margin-bottom: 30px">DANH SÁCH TASK</h2>
+                <h2 style="margin-bottom: 30px">DANH SÁCH NHIỆM VỤ</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Task</th>
+                            <th>Nhiệm vụ</th>
                             <th>Nhân viên thực hiện</th>
                             <th>Deadline</th>
                             <th>Trạng thái</th>
@@ -94,7 +95,7 @@
                                                     <td><?= $task->getTitle() ?></th>
                                                     <td><?= $fullname ?></th>
                                                     <td><?= dateFormatter($task->getDeadline()) ?></th>
-                                                    <td class="text-<?= $text_color ?>"><?= $status ?></th>
+                                                    <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></th>
                                                 </tr>
                                             <?php
                                             break;

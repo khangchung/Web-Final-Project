@@ -34,10 +34,6 @@
         return $result;
     }
 
-    function getAvatarPath($department, $fullname) {
-        return "../../documents/" . strtolower($department) . "/" . nameFormatter($fullname) . "/avatar.jpg";
-    }
-
     function dateFormatter($dateString) {
         return date("d/m/Y", strtotime($dateString));
     }
@@ -48,11 +44,23 @@
         $path = "../../documents/" . $department . "/" . $fullname;
         $avatarDefaultPath = "../../views/images/avatar.jpg";
         if (!file_exists($path)) {
-            mkdir($path);
-            if (copy($avatarDefaultPath, $path)) {
-                return true;
+            if (mkdir($path)) {
+                $path .= "/avatar.jpg";
+                if (copy($avatarDefaultPath, $path)) {
+                    return $path;
+                }
             }
         }
-        return false;
+        return "";
+    }
+
+    function priorityChecker($priority) {
+        if ($_SESSION["priority"] != $priority) {
+            if (isset($_SESSION["URL"])) {
+                header("location: " . $_SESSION["URL"]);
+            }
+        } else {
+            $_SESSION["URL"] = $_SERVER["REQUEST_URI"];
+        }
     }
 ?>

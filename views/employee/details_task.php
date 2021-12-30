@@ -1,7 +1,8 @@
     <?php
         session_start();
-        require_once("../../models/setup.php");
         require_once("../../models/task.php");
+        require_once("../../models/setup.php");
+        priorityChecker(2);
         $task = isset($_SESSION["task"]) ? unserialize($_SESSION["task"]) : "";
     ?>
     <!DOCTYPE html>

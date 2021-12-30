@@ -18,17 +18,17 @@
     if ($account->getUsername() == $username && password_verify($password, $account->getPassword())) {
         if ($account->getPriority() == 0) {
             $_SESSION["username"] = $username;
-            $_SESSION["priority"] = $priority;
+            $_SESSION["priority"] = 0;
             $position = "admin";
         } else
         if ($account->getPriority() == 1) {
             $_SESSION["username"] = $username;
-            $_SESSION["priority"] = $priority;
+            $_SESSION["priority"] = 1;
             $position = "monitor";
         } else
         if ($account->getPriority() == 2) {
             $_SESSION["username"] = $username;
-            $_SESSION["priority"] = $priority;
+            $_SESSION["priority"] = 2;
             $position = "employee";
         }
     }

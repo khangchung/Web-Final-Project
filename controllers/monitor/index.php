@@ -7,11 +7,14 @@
     $employeeManager = $employeeOperations->read();
     $employeeList = $employeeManager->getList();
 
-    foreach ($employeeList as $employee) {
-        $employee = unserialize($employee);
-        if ($employee->getUsername() == $_SESSION["username"]) {
-            $_SESSION["information"] = serialize($employee);
-            break;
+    $information = isset($_SESSION["information"]) ? $_SESSION["information"] : "";
+    if (!empty($information)) {
+        foreach ($employeeList as $employee) {
+            $employee = unserialize($employee);
+            if ($employee->getUsername() == $_SESSION["username"]) {
+                $_SESSION["information"] = serialize($employee);
+                break;
+            }
         }
     }
     $employee_data = array();
@@ -34,5 +37,8 @@
         }
     }
     $_SESSION["tasks"] = $task_data;
-    header("location: ../../views/monitor/index.php");
+    if (isset($_SESSION["employees"]) && isset($_SESSION["tasks"])) {
+        header("location: ../../views/monitor/index.php");
+    }
+    
 ?>

@@ -10,7 +10,7 @@
             <li class="sidebar_item" >
                 <a href="../../controllers/employee/index.php">
                     <i class="bi bi-clipboard-data"></i>
-                    Quản lý Task
+                    Quản lý nhiệm vụ
                 </a>
             </li>
             <li class="sidebar_item" >
@@ -20,13 +20,21 @@
                 </a>
             </li>
             <li class="sidebar_item">
+<<<<<<< HEAD
                 <a href="../../controllers/employee/offday.php">
+=======
+                <a href="../../controllers/employee/dayoff.php">
+>>>>>>> 630cd98869b5659a9f499fda34a000cc74cc44b2
                     <i class="bi bi-calendar2-month"></i>
                     Quản lý ngày nghỉ
                 </a>
             </li>
             <li class="sidebar_item">
+<<<<<<< HEAD
                 <a href="../../controllers/employee/change_password.php">
+=======
+                <a href="../../controllers/employee/change_password.php?option=0">
+>>>>>>> 630cd98869b5659a9f499fda34a000cc74cc44b2
                     <i class="bi bi-file-earmark-lock"></i>
                         Đổi mật khẩu
                 </a>

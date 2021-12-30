@@ -8,24 +8,19 @@
     $fullname = isset($_POST["fullname"]) ? $_POST["fullname"] : "";
     $position = isset($_POST["position"]) ? intval($_POST["position"]) : "";
     $department = isset($_POST["department"]) ? $_POST["department"] : "";
-    $avatar = isset($_POST["avatar"]) ? $_POST["avatar"] : "";
-    $day_off = isset($_POST["day_off"]) ? intval($_POST["day_off"]) : "";
 
     if (!empty($username) && !empty($fullname) && !empty($position) && !empty($department)) {
         $accountOperations = new AccountOperations;
         $account_result = $accountOperations->create(new Account($username, $username, $position));
         $id = getNextID($department);
-        $avatar = "";
+        $avatar = createEmployeeFolder($department, $fullname);
         $day_off = $position == 1 ? 15 : 12;
-        if ($account_result) {
+        if ($account_result && $avatar != "") {
             $employee = new Employee($id, $username, $fullname, $position, $department, $avatar, 
             $day_off);
             $employeeOperations = new EmployeeOperations;
             $result = $employeeOperations->create($employee);
             $_SESSION["flag"] = $result;
-            if ($resutlt) {
-                createEmployeeFolder($department, $fullname);
-            }
         } else {
             $_SESSION["flag"] = $account_result;
         }
