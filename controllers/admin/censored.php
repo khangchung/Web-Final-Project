@@ -11,6 +11,6 @@
         header("location: ../../views/admin/offday_manager.php");
     } else {
         $_SESSION["flag"] = false;
-        header("location: ../../views/admin/details_offday.php.php");
+        header("location: ../../views/admin/details_offday.php");
     }
 ?>
