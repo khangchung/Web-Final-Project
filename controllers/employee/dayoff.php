@@ -13,6 +13,6 @@
             array_push($data, serialize($absence));
         }
     }
-    $_SESSION["absence"] = $data;
+    $_SESSION["absences"] = $data;
     header("location: ../../views/employee/offday_manager.php");
 ?>
