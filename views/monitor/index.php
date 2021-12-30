@@ -52,7 +52,7 @@
                         Thêm nhiệm vụ
                     </button>
                 </a>
-                <h2 style="margin-bottom: 30px">DANH SÁCH TASK</h2>
+                <h2 style="margin-bottom: 30px">DANH SÁCH NHIỆM VỤ</h2>
                 <table>
                     <thead>
                         <tr>
