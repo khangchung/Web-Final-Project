@@ -55,6 +55,7 @@
                             if ($employee->getId() == $absence->getEmployeeId()) {
                                 $fullname = $employee->getFullname();
                                 $department = $employee->getDepartment();
+                                $attachment = $absence->getAttachment();
                                 ?>
                                     <div class="form-group">
                                         <label for="fullname">Họ và tên</label> 
@@ -66,7 +67,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="date_submit">Ngày nộp đơn</label> 
-                                        <input type="text" class="form-control" id="date_submit" value="<?= $absence->getCreatedDate() ?>" disabled>
+                                        <input type="text" class="form-control" id="date_submit" value="<?= dateFormatter($absence->getCreatedDate()) ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="count_offday">Số ngày nghỉ</label> 
@@ -76,20 +77,26 @@
                                     </div>                 
                                     <div class="form-group">
                                         <label for="start_offday">Ngày bắt đầu nghỉ</label> 
-                                        <input type="text" class="form-control" id="start_offday" value="<?= $absence->getStartDate() ?>" disabled>
+                                        <input type="text" class="form-control" id="start_offday" value="<?= dateFormatter($absence->getStartDate()) ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="end_offday">Ngày đi làm lại</label> 
-                                        <input type="text" class="form-control" id="end_offday" value="<?= $absence->getEndDate() ?>" disabled>
+                                        <input type="text" class="form-control" id="end_offday" value="<?= dateFormatter($absence->getEndDate()) ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="reason_offday">Lý do</label>
                                         <textarea id="reason_offday" class="form-control" disabled><?= $absence->getReason() ?></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="attachments_offday">Tệp đính kèm (nếu có)</label>
-                                        <a href="<?= $absence->getAttachment() ?>" class="form-control-file" id="attachments_offday">Download here.</a>
-                                    </div>
+                                    <?php
+                                    if (!is_null($attachment)) {
+                                        ?>
+                                        <div class="form-group">
+                                            <label for="attachments_offday">Tệp đính kèm (nếu có)</label>
+                                            <a href="<?= $attachment ?>" class="form-control-file" id="attachments_offday">Download here.</a>
+                                        </div>
+                                        <?php
+                                    }
+                                    ?>
                                     <div class="form-group">
                                         <label for=""></label>
                                         <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>" class="btn btn-info my-2 p-3">Duyệt đơn</a>
