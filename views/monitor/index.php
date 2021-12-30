@@ -56,7 +56,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Task</th>
+                            <th>Nhiệm vụ</th>
                             <th>Nhân viên thực hiện</th>
                             <th>Deadline</th>
                             <th>Trạng thái</th>
