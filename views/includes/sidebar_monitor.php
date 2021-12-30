@@ -26,7 +26,7 @@
                 </a>
             </li>
             <li class="sidebar_item">
-                <a href="../../controllers/monitor/change_password.php">
+                <a href="../../controllers/monitor/change_password.php?option=0">
                     <i class="bi bi-file-earmark-lock"></i>
                         Đổi mật khẩu
                 </a>
