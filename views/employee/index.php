@@ -80,7 +80,7 @@
                                     $text_color = "success";
                                 }
                                 ?>
-                                    <tr>
+                                    <tr id="<?= $task->getId() ?>">
                                         <td><?= $task->getTitle() ?></th>
                                         <td><?= $task->getCreatedDate() ?></th>
                                         <td><?= $task->getDeadline() ?></th>

@@ -54,7 +54,7 @@
             <div class="info_wrap" style="margin-top: 50px;" >
                 <div class="info_wrap_header">
                     <div class="info_wrap_header-avatar">
-                       <img src="/images/avatar.png " alt="">
+                       <img src="<?= $info->getAvatar() ?>" alt="">
                     </div>
                     <div class="info_wrap_header-btn">
                         <label for="file" onclick="changeAvatar();" class="info_wrap_header-change" id="uploadBtn">Cập nhật</label>
