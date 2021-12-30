@@ -95,7 +95,7 @@
                                                     <td><?= $task->getTitle() ?></th>
                                                     <td><?= $fullname ?></th>
                                                     <td><?= dateFormatter($task->getDeadline()) ?></th>
-                                                    <td class="text-<?= $text_color ?>"><?= $status ?></th>
+                                                    <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></th>
                                                 </tr>
                                             <?php
                                             break;
