@@ -8,13 +8,11 @@
     $employeeList = $employeeManager->getList();
 
     $information = isset($_SESSION["information"]) ? $_SESSION["information"] : "";
-    if (!empty($information)) {
-        foreach ($employeeList as $employee) {
-            $employee = unserialize($employee);
-            if ($employee->getUsername() == $_SESSION["username"]) {
-                $_SESSION["information"] = serialize($employee);
-                break;
-            }
+    foreach ($employeeList as $employee) {
+        $employee = unserialize($employee);
+        if ($employee->getUsername() == $_SESSION["username"]) {
+            $_SESSION["information"] = serialize($employee);
+            break;
         }
     }
     $taskOperations = new TaskOperations;
