@@ -143,14 +143,6 @@
                             <td>Đánh giá</td>
                             <td>Tệp đính kèm</td>
                         </tr>
-                        <tr>
-                            <td>Đánh giá</td>
-                            <td>Tệp đính kèm</td>
-                        </tr>
-                        <tr>
-                            <td>Đánh giá</td>
-                            <td>Tệp đính kèm</td>
-                        </tr>                      
                         <?php
                             if (!empty($task_logs)) {
                                 foreach ($task_logs as $task_log) {

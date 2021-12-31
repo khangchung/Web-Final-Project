@@ -117,6 +117,7 @@
                             </tbody>
                         </table>
                    </div>
+                   <!-- Trưởng phòng duyệt đơn cho nhân viên -->
                    <div class="mt-5" id="offday_manager_moniter">
                         <h3>Duyệt đơn nghỉ phép</h3>
                         <table>

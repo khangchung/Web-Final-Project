@@ -95,7 +95,6 @@ $(document).ready(function(){
     //Admin xem thông tin chi tiết ngày nghỉ
     $('#offday_manager tbody tr').click(function() {
         const offdayId = $(this).closest(".offdayId").attr("id");
-        console.log(offdayId)
         window.location = `../../controllers/admin/dayoff_details.php?id=${offdayId}`; 
     });
     //Admin xem thông tin chi tiết phòng ban
@@ -104,10 +103,10 @@ $(document).ready(function(){
         
         window.location = `../../controllers/admin/department_details.php?name=${departmentName}`; 
     });
-
+    // Trưởng phòng xem thông tin chi tiết ngày nghỉ của nhân viên
     $('#offday_manager_moniter tbody tr').click(function() {
-        // const offdayId = $(this).find(".offdayId").attr("id");
-        window.location = `details_offday.php`; 
+        const offdayId = $(this).closest(".offdayId").attr("id");
+        window.location = `../../controllers/monitor/dayoff_details.php?id=${offdayId}`; 
     });
     
 
