@@ -97,10 +97,17 @@
                                         <?php
                                     }
                                     ?>
-                                    <div class="form-group">
-                                        <label for=""></label>
-                                        <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>" class="btn btn-info my-2 p-3">Duyệt đơn</a>
-                                    </div> 
+                                    <?php
+                                        if ($absence->getStatus() == 0) {
+                                        ?>
+                                            <div class="form-group">
+                                                <label for=""></label>
+                                                <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>" class="btn btn-success my-2 p-3">Approve</a>
+                                                <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>" class="btn btn-danger my-2 ml-3 p-3 px-4">Refuse</a>
+                                            </div>
+                                        <?php
+                                        }
+                                    ?>
                                 <?php
                                 break;
                             }
