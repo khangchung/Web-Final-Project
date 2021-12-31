@@ -92,7 +92,7 @@
                                     <tr>
                                         <td>Tệp đính kèm</td>
                                         <td>
-                                            <a href="#">dinhkem.rar</a>
+                                            <a href="<?= $task->getAttachment() ?>"><?= getFilenameOf($task->getAttachment()) ?></a>
                                         </td>
                                     </tr>
                                     <tr>
