@@ -70,54 +70,38 @@
                                     $text_color = "success";
                                 }    
                             ?>
-                                <table class="text-left" >
-                                    <tr>
-                                        <td>Tên nhiệm vụ</td>
-                                        <td><?= $task->getTitle() ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ngày bắt đầu</td>
-                                        <td><?= dateFormatter($task->getCreatedDate()) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ngày hoàn thành</td>
-                                        <td><?= dateFormatter($task->getDeadline()) ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mô tả công việc</td>
-                                        <td>
-                                            <?= $task->getDescription() ?>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Tệp đính kèm</td>
-                                        <td>
-                                            <a href="<?= $task->getAttachment() ?>"><?= getFilenameOf($task->getAttachment()) ?></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Trạng thái</td>
-                                        <td class="<?= $text_color ?>"><?= $status ?></td>
-                                    </tr>
-                                </table>
+                            <table class="text-left" >
+                                <tr>
+                                    <td>Tên nhiệm vụ</td>
+                                    <td><?= $task->getTitle() ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày bắt đầu</td>
+                                    <td><?= dateFormatter($task->getCreatedDate()) ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Ngày hoàn thành</td>
+                                    <td><?= dateFormatter($task->getDeadline()) ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Mô tả công việc</td>
+                                    <td>
+                                        <?= $task->getDescription() ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tệp đính kèm</td>
+                                    <td>
+                                        <a href="<?= $task->getAttachment() ?>"><?= getFilenameOf($task->getAttachment()) ?></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Trạng thái</td>
+                                    <td class="<?= $text_color ?>"><?= $status ?></td>
+                                </tr>
+                            </table>
                     </div>
-                            <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
-                            <div class="ml-5">
-                            <h3>Lịch sử phản hồi</h3>
-                                <table class="text-left">
-                                    <tr>
-                                        <td>Đánh giá</td>
-                                        <td class="font-weight-bold">Tệp đính kèm</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="font-weight-normal">Comment1</td>
-                                        <td>
-                                            <a href="#">dinhkem1.rar</a>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                </div>
+                   
                         <?php
                             if ($task->getStatus() == 0) {
                             ?>
@@ -141,8 +125,26 @@
                             }
                         ?>
                     <?php
+                    
                     }
                 ?>
+                    <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
+                <div class="ml-5">
+                    <h3>Lịch sử phản hồi</h3>
+                    <table class="text-left">
+                        <tr>
+                            <td>Đánh giá</td>
+                            <td class="font-weight-bold">Tệp đính kèm</td>
+                        </tr>
+                        <tr>
+                            <td class="font-weight-normal">Comment1</td>
+                            <td>
+                                <a href="#">dinhkem1.rar</a>
+                            </td>
+                        </tr>
+                    </table>
+                    </div>
+                </div>
             </div>
 
         </div>   
