@@ -7,38 +7,30 @@
     </div>
     <div class="sidebar_list">
         <ul>
-            <li class="sidebar_item" >
+            <li class="sidebar_item">
                 <a href="../../controllers/employee/index.php">
                     <i class="bi bi-clipboard-data"></i>
                     Quản lý nhiệm vụ
                 </a>
             </li>
-            <li class="sidebar_item" >
+            <li class="sidebar_item">
                 <a href="../../controllers/employee/information.php">
                     <i class="bi bi-person-lines-fill"></i>
                     thông tin cá nhân
                 </a>
             </li>
             <li class="sidebar_item">
-<<<<<<< HEAD
-                <a href="../../controllers/employee/offday.php">
-=======
                 <a href="../../controllers/employee/dayoff.php">
->>>>>>> 630cd98869b5659a9f499fda34a000cc74cc44b2
                     <i class="bi bi-calendar2-month"></i>
                     Quản lý ngày nghỉ
                 </a>
             </li>
             <li class="sidebar_item">
-<<<<<<< HEAD
-                <a href="../../controllers/employee/change_password.php">
-=======
                 <a href="../../controllers/employee/change_password.php?option=0">
->>>>>>> 630cd98869b5659a9f499fda34a000cc74cc44b2
                     <i class="bi bi-file-earmark-lock"></i>
-                        Đổi mật khẩu
+                    Đổi mật khẩu
                 </a>
-                </li>
+            </li>
             <li class="sidebar_item">
                 <a href="../../controllers/logout.php">
                     <i class="bi bi-box-arrow-left"></i>
@@ -46,7 +38,7 @@
                 </a>
             </li>
         </ul>
-        
-    </div>   
-    
+
+    </div>
+
 </div>
