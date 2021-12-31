@@ -413,17 +413,32 @@ body {
 }
 
 
-#task_info table {
+#task_info .details_task {
     width: 100%;
     max-width: 550px;
 }
+
+#task_info .feedback_history {
+    width: 100%;
+    max-width: 400px;
+}
+
+#task_info .feedback_history tr:first-child{
+    font-weight: bold;
+
+}
+
+#task_info .feedback_history tr td{
+    min-width: 200px;
+}
+
 #task_info tr td{
     border: 1px solid black;
     padding: 8px 12px;
 }
-#task_info tr td:first-child{
+#task_info .details_task tr td:first-child{
     font-weight: bold;
-    min-width: 180px;
+    min-width: 170px;
 }
 /* hover icon xóa, sửa */
 .bi:hover{

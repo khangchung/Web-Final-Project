@@ -40,26 +40,6 @@
         <title>Giao diện</title>
         
     </head>
-    <style>
-        #task_info{
-            margin: 50px;
-            width: auto;
-        }
-
-
-        #task_info table {
-            width: 100%;
-            max-width: 550px;
-        }
-        #task_info tr td{
-            border: 1px solid black;
-            padding: 8px 12px;
-        }
-        #task_info tr td:first-child{
-            font-weight: bold;
-            min-width: 180px;
-        }
-    </style>
     <body>
         <?php
             require_once('../includes/sidebar_employee.php');
@@ -70,7 +50,7 @@
             <div id="task_info">
                 <div  class="d-flex justify-content-between">
                     <div class="mr-5">
-                        <h2 style="margin-bottom: 30px">THÔNG TIN CHI TIẾT NHIỆM VỤ</h2>
+                        <h2 class="mb-4">THÔNG TIN CHI TIẾT NHIỆM VỤ</h2>
                         <?php
                             if (!empty($task)) {
                                 $text_color = "primary";
@@ -93,7 +73,7 @@
                                 }
                                 $filename = getFilenameOf($task->getAttachment()) != "" ? getFilenameOf($task->getAttachment()) : "...";
                             ?>
-                            <table class="text-left">
+                            <table class="text-left details_task">
                                 <tr>
                                     <td>Tên nhiệm vụ</td>
                                     <td><?= $task->getTitle() ?></td>
@@ -156,12 +136,20 @@
                 <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
                 
                 <div class="ml-5">
-                    <h3>Lịch sử phản hồi</h3>
-                    <table class="text-left">
+                    <h2 class="mb-4">Lịch sử phản hồi</h2>
+                    <table class="text-left feedback_history" style="max-width: 400px">
                         <tr>
                             <td>Đánh giá</td>
-                            <td class="font-weight-bold">Tệp đính kèm</td>
+                            <td>Tệp đính kèm</td>
                         </tr>
+                        <tr>
+                            <td>Đánh giá</td>
+                            <td>Tệp đính kèm</td>
+                        </tr>
+                        <tr>
+                            <td>Đánh giá</td>
+                            <td>Tệp đính kèm</td>
+                        </tr>                      
                         <?php
                             if (!empty($task_logs)) {
                                 foreach ($task_logs as $task_log) {
