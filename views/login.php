@@ -32,21 +32,26 @@
     <link rel="stylesheet" href="main.js">
     <title>Đăng nhập</title>
 </head>
-
 <body>
     <div class="container-fluid login">
         <div class="wrapper">
             <div class="title">
                 <p>Đăng nhập</p>
             </div>
-            <form action="../controllers/login.php" method="POST" class="login">
+            <form action="../controllers/login.php" method="POST" class="login" id="login_form" onsubmit="return checkLogin();">
                 <div class="field">
                     <label for="">Tên đăng nhập</label>
-                    <input name="username" type="text" placeholder="Tên đăng nhập">
+                    <input name="username" type="text" placeholder="Tên đăng nhập" class="username">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <i class="bi bi-exclamation-circle-fill"></i> 
+                    <small>Error Message</small>
                 </div>
                 <div class="field">
                     <label for="">Mật khẩu</label>
-                    <input name="password" type="password" placeholder="Mật khẩu">
+                    <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <i class="bi bi-exclamation-circle-fill"></i> 
+                    <small>Error Message</small>
                 </div>
                 <div class="field">
                     <input type="submit" value="Đăng nhập">
@@ -54,6 +59,48 @@
             </form>
         </div>  
     </div>  
+    <script>
+        function checkLogin(){
+            const username = document.querySelector('#login_form .username');
+            const password = document.querySelector('#login_form .password');
+
+            const usernameValue = username.value.trim();
+            const passwordValue = password.value.trim();
+            
+            if(usernameValue === '') {
+                setErrorFor(username, 'Vui lòng nhập tên tài khoản');
+                return false;
+            } else {
+                setSuccessFor(username);
+            }
+            
+            if(passwordValue === '') {
+                setErrorFor(password, 'Vui lòng nhập mật khẩu');
+                return false;
+            } else {
+                setSuccessFor(password);
+            }
+            return true;
+        }
+
+        function setErrorFor(input, message) {
+            const formControl = input.parentElement;
+            const small = formControl.querySelector('#login_form small');
+            formControl.className = 'field error';
+            small.innerText = message;
+        }
+
+        function setSuccessFor(input) {
+            const formControl = input.parentElement;
+            formControl.className = 'field success';
+        }
+            
+
+        
+            
+
+
+    </script>
 </body>
 
 </html>

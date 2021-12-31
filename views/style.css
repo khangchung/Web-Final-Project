@@ -59,6 +59,7 @@ body {
 .wrapper form .field {
     width: 100%;
     margin-top: 20px;
+    position: relative;
 }
 
 .wrapper form .field input {
@@ -102,6 +103,45 @@ body {
     box-shadow: 4px 4px 8px var(--black-600);
     background: var(--main-color-hover);
 }
+
+/* validate */
+.wrapper form .field i {
+    position: absolute;
+    visibility: hidden;
+    top: 43px;
+    right: 10px;
+}
+
+.wrapper form .field.success i.bi-check-circle-fill{
+    visibility: visible;
+    color: #2ecc71;
+}
+
+.wrapper form .field.error i.bi-exclamation-circle-fill{
+    visibility: visible;
+    color: #e74c3c;
+}
+
+.wrapper form .field.success input{
+    border-color: #2ecc71;
+}
+.wrapper form .field.error input{
+    border-color: #e74c3c;
+}
+
+.wrapper form .field small {
+    position: absolute;
+    visibility: hidden;
+    bottom: -20px;
+    left: 0;
+}
+
+.wrapper form .field.error small{
+    visibility: visible;
+    color: #e74c3c;
+}
+
+
 
 .wrapper form .btn_changePass {
     display: flex;

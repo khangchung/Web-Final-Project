@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                         <label for="total_department">Số phòng</label> 
-                        <input type="number" class="form-control" name="room" id="total_department">
+                        <input type="number" min="0" class="form-control" name="room" id="total_department">
                     </div>
                     <div class="form-group">
                         <label for="add_department"></label>
