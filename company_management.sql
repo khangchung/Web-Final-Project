@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2021 at 10:30 AM
+-- Generation Time: Dec 31, 2021 at 03:54 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.1.1
 
@@ -43,14 +43,15 @@ CREATE TABLE `absence` (
 --
 
 INSERT INTO `absence` (`id`, `employee_id`, `created_date`, `start_date`, `end_date`, `reason`, `status`, `attachment`) VALUES
-(1, 'AD017', '2021-12-27', '2021-12-28', '2021-12-31', 'lý do xin nghỉ', 0, NULL),
+(1, 'AD017', '2021-12-27', '2021-12-28', '2021-12-31', 'lý do xin nghỉ', 1, NULL),
 (2, 'AD018', '2021-12-27', '2021-12-28', '2021-12-30', 'lý do xin nghỉ', 0, NULL),
 (3, 'AD019', '2021-12-27', '2021-12-28', '2021-12-30', 'lý do xin nghỉ', 0, NULL),
 (4, 'AD020', '2021-12-27', '2021-12-28', '2021-12-30', 'lý do xin nghỉ', 0, NULL),
 (5, 'AN005', '2021-12-27', '2021-12-28', '2021-12-31', 'lý do xin nghỉ', -1, NULL),
 (6, 'BU001', '2021-12-27', '2021-12-28', '2022-01-01', 'lý do xin nghỉ', 1, NULL),
 (7, 'DE009', '2021-12-27', '2021-12-28', '2021-12-30', 'lý do xin nghỉ', 0, NULL),
-(8, 'IT013', '2021-12-27', '2021-12-28', '2021-12-29', 'lý do xin nghỉ', 1, NULL);
+(8, 'IT013', '2021-12-27', '2021-12-28', '2021-12-29', 'lý do xin nghỉ', -1, NULL),
+(9, 'AN006', '2021-12-27', '2021-12-28', '2021-12-30', 'Lý do xin nghỉ', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -69,6 +70,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`username`, `password`, `priority`) VALUES
+('abc', '$2y$10$LeVw7Lk1XNAya2ynXq3OIe9CfbjEIPxWkOmepO4BaYmg88ZUn9ILu', 2),
 ('admin', '$2y$10$lfYweJAVP8BY3NUNnFYEX.xDavpLRaZEE6OfizKK3ewgDB7WcmgMm', 0),
 ('moctana', '$2y$10$i.scjgaCq5VFIAL0LTEIZ.rqESKwomxBG3hlmox68OWDfN/7KEp4G', 1),
 ('moctanb', '$2y$10$wO96xSdhTI58aFjWuToBr.dp0Vv./olHFwcTTKW68ipwBMw.DPFP6', 2),
@@ -147,6 +149,7 @@ INSERT INTO `employee` (`id`, `username`, `fullname`, `position`, `department`, 
 ('BU002', 'nguyenvanb', 'Nguyễn Văn B', 2, 'Business', '', 12),
 ('BU003', 'nguyenvanc', 'Nguyễn Văn C', 2, 'Business', '', 12),
 ('BU004', 'nguyenvand', 'Nguyễn Văn D', 2, 'Business', '', 12),
+('BU021', 'abc', 'a b c', 2, 'Business', '../../documents/business/abc/avatar.jpg', 12),
 ('DE009', 'vothia', 'Võ Thị A', 1, 'Design', '', 15),
 ('DE010', 'vothib', 'Võ Thị B', 2, 'Design', '', 12),
 ('DE011', 'vothic', 'Võ Thị C', 2, 'Design', '', 12),
@@ -171,15 +174,16 @@ CREATE TABLE `task` (
   `creator` char(5) COLLATE utf8_unicode_ci DEFAULT NULL,
   `receiver` char(5) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_date` date DEFAULT NULL,
-  `deadline` date DEFAULT NULL
+  `deadline` date DEFAULT NULL,
+  `attachment` varchar(100) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `task`
 --
 
-INSERT INTO `task` (`id`, `title`, `description`, `status`, `rate`, `creator`, `receiver`, `created_date`, `deadline`) VALUES
-(1, 'Phân tích abc', 'Đây là đoạn text dành cho mô tả', 0, 0, 'AN005', 'AN006', '2021-12-29', '2021-12-31');
+INSERT INTO `task` (`id`, `title`, `description`, `status`, `rate`, `creator`, `receiver`, `created_date`, `deadline`, `attachment`) VALUES
+(1, 'Phân tích abc', 'Đây là đoạn text dành cho mô tả', 1, 0, 'AN005', 'AN006', '2021-12-29', '2021-12-31', '');
 
 -- --------------------------------------------------------
 
@@ -190,8 +194,16 @@ INSERT INTO `task` (`id`, `title`, `description`, `status`, `rate`, `creator`, `
 CREATE TABLE `task_log` (
   `task_id` int(5) NOT NULL,
   `comment` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `attachment` varchar(100) COLLATE utf8_unicode_ci NOT NULL
+  `attachment` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `owner` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `task_log`
+--
+
+INSERT INTO `task_log` (`task_id`, `comment`, `attachment`, `owner`) VALUES
+(1, 'Cần sửa lại 1 số chỗ...', '', 1);
 
 --
 -- Indexes for dumped tables
@@ -246,7 +258,7 @@ ALTER TABLE `task_log`
 -- AUTO_INCREMENT for table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `task`
