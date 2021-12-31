@@ -77,7 +77,7 @@
                         </div>
                         <div class="form-group">
                             <label for=""></label> 
-                            <button type="submit" class=" btn btn-info mt-5 p-3">Reset mật khẩu</button>
+                            <button type="submit" class=" btn btn-info p-3">Reset mật khẩu</button>
                         </div>
                         <?php
                     }
