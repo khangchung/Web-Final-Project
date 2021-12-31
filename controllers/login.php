@@ -15,21 +15,23 @@
     $account = $manager->getList()[0];
     $position = "";
 
-    if ($account->getUsername() == $username && password_verify($password, $account->getPassword())) {
-        if ($account->getPriority() == 0) {
-            $_SESSION["username"] = $username;
-            $_SESSION["priority"] = 0;
-            $position = "admin";
-        } else
-        if ($account->getPriority() == 1) {
-            $_SESSION["username"] = $username;
-            $_SESSION["priority"] = 1;
-            $position = "monitor";
-        } else
-        if ($account->getPriority() == 2) {
-            $_SESSION["username"] = $username;
-            $_SESSION["priority"] = 2;
-            $position = "employee";
+    if (!is_null($account)) {
+        if ($account->getUsername() == $username && password_verify($password, $account->getPassword())) {
+            if ($account->getPriority() == 0) {
+                $_SESSION["username"] = $username;
+                $_SESSION["priority"] = 0;
+                $position = "admin";
+            } else
+            if ($account->getPriority() == 1) {
+                $_SESSION["username"] = $username;
+                $_SESSION["priority"] = 1;
+                $position = "monitor";
+            } else
+            if ($account->getPriority() == 2) {
+                $_SESSION["username"] = $username;
+                $_SESSION["priority"] = 2;
+                $position = "employee";
+            }
         }
     }
 
@@ -44,6 +46,7 @@
             header("location: " . $position . "/index.php");
         }
     } else {
+        $_SESSION["flag"] = false;
         header("location: ../../views/login.php");
     }
 ?>
