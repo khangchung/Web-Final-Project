@@ -71,11 +71,11 @@
             return $manager;
         }
     
-        function update($id) {
+        function update($absence) {
             $conn = getConnection();
-            $sql = "update absence set status = 1 where id = ?";
+            $sql = "update absence set status = ? where id = ?";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("i", $id);
+            $stm->bind_param("ii", $absence->getStatus(), $absence->getId());
             if (!$stm->execute()) {
                 die("Absence updating is failed: " . $stm->error);
             }
