@@ -90,7 +90,9 @@
         $sum = 0;
         foreach ($absences as $absence) {
             $absence = unserialize($absence);
-            $sum += getDateDistance($absence->getStartDate(), $absence->getEndDate());
+            if ($absence->getStatus() == 1) {
+                $sum += getDateDistance($absence->getStartDate(), $absence->getEndDate());   
+            }
         }
         return $sum;
     }
