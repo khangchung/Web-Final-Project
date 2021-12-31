@@ -1,5 +1,6 @@
 <?php
     require_once("employee_operations.php");
+    require_once("absence.php");
 
     function getNextID($department_name) {
         $EO = new EmployeeOperations;
@@ -83,5 +84,14 @@
         } else {
             return 0;
         }
+    }
+
+    function countDayoff($absences) {
+        $sum = 0;
+        foreach ($absences as $absence) {
+            $absence = unserialize($absence);
+            $sum += getDateDistance($absence->getStartDate(), $absence->getEndDate());
+        }
+        return $sum;
     }
 ?>
