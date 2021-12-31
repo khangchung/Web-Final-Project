@@ -411,12 +411,19 @@ body {
     margin: 50px;
     width: auto;
 }
+
+
+#task_info table {
+    width: 100%;
+    max-width: 550px;
+}
 #task_info tr td{
     border: 1px solid black;
     padding: 8px 12px;
 }
 #task_info tr td:first-child{
     font-weight: bold;
+    min-width: 180px;
 }
 /* hover icon xóa, sửa */
 .bi:hover{
