@@ -40,7 +40,24 @@
         
     </head>
     <style>
-        
+        #task_info{
+            margin: 50px;
+            width: auto;
+        }
+
+
+        #task_info table {
+            width: 100%;
+            max-width: 550px;
+        }
+        #task_info tr td{
+            border: 1px solid black;
+            padding: 8px 12px;
+        }
+        #task_info tr td:first-child{
+            font-weight: bold;
+            min-width: 180px;
+        }
     </style>
     <body>
         <?php
@@ -136,25 +153,24 @@
                    
                        
                     <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
-                <div class="ml-5">
-                    <h3>Lịch sử phản hồi</h3>
-                    <table class="text-left">
-                        <tr>
-                            <td>Đánh giá</td>
-                            <td class="font-weight-bold">Tệp đính kèm</td>
-                        </tr>
-                        <tr>
-                            <td class="font-weight-normal">Comment1</td>
-                            <td>
-                                <a href="#">dinhkem1.rar</a>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="ml-5">
+                        <h3>Lịch sử phản hồi</h3>
+                        <table class="text-left">
+                            <tr>
+                                <td>Đánh giá</td>
+                                <td class="font-weight-bold">Tệp đính kèm</td>
+                            </tr>
+                            <tr>
+                                <td class="font-weight-normal">Comment1</td>
+                                <td>
+                                    <a href="#">dinhkem1.rar</a>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
-            </div>
 
-        </div>   
-        
-    </body>
+            </div>   
+        </div>
+</body>
     </html>
