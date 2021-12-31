@@ -4,6 +4,7 @@
         require_once("../../models/setup.php");
         priorityChecker(2);
         $task = isset($_SESSION["task"]) ? unserialize($_SESSION["task"]) : "";
+        $task_logs = isset($_SESSION["task_logs"]) ? unserialize($_SESSION["task_logs"]) : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -152,6 +153,7 @@
                     </div>
                    
                        
+<<<<<<< HEAD
                     <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
                     <div class="ml-5">
                         <h3>Lịch sử phản hồi</h3>
@@ -168,6 +170,36 @@
                             </tr>
                         </table>
                     </div>
+=======
+                <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
+                
+                <div class="ml-5">
+                    <h3>Lịch sử phản hồi</h3>
+                    <table class="text-left">
+                        <tr>
+                            <td>Đánh giá</td>
+                            <td class="font-weight-bold">Tệp đính kèm</td>
+                        </tr>
+                        <?php
+                            if (!empty($task_logs)) {
+                                foreach ($task_logs as $task_log) {
+                                    $task_log = unserialize($task_log);
+                                    $filename = getFilenameOf($task_log->getAttachment()) != "" ? getFilenameOf($task_log->getAttachment()) : "...";
+                                    ?>
+                                        <tr>
+                                            <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
+                                            <td>
+                                                <a href="#"><?= $filename ?></a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                }
+                            }
+                        ?>
+                    </table>
+                </div>
+
+>>>>>>> b6c81e04c210d1dbd0019a5e21fb920ca01ac9d3
                 </div>
 
             </div>   
