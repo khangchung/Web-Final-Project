@@ -37,7 +37,11 @@
         <!--Javascript-->
         <script src="../main.js"></script>
         <title>Giao diện</title>
+        
     </head>
+    <style>
+        
+    </style>
     <body>
         <?php
             require_once('../includes/sidebar_employee.php');
@@ -71,7 +75,7 @@
                                 }
                                 $filename = getFilenameOf($task->getAttachment()) != "" ? getFilenameOf($task->getAttachment()) : "...";
                             ?>
-                            <table class="text-left" >
+                            <table class="text-left">
                                 <tr>
                                     <td>Tên nhiệm vụ</td>
                                     <td><?= $task->getTitle() ?></td>
@@ -87,6 +91,7 @@
                                 <tr>
                                     <td>Mô tả công việc</td>
                                     <td>
+                                    Mô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việc
                                         <?= $task->getDescription() ?>
                                     </td>
                                 </tr>
@@ -109,7 +114,7 @@
                         } else
                         if ($task->getStatus() == 1) {
                         ?>
-                            <form action="" class=" mt-5 p-3" >
+                            <form action="" class=" mt-5 p-3" style="max-width: 550px;">
                                 <div class="form-group">
                                     <label for="comment" class="font-weight-bold">Tiêu đề</label>
                                     <input type="text" id="comment" class="form-control">
