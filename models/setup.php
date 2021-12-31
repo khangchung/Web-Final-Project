@@ -70,4 +70,18 @@
         $filename = $words[count($words) - 1];
         return $filename;
     }
+
+    function isInvalid() {
+        $flag = isset($_SESSION["flag"]) ? $_SESSION["flag"] : "";
+        if (!empty($flag)) {
+            if ($flag) {
+                return false;
+            } else {
+                return true;
+            }
+            session_unset($_SESSION["flag"]);
+        } else {
+            return true;
+        }
+    }
 ?>
