@@ -98,12 +98,12 @@
                                 <tr>
                                     <td>Tệp đính kèm</td>
                                     <td>
-                                        <a href="<?= $task->getAttachment() ?>"><?= getFilenameOf($task->getAttachment()) ?></a>
+                                        <a href="<?= $task->getAttachment() ?>"><?= $filename ?></a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Trạng thái</td>
-                                    <td class="<?= $text_color ?>"><?= $status ?></td>
+                                    <td class="text-<?= $text_color ?>"><?= $status ?></td>
                                 </tr>
                             </table>
                         <?php
