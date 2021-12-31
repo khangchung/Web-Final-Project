@@ -42,27 +42,23 @@
         ?>
        <div class="page-wrap">
             
-            <form action="" class=" mt-5 p-3" >
+            <form action="../../controllers/employee/dayoff_form.php" method="POST" class=" mt-5 p-3" >
                 <h2 class="text-center mb-5">Yêu cầu nghỉ phép</h2>
                 <div class="form-group">
-                    <label for="numDay">Số ngày nghỉ</label>
-                    <input type="number" id="numDay" class="form-control">
-                </div>
-                <div class="form-group">
                     <label for="startDay">Ngày bắt đầu</label>
-                    <input type="date" id="startDay" class="form-control">
+                    <input name="start_date" type="date" id="startDay" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="endDay">Ngày kết thúc</label>
-                    <input type="date" id="endDay" class="form-control">
+                    <input name="end_date" type="date" id="endDay" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="reason">Lý do</label>
-                    <textarea id="reason" class="form-control"></textarea>
+                    <textarea name="reason" id="reason" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="file">Tệp đính kèm (nếu có)</label>
-                    <input type="file" class="form-control-file" id="file">
+                    <input name="attachment" type="file" class="form-control-file" id="file">
                 </div>
                 <div class="form-group">
                     <label for="" class=""></label>
