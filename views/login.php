@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="style.css">
 
     <!--Javascript-->
-    <link rel="stylesheet" href="main.js">
+    <script src="main.js"></script>
     <title>Đăng nhập</title>
 </head>
 <body>
@@ -59,7 +59,7 @@
             </form>
         </div>  
     </div>  
-    <script>
+    <!-- <script>
         function checkLogin(){
             const username = document.querySelector('#login_form .username');
             const password = document.querySelector('#login_form .password');
@@ -100,7 +100,7 @@
             
 
 
-    </script>
+    </script> -->
 </body>
 
 </html>
