@@ -4,6 +4,7 @@
         require_once("../../models/setup.php");
         priorityChecker(2);
         $task = isset($_SESSION["task"]) ? unserialize($_SESSION["task"]) : "";
+        $task_logs = isset($_SESSION["task_logs"]) ? unserialize($_SESSION["task_logs"]) : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -130,7 +131,8 @@
                     </div>
                    
                        
-                    <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
+                <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
+                
                 <div class="ml-5">
                     <h3>Lịch sử phản hồi</h3>
                     <table class="text-left">
@@ -138,14 +140,25 @@
                             <td>Đánh giá</td>
                             <td class="font-weight-bold">Tệp đính kèm</td>
                         </tr>
-                        <tr>
-                            <td class="font-weight-normal">Comment1</td>
-                            <td>
-                                <a href="#">dinhkem1.rar</a>
-                            </td>
-                        </tr>
+                        <?php
+                            if (!empty($task_logs)) {
+                                foreach ($task_logs as $task_log) {
+                                    $task_log = unserialize($task_log);
+                                    $filename = getFilenameOf($task_log->getAttachment()) != "" ? getFilenameOf($task_log->getAttachment()) : "...";
+                                    ?>
+                                        <tr>
+                                            <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
+                                            <td>
+                                                <a href="#"><?= $filename ?></a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                }
+                            }
+                        ?>
                     </table>
-                    </div>
+                </div>
+
                 </div>
             </div>
 
