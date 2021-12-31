@@ -153,24 +153,6 @@
                     </div>
                    
                        
-<<<<<<< HEAD
-                    <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
-                    <div class="ml-5">
-                        <h3>Lịch sử phản hồi</h3>
-                        <table class="text-left">
-                            <tr>
-                                <td>Đánh giá</td>
-                                <td class="font-weight-bold">Tệp đính kèm</td>
-                            </tr>
-                            <tr>
-                                <td class="font-weight-normal">Comment1</td>
-                                <td>
-                                    <a href="#">dinhkem1.rar</a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-=======
                 <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
                 
                 <div class="ml-5">
@@ -199,7 +181,6 @@
                     </table>
                 </div>
 
->>>>>>> b6c81e04c210d1dbd0019a5e21fb920ca01ac9d3
                 </div>
 
             </div>   
