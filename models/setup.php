@@ -71,17 +71,17 @@
         return $filename;
     }
 
-    function isInvalid() {
+    function isValid() {
         $flag = isset($_SESSION["flag"]) ? $_SESSION["flag"] : "";
         if (!empty($flag)) {
             if ($flag) {
-                return false;
+                return 1;
             } else {
-                return true;
+                return -1;
             }
             session_unset($_SESSION["flag"]);
         } else {
-            return true;
+            return 0;
         }
     }
 ?>
