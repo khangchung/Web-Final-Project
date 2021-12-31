@@ -63,4 +63,11 @@
             $_SESSION["URL"] = $_SERVER["REQUEST_URI"];
         }
     }
+
+    function getFilenameOf($path) {
+        $filename = "";
+        $words = explode("/", $path);
+        $filename = $words[count($words) - 1];
+        return $filename;
+    }
 ?>
