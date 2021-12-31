@@ -101,34 +101,35 @@
                                     <td class="<?= $text_color ?>"><?= $status ?></td>
                                 </tr>
                             </table>
+                        <?php
+                        if ($task->getStatus() == 0) {
+                        ?>
+                            <button class="btn btn-primary d-block ml-auto mt-3 px-5">Start</button>
+                        <?php
+                        } else
+                        if ($task->getStatus() == 1) {
+                        ?>
+                            <form action="" class=" mt-5 p-3" >
+                                <div class="form-group">
+                                    <label for="comment" class="font-weight-bold">Tiêu đề</label>
+                                    <input type="text" id="comment" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="file" class="font-weight-bold">Tệp đính kèm</label>
+                                    <input type="file" class="form-control-file" id="file">
+                                </div>
+                                <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
+                            </form>
+                        <?php
+                        }
+                    ?>
+                <?php
+                
+                }
+            ?>
                     </div>
                    
-                        <?php
-                            if ($task->getStatus() == 0) {
-                            ?>
-                                <button class="btn btn-primary d-block ml-auto mt-3 px-5">Start</button>
-                            <?php
-                            } else
-                            if ($task->getStatus() == 1) {
-                            ?>
-                                <form action="" class=" mt-5 p-3" >
-                                    <div class="form-group">
-                                        <label for="comment" class="font-weight-bold">Tiêu đề</label>
-                                        <input type="text" id="comment" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="file" class="font-weight-bold">Tệp đính kèm</label>
-                                        <input type="file" class="form-control-file" id="file">
-                                    </div>
-                                    <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
-                                </form>
-                            <?php
-                            }
-                        ?>
-                    <?php
-                    
-                    }
-                ?>
+                       
                     <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
                 <div class="ml-5">
                     <h3>Lịch sử phản hồi</h3>
