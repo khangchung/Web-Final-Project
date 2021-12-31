@@ -46,72 +46,78 @@
             
             <!--Xem thông tin chi tiết task -->
             <div id="task_info">
-                <h2 style="margin-bottom: 30px">THÔNG TIN CHI TIẾT TASK</h2>
-                <?php
-                    if (!empty($task)) {
-                        $text_color = "primary";
-                        $status = "New";
-                        if ($task->getStatus() == 1) {
-                            $status = "In progress";
-                            $text_color = "secondary";
-                        } else
-                        if ($task->getStatus() == 3) {
-                            $status = "Waiting";
-                            $text_color = "warning";
-                        } else
-                        if ($task->getStatus() == 4) {
-                            $status = "Rejected";
-                            $text_color = "danger";
-                        } else
-                        if ($task->getStatus() == 5) {
-                            $status = "Completed";
-                            $text_color = "success";
-                        }    
-                    ?>
-                        <table class="text-left" >
-                            <tr>
-                                <td>Tên Task</td>
-                                <td><?= $task->getTitle() ?></td>
-                            </tr>
-                            <tr>
-                                <td>Ngày bắt đầu</td>
-                                <td><?= dateFormatter($task->getCreatedDate()) ?></td>
-                            </tr>
-                            <tr>
-                                <td>Ngày hoàn thành</td>
-                                <td><?= dateFormatter($task->getDeadline()) ?></td>
-                            </tr>
-                            <tr>
-                                <td>Mô tả công việc</td>
-                                <td>
-                                    <?= $task->getDescription() ?>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>File đính kèm</td>
-                                <td>
-                                    <a href="#">dinhkem.rar</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Trạng thái</td>
-                                <td class="<?= $text_color ?>"><?= $status ?></td>
-                            </tr>
-                        </table>
-                        <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
-                        <h3>Lịch sử nộp task</h3>
-                        <table class="text-left" >
-                            <tr>
-                                <td>Comment</td>
-                                <td>Tệp đính kèm</td>
-                            </tr>
-                            <tr>
-                                <td>Comment1</td>
-                                <td>
-                                    <a href="#">dinhkem1.rar</a>
-                                </td>
-                            </tr>
-                        </table>
+                <div  class="d-flex justify-content-between">
+                    <div class="mr-5">
+                        <h2 style="margin-bottom: 30px">THÔNG TIN CHI TIẾT NHIỆM VỤ</h2>
+                        <?php
+                            if (!empty($task)) {
+                                $text_color = "primary";
+                                $status = "New";
+                                if ($task->getStatus() == 1) {
+                                    $status = "In progress";
+                                    $text_color = "secondary";
+                                } else
+                                if ($task->getStatus() == 3) {
+                                    $status = "Waiting";
+                                    $text_color = "warning";
+                                } else
+                                if ($task->getStatus() == 4) {
+                                    $status = "Rejected";
+                                    $text_color = "danger";
+                                } else
+                                if ($task->getStatus() == 5) {
+                                    $status = "Completed";
+                                    $text_color = "success";
+                                }    
+                            ?>
+                                <table class="text-left" >
+                                    <tr>
+                                        <td>Tên nhiệm vụ</td>
+                                        <td><?= $task->getTitle() ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ngày bắt đầu</td>
+                                        <td><?= dateFormatter($task->getCreatedDate()) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ngày hoàn thành</td>
+                                        <td><?= dateFormatter($task->getDeadline()) ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mô tả công việc</td>
+                                        <td>
+                                            <?= $task->getDescription() ?>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tệp đính kèm</td>
+                                        <td>
+                                            <a href="#">dinhkem.rar</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trạng thái</td>
+                                        <td class="<?= $text_color ?>"><?= $status ?></td>
+                                    </tr>
+                                </table>
+                    </div>
+                            <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
+                            <div class="ml-5">
+                            <h3>Lịch sử phản hồi</h3>
+                                <table class="text-left">
+                                    <tr>
+                                        <td>Đánh giá</td>
+                                        <td class="font-weight-bold">Tệp đính kèm</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="font-weight-normal">Comment1</td>
+                                        <td>
+                                            <a href="#">dinhkem1.rar</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                </div>
                         <?php
                             if ($task->getStatus() == 0) {
                             ?>
@@ -122,11 +128,11 @@
                             ?>
                                 <form action="" class=" mt-5 p-3" >
                                     <div class="form-group">
-                                        <label for="comment">Comment</label>
-                                        <input type="date" id="comment" class="form-control">
+                                        <label for="comment" class="font-weight-bold">Tiêu đề</label>
+                                        <input type="text" id="comment" class="form-control">
                                     </div>
                                     <div class="form-group">
-                                        <label for="file">Tệp đính kèm</label>
+                                        <label for="file" class="font-weight-bold">Tệp đính kèm</label>
                                         <input type="file" class="form-control-file" id="file">
                                     </div>
                                     <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>

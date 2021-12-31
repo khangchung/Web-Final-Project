@@ -10,9 +10,9 @@
         $account->setPassword($new_password);
         $result = $accountOperations->update($account);
         $_SESSION["flag"] = $result;
-        header("location: ../../views/change_password.php");
+        header("location: ../views/change_password.php");
     } else {
         $_SESSION["flag"] = false;
-        header("location: ../../views/change_password.php");
+        header("location: ../views/change_password.php");
     }
 ?>

@@ -45,7 +45,8 @@ function changeAvatar(){
 $(document).ready(function(){
     //Nhân viên xem thông tin chi tiết task
     $('#task_list tbody tr').click(function() {
-        window.location = "details_task.php"; 
+        const employeeId = $(this).closest('tr').attr('id');
+        window.location = `../../controllers/employee/task_details.php?id=${employeeId}`; 
     });
     //Admin xem thông tin chi tiết của nhân viên
     $('#employee_manager tbody tr').click(function() {
