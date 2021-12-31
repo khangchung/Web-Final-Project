@@ -1,10 +1,11 @@
     <?php
         session_start();
+        require_once("../../models/task_log.php");
         require_once("../../models/task.php");
         require_once("../../models/setup.php");
         priorityChecker(2);
         $task = isset($_SESSION["task"]) ? unserialize($_SESSION["task"]) : "";
-        $task_logs = isset($_SESSION["task_logs"]) ? unserialize($_SESSION["task_logs"]) : "";
+        $task_logs = isset($_SESSION["task_logs"]) ? $_SESSION["task_logs"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
