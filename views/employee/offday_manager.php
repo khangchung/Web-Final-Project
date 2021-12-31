@@ -2,6 +2,8 @@
         session_start();
         require_once("../../models/setup.php");
         priorityChecker(2);
+        $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
+        $absences = isset($_SESSION["absences"]) ? $_SESSION["absences"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -62,13 +64,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>5102192</td>
-                                    <td>Nguyễn Minh Thuận</td>
-                                    <td>12</td>
-                                    <td>6</td> 
-                                    <td>6</td>
-                                </tr>
+                                <?php
+                                    if (!empty($info) && !empty($absences)) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $info->getId() ?></td>
+                                            <td><?= $info->getFullname() ?></td>
+                                            <td><?= $info->getDayOff() ?></td>
+                                            <td><?= countDayOff($info->getDayOff()) ?></td> 
+                                            <td><?= $info->getDayOff() - countDayOff($info->getDayOff()) ?></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                ?>
                             </tbody>
                         </table>
                    </div>

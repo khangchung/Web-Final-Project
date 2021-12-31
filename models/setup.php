@@ -86,7 +86,7 @@
         }
     }
 
-    function countDayoff($absences) {
+    function countDayOff($absences) {
         $sum = 0;
         foreach ($absences as $absence) {
             $absence = unserialize($absence);
