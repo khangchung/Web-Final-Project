@@ -8,11 +8,11 @@
         function create($task) {
             $conn = getConnection();
             $sql = "insert into task(title, description, status, rate, creator, receiver, created_date,
-            deadline) values(?, ?, ?, ?, ?, ?, ?, ?)";
+            deadline, attachment) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("ssiissss", $task->getTitle(), $task->getDescription(), $task->getStatus(),
+            $stm->bind_param("ssiisssss", $task->getTitle(), $task->getDescription(), $task->getStatus(),
             $task->getRate(), $task->getCreator(), $task->getReceiver(), $task->getCreatedDate(),
-            $task->getDeadline());
+            $task->getDeadline(), $task->getAttachment());
             if (!$stm->execute()) {
                 die("Task creating is failed: " . $stm->error);
             }
@@ -41,7 +41,8 @@
                         $row["creator"],
                         $row["receiver"],
                         $row["created_date"],
-                        $row["deadline"]
+                        $row["deadline"],
+                        $row["attachment"]
                     );
                     $manager->add(serialize($task));
                 }
@@ -65,7 +66,8 @@
                         $row["creator"],
                         $row["receiver"],
                         $row["created_date"],
-                        $row["deadline"]
+                        $row["deadline"],
+                        $row["attachment"]
                     );
                     $manager->add(serialize($task));
                 }
@@ -78,9 +80,9 @@
             $sql = "update task set title = ?, description = ?, status = ?, rate = ?, creator = ?, 
             receiver = ?, created_date = ?, deadline = ? where id = ?";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("ssiissssi", $task->getTitle(), $task->getDescription(), $task->getStatus(),
+            $stm->bind_param("ssiisssssi", $task->getTitle(), $task->getDescription(), $task->getStatus(),
             $task->getRate(), $task->getCreator(), $task->getReceiver(), $task->getCreatedDate(),
-            $task->getDeadline(), $task->getId());
+            $task->getDeadline(), $task->getAttachment(), $task->getId());
             if (!$stm->execute()) {
                 die("Task updating is failed: " . $stm->error);
             }

@@ -9,8 +9,9 @@
         private $receiver;
         private $created_date;
         private $deadline;
+        private $attachment;
 
-        function __construct($id, $title, $description, $status, $rate, $creator, $receiver, $created_date, $deadline) {
+        function __construct($id, $title, $description, $status, $rate, $creator, $receiver, $created_date, $deadline, $attachment) {
             $this->id = $id;
             $this->title = $title;
             $this->description = $description;
@@ -20,6 +21,7 @@
             $this->receiver = $receiver;
             $this->created_date = $created_date;
             $this->deadline = $deadline;
+            $this->attachment = $attachment;
         }
 
         function getId() {
@@ -57,6 +59,10 @@
         function getDeadline() {
             return $this->deadline;
         }
+        
+        function getAttachment() {
+            return $this->attachment;
+        }
 
         function setId($id) {
             $this->id = $id;
@@ -92,6 +98,10 @@
 
         function setDeadline($deadline) {
             $this->deadline = $deadline;
+        }
+
+        function setAttachment($attachment) {
+            $this->attachment = $attachment;
         }
     }
 ?>
