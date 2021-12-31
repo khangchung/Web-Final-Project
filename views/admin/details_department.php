@@ -9,7 +9,9 @@
             "Design" => "Phòng thiết kế",
             "IT" => "Phòng lập trình",
             "Administration" => "Phòng hành chính"
-        )
+        );
+        $department = isset($_SESSION["department"]) ? unserialize($_SESSION["department"]) : "";
+        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -52,40 +54,54 @@
             <div class="m-5" id="">
                 <h1 class="text-center mb-5" >Thông tin phòng ban</h1>
                 <?php
-                    $department = isset($_SESSION["department"]) ? unserialize($_SESSION["department"]) : "";
-                    if (!empty($department)) {
-                    ?>
-                        <form action="">
-                            <div class="form-group">
-                                <label for="department_id">Tên phòng ban</label> 
-                                <input type="text" class="form-control" id="department_name" value="<?= $dictionary[$department->getName()] ?>" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="department_id">Tên trưởng phòng</label> 
-                                <input type="text" class="form-control" id="department_name" value="" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="department_desc">Mô tả</label>
-                                <textarea type="text" class="form-control" id="department_desc" class="form-control" disabled><?= $department->getDescription() ?></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="room_number">Số phòng</label>
-                                <input type="number" class="form-control" id="room_number" value="<?= $department->getRoom() ?>" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="room_number">Bổ nhiệm trưởng phòng</label>
-                                <select name="" id="" class="form-control">
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for=""></label>
-                                <button class="btn btn-success" type="submit">Bổ nhiệm</button>
-                            </div>
-                        </form>
-                    <?php
+                    if (!empty($department) && !empty($employees)) {
+                        foreach ($employees as $employee) {
+                            $employee = unserialize($employee);
+                            if ($department->getName() == $employee->getDepartment()
+                                && $employee->getPosition() == 1) {
+                            ?>
+                                <form action="../../controllers/admin/appoint.php" method="POST">
+                                    <div class="d-none">
+                                        <input type="text" class="form-control" id="department_name" value="<?= $department->getName() ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="department_id">Tên phòng ban</label> 
+                                        <input type="text" class="form-control" id="department_name" value="<?= $dictionary[$department->getName()] ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="department_id">Trưởng phòng</label> 
+                                        <input type="text" class="form-control" id="department_name" value="<?= $employee->getFullname() ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="department_desc">Mô tả</label>
+                                        <textarea type="text" class="form-control" id="department_desc" class="form-control" disabled><?= $department->getDescription() ?></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="room_number">Số phòng</label>
+                                        <input type="number" class="form-control" id="room_number" value="<?= $department->getRoom() ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="room_number">Bổ nhiệm</label>
+                                        <select name="username" id="" class="form-control">
+                                        <?php
+                                            foreach ($employees as $employee) {
+                                                $employee = unserialize($employee);
+                                                ?>
+                                                    <option value="<?= $employee->getUsername() ?>"><?= $employee->getUsername() ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""></label>
+                                        <button class="btn btn-success" type="submit">Bổ nhiệm</button>
+                                    </div>
+                                </form>
+                            <?php
+                                break;
+                            }
+                        }
                     }
                 ?>
         </div> 
