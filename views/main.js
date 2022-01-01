@@ -42,40 +42,57 @@ function changeAvatar(){
 }
 
 // Kiểm tra đăng nhập
-function checkLogin(){
-    const username = document.querySelector('#login_form .username');
-    const password = document.querySelector('#login_form .password');
+    var uppercase = /[A-Z]/;
+    var special_character = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
-    const usernameValue = username.value.trim();
-    const passwordValue = password.value.trim();
-    
-    if(usernameValue === '') {
-        setErrorFor(username, 'Vui lòng nhập tên tài khoản');
-        return false;
-    } else {
-        setSuccessFor(username);
+    function checkLogin(){
+        var username = document.querySelector('#login_form .username');
+        var password = document.querySelector('#login_form .password');
+
+        var usernameValue = username.value.trim();
+        var passwordValue = password.value.trim();
+        
+        if(usernameValue === '') {
+            setErrorFor(username, 'Vui lòng nhập tên tài khoản');
+            return false;
+        } else {
+            setSuccessFor(username);
+        }
+
+        if(uppercase.test(usernameValue)) {
+            setErrorFor(username, 'Tên tài khoản không được chứa ký tự in hoa');
+            return false;
+        } else {
+            setSuccessFor(username);
+        }
+
+        if(special_character.test(usernameValue)) {
+            setErrorFor(username, 'Tên tài khoản không được chứa ký tự đặc biệt');
+            return false;
+        } else {
+            setSuccessFor(username);
+        }
+        
+        if(passwordValue === '') {
+            setErrorFor(password, 'Vui lòng nhập mật khẩu');
+            return false;
+        } else {
+            setSuccessFor(password);
+        }
+        return true;
     }
-    
-    if(passwordValue === '') {
-        setErrorFor(password, 'Vui lòng nhập mật khẩu');
-        return false;
-    } else {
-        setSuccessFor(password);
+
+    function setErrorFor(input, message) {
+        var formControl = input.parentElement;
+        var small = formControl.querySelector('#login_form small');
+        formControl.className = 'field error';
+        small.innerText = message;
     }
-    return true;
-}
 
-function setErrorFor(input, message) {
-    const formControl = input.parentElement;
-    const small = formControl.querySelector('#login_form small');
-    formControl.className = 'field error';
-    small.innerText = message;
-}
-
-function setSuccessFor(input) {
-    const formControl = input.parentElement;
-    formControl.className = 'field success';
-}
+    function setSuccessFor(input) {
+        var formControl = input.parentElement;
+        formControl.className = 'field success';
+    }
 
 
 

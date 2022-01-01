@@ -53,54 +53,14 @@
                     <i class="bi bi-exclamation-circle-fill"></i> 
                     <small>Error Message</small>
                 </div>
+                <small style="color: #e74c3c" class="d-none">Error Message</small>
                 <div class="field">
                     <input type="submit" value="Đăng nhập">
                 </div>
             </form>
         </div>  
     </div>  
-    <!-- <script>
-        function checkLogin(){
-            const username = document.querySelector('#login_form .username');
-            const password = document.querySelector('#login_form .password');
-
-            const usernameValue = username.value.trim();
-            const passwordValue = password.value.trim();
-            
-            if(usernameValue === '') {
-                setErrorFor(username, 'Vui lòng nhập tên tài khoản');
-                return false;
-            } else {
-                setSuccessFor(username);
-            }
-            
-            if(passwordValue === '') {
-                setErrorFor(password, 'Vui lòng nhập mật khẩu');
-                return false;
-            } else {
-                setSuccessFor(password);
-            }
-            return true;
-        }
-
-        function setErrorFor(input, message) {
-            const formControl = input.parentElement;
-            const small = formControl.querySelector('#login_form small');
-            formControl.className = 'field error';
-            small.innerText = message;
-        }
-
-        function setSuccessFor(input) {
-            const formControl = input.parentElement;
-            formControl.className = 'field success';
-        }
-            
-
-        
-            
-
-
-    </script> -->
+    
 </body>
 
 </html>
