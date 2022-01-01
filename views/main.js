@@ -81,6 +81,37 @@ function changeAvatar(){
         }
         return true;
     }
+    // Kiểm tra thêm nhân viên
+    function addEmployee(){
+        var fullname = document.querySelector('#addEmployeeForm #fullname');
+        var username = document.querySelector('#addEmployeeForm #username');
+
+        var fullnameValue = fullname.value;
+        var usernameValue = username.value;
+
+        if(fullnameValue === ''){
+            setErrorMessage('Vui lòng nhập họ và tên');
+            return false;
+        }
+        else if(!setCapitalize(fullnameValue)){
+            setErrorMessage('Ký tự đầu của tên phải viết hoa');
+            return false;
+        }
+        else if(usernameValue === ''){
+            setErrorMessage('Vui lòng nhập tên tài khoản');
+            return false;
+        }
+        else if(uppercase.test(usernameValue)) {
+            setErrorMessage('Tên tài khoản không được chứa ký tự in hoa');
+            return false;
+        }
+        else if(special_character.test(usernameValue)) {
+            setErrorMessage('Tên tài khoản không được chứa ký tự đặc biệt');
+            return false;
+        }
+        return true;
+    }
+// Hàm check lỗi
 
     function setErrorFor(input, message) {
         var formControl = input.parentElement;
@@ -93,6 +124,14 @@ function changeAvatar(){
         var formControl = input.parentElement;
         formControl.className = 'field success';
     }
+
+    function setErrorMessage(message) {
+        const errorMessage = document.querySelector('#errorMessage');
+        errorMessage.innerHTML = message;
+    }
+    function setCapitalize(str){
+        return /[A-Z]/.test(str.charAt(0));
+    } 
 
 
 

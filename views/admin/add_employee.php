@@ -44,15 +44,12 @@
             
             <div class="m-5" id="">
                 <h1 class=" mb-5" >Thêm nhân viên</h1>
-                <!-- <div class="alert alert-success " role="alert">
-                Thêm nhân viên thành công
-                </div> -->
-                <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" method="POST">
-                    <div class="form-group">
+                <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" method="POST" onsubmit="return addEmployee();">
+                    <div class="form-group field">
                         <label for="fullname">Họ & tên</label>
                         <input type="text" id="fullname" name="fullname" class="form-control">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group field">
                         <label for="username">Tên tài khoản</label>
                         <input type="text" id="username" name="username" class="form-control">
                     </div>
@@ -75,33 +72,17 @@
                     </div>
                     <div class="form-group">
                         <label for=""></label>
+                        <small id="errorMessage" class="text-danger"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
                         <button type="submit" class="btn btn-info p-3">Thêm nhân viên</button>
                     </div>
                 </form>
             
-        </div> 
+            </div> 
+        </div>
     </body>
-
-    <script>
-        const addEmployeeForm = $("#addEmployeeForm")
-        addEmployeeForm.submit(function (e) {
-            e.preventDefault();
-            $.ajax({
-                type: addEmployeeForm.attr('method'),
-                url: addEmployeeForm.attr('action'),
-                data: addEmployeeForm.serialize(),
-                success: function (data) {
-                    console.log('Submission was successful.');
-                    console.log(data);
-                },
-                error: function (data) {
-                    console.log('An error occurred.');
-                    console.log(data);
-                },
-            });
-        });
-
-    </script>
 
 
     </html>
