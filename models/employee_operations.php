@@ -78,7 +78,6 @@
             if (!$stm->execute()) {
                 die("Employee updating is failed: " . $stm->error);
             }
-            var_dump($stm->affected_rows);
             if ($stm->affected_rows == 1) {
                 return true;
             }

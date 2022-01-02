@@ -78,7 +78,7 @@
         function update($task) {
             $conn = getConnection();
             $sql = "update task set title = ?, description = ?, status = ?, rate = ?, creator = ?, 
-            receiver = ?, created_date = ?, deadline = ? where id = ?";
+            receiver = ?, created_date = ?, deadline = ?, attachment = ? where id = ?";
             $stm = $conn->prepare($sql);
             $stm->bind_param("ssiisssssi", $task->getTitle(), $task->getDescription(), $task->getStatus(),
             $task->getRate(), $task->getCreator(), $task->getReceiver(), $task->getCreatedDate(),

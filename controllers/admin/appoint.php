@@ -2,6 +2,7 @@
     session_start();
     require_once("../../models/employee_operations.php");
     require_once("../../models/account_operations.php");
+    require_once("../../models/task_operations.php");
     
     $username = isset($_POST["username"]) ? $_POST["username"] : "";
     $department = isset($_POST["department"]) ? $_POST["department"] : "";
@@ -10,6 +11,7 @@
     if (!empty($username) && !empty($employees) && !empty($department)) {
         $employeeOperations = new EmployeeOperations;
         $accountOperations = new AccountOperations;
+        $taskOperations = new TaskOperations;
         foreach ($employees as $employee) {
             $employee = unserialize($employee);
             if ($employee->getPosition() == 1 && $employee->getDepartment() == $department) {
@@ -27,6 +29,18 @@
                         $employee2->setDayOff(15);
                         if ($employeeOperations->update($employee) && $employeeOperations->update($employee2)
                             && $accountOperations->update($account) && $accountOperations->update($account2)) {
+                            $tasks = $taskOperations->read()->getList();
+                            foreach ($tasks as $task) {
+                                $task = unserialize($task);
+                                if ($task->getCreator() == $employee->getId()) {
+                                    $task->setReceiver($employee->getId());
+                                }
+                                $task->setCreator($employee2->getId());
+                                if (!$taskOperations->update($task)) {
+                                    $_SESSION["flag"] = false;
+                                    break;
+                                }
+                            }
                             $_SESSION["flag"] = true;
                         }
                         break;
@@ -38,5 +52,6 @@
             }
         }
     }
+
     header("location: ../../views/admin/details_department.php");
 ?>
