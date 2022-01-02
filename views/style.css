@@ -322,13 +322,12 @@ body {
 
 /* hiện ảnh đại diện */
 
-#avatar{
+.modal{
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
     display: none;
     animation: fadeIn linear 0.2s;
 }
@@ -336,7 +335,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: var(--black-300);
+    background-color: var(--black-100);
 }
 .modal_body{
     position: relative;
@@ -381,6 +380,20 @@ body {
 }
 .form-group > label{
     min-width: 200px;
+}
+
+/* Hiện thông báo bổ nhiệm */
+#appoint_monitor{
+    margin-top: 150px;
+    margin: auto;
+    width: 450px;
+    height: 180px;
+    background: #ff7675;
+    padding: 20px;
+    border-radius: 5px;
+}
+#appoint_monitor button{
+    min-width: 100px;
 }
 
 /* Quản lý Task */

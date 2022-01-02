@@ -41,6 +41,15 @@ function changeAvatar(){
     })
 }
 
+//Hiện thông báo xác nhận bổ nhiệm
+function appointMonitor(){
+    document.querySelector('#appoint_monitor_modal').style.display = 'block';
+    return false;
+} 
+function closeAppointMonitor(){
+    document.querySelector('#appoint_monitor_modal').style.display = 'none';
+} 
+
 // Kiểm tra đăng nhập
     var uppercase = /[A-Z]/;
     var special_character = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
@@ -107,6 +116,10 @@ function changeAvatar(){
         }
         else if(special_character.test(usernameValue)) {
             setErrorMessage('Tên tài khoản không được chứa ký tự đặc biệt');
+            return false;
+        }
+        else if(usernameValue.length < 6) {
+            setErrorMessage('Tên tài khoản phải có tối thiểu 6 ký tự');
             return false;
         }
         return true;
