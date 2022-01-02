@@ -47,9 +47,6 @@
         <title>Giao diện</title>
     </head>
     <body>
-        <script>
-            
-        </script>
         <?php
             require_once('../includes/sidebar_admin.php');
         ?>
@@ -108,8 +105,8 @@
                                             <p>Nếu xác nhận bổ nhiệm trưởng phòng mới thì trưởng phòng hiện tại sẽ bị bãi nhiệm.</p>
                                             <strong>Xác nhận bổ nhiệm?</strong> 
                                             <div class="m-2 d-flex justify-content-end">
-                                                <button class="btn btn-primary mr-2">Xác nhận</button>
-                                                <button type="submit" class="btn btn-outline-primary text-center" onclick="closeAppointMonitor();">Hủy</button>
+                                                <button class="btn btn-danger mr-2">Xác nhận</button>
+                                                <button type="submit" class="btn btn-outline-danger text-center" onclick="closeAppointMonitor();">Hủy</button>
                                             </div>
                                         </div>
                                     </div>
