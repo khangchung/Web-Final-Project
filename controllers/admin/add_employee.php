@@ -11,7 +11,8 @@
 
     if (!empty($username) && !empty($fullname) && !empty($position) && !empty($department)) {
         $accountOperations = new AccountOperations;
-        $account_result = $accountOperations->create(new Account($username, $username, $position));
+        $password = password_hash($username, PASSWORD_BCRYPT);
+        $account_result = $accountOperations->create(new Account($username, $password, $position));
         $id = getNextID($department);
         $avatar = createEmployeeFolder($department, $fullname);
         $day_off = $position == 1 ? 15 : 12;

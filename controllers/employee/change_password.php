@@ -16,12 +16,10 @@
             } else {
                 $_SESSION["flag"] = false;
             }
-            header("location: ../../views/employee/change_password.php");
         } else {
             $_SESSION["flag"] = false;
-            header("location: ../../views/employee/change_password.php");
         }    
-    } else {
-        header("location: ../../views/employee/change_password.php");
     }
+
+    header("location: ../../views/employee/change_password.php");
 ?>
