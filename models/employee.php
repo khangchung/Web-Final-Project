@@ -58,19 +58,19 @@
             $this->fullname = $fullname;
         }
 
-        function setPosition() {
+        function setPosition($position) {
             $this->position = $position;
         }
 
-        function setDepartment() {
+        function setDepartment($department) {
             $this->department = $department;
         }
 
-        function setAvatar() {
+        function setAvatar($avatar) {
             $this->avatar = $avatar;
         }
 
-        function setDayOff() {
+        function setDayOff($day_off) {
             $this->day_off = $day_off;
         }
     }

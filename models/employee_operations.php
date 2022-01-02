@@ -72,12 +72,13 @@
             $sql = "update employee set username = ?, fullname = ?, position = ?,
             department = ?, avatar = ?, day_off = ? where id = ?";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("ssisssii", $employee->getUsername(), $employee->getFullname(),
+            $stm->bind_param("ssissis", $employee->getUsername(), $employee->getFullname(),
             $employee->getPosition(), $employee->getDepartment(), $employee->getAvatar(),
             $employee->getDayOff(), $employee->getId());
             if (!$stm->execute()) {
                 die("Employee updating is failed: " . $stm->error);
             }
+            var_dump($stm->affected_rows);
             if ($stm->affected_rows == 1) {
                 return true;
             }

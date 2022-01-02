@@ -5,22 +5,24 @@
     $username = isset($_POST["username"]) ? $_POST["username"] : "";
     $department = isset($_POST["department"]) ? $_POST["department"] : "";
     $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
-
-    if (!empty($username) && !empty($employees)) {
+    
+    if (!empty($username) && !empty($employees) && !empty($department)) {
         $employeeOperations = new EmployeeOperations;
         foreach ($employees as $employee) {
             $employee = unserialize($employee);
-            if ($employee->getUsername() == $username && $employee->getDepartment() == $department
-                && $employee->Position() != 1) {
+            if ($employee->getPosition() == 1 && $employee->getDepartment() == $department) {
                 foreach ($employees as $employee2) {
                     $employee2 = unserialize($employee2);
-                    if ($employee2->getPosition() == 1 && $employee2->getDepartment() == $department) {
-                        $employee2->setPosition(0);
-                        if ($employeeOperations->update($employee2)) {
-                            $employee->setPosition(1);
-                            $_SESSION["flag"] = $employeeOperations->update($employee);
-                            break;
+                    if ($employee2->getUsername() == $username && $employee2->getDepartment() == $department
+                        && $employee2->getPosition() != 1) {
+                        $employee->setPosition(2);
+                        $employee2->setPosition(1);
+                        $employee->setDayOff(12);
+                        $employee2->setDayOff(15);
+                        if ($employeeOperations->update($employee) && $employeeOperations->update($employee2)) {
+                            $_SESSION["flag"] = true;
                         }
+                        break;
                     }
                 }
                 break;
@@ -29,6 +31,5 @@
             }
         }
     }
-
     header("location: ../../views/admin/details_department.php");
 ?>

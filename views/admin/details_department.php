@@ -62,7 +62,7 @@
                             ?>
                                 <form action="../../controllers/admin/appoint.php" method="POST">
                                     <div class="d-none">
-                                        <input type="text" class="form-control" id="department_name" value="<?= $department->getName() ?>" disabled>
+                                        <input name="department" type="text" class="form-control" value="<?= $department->getName() ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="department_id">Tên phòng ban</label> 
@@ -70,7 +70,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="department_id">Trưởng phòng</label> 
-                                        <input type="text" class="form-control" id="department_name" value="<?= $employee->getFullname() ?>" disabled>
+                                        <input type="text" class="form-control" id="employee_name" value="<?= $employee->getFullname() ?>" disabled>
                                     </div>
                                     <div class="form-group">
                                         <label for="department_desc">Mô tả</label>
@@ -82,13 +82,15 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="room_number">Bổ nhiệm</label>
-                                        <select name="username" id="" class="form-control">
+                                        <select name="username" class="form-control">
                                         <?php
                                             foreach ($employees as $employee) {
                                                 $employee = unserialize($employee);
-                                                ?>
-                                                    <option value="<?= $employee->getUsername() ?>"><?= $employee->getUsername() ?></option>
-                                                <?php
+                                                if ($employee->getDepartment() == $department->getName()) {
+                                                    ?>
+                                                        <option value="<?= $employee->getUsername() ?>"><?= $employee->getUsername() ?></option>
+                                                    <?php
+                                                }
                                             }
                                         ?>
                                         </select>
