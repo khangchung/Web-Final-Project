@@ -7,8 +7,7 @@
     $employeeManager = $employeeOperations->read();
     $employeeList = $employeeManager->getList();
 
-    $information = isset($_SESSION["information"]) ? $_SESSION["information"] : "";
-    if (empty($information)) {
+    if (isset($_SESSION["information"])) {
         foreach ($employeeList as $employee) {
             $employee = unserialize($employee);
             if ($employee->getUsername() == $_SESSION["username"]) {
