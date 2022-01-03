@@ -2,7 +2,7 @@
     session_start();
     require_once("../../models/employee_operations.php");
 
-    $id = isset($_SESSION["id"]) ? $_SESSION["id"] : "";
+    $id = isset($_GET["id"]) ? $_GET["id"] : "";
     if (!empty($id)) {
         $employeeOperations = new EmployeeOperations;
         $result = $employeeOperations->delete($id);

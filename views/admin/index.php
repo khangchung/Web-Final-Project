@@ -85,7 +85,9 @@
                                     <td ><?= $employee->getFullname() ?></td>
                                     <td><?= $dictionary[$employee->getDepartment()] ?></td>
                                     <td>
-                                        <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
+                                        <a href="../../controllers/admin/delete_employee.php?id=<?= $employee->getId() ?>">
+                                            <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
+                                        </a>
                                         <a href="edit_employee.php?id=<?= $employee->getId() ?>">
                                             <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
                                         </a>
