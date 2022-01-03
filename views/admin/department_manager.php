@@ -3,13 +3,6 @@
         require_once("../../models/department.php");
         require_once("../../models/setup.php");
         priorityChecker(0);
-        $dictionary = array(
-            "Business" => "Phòng kinh doanh",
-            "Analysis" => "Phòng phân tích",
-            "Design" => "Phòng thiết kế",
-            "IT" => "Phòng lập trình",
-            "Administration" => "Phòng hành chính"
-        );
         $deparments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>
@@ -76,31 +69,41 @@
                             if (!empty($deparments)) {
                                 for ($i=0; $i < count($deparments); $i++) {
                                     $deparment = unserialize($deparments[$i]);
-                                    foreach ($employees as $employee) {
-                                        $employee = unserialize($employee);
-                                        if ($employee->getDepartment() == $deparment->getName()
-                                            && $employee->getPosition() == 1) {
+                                    if (count($employees) > 0) {
+                                        foreach ($employees as $employee) {
+                                            $employee = unserialize($employee);
+                                            if ($employee->getDepartment() == $deparment->getName()
+                                                && $employee->getPosition() == 1) {
+                                            ?>
+                                                <tr id="<?= $deparment->getId() ?>">
+                                                    <td><?= $i+1 ?></td>
+                                                    <td><?= $deparment->getName() ?></td>
+                                                    <td><?= $employee->getFullname() ?></td>
+                                                    <td><?= $deparment->getDescription() ?></td>
+                                                    <td><?= $deparment->getRoom() ?></td>
+                                                    <td>
+                                                        <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
+                                                    </td>
+                                                    </td>
+                                                </tr>
+                                            <?php
+                                                break;
+                                            }
+                                        }
+                                    } else {
                                         ?>
-                                            <tr id="<?= $deparment->getName() ?>">
+                                            <tr id="<?= $deparment->getId() ?>">
                                                 <td><?= $i+1 ?></td>
-                                                <td><?= $dictionary[$deparment->getName()] ?></td>
-                                                <td><?= $employee->getFullname() ?></td>
+                                                <td><?= $deparment->getName() ?></td>
+                                                <td></td>
                                                 <td><?= $deparment->getDescription() ?></td>
                                                 <td><?= $deparment->getRoom() ?></td>
                                                 <td>
-                                                    <!-- <a href="../../controllers/admin/delete_department.php?name=<?= $deparment->getName() ?>">
-                                                        <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
-                                                    </a>
-                                                    <a href="edit_department.php?name=<?= $deparment->getName() ?>">
-                                                        <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
-                                                    </a> -->
                                                     <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
                                                 </td>
                                                 </td>
                                             </tr>
                                         <?php
-                                            break;
-                                        }
                                     }
                                 }
                             }

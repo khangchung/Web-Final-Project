@@ -1,7 +1,9 @@
     <?php
         session_start();
+        require_once("../../models/department.php");
         require_once("../../models/setup.php");
         priorityChecker(0);
+        $departments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -44,42 +46,50 @@
             
             <div class="m-5" id="">
                 <h1 class=" mb-5" >Thêm nhân viên</h1>
-                <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" method="POST" onsubmit="return addEmployee();">
-                    <div class="form-group field">
-                        <label for="fullname">Họ & tên</label>
-                        <input type="text" id="fullname" name="fullname" class="form-control">
-                    </div>
-                    <div class="form-group field">
-                        <label for="username">Tên tài khoản</label>
-                        <input type="text" id="username" name="username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="department">Tên phòng ban</label>
-                        <select name="department" class="selectpicker form-control" name="department_name">
-                            <option value="Business">Phòng kinh doanh</option>
-                            <option value="Analysis">Phòng phân tích</option>
-                            <option value="Design">Phòng thiết kế</option>
-                            <option value="IT">Phòng lập trình</option>
-                            <option value="Administration">Phòng hành chính</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="type_employee">Vị trí</label> 
-                        <select class="selectpicker form-control" name="position">
-                            <option value="2">Nhân viên</option>
-                            <option value="1">Trưởng phòng</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for=""></label>
-                        <small id="errorMessage" class="text-danger"></small>
-                    </div>
-                    <div class="form-group">
-                        <label for=""></label>
-                        <button type="submit" class="btn btn-info p-3">Thêm nhân viên</button>
-                    </div>
-                </form>
-            
+                <?php
+                    if (!empty($departments)) {
+                    ?>
+                    <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" method="POST" onsubmit="return addEmployee();">
+                        <div class="form-group field">
+                            <label for="fullname">Họ & tên</label>
+                            <input type="text" id="fullname" name="fullname" class="form-control">
+                        </div>
+                        <div class="form-group field">
+                            <label for="username">Tên tài khoản</label>
+                            <input type="text" id="username" name="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="department">Tên phòng ban</label>
+                            <select name="department" class="selectpicker form-control" name="department_name">
+                            <?php
+                                foreach ($departments as $department) {
+                                    $department = unserialize($department);
+                                    ?>
+                                        <option value="<?= $department->getId() ?>"><?= $department->getName() ?></option>
+                                    <?php
+                                }
+                            ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="type_employee">Vị trí</label> 
+                            <select class="selectpicker form-control" name="position">
+                                <option value="2">Nhân viên</option>
+                                <option value="1">Trưởng phòng</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for=""></label>
+                            <small id="errorMessage" class="text-danger"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for=""></label>
+                            <button type="submit" class="btn btn-info p-3">Thêm nhân viên</button>
+                        </div>
+                    </form>
+                    <?php      
+                    }
+                ?>
             </div> 
         </div>
     </body>

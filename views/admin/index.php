@@ -2,14 +2,10 @@
         session_start();
         require_once("../../models/setup.php");
         require_once("../../models/employee.php");
+        require_once("../../models/department.php");
         priorityChecker(0);
-        $dictionary = array(
-            "Business" => "Phòng kinh doanh",
-            "Analysis" => "Phòng phân tích",
-            "Design" => "Phòng thiết kế",
-            "IT" => "Phòng lập trình",
-            "Administration" => "Phòng hành chính"
-        );
+        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
+        $departments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -68,8 +64,7 @@
                     </thead>
                     <tbody>
                         <?php
-                        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
-                        if (!empty($employees)) {
+                        if (!empty($employees) && !empty($departments)) {
                             for ($i=0; $i < count($employees); $i++) {
                                 $employee = unserialize($employees[$i]);
                                 $test_color = "";
@@ -78,17 +73,22 @@
                                     $test_color = "text-danger";
                                     $font_weight = "font-weight-bold";
                                 }
-                            ?>
-                                <tr id=<?= $employee->getId() ?> class="<?= $test_color?> <?= $font_weight ?>">
-                                    <td><?= $i+1 ?></td>                                   
-                                    <td><?= $employee->getId() ?></td>
-                                    <td ><?= $employee->getFullname() ?></td>
-                                    <td><?= $dictionary[$employee->getDepartment()] ?></td>
-                                    <td>
-                                        <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
-                                    </td>
-                                </tr>
-                            <?php
+                                foreach ($departments as $department) {
+                                    $department = unserialize($department);
+                                    if ($department->getId() == $employee->getDepartment()) {
+                                    ?>
+                                        <tr id=<?= $employee->getId() ?> class="<?= $test_color?> <?= $font_weight ?>">
+                                            <td><?= $i+1 ?></td>                                   
+                                            <td><?= $employee->getId() ?></td>
+                                            <td ><?= $employee->getFullname() ?></td>
+                                            <td><?= $department->getName() ?></td>
+                                            <td>
+                                                <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                    }
+                                }
                             }
                         }
                         ?>

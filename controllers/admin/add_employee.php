@@ -13,8 +13,8 @@
         $accountOperations = new AccountOperations;
         $password = password_hash($username, PASSWORD_BCRYPT);
         $account_result = $accountOperations->create(new Account($username, $password, $position));
-        $id = getNextID($department);
-        $avatar = createEmployeeFolder($department, $fullname);
+        $id = getNextEmployeeID($department);
+        $avatar = createEmployeeFolder($department, $username);
         $day_off = $position == 1 ? 15 : 12;
         if ($account_result && $avatar != "") {
             $employee = new Employee($id, $username, $fullname, $position, $department, $avatar, 

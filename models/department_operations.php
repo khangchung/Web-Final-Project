@@ -7,9 +7,10 @@
     class DepartmentOperations implements Operations {
         function create($department) {
             $conn = getConnection();
-            $sql = "insert into department values(?, ?, ?)";
+            $sql = "insert into department values(?, ?, ?, ?)";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("ssi", $department->getName(), $department->getDescription(), $department->getRoom());
+            $stm->bind_param("sssi", $department->getId(), $department->getName(),
+            $department->getDescription(), $department->getRoom());
             if (!$stm->execute()) {
                 die("Department creating is failed: " . $stm->error);
             }
@@ -19,17 +20,18 @@
             return false;
         }
 
-        function read_one($name) {
+        function read_one($id) {
             $manager = new Manager();
             $conn = getConnection();
-            $sql = "select * from department where name = ?";
+            $sql = "select * from department where id = ?";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("s", $name);
+            $stm->bind_param("s", $id);
             $stm->execute();
             $result = $stm->get_result();
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $department = new Department(
+                        $row["id"],
                         $row["name"],
                         $row["description"],
                         $row["room"]
@@ -48,6 +50,7 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $department = new Department(
+                        $row["id"],
                         $row["name"],
                         $row["description"],
                         $row["room"]
@@ -60,9 +63,10 @@
     
         function update($department) {
             $conn = getConnection();
-            $sql = "update department set description = ?, room = ? where name = ?";
+            $sql = "update department set name = ?, description = ?, room = ? where id = ?";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("sis", $department->getDescription(), $department->getRoom(), $department->getName());
+            $stm->bind_param("ssis", $department->getName(), $department->getDescription(),
+            $department->getRoom(), $department->getId());
             if (!$stm->execute()) {
                 die("Department updating is failed: " . $stm->error);
             }
@@ -72,11 +76,11 @@
             return false;
         }
     
-        function delete($name) {
+        function delete($id) {
             $conn = getConnection();
-            $sql = "delete from department where name = ?";
+            $sql = "delete from department where id = ?";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("s", $name);
+            $stm->bind_param("s", $id);
             if (!$stm->execute()) {
                 die("Department deleting is failed: " . $stm->error);
             }

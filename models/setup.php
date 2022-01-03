@@ -2,10 +2,11 @@
     require_once("employee_operations.php");
     require_once("absence.php");
 
-    function getNextID($department_name) {
+    function getNextEmployeeID($department_id) {
+        $id = "";
         $EO = new EmployeeOperations;
         $manager = $EO->read();
-        $prefix = strtoupper(substr($department_name, 0, 2));
+        $prefix = $department_id;
         $number = count($manager->getList()) + 1;
         if ($number > 0 && $number <= 9) {
             $id = $prefix . "00" . $number;
@@ -15,6 +16,27 @@
         } else
         if ($number > 99 && $number <= 999) {
             $id = $prefix . $number;
+        }
+        return $id;
+    }
+
+    function getNextDepartmentID() {
+        $id = "";
+        $alphabet = range('A', 'Z');
+        $DO = new DepartmentOperations;
+        $manager = $DO->read();
+        $departmentList = $manager->getList();
+        $number = count($departmentList) + 1;
+        if ($number > 1) {
+            $department = unserialize($departmentList[count($departmentList) - 1]);
+            for ($i=0; $i < count($alphabet); $i++) { 
+                if ($alphabet[$i] == $department->getId()) {
+                    $id = $alphabet[$i + 1];
+                    break;
+                }
+            }
+        } else {
+            $id = $alphabet[0];
         }
         return $id;
     }
@@ -39,15 +61,12 @@
         return date("d/m/Y", strtotime($dateString));
     }
 
-    function createEmployeeFolder($department, $fullname) {
-        $department = nameFormatter($department);
-        $fullname = nameFormatter($fullname);
-        $path = "../../documents/" . $department . "/" . $fullname;
+    function createEmployeeFolder($department, $username) {
+        $path = "../../documents/" . $department . "/" . $username;
         $avatarDefaultPath = "../../views/images/avatar.jpg";
-        if (!file_exists($path)) {
-            if (mkdir($path)) {
-                $path .= "/avatar.jpg";
-                if (copy($avatarDefaultPath, $path)) {
+        if (!is_dir($path)) {
+            if (mkdir($path, 777, true)) {
+                if (copy($avatarDefaultPath, $path . "/avatar.jpg")) {
                     return $path;
                 }
             }
