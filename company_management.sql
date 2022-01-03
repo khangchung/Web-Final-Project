@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2022 at 02:46 PM
+-- Generation Time: Jan 03, 2022 at 02:53 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.1.1
 
@@ -56,8 +56,8 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`username`, `password`, `priority`) VALUES
 ('admin', '$2y$10$mT5iA2weaMw7SToFSacsAulnha4Vu43dQ/RPAWtHjfQhKYNccwFH2', 0),
-('tranvana', '$2y$10$Sp/ugb6f5H4q8Pn4eUsBxOvmEsKw39tddraB5AFjC97ycH2uYWH.S', 1),
-('tranvanb', '$2y$10$py4CH9RVhjB6rlKwFTlQYe7BJ6zmEoFFPx5vmyxOmpkcst1y8ST4y', 2);
+('tranvana', '$2y$10$I/3CBb.WZcEYOv4d0o4kwOzxnS4XdIjZjN/oDDP4v4Wzyo20s55s.', 1),
+('tranvanb', '$2y$10$QKAPKy0Zboghk/csGQh6vezf9kYH0MlsoX/nr60M7ivmVsmgJa7Au', 2);
 
 -- --------------------------------------------------------
 

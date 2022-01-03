@@ -9,8 +9,7 @@
             $conn = getConnection();
             $sql = "insert into account values(?, ?, ?)";
             $stm = $conn->prepare($sql);
-            $password = password_hash($account->getPassword(), PASSWORD_BCRYPT);
-            $stm->bind_param("ssi", $account->getUsername(), $password, $account->getPriority());
+            $stm->bind_param("ssi", $account->getUsername(), $account->getPassword(), $account->getPriority());
             if (!$stm->execute()) {
                 die("Account creating is failed: " . $stm->error);
             }
