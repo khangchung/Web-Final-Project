@@ -86,9 +86,6 @@
                                     <td><?= $dictionary[$employee->getDepartment()] ?></td>
                                     <td>
                                         <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
-                                        <!-- <a href="edit_employee.php?id=<?= $employee->getId() ?>">
-                                            <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
-                                        </a> -->
                                     </td>
                                 </tr>
                             <?php

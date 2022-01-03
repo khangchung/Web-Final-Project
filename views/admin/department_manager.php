@@ -88,10 +88,13 @@
                                                 <td><?= $deparment->getDescription() ?></td>
                                                 <td><?= $deparment->getRoom() ?></td>
                                                 <td>
-                                                    <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
+                                                    <!-- <a href="../../controllers/admin/delete_department.php?name=<?= $deparment->getName() ?>">
+                                                        <i class="bi bi-trash mr-2 text-danger" style="font-size: 32px"></i>
+                                                    </a>
                                                     <a href="edit_department.php?name=<?= $deparment->getName() ?>">
                                                         <i class="bi bi-pencil-square mr-2 text-warning" style="font-size: 32px"></i>
-                                                    </a>
+                                                    </a> -->
+                                                    <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
                                                 </td>
                                                 </td>
                                             </tr>
