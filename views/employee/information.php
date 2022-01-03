@@ -1,16 +1,11 @@
     <?php
         session_start();
+        require_once("../../models/department.php");
         require_once("../../models/employee.php");
         require_once("../../models/setup.php");
         priorityChecker(2);
-        $dictionary = array(
-            "Business" => "Phòng kinh doanh",
-            "Analysis" => "Phòng phân tích",
-            "Design" => "Phòng thiết kế",
-            "IT" => "Phòng lập trình",
-            "Administration" => "Phòng hành chính"
-        );
         $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
+        $departments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -66,25 +61,31 @@
                 <div class="info_wrap_body">
                     <h1 style="margin:10px 0 30px">THÔNG TIN CÁ NHÂN</h1>
                     <?php
-                        if (!empty($info)) {
-                        ?>
-                            <div class="info_wrap_body-item">
-                                <label for="">Họ và tên</label> <br>
-                                <input type="text" name="" id="" value="<?= $info->getFullname() ?>" disabled>
-                            </div>
-                            <div class="info_wrap_body-item">
-                                <label for="">Mã nhân viên</label> <br>
-                                <input type="text" name="" id="" value="<?= $info->getId() ?>" disabled>
-                            </div>
-                            <div class="info_wrap_body-item">
-                                <label for="">Vị trí</label> <br>
-                                <input type="text" name="" id="" value="Nhân viên" disabled> 
-                            </div>
-                            <div class="info_wrap_body-item">
-                                <label for="">Tên phòng ban</label> <br>
-                                <input type="text" name="" id="" value="<?= $dictionary[$info->getDepartment()] ?>" disabled>
-                            </div>
-                        <?php
+                        if (!empty($info) && !empty($departments)) {
+                            foreach ($departments as $department) {
+                                $department = unserialize($department);
+                                if ($info->getDepartment() == $department->getId()) {
+                                    ?>
+                                        <div class="info_wrap_body-item">
+                                            <label for="">Họ và tên</label> <br>
+                                            <input type="text" name="" id="" value="<?= $info->getFullname() ?>" disabled>
+                                        </div>
+                                        <div class="info_wrap_body-item">
+                                            <label for="">Mã nhân viên</label> <br>
+                                            <input type="text" name="" id="" value="<?= $info->getId() ?>" disabled>
+                                        </div>
+                                        <div class="info_wrap_body-item">
+                                            <label for="">Vị trí</label> <br>
+                                            <input type="text" name="" id="" value="Nhân viên" disabled> 
+                                        </div>
+                                        <div class="info_wrap_body-item">
+                                            <label for="">Tên phòng ban</label> <br>
+                                            <input type="text" name="" id="" value="<?= $department->getName() ?>" disabled>
+                                        </div>
+                                    <?php
+                                    break;
+                                }
+                            }
                         }
                     ?>
                 </div>

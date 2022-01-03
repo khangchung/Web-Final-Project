@@ -1,6 +1,7 @@
 <?php
     session_start();
     require_once("../../models/absence_operations.php");
+    require_once("../../models/employee.php");
     require_once("../../models/upload.php");
 
     $created_date = date("Y-m-d");
@@ -8,14 +9,15 @@
     $end_date = isset($_POST["end_date"]) ? date("Y-m-d", strtotime($_POST["end_date"])) : "";
     $reason = isset($_POST["reason"]) ? $_POST["reason"] : "";
     $attachment = isset($_FILES["attachment"]) ? $_FILES["attachment"] : "";
+    $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
     
-    if (!empty($numOfDay) && !empty($start_date) && !empty($end_date) && !empty($reason) && !empty($attachment)) {
-        $absence = new Absence($_SESSION["information"]->getId(), $created_date, $start_date, $end_date,
+    if (!empty($start_date) && !empty($end_date) && !empty($reason) && !empty($attachment) && !empty($info)) {
+        $absence = new Absence(null, $info->getId(), $created_date, $start_date, $end_date,
             $reason, 0, upload(
-                $attachment["tmp_name"],
-                $attachment["name"],
-                $_SESSION["information"]->getDeparment(),
-                $_SESSION["information"]->getFullname(),
+                $attachment,
+                $created_date,
+                $info->getDepartment(),
+                $info->getUsername(),
                 "absense"
             ));
         $absenceOperations = new AbsenceOperations;

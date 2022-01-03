@@ -7,7 +7,7 @@
     class AbsenceOperations implements Operations {
         function create($absence) {
             $conn = getConnection();
-            $sql = "insert into absence(employee_id, created_date, start_date, end_date,
+            $sql = "insert into absence(employee, created_date, start_date, end_date,
             reason, status, attachment) values(?, ?, ?, ?, ?, ?, ?)";
             $stm = $conn->prepare($sql);
             $stm->bind_param("sssssis", $absence->getEmployeeId(), $absence->getCreatedDate(),

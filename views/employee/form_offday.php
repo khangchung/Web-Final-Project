@@ -42,7 +42,7 @@
         ?>
        <div class="page-wrap">
             
-            <form action="../../controllers/employee/dayoff_form.php" method="POST" class=" mt-5 p-3" >
+            <form action="../../controllers/employee/dayoff_form.php" method="POST" class=" mt-5 p-3" enctype="multipart/form-data">
                 <h2 class="text-center mb-5">Yêu cầu nghỉ phép</h2>
                 <div class="form-group">
                     <label for="startDay">Ngày bắt đầu</label>
