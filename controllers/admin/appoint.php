@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     session_start();
     require_once("../../models/employee_operations.php");
     require_once("../../models/account_operations.php");
@@ -30,12 +31,16 @@
                         if ($employeeOperations->update($employee) && $employeeOperations->update($employee2)
                             && $accountOperations->update($account) && $accountOperations->update($account2)) {
                             $tasks = $taskOperations->read()->getList();
+                            $old_monitor_id = $employee->getId();
                             foreach ($tasks as $task) {
                                 $task = unserialize($task);
-                                if ($task->getCreator() == $employee->getId()) {
-                                    $task->setReceiver($employee->getId());
+                                if ($task->getCreator() == $old_monitor_id) {
+                                    $task->setCreator($employee2->getId());
                                 }
-                                $task->setCreator($employee2->getId());
+                                if ($task->getReceiver() == $employee2->getId()) {
+                                    $task->setCreator($employee2->getId());
+                                    $task->setReceiver($old_monitor_id);
+                                }
                                 if (!$taskOperations->update($task)) {
                                     $_SESSION["flag"] = false;
                                     break;
@@ -53,5 +58,10 @@
         }
     }
 
+    $employeeOperations = new EmployeeOperations;
+    $employeeManager = $employeeOperations->read();
+    $_SESSION["employees"] = $employeeManager->getList();
+
     header("location: ../../views/admin/details_department.php");
+    ob_end_flush();
 ?>
