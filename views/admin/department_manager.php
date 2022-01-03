@@ -69,27 +69,29 @@
                             if (!empty($deparments)) {
                                 for ($i=0; $i < count($deparments); $i++) {
                                     $deparment = unserialize($deparments[$i]);
-                                    if (count($employees) > 0) {
+                                    if (!empty($employees)) {
+                                        $fullname = "";
                                         foreach ($employees as $employee) {
                                             $employee = unserialize($employee);
                                             if ($employee->getDepartment() == $deparment->getName()
                                                 && $employee->getPosition() == 1) {
-                                            ?>
-                                                <tr id="<?= $deparment->getId() ?>">
-                                                    <td><?= $i+1 ?></td>
-                                                    <td><?= $deparment->getName() ?></td>
-                                                    <td><?= $employee->getFullname() ?></td>
-                                                    <td><?= $deparment->getDescription() ?></td>
-                                                    <td><?= $deparment->getRoom() ?></td>
-                                                    <td>
-                                                        <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
-                                                    </td>
-                                                    </td>
-                                                </tr>
-                                            <?php
+                                                $fullname = $employee->getFullname();
                                                 break;
                                             }
                                         }
+                                        ?>
+                                            <tr id="<?= $deparment->getId() ?>">
+                                                <td><?= $i+1 ?></td>
+                                                <td><?= $deparment->getName() ?></td>
+                                                <td><?= $fullname ?></td>
+                                                <td><?= $deparment->getDescription() ?></td>
+                                                <td><?= $deparment->getRoom() ?></td>
+                                                <td>
+                                                    <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
+                                                </td>
+                                                </td>
+                                            </tr>
+                                        <?php
                                     } else {
                                         ?>
                                             <tr id="<?= $deparment->getId() ?>">

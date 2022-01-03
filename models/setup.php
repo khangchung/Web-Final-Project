@@ -67,7 +67,7 @@
         if (!is_dir($path)) {
             if (mkdir($path, 777, true)) {
                 if (copy($avatarDefaultPath, $path . "/avatar.jpg")) {
-                    return $path;
+                    return $path . "/avatar.jpg";
                 }
             }
         }

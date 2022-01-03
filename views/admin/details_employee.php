@@ -1,16 +1,11 @@
     <?php
         session_start();
+        require_once("../../models/department.php");
         require_once("../../models/employee.php");
         require_once("../../models/setup.php");
         priorityChecker(0);
-        $dictionary = array(
-            "Business" => "Phòng kinh doanh",
-            "Analysis" => "Phòng phân tích",
-            "Design" => "Phòng thiết kế",
-            "IT" => "Phòng lập trình",
-            "Administration" => "Phòng hành chính"
-        );
         $employee = isset($_SESSION["employee"]) ? unserialize($_SESSION["employee"]) : "";
+        $departments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -58,28 +53,34 @@
                         if ($employee->getPosition() == 1) {
                             $position = "Trưởng phòng";
                         }
-                        ?>
-                        <div class="form-group">
-                            <label for="fullname">Họ và tên</label> 
-                            <input type="text" class="form-control" id="fullname" value="<?= $employee->getFullname() ?>" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Tên tài khoản</label> 
-                            <input type="text" class="form-control" id="username" value="<?= $employee->getUsername() ?>" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="department">Phòng ban</label> 
-                            <input type="text" class="form-control" id="department" value="<?= $dictionary[$employee->getDepartment()] ?>" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="position">Vị trí</label> 
-                            <input type="text" class="form-control" id="position" value="<?= $position ?>" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for=""></label> 
-                            <a href="../../controllers/admin/reset_password.php?username=<?= $employee->getUsername() ?>" class="btn btn-info p-3">Reset mật khẩu</a>
-                        </div>
-                        <?php
+                        foreach ($departments as $department) {
+                            $department = unserialize($department);
+                            if ($department->getId() == $employee->getDepartment()) {
+                                ?>
+                                    <div class="form-group">
+                                        <label for="fullname">Họ và tên</label> 
+                                        <input type="text" class="form-control" id="fullname" value="<?= $employee->getFullname() ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="username">Tên tài khoản</label> 
+                                        <input type="text" class="form-control" id="username" value="<?= $employee->getUsername() ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="department">Phòng ban</label> 
+                                        <input type="text" class="form-control" id="department" value="<?= $department->getName() ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="position">Vị trí</label> 
+                                        <input type="text" class="form-control" id="position" value="<?= $position ?>" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for=""></label> 
+                                        <a href="../../controllers/admin/reset_password.php?username=<?= $employee->getUsername() ?>" class="btn btn-info p-3">Reset mật khẩu</a>
+                                    </div>
+                                <?php
+                                break;
+                            }
+                        }
                     }
                 ?>
             </div>
