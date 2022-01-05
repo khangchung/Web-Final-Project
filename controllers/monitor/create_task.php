@@ -1,7 +1,8 @@
 <?php
     session_start();
-    require_once("../../models/task_operations");
+    require_once("../../models/task_operations.php");
     require_once("../../models/employee.php");
+    require_once("../../models/upload.php");
 
     $created_date = date("Y-m-d");
     $creator = isset($_SESSION["information"]) ? unserialize($_SESSION["information"])->getId() : "";
@@ -12,13 +13,24 @@
     $attachment = isset($_FILES["attachment"]) ? $_FILES["attachment"] : "";
 
     if (!empty($creator) && !empty($title) && !empty($receiver) && !empty($deadline) && !empty($desc) && !empty($attachment)) {
-        
-        $task = new Task(null, $title, $desc, 0, 0, $creator, $receiver, $created_date, $deadline,)
+        $task = new Task(null, $title, $desc, 0, 0, $creator, $receiver, $created_date, $deadline, "");
         $taskOperations = new TaskOperations;
-        
-        header("location: ../../views/monitor/create_task.php");
+        if ($taskOperations->create($task)) {
+            $taskManager = $taskOperations->read();
+            $task = unserialize($taskManager->getList()[count($taskManager->getList())-1]);
+            $path = uploadTask($attachment, $created_date, $task->getId(), unserialize($_SESSION["information"])->getDepartment(), $receiver);
+            if ($path != "") {
+                $task->setAttachment($path);
+                if (!$taskOperations->update($task)) {
+                    $_SESSION["flag"] = false;
+                }
+            } else {
+                $_SESSION["flag"] = false;
+            }
+        }
     } else {
         $_SESSION["flag"] = false;
-        header("location: ../../views/monitor/create_task.php");
     }
+
+    header("location: ../../views/monitor/create_task.php");
 ?>

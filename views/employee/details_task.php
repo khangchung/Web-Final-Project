@@ -140,7 +140,7 @@
                     <h2 class="mb-4">Lịch sử phản hồi</h2>
                     <table class="text-left feedback_history" style="max-width: 400px">
                         <tr>
-                            <td>Đánh giá</td>
+                            <td>Thông điệp</td>
                             <td>Tệp đính kèm</td>
                         </tr>
                         <?php

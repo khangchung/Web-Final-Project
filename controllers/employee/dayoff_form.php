@@ -16,7 +16,7 @@
             $attachment,
             $created_date,
             $info->getDepartment(),
-            $info->getUsername()
+            $info->getId()
         );
         $absence = new Absence(null, $info->getId(), $created_date, $start_date, $end_date,
             $reason, 0, $path);
