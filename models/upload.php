@@ -2,8 +2,8 @@
     function uploadAbsense($attachment, $created_date, $department, $employee_id) {
         if (!is_null($attachment["tmp_name"])) {
             $path = "../../documents/" . $department . "/" . $employee_id . "/absense";
-            if (!is_dir($path, 777, true)) {
-                mkdir($path);
+            if (!is_dir($path)) {
+                mkdir($path, 777, true);
             }
             $basename = $attachment["name"];
             $extension = pathinfo($basename, PATHINFO_EXTENSION);
