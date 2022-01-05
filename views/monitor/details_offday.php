@@ -42,7 +42,7 @@
     </head>
     <body>
         <?php
-            require_once('../includes/sidebar_admin.php');
+            require_once('../includes/sidebar_monitor.php');
         ?>
         <div class="page-wrap">
             <div class="m-5" >
