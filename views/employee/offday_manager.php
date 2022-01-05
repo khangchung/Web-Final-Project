@@ -80,7 +80,7 @@
                             </tbody>
                         </table>
                    </div>
-                   <div class="offDay_body-history" style="margin-top: 50px;">
+                   <div class="offDay_body-history" id="history_offday_employee" style="margin-top: 50px;">
                         <h3>Lịch sử ngày nghỉ</h3>
                         <table>
                             <thead>

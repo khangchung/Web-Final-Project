@@ -72,7 +72,7 @@
                             </tbody>
                         </table>
                    </div>
-                   <div class="mt-5">
+                   <div class="mt-5" id="history_offday_monitor">
                         <h3>Lịch sử ngày nghỉ</h3>
                         <table>
                             <thead>
