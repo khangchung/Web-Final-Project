@@ -1,16 +1,16 @@
 <?php
     // options may be id task or absence
-    function upload($attachment, $created_date, $department, $username, $option) {
-        if (!is_null($tmp_path)) {
-            $path = "../../documents/" . $department . "/" . $username . "/" . $option;
+    function uploadAbsense($attachment, $created_date, $department, $username) {
+        if (!is_null($attachment["tmp_name"])) {
+            $path = "../../documents/" . $department . "/" . $username . "/absense";
             if (!is_dir($path)) {
                 mkdir($path);
             }
-            if(move_uploaded_file($attachment["tmp_path"], $path)) {
-                $basename = $attachment["name"];
-                $extension = pathinfo($basename, PATHINFO_EXTENSION);
-                rename($path . "/" . $basename, $path . "/" . $created_date . "." . $extension);
-                return $path . "/" . $created_date . "." . $extension;
+            $basename = $attachment["name"];
+            $extension = pathinfo($basename, PATHINFO_EXTENSION);
+            $path .= "/" . $created_date . "." . $extension;
+            if(move_uploaded_file($attachment["tmp_name"], $path)) {
+                return $path;
             } else {
                 return "";
             }    

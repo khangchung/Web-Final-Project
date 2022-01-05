@@ -12,14 +12,14 @@
     $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
     
     if (!empty($start_date) && !empty($end_date) && !empty($reason) && !empty($attachment) && !empty($info)) {
+        $path = uploadAbsense(
+            $attachment,
+            $created_date,
+            $info->getDepartment(),
+            $info->getUsername()
+        );
         $absence = new Absence(null, $info->getId(), $created_date, $start_date, $end_date,
-            $reason, 0, upload(
-                $attachment,
-                $created_date,
-                $info->getDepartment(),
-                $info->getUsername(),
-                "absense"
-            ));
+            $reason, 0, $path);
         $absenceOperations = new AbsenceOperations;
         $result = $absenceOperations->create($absence);
         $_SESSION["flag"] = $result;
