@@ -61,8 +61,8 @@
         return date("d/m/Y", strtotime($dateString));
     }
 
-    function createEmployeeFolder($department, $username) {
-        $path = "../../documents/" . $department . "/" . $username;
+    function createEmployeeFolder($department, $employee_id) {
+        $path = "../../documents/" . $department . "/" . $employee_id;
         $avatarDefaultPath = "../../views/images/avatar.jpg";
         if (!is_dir($path)) {
             if (mkdir($path, 777, true)) {
