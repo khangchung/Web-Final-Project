@@ -34,7 +34,7 @@
                 while ($row = $result->fetch_assoc()) {
                     $absence = new Absence(
                         $row["id"],
-                        $row["employee_id"],
+                        $row["employee"],
                         $row["created_date"],
                         $row["start_date"],
                         $row["end_date"],
@@ -57,7 +57,7 @@
                 while ($row = $result->fetch_assoc()) {
                     $absence = new Absence(
                         $row["id"],
-                        $row["employee_id"],
+                        $row["employee"],
                         $row["created_date"],
                         $row["start_date"],
                         $row["end_date"],
