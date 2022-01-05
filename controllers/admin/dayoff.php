@@ -1,11 +1,18 @@
 <?php
     session_start();
     require_once("../../models/absence_operations.php");
+    require_once("../../models/department_operations.php");
     require_once("../../models/employee.php");
+
     $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
+
     $absenceOperations = new AbsenceOperations;
     $absenceManager = $absenceOperations->read();
     $absenceList = $absenceManager->getList();
+    $departmentOperations = new DepartmentOperations;
+    $departmentManager = $departmentOperations->read();
+    $departments = $departmentManager->getList();
+
     $data = array();
     if (!empty($employees)) {
         foreach ($absenceList as $absence) {
@@ -19,5 +26,6 @@
         }
     }
     $_SESSION["absences"] = $data;
+    $_SESSION["departments"] = $departments;
     header("location: ../../views/admin/offday_manager.php");
 ?>

@@ -1,7 +1,10 @@
     <?php
         session_start();
+        require_once("../../models/employee.php");
         require_once("../../models/setup.php");
         priorityChecker(1);
+        $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
+        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -44,30 +47,39 @@
             
             <div class="m-5" id="">
                 <h1 class=" mb-5" >Thêm nhiệm vụ</h1>
-                <form id="" action="" method="">
+                <form id="" action="../../controllers/monitor/create_task.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="task_name">Tên task</label>
-                        <input type="text" id="task_name" name="task_name" class="form-control">
+                        <label for="task_name">Tiêu đề</label>
+                        <input name="title" type="text" id="task_name" name="task_name" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="fullname">Nhân viên thực hiện</label>
-                        <input type="text" id="fullname" name="fullname" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="start_day">Ngày bắt đầu</label>
-                        <input type="date" id="start_day" name="start_day" class="form-control">
+                        <select name="receiver" class="form-control">
+                        <?php
+                            if (!empty($employees)) {
+                                foreach ($employees as $employee) {
+                                    $employee = unserialize($employee);
+                                    if ($employee->getDepartment() == $info->getDepartment()) {
+                                    ?>
+                                        <option value="<?= $employee->getId() ?>"><?= $employee->getFullname() ?></option>
+                                    <?php
+                                    }
+                                }
+                            }
+                        ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="deadline">Deadline</label>
-                        <input type="date" id="deadline" name="deadline" class="form-control">
+                        <input name="deadline" type="date" id="deadline" name="deadline" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="task_desc">Mô tả công việc</label>
-                        <textarea type="text" id="task_desc" name="task_desc" class="form-control"></textarea>
+                        <textarea name="desc" type="text" id="task_desc" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="file">Tệp đính kèm</label>
-                        <input type="file" class="form-control-file" id="file">
+                        <input name="attachment" type="file" class="form-control-file" id="file">
                     </div>
                     <div class="form-group">
                         <label for=""></label>

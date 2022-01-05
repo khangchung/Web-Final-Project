@@ -2,16 +2,11 @@
         session_start();
         require_once("../../models/absence.php");
         require_once("../../models/employee.php");
+        require_once("../../models/department.php");
         require_once("../../models/setup.php");
         priorityChecker(0);
-        $dictionary = array(
-            "Business" => "Phòng kinh doanh",
-            "Analysis" => "Phòng phân tích",
-            "Design" => "Phòng thiết kế",
-            "IT" => "Phòng lập trình",
-            "Administration" => "Phòng hành chính"
-        );
         $absences = isset($_SESSION["absences"]) ? $_SESSION["absences"] : "";
+        $departments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>
     <!DOCTYPE html>
@@ -71,7 +66,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            if (!empty($absences) && !empty($employees)) {
+                            if (!empty($absences) && !empty($departments) && !empty($employees)) {
                                 for ($i=0; $i < count($absences); $i++) {
                                     $absence = unserialize($absences[$i]);
                                     $status = $absence->getStatus();
@@ -87,24 +82,29 @@
                                     }
                                     for ($j=0; $j < count($employees); $j++) {
                                         $employee = unserialize($employees[$j]);
-                                        if ($employee->getId() == $absence->getEmployeeId()) {
-                                            ?>
-                                                <tr class="offdayId" id="<?= $absence->getId() ?>">
-                                                    <td><?= $i+1 ?></td>
-                                                    <td><?= $absence->getEmployeeId() ?></td>
-                                                    <td><?= $employee->getFullname() ?></td>
-                                                    <td><?= $dictionary[$employee->getDepartment()] ?></td>
-                                                    <td><?= dateFormatter($absence->getCreatedDate()) ?></td>
-                                                    <td>
-                                                        <?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>
-                                                    </td>
-                                                    <td><?= $absence->getReason() ?></td>
-                                                    <td class="text-<?= $text_color ?>" style="font-weight: 500;">
-                                                        <?= $text ?>
-                                                    </td>
-                                                </tr>
-                                            <?php
-                                            break;
+                                        foreach ($departments as $department) {
+                                            $department = unserialize($department);
+                                            if ($department->getId() == $employee->getDepartment()) {
+                                                if ($employee->getId() == $absence->getEmployeeId()) {
+                                                    ?>
+                                                        <tr class="offdayId" id="<?= $absence->getId() ?>">
+                                                            <td><?= $i+1 ?></td>
+                                                            <td><?= $absence->getEmployeeId() ?></td>
+                                                            <td><?= $employee->getFullname() ?></td>
+                                                            <td><?= $department->getName() ?></td>
+                                                            <td><?= dateFormatter($absence->getCreatedDate()) ?></td>
+                                                            <td>
+                                                                <?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>
+                                                            </td>
+                                                            <td><?= $absence->getReason() ?></td>
+                                                            <td class="text-<?= $text_color ?>" style="font-weight: 500;">
+                                                                <?= $text ?>
+                                                            </td>
+                                                        </tr>
+                                                    <?php
+                                                    break;
+                                                }
+                                            }
                                         }
                                     }
                                 }
