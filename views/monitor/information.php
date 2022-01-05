@@ -94,7 +94,7 @@
         <div class="modal" id="avatar">
             <div class="modal_overlay"></div>
             <div class="modal_body">
-                <img src="/images/male.jpg" alt="">
+                <img src="<?= $info->getAvatar() ?>" alt="">
                 <div class="closeAvatar" onclick="closeAvatar();">
                     <i class="bi bi-x-lg"></i>
                 </div>

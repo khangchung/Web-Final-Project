@@ -19,12 +19,16 @@
         }
     }
 
-    function uploadAvatar($tmp_path, $department_name, $employee_name) {
-        $path = "../../documents/" . $department_name . "/" . $employee_name;
+    function uploadAvatar($attachment, $department, $username) {
+        $path = "../../documents/" . $department . "/" . $username;
         if (!file_exists($path)) {
             mkdir($path);
         }
-        move_uploaded_file($tmp_path, $path);
-        return $path;
+        $path .= "/avatar.jpg";
+        if (move_uploaded_file($attachment["tmp_name"], $path)) {
+            return $path;
+        } else {
+            return "";
+        }
     }
 ?>

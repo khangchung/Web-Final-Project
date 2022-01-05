@@ -29,6 +29,30 @@ function changeAvatar(){
         const choseFile = this.files[0];
 
         if(choseFile){
+            let form_data = new FormData();
+            form_data.append('image', choseFile);
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/controllers/employee/update_avatar.php",
+                processData: false,
+                mimeType: "multipart/form-data",
+                contentType: false,
+                data: form_data,
+                success: (data, textStatus, xhr) => {
+                    if (xhr.status == 200) {
+                        // Thông báo update thành công
+                        console.log(xhr.status);
+                        console.log("successed");
+                    } else {
+                        // Thông báo update thất bại
+                        console.log(xhr.status);
+                        console.log("failed");
+                    }
+                },
+                error: e => {
+                    console.log(e);
+                }
+            });
 
             const reader = new FileReader();
             
