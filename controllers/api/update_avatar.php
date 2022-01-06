@@ -9,7 +9,7 @@
 
     if (!empty($img)) {
         if (!empty($info)) {
-            if (uploadAvatar($img, $info->getDepartment(), $info->getUsername()) != "") {
+            if (uploadAvatar($img, $info->getDepartment(), $info->getId()) != "") {
                 http_response_code(200);
             } else {
                 http_response_code(501);    

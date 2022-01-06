@@ -56,8 +56,8 @@
         }
     }
 
-    function uploadAvatar($attachment, $department, $username) {
-        $path = "../../documents/" . $department . "/" . $username;
+    function uploadAvatar($attachment, $department, $employee_id) {
+        $path = "../../documents/" . $department . "/" . $employee_id;
         if (!is_dir($path)) {
             mkdir($path, 777, true);
         }

@@ -33,7 +33,7 @@ function changeAvatar(){
             form_data.append('image', choseFile);
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/controllers/employee/update_avatar.php",
+                url: "http://localhost:8080/controllers/api/update_avatar.php",
                 processData: false,
                 mimeType: "multipart/form-data",
                 contentType: false,
