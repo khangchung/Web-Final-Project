@@ -3,15 +3,8 @@
         require_once("../../models/department.php");
         require_once("../../models/setup.php");
         priorityChecker(0);
-        $dictionary = array(
-            "Business" => "Phòng kinh doanh",
-            "Analysis" => "Phòng phân tích",
-            "Design" => "Phòng thiết kế",
-            "IT" => "Phòng lập trình",
-            "Administration" => "Phòng hành chính"
-        );
         $deparments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
-        $name = isset($_GET["name"]) ? $_GET["name"] : "";
+        $id = isset($_GET["id"]) ? $_GET["id"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -57,19 +50,17 @@
                     if (!empty($deparments)) {
                         foreach ($deparments as $deparment) {
                             $deparment = unserialize($deparment);
-                            if ($deparment->getName() == $name) {
+                            if ($deparment->getId() == $id) {
                             ?>
-                                <form action="../../controllers/edit_department.php" method="POST">
+                                <form action="../../controllers/admin/edit_department.php" method="POST">
+                                    <div class="form-group d-none">
+                                        <input type="text" class="form-control" name="id" id="name" 
+                                        value="<?= $deparment->getId() ?>">
+                                    </div>
                                     <div class="form-group">
                                         <label for="department_name">Tên phòng ban</label>
-                                        <select class="selectpicker form-control" id="department_name" name="name">
-                                            <option value="<?= $name ?>" selected><?= $dictionary[$name] ?></option>
-                                            <option value="Business">Phòng kinh doanh</option>
-                                            <option value="Analysis">Phòng phân tích</option>
-                                            <option value="Design">Phòng thiết kế</option>
-                                            <option value="IT">Phòng lập trình</option>
-                                            <option value="Administration">Phòng hành chính</option>
-                                        </select>
+                                        <input type="text" class="form-control" name="name" id="name" 
+                                        value="<?= $deparment->getName() ?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="department_desc">Mô tả</label>
@@ -82,7 +73,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for=""></label>
-                                        <button type="submit" class="btn btn-info  mt-5 p-2 px-4">Xác nhận</button>
+                                        <button type="submit" class="btn btn-info p-2 px-4">Xác nhận</button>
                                     </div>
                                 </form>
                             <?php

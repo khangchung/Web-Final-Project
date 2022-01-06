@@ -3,7 +3,7 @@
         require_once("../../models/department.php");
         require_once("../../models/setup.php");
         priorityChecker(0);
-        $deparments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
+        $departments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     ?>
     <!DOCTYPE html>
@@ -66,29 +66,29 @@
                     </thead>
                     <tbody>
                         <?php
-                            if (!empty($deparments)) {
-                                for ($i=0; $i < count($deparments); $i++) {
-                                    $deparment = unserialize($deparments[$i]);
+                            if (!empty($departments)) {
+                                for ($i=0; $i < count($departments); $i++) {
+                                    $department = unserialize($departments[$i]);
                                     if (!empty($employees)) {
-                                        $fullname = "";
+                                        $fullname = "...";
                                         foreach ($employees as $employee) {
                                             $employee = unserialize($employee);
-                                            if ($employee->getDepartment() == $deparment->getName()
+                                            if ($employee->getDepartment() == $department->getId()
                                                 && $employee->getPosition() == 1) {
                                                 $fullname = $employee->getFullname();
                                                 break;
                                             }
                                         }
                                         ?>
-                                            <tr id="<?= $deparment->getId() ?>">
+                                            <tr id="<?= $department->getId() ?>">
                                                 <td><?= $i+1 ?></td>
-                                                <td><?= $deparment->getName() ?></td>
+                                                <td><?= $department->getName() ?></td>
                                                 <td><?= $fullname ?></td>
-                                                <td><?= $deparment->getDescription() ?></td>
-                                                <td><?= $deparment->getRoom() ?></td>
+                                                <td><?= $department->getDescription() ?></td>
+                                                <td><?= $department->getRoom() ?></td>
                                                 <td>
                                                     <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
-                                                    <a href="edit_department.php">
+                                                    <a href="edit_department.php?id=<?= $department->getId() ?>">
                                                         <i class="bi bi-pencil-square text-warning" style="font-size: 32px"></i>
                                                     </a>
                                                 </td>
@@ -96,14 +96,17 @@
                                         <?php
                                     } else {
                                         ?>
-                                            <tr id="<?= $deparment->getId() ?>">
+                                            <tr id="<?= $department->getId() ?>">
                                                 <td><?= $i+1 ?></td>
-                                                <td><?= $deparment->getName() ?></td>
-                                                <td></td>
-                                                <td><?= $deparment->getDescription() ?></td>
-                                                <td><?= $deparment->getRoom() ?></td>
+                                                <td><?= $department->getName() ?></td>
+                                                <td>...</td>
+                                                <td><?= $department->getDescription() ?></td>
+                                                <td><?= $department->getRoom() ?></td>
                                                 <td>
                                                     <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
+                                                    <a href="edit_department.php?id=<?= $department->getId() ?>">
+                                                        <i class="bi bi-pencil-square text-warning" style="font-size: 32px"></i>
+                                                    </a>
                                                 </td>
                                                 </td>
                                             </tr>
