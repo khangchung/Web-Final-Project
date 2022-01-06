@@ -107,11 +107,13 @@
 
     function countDayOff($absences) {
         $sum = 0;
-        foreach ($absences as $absence) {
-            $absence = unserialize($absence);
-            if ($absence->getStatus() == 1) {
-                $sum += getDateDistance($absence->getStartDate(), $absence->getEndDate());   
-            }
+        if (!is_null($absences)) {
+            foreach ($absences as $absence) {
+                $absence = unserialize($absence);
+                if ($absence->getStatus() == 1) {
+                    $sum += getDateDistance($absence->getStartDate(), $absence->getEndDate());   
+                }
+            }   
         }
         return $sum;
     }

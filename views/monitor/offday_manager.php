@@ -1,7 +1,15 @@
     <?php
         session_start();
+        require_once("../../models/department.php");
+        require_once("../../models/employee.php");
+        require_once("../../models/absence.php");
         require_once("../../models/setup.php");
         priorityChecker(1);
+        $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
+        $absences = isset($_SESSION["absences"]) ? $_SESSION["absences"] : "";
+        $departments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
+        $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
+        $employee_absences = isset($_SESSION["employee_absences"]) ? $_SESSION["employee_absences"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -62,13 +70,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>5102192</td>
-                                    <td>Nguyễn Minh Thuận</td>
-                                    <td>15</td>
-                                    <td>3</td> 
-                                    <td>12</td>
-                                </tr>
+                            <?php
+                                if (!empty($info)) {
+                                ?>
+                                    <tr>
+                                        <td><?= $info->getId() ?></td>
+                                        <td><?= $info->getFullname() ?></td>
+                                        <td><?= $info->getDayOff() ?></td>
+                                        <td><?= countDayOff($absences) ?></td> 
+                                        <td><?= $info->getDayOff() - countDayOff($absences) ?></td>
+                                    </tr>
+                                <?php
+                                }
+                            ?>
                             </tbody>
                         </table>
                    </div>
@@ -87,33 +101,35 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>5102192</td>
-                                    <td>Nguyễn Minh Thuận</td>
-                                    <td>2</td>
-                                    <td>Bị bệnh</td>
-                                    <td>1/12/2021</td>
-                                    <td>3/12/2021</td>
-                                    <td class="text-success">Approved</td>
-                                </tr>
-                                <tr>
-                                    <td>5102192</td>
-                                    <td>Nguyễn Minh Thuận</td>
-                                    <td>1</td>
-                                    <td>Bị bệnh</td>
-                                    <td>8/11/2021</td>
-                                    <td>9/11/2021</td>
-                                    <td class="text-success">Approved</td>
-                                </tr>
-                                <tr>
-                                    <td>5102192</td>
-                                    <td>Nguyễn Minh Thuận</td>
-                                    <td>3</td>
-                                    <td></td>
-                                    <td>8/10/2021</td>
-                                    <td>9/10/2021</td>
-                                    <td class="text-danger">Refused</td>
-                                </tr>
+                            <?php
+                                if (!empty($info) && !empty($absences)) {
+                                    foreach ($absences as $absence) {
+                                        $absence = unserialize($absence);
+                                        $status = $absence->getStatus();
+                                        $text = "Waiting";
+                                        $text_color = "warning";
+                                        if ($status == 1) {
+                                            $text_color = "success";
+                                            $text = "Approved";
+                                        } else
+                                        if ($status == -1) {
+                                            $text_color = "danger";
+                                            $text = "Refused";
+                                        }
+                                        ?>
+                                            <tr>
+                                                <td><?= $info->getId() ?></td>
+                                                <td><?= $info->getFullname() ?></td>
+                                                <td><?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?></td>
+                                                <td><?= $absence->getReason() ?></td>
+                                                <td><?= dateFormatter($absence->getStartDate()) ?></td>
+                                                <td><?= dateFormatter($absence->getEndDate()) ?></td>
+                                                <td class="text-<?= $text_color ?>"><?= $text ?></td>
+                                            </tr>
+                                        <?php
+                                    }
+                                }
+                            ?>
                             </tbody>
                         </table>
                    </div>
@@ -134,16 +150,48 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>5102192</td>
-                                    <td>Nguyễn Minh Thuận</td>
-                                    <td>Phân tích</td>
-                                    <td>1/12/2021</td>
-                                    <td>3</td>
-                                    <td>Nghỉ bệnh</td> 
-                                    <td>Waiting</td>
-                                </tr>
+                            <?php
+                                if (!empty($info) && !empty($employee_absences) && !empty($departments) && !empty($employees)) {
+                                    for ($i=0; $i < count($employee_absences); $i++) {
+                                        $absence = unserialize($employee_absences[$i]);
+                                        $status = $absence->getStatus();
+                                        $text = "Waiting";
+                                        $text_color = "warning";
+                                        if ($status == 1) {
+                                            $text_color = "success";
+                                            $text = "Approved";
+                                        } else
+                                        if ($status == -1) {
+                                            $text_color = "danger";
+                                            $text = "Refused";
+                                        }
+                                        foreach ($employees as $employee) {
+                                            $employee = unserialize($employee);
+                                            if ($employee->getId() == $absence->getEmployeeId()) {
+                                                foreach ($departments as $department) {
+                                                    $department = unserialize($department);
+                                                    if ($employee->getDepartment() == $department->getId()) {
+                                                    ?>
+                                                        <tr>
+                                                            <td><?= $i+1 ?></td>
+                                                            <td><?= $employee->getId() ?></td>
+                                                            <td><?= $employee->getFullname() ?></td>
+                                                            <td><?= $department->getName() ?></td>
+                                                            <td><?= $absence->getCreatedDate() ?></td>
+                                                            <td><?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?></td>
+                                                            <td><?= $absence->getReason() ?></td> 
+                                                            <td class="text-<?= $text_color ?>"><?= $text ?></td>
+                                                        </tr>
+                                                    <?php
+                                                        break;
+                                                    }
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            ?>
                             </tbody>
                         </table>
                    </div>
