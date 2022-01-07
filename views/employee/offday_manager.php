@@ -111,7 +111,7 @@
                                                 $text = "Refused";
                                             }
                                             ?>
-                                                <tr>
+                                                <tr id="<?= $absence->getId() ?>">
                                                     <td><?= $info->getId() ?></td>
                                                     <td><?= $info->getFullname() ?></td>
                                                     <td><?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?></td>

@@ -198,18 +198,18 @@ $(document).ready(function(){
     });
     // Trưởng phòng xem thông tin chi tiết ngày nghỉ của nhân viên
     $('#offday_manager_moniter tbody tr').click(function() {
-        const offdayId = $(this).closest(".offdayId").attr("id");
+        const offdayId = $(this).closest("tr").attr("id");
         window.location = `../../controllers/monitor/dayoff_details.php?id=${offdayId}`; 
     });
     // Trương phòng xem chi tiết lịch sử ngày nghỉ của trưởng phòng
     $('#history_offday_monitor tbody tr').click(function() {
-        // const offdayId = $(this).closest("tr").attr("id");
-        window.location = `details_history_offday.php`; 
+        const offdayId = $(this).closest("tr").attr("id");
+        window.location = `../../controllers/monitor/dayoff_history.php?id=${offdayId}`; 
     });
     // Nhân viên xem chi tiết lịch sử ngày nghỉ của nhân viên
     $('#history_offday_employee tbody tr').click(function() {
-        // const offdayId = $(this).closest("tr").attr("id");
-        window.location = `details_history_offday.php`; 
+        const offdayId = $(this).closest("tr").attr("id");
+        window.location = `../../controllers/employee/dayoff_history.php?id=${offdayId}`;
     });
     
 

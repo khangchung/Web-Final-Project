@@ -117,7 +117,7 @@
                                             $text = "Refused";
                                         }
                                         ?>
-                                            <tr>
+                                            <tr id="<?= $absence->getId() ?>">
                                                 <td><?= $info->getId() ?></td>
                                                 <td><?= $info->getFullname() ?></td>
                                                 <td><?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?></td>
@@ -172,12 +172,12 @@
                                                     $department = unserialize($department);
                                                     if ($employee->getDepartment() == $department->getId()) {
                                                     ?>
-                                                        <tr>
+                                                        <tr id="<?= $absence->getId() ?>">
                                                             <td><?= $i+1 ?></td>
                                                             <td><?= $employee->getId() ?></td>
                                                             <td><?= $employee->getFullname() ?></td>
                                                             <td><?= $department->getName() ?></td>
-                                                            <td><?= $absence->getCreatedDate() ?></td>
+                                                            <td><?= dateFormatter($absence->getCreatedDate()) ?></td>
                                                             <td><?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?></td>
                                                             <td><?= $absence->getReason() ?></td> 
                                                             <td class="text-<?= $text_color ?>"><?= $text ?></td>
