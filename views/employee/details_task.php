@@ -156,7 +156,7 @@
                                         <tr>
                                             <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
                                             <td>
-                                                <a href="#"><?= $filename ?></a>
+                                                <a href="<?= $task_log->getAttachment() ?>"><?= $filename ?></a>
                                             </td>
                                         </tr>
                                     <?php
