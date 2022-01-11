@@ -108,21 +108,24 @@
                         <?php
                         if ($task->getStatus() == 0) {
                         ?>
-                            <button class="btn btn-primary d-block ml-auto mt-3 px-5">Start</button>
+                            <a href="../../controllers/employee/start_task.php?=<?= $task->getId() ?>" class="btn btn-primary d-block ml-auto mt-3 px-5">Start</a>
                         <?php
                         } else
                         if ($task->getStatus() == 1) {
                         ?>
-                            <form action="" class=" mt-5 p-3" style="max-width: 550px;">
+                            <form action="../../controllers/employee/submit_task.php" method="POST" class=" mt-5 p-3" style="max-width: 550px;">
+                                <div class="form-group d-none">
+                                    <input name="id" type="text" class="form-control" value="<?= $task->getId() ?>">
+                                </div>
                                 <div class="form-group">
                                     <label for="comment" class="font-weight-bold">Tiêu đề</label>
-                                    <input type="text" id="comment" class="form-control">
+                                    <input name="comment" type="text" id="comment" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="file" class="font-weight-bold">Tệp đính kèm</label>
-                                    <input type="file" class="form-control-file" id="file">
+                                    <input name="attachment" type="file" class="form-control-file" id="file">
                                 </div>
-                                <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
+                                <button type="submit" class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
                             </form>
                         <?php
                         }
