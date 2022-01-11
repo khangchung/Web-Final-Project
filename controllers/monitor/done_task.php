@@ -3,7 +3,7 @@
     require_once("../../models/task_operations.php");
     require_once("../../models/setup.php");
 
-    $submit_date = new Date("Y-m-d");
+    $submit_date = date("Y-m-d");
     $id = isset($_GET["id"]) ? $_GET["id"] : "";
     $rate = isset($_GET["rate"]) ? $_GET["rate"] : "";
 

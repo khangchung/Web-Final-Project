@@ -37,7 +37,7 @@
         }
     }
 
-    function uploadTaskLog($attachment, $created_date, $task_id, $department, $employee_id) {
+    function uploadTaskLog($attachment, $created_date, $task_id, $department, $employee_id) {        
         if (!is_null($attachment["tmp_name"])) {
             $path = "../../documents/" . $department . "/" . $employee_id . "/task" . "/" . $task_id;
             if (!is_dir($path)) {

@@ -7,9 +7,9 @@
     class TaskLogOperations implements Operations {
         function create($task_log) {
             $conn = getConnection();
-            $sql = "insert into task_log(comment, attachment) values(?, ?)";
+            $sql = "insert into task_log(task_id, comment, attachment, owner) values(?, ?, ?, ?)";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("ss", $task_log->getComment(), $task_log->getAttachment());
+            $stm->bind_param("issi", $task_log->getTaskId(), $task_log->getComment(), $task_log->getAttachment(), $task_log->getOwner());
             if (!$stm->execute()) {
                 die("Task log creating is failed: " . $stm->error);
             }
@@ -22,7 +22,7 @@
         function read_one($id) {
             $manager = new Manager();
             $conn = getConnection();
-            $sql = "select * from task_log where id = ?";
+            $sql = "select * from task_log where task_id = ?";
             $stm = $conn->prepare($sql);
             $stm->bind_param("i", $id);
             $stm->execute();
@@ -30,9 +30,10 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $task_log = new TaskLog(
-                        $row["id"],
+                        $row["task_id"],
                         $row["comment"],
-                        $row["attachment"]
+                        $row["attachment"],
+                        $row["owner"]
                     );
                     $manager->add(serialize($task_log));
                 }
@@ -48,9 +49,10 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     $task_log = new TaskLog(
-                        $row["id"],
+                        $row["task_id"],
                         $row["comment"],
-                        $row["attachment"]
+                        $row["attachment"],
+                        $row["owner"]
                     );
                     $manager->add(serialize($task_log));
                 }
@@ -60,9 +62,9 @@
     
         function update($task_log) {
             $conn = getConnection();
-            $sql = "update task_log set comment = ?, attachment = ? where id = ?";
+            $sql = "update task_log set comment = ?, attachment = ?, owner = ? where task_id = ?";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("ssi", $task_log->getComment(), $task_log->getAttachment(), $task_log->getId());
+            $stm->bind_param("ssii", $task_log->getComment(), $task_log->getAttachment(), $task_log->getOwner(), $task_log->getTaskId());
             if (!$stm->execute()) {
                 die("Task log updating is failed: " . $stm->error);
             }
@@ -74,7 +76,7 @@
     
         function delete($id) {
             $conn = getConnection();
-            $sql = "delete from task_log where id = ?";
+            $sql = "delete from task_log where task_id = ?";
             $stm = $conn->prepare($sql);
             $stm->bind_param("i", $id);
             if (!$stm->execute()) {
