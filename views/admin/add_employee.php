@@ -84,7 +84,7 @@
                         </div>
                         <div class="form-group">
                             <label for=""></label>
-                            <button type="submit" class="btn btn-info p-3">Thêm nhân viên</button>
+                            <button type="submit">Thêm nhân viên</button>
                         </div>
                     </form>
                     <?php      

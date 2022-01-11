@@ -48,7 +48,7 @@
         <div class="page-wrap">
             <div class="main_wrap" id="department_manager">
                 <a href="add_department.php" style="text-decoration: none;">
-                    <button class="btn btn-info d-block ml-auto p-3 text-dark">
+                    <button class="btn_head">
                         Thêm phòng ban
                     </button>
                 </a>

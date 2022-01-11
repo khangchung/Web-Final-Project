@@ -1,44 +1,38 @@
+<div class="menu_btn" onclick="openSidebar()">
+    <i class="bi bi-list"></i>
+</div>
 <div class=" sidebar">
     <div class="close_btn" onclick="closeSidebar()">
         <i class="bi bi-x-lg"></i>
     </div>
-    <div class="menu_btn" onclick="openSidebar()">
-        <i class="bi bi-list"></i>
-    </div>
+    
     <div class="sidebar_list">
         <ul>
             <li class="sidebar_item">
                 <a href="../../controllers/employee/index.php">
-                    <i class="bi bi-clipboard-data"></i>
                     Quản lý nhiệm vụ
                 </a>
             </li>
             <li class="sidebar_item">
                 <a href="../../controllers/employee/information.php">
-                    <i class="bi bi-person-lines-fill"></i>
-                    thông tin cá nhân
+                    Thông tin cá nhân
                 </a>
             </li>
             <li class="sidebar_item">
                 <a href="../../controllers/employee/dayoff.php">
-                    <i class="bi bi-calendar2-month"></i>
                     Quản lý ngày nghỉ
                 </a>
             </li>
             <li class="sidebar_item">
                 <a href="../../controllers/employee/change_password.php?option=0">
-                    <i class="bi bi-file-earmark-lock"></i>
                     Đổi mật khẩu
                 </a>
             </li>
             <li class="sidebar_item">
                 <a href="../../controllers/logout.php">
-                    <i class="bi bi-box-arrow-left"></i>
                     Đăng xuất
                 </a>
             </li>
         </ul>
-
     </div>
-
 </div>

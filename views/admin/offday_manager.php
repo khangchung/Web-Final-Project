@@ -50,7 +50,7 @@
         <div class="page-wrap">
             
             <div class="main_wrap" id="offday_manager">
-                <h2 style="margin-bottom: 30px">Quản lý ngày nghỉ</h2>
+                <h1 class="mb-5">Quản lý ngày nghỉ</h1>
                 <table>
                     <thead>
                         <tr>

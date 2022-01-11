@@ -156,14 +156,21 @@ body {
 /*-------Giao diện nhân viên---------*/
 
 .sidebar {
-    width: 270px;
-    background: #2f3640;
+    width: 300px;
+    background: rgba(0,0,0,0.8);
     position: fixed;
     top: 0;
     left: 0;
+    opacity: 1;
     height: 100%;
-    transition: 0.2s linear;
+    transition: all 0.5s;
     overflow: hidden;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+
+.sidebar.enter{
+    left: 0;
+    opacity: 1;
 }
 
 .sidebar_list{
@@ -171,66 +178,98 @@ body {
     margin-top: 80px;
 }
 .sidebar_list .sidebar_item {
-    opacity: 0.5;
     list-style-type: none;
-    color: var(--white-color);
     text-transform: uppercase;
     font-size: 16px;
+    color: white;
     cursor: pointer;
-    text-decoration: none;
-    color: var(--white-color);
-    
+    background-color: #dc3545;
+    margin-top: 15px;
+    text-align: center;
+    height: 70px;
+    line-height: 70px;
+    transition: all 0.3s;
 }
 
-.sidebar_list .sidebar_item:hover {
-    opacity: 1;
-    background-color: var(--main-color);
+.sidebar_list .sidebar_item:hover{
+    background-color: white;
+    font-size: 25px;
+}
+.sidebar_list .sidebar_item:hover a{
+    color: black;
 }
 
-/* .sidebar_list .sidebar_item.active {
-    opacity: 1;
-    background: var(--main-color);
-} */
+
 
 .sidebar_list .sidebar_item a {
-    padding: 16px 18px;
     width: 100%;
     display: block;
-    color: white;
     text-decoration: none;
+    color: white;
 }
 
 .sidebar_list .sidebar_item i {
     font-size: 150%;
     margin-right: 16px;
-    color: var(--white-color);
 }
 
 .page-wrap{
-    margin-left: 270px;
     padding: 10px;
-    max-width: 100%;
-    height: 100%;
-    
+    width: auto;
+    min-height: 100vh;
     display: flex;
+    transition: all 0.5s;
+    background:linear-gradient(to bottom right, #1b6572, #b9efff);
+    overflow: hidden;
+    margin-left: 300px;
 }
 
+.page-wrap button{
+    background-color: #dc3545;
+    color: white;
+    border-radius: 8px;
+    padding: 20px;;
+    border: none;
+    float: right;
+    margin-bottom: 20px;
+    min-width: 180px;
+    min-height: 60px;
+    display: block;
+}
+.page-wrap button:hover{
+    background-color: #c82333;
+}
+
+.page-wrap h1{
+    color: white;
+}
 .menu_btn{
+    color: black;
     font-size: 40px;
     cursor: pointer;
     position: fixed;
-    top: 0;
-    left: 0;
-    display: none;
+    left: 20px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.menu_btn:hover{
+    transform: rotate(180deg);
+    color: white;
 }
 
 .close_btn{
     font-size: 30px;
-    cursor: pointer;
     color: #fff;
     position: absolute;
-    top: 8px;
     right: 8px;
+    opacity: 0.5;
+    transition: all 0.25s;
+} 
+.close_btn:hover{
+    font-size: 35px;
+    opacity: 1;
+    cursor: pointer;
 }
 
 /* thông tin nhân viên */
@@ -401,20 +440,36 @@ body {
     margin: 50px;
     width: 100%;
 }
+
+
 .main_wrap table{
-    text-align: center;
+    background-color: #dff9fb;
+    text-align: left;
     width: 100%;
 }
-.main_wrap table tr th, .main_wrap table tr td{
+.main_wrap table th:first-child, 
+.main_wrap table td:first-child,
+.main_wrap table th:last-child, 
+.main_wrap table td:last-child{
+    text-align: center;
+}
+.main_wrap table tr th, 
+.main_wrap table tr td{
     border: 1px solid black;
-    padding: 12px 20px;
+    padding: 12px 20px 12px 25px;
 }
-.main_wrap table thead tr:first-child{
-    background-color: #17a2b8;
+.main_wrap table thead tr{
+    background: linear-gradient(#777, #444);;
+    color: white;
 }
-.main_wrap table tbody tr:hover{
-    background-color:  #48dbfb;
-    box-shadow: 0 8px 4px var(--black-100);
+.main_wrap table tbody:hover td{
+    color: transparent;
+    text-shadow: 0 0 3px #aaa;
+}
+
+.main_wrap tbody:hover tr:hover td {
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
     cursor: pointer;
 }
 

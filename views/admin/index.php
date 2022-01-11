@@ -40,6 +40,7 @@
         <script src="../main.js"></script>
         <title>Giao diện</title>
     </head>
+    
     <body>
         <?php
             require_once('../includes/sidebar_admin.php');
@@ -47,11 +48,11 @@
         <div class="page-wrap">
             <div class="main_wrap" id="employee_manager">
                 <a href="add_employee.php" style="text-decoration: none;">
-                    <button class="btn btn-info d-block ml-auto p-3 text-dark">
+                    <button >
                         Thêm nhân viên
                     </button>
                 </a>
-                <h2 style="margin-bottom: 30px">Danh sách Nhân viên</h2>
+                <h1 class="text-white">Danh sách Nhân viên</h1>
                 <table>
                     <thead>
                         <tr>

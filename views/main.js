@@ -1,15 +1,15 @@
 // JAVASCIPT
 // Đóng mở sidebar
-function openSidebar(){
-    document.querySelector('.sidebar').style.width = '270px';
-    document.querySelector('.page-wrap').style.marginLeft = '270px';
-    document.querySelector('.menu_btn').style.display = 'none';
-}
-function closeSidebar(){
-    document.querySelector('.sidebar').style.width = '0';
-    document.querySelector('.page-wrap').style.marginLeft = '0';
-    document.querySelector('.menu_btn').style.display = 'block';
-}
+// function openSidebar(){
+//     document.querySelector('.sidebar').style.width = '270px';
+//     document.querySelector('.page-wrap').style.marginLeft = '270px';
+//     document.querySelector('.menu_btn').style.display = 'none';
+// }
+// function closeSidebar(){
+//     document.querySelector('.sidebar').style.width = '0';
+//     document.querySelector('.page-wrap').style.marginLeft = '0';
+//     document.querySelector('.menu_btn').style.display = 'block';
+// }
 // Xem ảnh đại diện
 function viewAvatar(){
     src = document.querySelector('.info_wrap_header-avatar img').src;
@@ -175,6 +175,20 @@ function closeAppointMonitor(){
 
 //JQUERY
 $(document).ready(function(){
+    //Đóng mở sidebar
+    $(".menu_btn").on("click", function(){
+        $(".menu_btn").css("opacity", "0");
+        $(".sidebar").addClass("enter");
+        $(".sidebar").css({left: 0});
+        $(".page-wrap").css("marginLeft","300px") ;
+    });
+    $(".close_btn").on("click", function(){
+        $(".sidebar").removeClass("enter");
+        $(".menu_btn").css("opacity", "1");
+        $(".sidebar").css({left: -300});
+        $(".page-wrap").css("marginLeft","0") ;
+    });
+    
     //Nhân viên xem thông tin chi tiết task
     $('#task_list tbody tr').click(function() {
         const employeeId = $(this).closest('tr').attr('id');

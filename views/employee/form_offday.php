@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label for="" class=""></label>
-                    <button type="submit" class="btn btn-info form-control w-25 mt-3">Nộp đơn</button>
+                    <button type="submit" class="form-control">Nộp đơn</button>
                 </div>
             </form>
        </div>

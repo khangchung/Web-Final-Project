@@ -49,11 +49,11 @@
             <!-- Quản lý task -->
             <div class="main_wrap" id="task_list">
                 <a href="create_task.php" style="text-decoration: none;">
-                    <button class="btn btn-info d-block ml-auto p-3 text-dark">
+                    <button>
                         Thêm nhiệm vụ
                     </button>
                 </a>
-                <h2 style="margin-bottom: 30px">DANH SÁCH NHIỆM VỤ</h2>
+                <h1>DANH SÁCH NHIỆM VỤ</h1>
                 <table>
                     <thead>
                         <tr>
@@ -61,6 +61,7 @@
                             <th>Nhân viên thực hiện</th>
                             <th>Deadline</th>
                             <th>Trạng thái</th>
+                            <th>Chức năng</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,7 +97,8 @@
                                                     <td><?= $fullname ?></th>
                                                     <td><?= dateFormatter($task->getDeadline()) ?></th>
                                                     <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></th>
-                                                </tr>
+                                                    <td class="btn btn-danger btn-sm">Hủy task</td>
+    </tr>
                                             <?php
                                             break;
                                         }

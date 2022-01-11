@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group">
                         <label for="add_department"></label>
-                        <button type="submit" id="add_department" class="btn btn-info mt-5 p-3">Thêm phòng ban</button>
+                        <button type="submit" id="add_department" >Thêm phòng ban</button>
                     </div>
                 </form>
             

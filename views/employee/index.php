@@ -46,7 +46,7 @@
             
             <!-- Quản lý task -->
             <div class="main_wrap" id="task_list">
-                <h2 style="margin-bottom: 30px">DANH SÁCH NHIỆM VỤ</h2>
+                <h1>DANH SÁCH NHIỆM VỤ</h1>
                 <table>
                     <thead>
                         <tr>

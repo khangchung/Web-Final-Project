@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="info_wrap_body">
-                    <h1 style="margin:10px 0 30px">THÔNG TIN CÁ NHÂN</h1>
+                    <h2 style="margin:10px 0 30px">THÔNG TIN CÁ NHÂN</h2>
                     <?php
                         if (!empty($info) && !empty($departments)) {
                             foreach ($departments as $department) {

@@ -46,13 +46,13 @@
             <!-- Quan ly ngay nghi -->
             <div class="main_wrap">
                 <a href="form_offday.php" style="text-decoration: none;">
-                    <button class="btn btn-info d-block ml-auto p-3 text-dark">
+                    <button>
                         Nộp đơn nghỉ phép
                     </button>
                 </a>
                 <div class="offDay_body">
                    <div class="offDay_body-manage">
-                        <h3 style="margin-bottom: 20px;">Quản lý ngày nghỉ</h3>
+                        <h3>Quản lý ngày nghỉ</h3>
                         <table>
                             <thead>
                                 <tr>

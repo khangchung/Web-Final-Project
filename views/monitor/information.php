@@ -65,7 +65,7 @@
                                 </div>
 
                                 <div class="info_wrap_body">
-                                    <h1 style="margin:10px 0 30px">THÔNG TIN CÁ NHÂN</h1>
+                                    <h2 style="margin: 10px 0 30px">THÔNG TIN CÁ NHÂN</h2>
                                     <div class="info_wrap_body-item">
                                         <label for="">Họ và tên</label> <br>
                                         <input type="text" name="" id="" value="<?= $info->getFullname() ?>" disabled>
