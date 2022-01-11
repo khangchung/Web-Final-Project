@@ -88,11 +88,11 @@
                                         </tr>
                                         <tr>
                                             <td>Ngày bắt đầu</td>
-                                            <td><?= $task->getCreatedDate() ?></td>
+                                            <td><?= dateFormatter($task->getCreatedDate()) ?></td>
                                         </tr>
                                         <tr>
                                             <td>Deadline</td>
-                                            <td><?= $task->getDeadline() ?></td>
+                                            <td><?= dateFormatter($task->getDeadline()) ?></td>
                                         </tr>
                                         <tr>
                                             <td>Mô tả công việc</td>
