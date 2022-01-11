@@ -107,7 +107,9 @@
                         <?php
                         if ($task->getStatus() == 0) {
                         ?>
+                            <div class="justify-content-end">
                             <a href="../../controllers/employee/start_task.php?id=<?= $task->getId() ?>" class="btn btn-primary ml-auto mt-3 px-5">Start</a>
+                            </div>
                         <?php
                         } else
                         if ($task->getStatus() == 1) {

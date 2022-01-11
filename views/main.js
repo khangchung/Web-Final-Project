@@ -201,6 +201,12 @@ $(document).ready(function(){
         const taskId = $(this).closest("tr").attr("id");
         window.location = `../../controllers/monitor/task_details.php?id=${taskId}`; 
     });
+    // Trưởng phòng duyệt nhiệm vụ của nhân viên
+    $('#done_task_monitor a').click(function() {
+        const taskId = $(this).closest("div").attr("task_id");
+        const taskRate = $(this).closest("#rate option:selected").val();
+        window.location = `../../controllers/monitor/done_details.php?id=${taskId}&rate=${taskRate}`; 
+    });
     // Trưởng phòng xem thông tin chi tiết ngày nghỉ của nhân viên
     $('#offday_manager_moniter tbody tr').click(function() {
         const offdayId = $(this).closest("tr").attr("id");
