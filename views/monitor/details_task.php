@@ -44,10 +44,10 @@
             
             <!--Xem thông tin chi tiết task -->
             <div id="task_info">
-                <h2 style="margin-bottom: 30px">THÔNG TIN CHI TIẾT TASK</h2>
+                <h2 style="margin-bottom: 30px">CHI TIẾT NHIỆM VỤ</h2>
                 <table class="text-left" >
                     <tr>
-                        <td>Tên Task</td>
+                        <td>Tiêu đề</td>
                         <td>Thiết kế giỏ hàng</td>
                     </tr>
                     <tr>
