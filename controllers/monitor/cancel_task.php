@@ -6,7 +6,7 @@
     if (!empty($id)) {
         $taskOperations = new TaskOperations;
         $task = unserialize($taskOperations->read_one($id)->getList()[0]);
-        $task->setStatus(1);
+        $task->setStatus(2);
         $result = $taskOperations->update($task);
         if (!$result) {
             $_SESSION["flag"] = false;

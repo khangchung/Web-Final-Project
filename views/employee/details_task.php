@@ -90,7 +90,6 @@
                                 <tr>
                                     <td>Mô tả công việc</td>
                                     <td>
-                                    Mô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việcMô tả công việc
                                         <?= $task->getDescription() ?>
                                     </td>
                                 </tr>
@@ -102,27 +101,32 @@
                                 </tr>
                                 <tr>
                                     <td>Trạng thái</td>
-                                    <td class="text-<?= $text_color ?>"><?= $status ?></td>
+                                    <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></td>
                                 </tr>
                             </table>
                         <?php
                         if ($task->getStatus() == 0) {
                         ?>
-                            <button class="btn btn-primary d-block ml-auto mt-3 px-5">Start</button>
+                            <div class="justify-content-end">
+                            <a href="../../controllers/employee/start_task.php?id=<?= $task->getId() ?>" class="btn btn-primary ml-auto mt-3 px-5">Start</a>
+                            </div>
                         <?php
                         } else
                         if ($task->getStatus() == 1) {
                         ?>
-                            <form action="" class=" mt-5 p-3" style="max-width: 550px;">
+                            <form action="../../controllers/employee/submit_task.php" method="POST" enctype="multipart/form-data" class=" mt-5 p-3" style="max-width: 550px;">
+                                <div class="form-group d-none">
+                                    <input name="id" type="text" class="form-control" value="<?= $task->getId() ?>">
+                                </div>
                                 <div class="form-group">
                                     <label for="comment" class="font-weight-bold">Tiêu đề</label>
-                                    <input type="text" id="comment" class="form-control">
+                                    <input name="comment" type="text" id="comment" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="file" class="font-weight-bold">Tệp đính kèm</label>
-                                    <input type="file" class="form-control-file" id="file">
+                                    <input name="attachment" type="file" class="form-control-file" id="file">
                                 </div>
-                                <button class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
+                                <button type="submit" class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
                             </form>
                         <?php
                         }
@@ -152,7 +156,7 @@
                                         <tr>
                                             <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
                                             <td>
-                                                <a href="#"><?= $filename ?></a>
+                                                <a href="<?= $task_log->getAttachment() ?>"><?= $filename ?></a>
                                             </td>
                                         </tr>
                                     <?php
