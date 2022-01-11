@@ -5,8 +5,8 @@
 
     $submit_date = new Date("Y-m-d");
     $id = isset($_POST["id"]) ? $_POST["id"] : "";
-    $comment = isset($_POST["id"]) ? $_POST["id"] : "";
-    $attachment = isset($_POST["id"]) ? $_POST["id"] : "";
+    $comment = isset($_POST["comment"]) ? $_POST["comment"] : "";
+    $attachment = isset($_POST["attachment"]) ? $_POST["attachment"] : "";
     $department = isset($_SESSION["information"]) ? unserialize($_SESSION["information"])->getDepartment() : "";
     $employee_id = isset($_SESSION["information"]) ? unserialize($_SESSION["information"])->getId() : "";
 
