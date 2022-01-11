@@ -196,6 +196,11 @@ $(document).ready(function(){
         
         window.location = `../../controllers/admin/department_details.php?name=${departmentName}`; 
     });
+    // Trưởng phòng xem thông tin chi tiết nhiệm vụ của nhân viên
+    $('#task_manager_moniter tbody tr').click(function() {
+        const taskId = $(this).closest("tr").attr("id");
+        window.location = `../../controllers/monitor/task_details.php?id=${taskId}`; 
+    });
     // Trưởng phòng xem thông tin chi tiết ngày nghỉ của nhân viên
     $('#offday_manager_moniter tbody tr').click(function() {
         const offdayId = $(this).closest("tr").attr("id");

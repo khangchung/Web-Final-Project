@@ -47,7 +47,7 @@
         <div class="page-wrap">
             
             <!-- Quản lý task -->
-            <div class="main_wrap" id="task_list">
+            <div class="main_wrap" id="task_manager_moniter">
                 <a href="create_task.php" style="text-decoration: none;">
                     <button class="btn btn-info d-block ml-auto p-3 text-dark">
                         Thêm nhiệm vụ
