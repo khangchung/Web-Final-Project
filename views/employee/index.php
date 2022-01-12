@@ -61,32 +61,34 @@
                         if (!empty($tasks)) {
                             foreach ($tasks as $task) {
                                 $task = unserialize($task);
-                                $text_color = "primary";
-                                $status = "New";
-                                if ($task->getStatus() == 1) {
-                                    $status = "In progress";
-                                    $text_color = "secondary";
-                                } else
-                                if ($task->getStatus() == 3) {
-                                    $status = "Waiting";
-                                    $text_color = "warning";
-                                } else
-                                if ($task->getStatus() == 4) {
-                                    $status = "Rejected";
-                                    $text_color = "danger";
-                                } else
-                                if ($task->getStatus() == 5) {
-                                    $status = "Completed";
-                                    $text_color = "success";
+                                if ($task->getStatus() != 2) {
+                                    $text_color = "primary";
+                                    $status = "New";
+                                    if ($task->getStatus() == 1) {
+                                        $status = "In progress";
+                                        $text_color = "secondary";
+                                    } else
+                                    if ($task->getStatus() == 3) {
+                                        $status = "Waiting";
+                                        $text_color = "warning";
+                                    } else
+                                    if ($task->getStatus() == 4) {
+                                        $status = "Rejected";
+                                        $text_color = "danger";
+                                    } else
+                                    if ($task->getStatus() == 5) {
+                                        $status = "Completed";
+                                        $text_color = "success";
+                                    }
+                                    ?>
+                                        <tr id="<?= $task->getId() ?>">
+                                            <td><?= $task->getTitle() ?></th>
+                                            <td><?= dateFormatter($task->getCreatedDate()) ?></th>
+                                            <td><?= dateFormatter($task->getDeadline()) ?></th>
+                                            <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></td>
+                                        </tr>
+                                    <?php   
                                 }
-                                ?>
-                                    <tr id="<?= $task->getId() ?>">
-                                        <td><?= $task->getTitle() ?></th>
-                                        <td><?= $task->getCreatedDate() ?></th>
-                                        <td><?= $task->getDeadline() ?></th>
-                                        <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></th>
-                                    </tr>
-                                <?php
                             }
                         }
                     ?>

@@ -64,6 +64,10 @@
                                     $status = "In progress";
                                     $text_color = "secondary";
                                 } else
+                                if ($task->getStatus() == 2) {
+                                    $status = "Cancel";
+                                    $text_color = "danger";
+                                } else
                                 if ($task->getStatus() == 3) {
                                     $status = "Waiting";
                                     $text_color = "warning";

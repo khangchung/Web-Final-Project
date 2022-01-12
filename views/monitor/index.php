@@ -71,21 +71,31 @@
                                     $task = unserialize($task);
                                     $text_color = "primary";
                                     $status = "New";
+                                    $disabled = "";
                                     if ($task->getStatus() == 1) {
                                         $status = "In progress";
                                         $text_color = "secondary";
+                                        $disabled = "disabled";
+                                    } else
+                                    if ($task->getStatus() == 2) {
+                                        $status = "Cancel";
+                                        $text_color = "danger";
+                                        $disabled = "disabled";
                                     } else
                                     if ($task->getStatus() == 3) {
                                         $status = "Waiting";
                                         $text_color = "warning";
+                                        $disabled = "disabled";
                                     } else
                                     if ($task->getStatus() == 4) {
                                         $status = "Rejected";
-                                        $text_color = "danger";
+                                        $text_color = "secondary";
+                                        $disabled = "disabled";
                                     } else
                                     if ($task->getStatus() == 5) {
                                         $status = "Completed";
                                         $text_color = "success";
+                                        $disabled = "disabled";
                                     }
                                     foreach ($employees as $employee) {
                                         $employee = unserialize($employee);
@@ -97,8 +107,8 @@
                                                     <td><?= $fullname ?></th>
                                                     <td><?= dateFormatter($task->getDeadline()) ?></th>
                                                     <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></th>
-                                                    <td class="btn btn-danger btn-sm">Hủy task</td>
-    </tr>
+                                                    <td><a href="../../controllers/monitor/cancel_task.php?id=<?= $task->getId() ?>" class="btn btn-danger btn-sm <?= $disabled ?>">Hủy task</a></td>
+                                                </tr>
                                             <?php
                                             break;
                                         }

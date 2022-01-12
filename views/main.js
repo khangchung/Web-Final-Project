@@ -191,8 +191,8 @@ $(document).ready(function(){
     
     //Nhân viên xem thông tin chi tiết task
     $('#task_list tbody tr').click(function() {
-        const employeeId = $(this).closest('tr').attr('id');
-        window.location = `../../controllers/employee/task_details.php?id=${employeeId}`; 
+        const taskId = $(this).closest('tr').attr('id');
+        window.location = `../../controllers/employee/task_details.php?id=${taskId}`; 
     });
     //Admin xem thông tin chi tiết của nhân viên
     $('#employee_manager tbody tr').click(function() {
