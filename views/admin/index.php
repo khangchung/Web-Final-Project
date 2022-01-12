@@ -59,7 +59,7 @@
                             <th>STT</th>
                             <th>Mã nhân viên</th>
                             <th>Họ và tên</th>
-                            <th>Phòng ban</th>
+                            <th>Tài khoản</th>
                             <th>Chức năng</th>
                         </tr>
                     </thead>
@@ -82,7 +82,7 @@
                                             <td><?= $i+1 ?></td>                                   
                                             <td><?= $employee->getId() ?></td>
                                             <td ><?= $employee->getFullname() ?></td>
-                                            <td><?= $department->getName() ?></td>
+                                            <td><?= $employee->getUsername() ?></td>
                                             <td>
                                                 <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
                                             </td>
