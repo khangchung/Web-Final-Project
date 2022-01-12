@@ -21,9 +21,7 @@
             $path = uploadTask($attachment, $created_date, $task->getId(), unserialize($_SESSION["information"])->getDepartment(), $receiver);
             if ($path != "") {
                 $task->setAttachment($path);
-                if (!$taskOperations->update($task)) {
-                    $_SESSION["flag"] = false;
-                }
+                $_SESSION["flag"] = $taskOperations->update($task);
             } else {
                 $_SESSION["flag"] = false;
             }

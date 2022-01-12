@@ -8,9 +8,7 @@
         $task = unserialize($taskOperations->read_one($id)->getList()[0]);
         $task->setStatus(1);
         $result = $taskOperations->update($task);
-        if (!$result) {
-            $_SESSION["flag"] = false;
-        }
+        $_SESSION["flag"] = $result;
     } else {
         $_SESSION["flag"] = false;
     }

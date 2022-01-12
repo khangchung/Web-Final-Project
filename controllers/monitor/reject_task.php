@@ -14,9 +14,7 @@
         $taskLogOperations = new TaskLogOperations;
         $taskLog = new TaskLog($id, $comment, uploadTaskLog($attachment, $created_date, $id, $department, $employee_id), 1);
         $result = $taskLogOperations->create($taskLog);
-        if (!$result) {
-            $_SESSION["flag"] = false;
-        }
+        $_SESSION["flag"] = $result;
     } else {
         $_SESSION["flag"] = false;
     }

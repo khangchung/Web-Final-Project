@@ -23,9 +23,7 @@
         }
         if (!isset($_SESSION["flag"])) {
             $result = $taskOperations->update($task);
-            if (!$result) {
-                $_SESSION["flag"] = false;        
-            }
+            $_SESSION["flag"] = $result;
         }
     } else {
         $_SESSION["flag"] = false;
