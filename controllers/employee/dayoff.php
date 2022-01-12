@@ -10,7 +10,12 @@
     foreach ($absenceList as $absence) {
         $absence = unserialize($absence);
         if ($absence->getEmployeeId() == unserialize($_SESSION["information"])->getId()) {
-            array_push($data, serialize($absence));
+            $current_year = date("Y");
+            $absence_year = date("Y", strtotime($absence->getCreatedDate()));
+            $year_distance = $current_year - $absence_year;
+            if ($year_distance == 0) {
+                array_push($data, serialize($absence));
+            }
         }
     }
     $_SESSION["absences"] = $data;

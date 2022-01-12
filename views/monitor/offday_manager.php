@@ -124,7 +124,7 @@
                                                 <td><?= $absence->getReason() ?></td>
                                                 <td><?= dateFormatter($absence->getStartDate()) ?></td>
                                                 <td><?= dateFormatter($absence->getEndDate()) ?></td>
-                                                <td class="text-<?= $text_color ?>"><?= $text ?></td>
+                                                <td class="font-weight-bold text-<?= $text_color ?>"><?= $text ?></td>
                                             </tr>
                                         <?php
                                     }
@@ -180,7 +180,7 @@
                                                             <td><?= dateFormatter($absence->getCreatedDate()) ?></td>
                                                             <td><?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?></td>
                                                             <td><?= $absence->getReason() ?></td> 
-                                                            <td class="text-<?= $text_color ?>"><?= $text ?></td>
+                                                            <td class="font-weight-bold text-<?= $text_color ?>"><?= $text ?></td>
                                                         </tr>
                                                     <?php
                                                         break;

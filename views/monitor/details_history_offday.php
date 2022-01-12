@@ -73,7 +73,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="date_submit">Ngày nộp đơn</label> 
-                                    <input type="text" class="form-control" id="date_submit" value="<?= $absence->getCreatedDate() ?>" disabled>
+                                    <input type="text" class="form-control" id="date_submit" value="<?= dateFormatter($absence->getCreatedDate()) ?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="count_offday">Số ngày nghỉ</label> 
@@ -81,11 +81,11 @@
                                 </div>                 
                                 <div class="form-group">
                                     <label for="start_offday">Ngày bắt đầu nghỉ</label> 
-                                    <input type="text" class="form-control" id="start_offday" value="<?= $absence->getStartDate() ?>" disabled>
+                                    <input type="text" class="form-control" id="start_offday" value="<?= dateFormatter($absence->getStartDate()) ?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="end_offday">Ngày đi làm lại</label> 
-                                    <input type="text" class="form-control" id="end_offday" value="<?= $absence->getEndDate() ?>" disabled>
+                                    <input type="text" class="form-control" id="end_offday" value="<?= dateFormatter($absence->getEndDate()) ?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="reason_offday">Lý do</label>
