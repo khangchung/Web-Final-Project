@@ -15,8 +15,18 @@
         $_SESSION["flag"] = false;
     }
 
-    if (!empty($_SESSION["flag"]) && $_SESSION["flag"]) {
-        header("location: login.php");
+    if (!empty($_SESSION["flag"]) && $_SESSION["flag"] && isset($_SESSION["priority"])) {
+        if ($_SESSION["priority"] == 0) {
+            header("location: admin/index.php");
+        } else
+        if ($_SESSION["priority"] == 1) {
+            header("location: monitor/index.php");
+        } else
+        if ($_SESSION["priority"] == 2) {
+            header("location: employee/index.php");
+        } else {
+            header("location: login.php");
+        }
     } else {
         header("location: ../views/change_password.php");
     }

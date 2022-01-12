@@ -46,11 +46,7 @@
     
         if (!empty($position)) {
             if ($username == $password) {
-                if ($position == "admin") {
-                    header("location: " . $position . "/index.php");
-                } else {
-                    header("location: ../views/change_password.php");
-                }
+                header("location: ../views/change_password.php");
             } else {
                 header("location: " . $position . "/index.php");
             }
