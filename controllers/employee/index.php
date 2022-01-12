@@ -3,6 +3,7 @@
     require_once("../../models/employee_operations.php");
     require_once("../../models/task_operations.php");
     require_once("../../models/task_log_operations.php");
+    require_once("../../models/absence_operations.php");
     
     $employeeOperations = new EmployeeOperations;
     $employeeManager = $employeeOperations->read();
@@ -11,6 +12,13 @@
     foreach ($employeeList as $employee) {
         $employee = unserialize($employee);
         if ($employee->getUsername() == $_SESSION["username"]) {
+            $year_current_date = date("Y");
+            $year_previous_date = date("Y", strtotime("-1 day"));
+            $year_distance = $year_current_date - $year_previous_date;
+            if ($year_distance == 1) {
+                $employee->setDayOf(12);
+                $employeeOperations->update($employee);
+            }
             $_SESSION["information"] = serialize($employee);
             break;
         }
