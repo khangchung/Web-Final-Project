@@ -48,7 +48,7 @@
         <div class="page-wrap">
             
             <!--Xem thông tin chi tiết task -->
-            <div id="task_info">
+            <div class="main_wrap" id="task_info">
                 <div  class="d-flex justify-content-between">
                     <div class="mr-5">
                         <h2 class="title">THÔNG TIN CHI TIẾT NHIỆM VỤ</h2>

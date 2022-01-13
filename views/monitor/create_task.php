@@ -45,8 +45,8 @@
         ?>
         <div class="page-wrap">
             
-            <div class="m-5" id="">
-                <h1 class=" mb-5" >Thêm nhiệm vụ</h1>
+            <div class="main_wrap" id="">
+                <h1 class="title" >Thêm nhiệm vụ</h1>
                 <form id="" action="../../controllers/monitor/create_task.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="task_name">Tiêu đề</label>

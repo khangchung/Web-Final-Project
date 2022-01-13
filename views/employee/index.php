@@ -47,7 +47,7 @@
             <!-- Quản lý task -->
             <div class="main_wrap" id="task_list">
                 <h2>DANH SÁCH NHIỆM VỤ</h2>
-                <table class="table_responsive">
+                <table class="table_responsive main_table ">
                     <thead>
                         <tr>
                             <th>Nhiệm vụ</th>

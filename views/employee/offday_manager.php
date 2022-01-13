@@ -45,15 +45,18 @@
         <div class="page-wrap">
             <!-- Quan ly ngay nghi -->
             <div class="main_wrap">
-                <a href="form_offday.php" style="text-decoration: none;">
-                    <button class="btn_add">
-                        Nộp đơn nghỉ phép
-                    </button>
-                </a>
+                <div class="header">
+                    <h2 class="title">Quản lý ngày nghỉ</h2>
+                    <a href="form_offday.php" style="text-decoration: none;">
+                        <button class="">
+                            Nộp đơn nghỉ phép
+                        </button>
+                    </a>
+                </div>
+
                 <div class="offDay_body">
                    <div class="offDay_body-manage">
-                        <h2 style="margin-bottom: 70px">Quản lý ngày nghỉ</h2>
-                        <table class="table_responsive" style="">
+                        <table class="table_responsive main_table" >
                             <thead>
                                 <tr>
                                     <th>Mã nhân viên</th>
@@ -81,8 +84,8 @@
                         </table>
                    </div>
                    <div class="offDay_body-history" id="history_offday_employee" style="margin-top: 50px;">
-                        <h2>Lịch sử ngày nghỉ</h2>
-                        <table class="table_responsive">
+                        <h2 class="title">Lịch sử ngày nghỉ</h2>
+                        <table class="table_responsive main_table">
                             <thead>
                                 <tr>
                                     <th>Mã nhân viên</th>

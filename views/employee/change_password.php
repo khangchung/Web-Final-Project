@@ -43,7 +43,7 @@
         <div class="page-wrap">
             <div class="container-fluid changePass" >
                 <div class="wrapper" >
-                    <div class="title">
+                    <div class="title1">
                         <p>Đổi mật khẩu</p>
                     </div>
                     <form action="../../controllers/employee/change_password.php" method="POST" class="login">
@@ -61,7 +61,6 @@
                         </div>
                         <div class="field btn_changePass">
                             <input type="submit" value="Xác nhận">
-                            <input type="button" value="Làm mới">
                         </div>
                     </form>
                 </div>

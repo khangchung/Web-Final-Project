@@ -47,13 +47,15 @@
         ?>
         <div class="page-wrap">
             <div class="main_wrap" id="department_manager">
-                <a href="add_department.php" style="text-decoration: none;">
-                    <button class="btn_add">
-                        Thêm phòng ban
-                    </button>
-                </a>
-                <h2 class="title">Danh sách phòng ban</h2>
-                <table class="table_responsive">
+                <div class="header">
+                    <h2 class="title">Danh sách phòng ban</h2>
+                    <a href="add_department.php" style="text-decoration: none;">
+                        <button class="btn_add">
+                            Thêm phòng ban
+                        </button>
+                    </a>
+                </div>
+                <table class="table_responsive main_table">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -89,7 +91,7 @@
                                                 <td data-label="Chức năng">
                                                     <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
                                                     <a href="edit_department.php?id=<?= $department->getId() ?>">
-                                                        <i class="bi bi-pencil-square text-warning" style="font-size: 32px"></i>
+                                                        <i class="bi bi-pencil-square text-danger" style="font-size: 32px"></i>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -103,9 +105,9 @@
                                                 <td><?= $department->getDescription() ?></td>
                                                 <td><?= $department->getRoom() ?></td>
                                                 <td>
-                                                    <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
+                                                    <i class="bi bi-eye-fill mr-2 text-info" style="font-size: 32px"></i>
                                                     <a href="edit_department.php?id=<?= $department->getId() ?>">
-                                                        <i class="bi bi-pencil-square text-warning" style="font-size: 32px"></i>
+                                                        <i class="bi bi-pencil-square text-danger" style="font-size: 32px"></i>
                                                     </a>
                                                 </td>
                                                 </td>

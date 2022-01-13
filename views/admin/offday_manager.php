@@ -51,7 +51,7 @@
             
             <div class="main_wrap" id="offday_manager">
                 <h2 class="title">Quản lý ngày nghỉ</h2>
-                <table class="table_responsive">
+                <table class="table_responsive main_table">
                     <thead>
                         <tr>
                             <th>STT</th>

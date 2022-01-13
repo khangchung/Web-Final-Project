@@ -47,7 +47,7 @@
         <div class="page-wrap">
             
             <!--Xem thông tin chi tiết task -->
-            <div id="task_info">
+            <div class="main_wrap" id="task_info">
                 <h2 style="margin-bottom: 30px">CHI TIẾT NHIỆM VỤ</h2>
                 <?php
                     if (!empty($employees) && !empty($task)) {
@@ -81,7 +81,7 @@
                                     $text_color = "success";
                                 }
                                 ?>
-                                    <table class="text-left" >
+                                    <table>
                                         <tr>
                                             <td>Tiêu đề</td>
                                             <td><?= $task->getTitle() ?></td>
@@ -119,37 +119,46 @@
                                         if ($task->getStatus() == 3) {
                                             $done_date = date("Y-m-d");
                                             ?>
-                                                <div class="form-group" id="done_task_monitor" task_id="<?= $task->getId() ?>">
-                                            <?php
-                                            if (getDateDistance($done_date, $task->getDeadline()) <= 0) {
-                                            ?>
-                                                <select name="rate" id="rate" class="form-control mr-2">
-                                                    <option value="1">Good</option>
-                                                    <option value="0">OK</option>
-                                                    <option value="-1">Bad</option>
-                                                </select>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <select name="rate" id="rate" class="form-control mr-2">
-                                                    <option value="0">OK</option>
-                                                    <option value="-1">Bad</option>
-                                                </select>
-                                            <?php
-                                            }
-                                            ?>
-                                                    <a class="btn btn-success mt-3 mr-2 px-5">Duyệt</a>
-                                                </div>
-                                            <?php
-                                        ?>
+                                                <div class=" mt-5" id="done_task_monitor" style="max-width: 450px;" task_id="<?= $task->getId() ?>">
+                                                    <h3>Đánh giá</h3>
+                                                    <?php
+                                                    if (getDateDistance($done_date, $task->getDeadline()) <= 0) {
+                                                    ?>
+                                                        <select name="rate" id="rate" class="w-100 mr-2">
+                                                            <option value="1">Good</option>
+                                                            <option value="0">OK</option>
+                                                            <option value="-1">Bad</option>
+                                                        </select>
+                                                    <?php
+                                                    } else {
+                                                    ?>
+                                                        <select name="rate" id="rate" class="w-100 mr-2">
+                                                            <option value="0">OK</option>
+                                                            <option value="-1">Bad</option>
+                                                        </select>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                            <!-- <a class="btn btn-success mt-3 mr-2 px-5">Duyệt</a> -->
+                                                    
+                                                    <?php
+                                                ?>
                                         
-                                        <form action="../../controllers/monitor/reject_task.php" enctype="multipart/form-data" class="form-group">
-                                            <label for="comment">Nhận xét</label>
-                                            <input name="comment" id="comment" type="text">
-                                            <label for="attachemnt">Tệp đính kèm</label>
-                                            <input name="attachment" id="attachment" type="file">
-                                            <button class="btn btn-danger mt-3 px-5">Từ chối</button>
-                                        </form>
+                                                    <form action="../../controllers/monitor/reject_task.php" enctype="multipart/form-data" style="width: auto">
+                                                        <div class="form-group">
+                                                            <label for="comment">Nhận xét</label>
+                                                            <textarea name="comment" id="comment" type="text" class="w-100"></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="attachemnt">Tệp đính kèm</label>
+                                                            <input name="attachment" id="attachment" type="file">
+                                                        </div>
+                                                        <div class="form-group justify-content-end">
+                                                            <input type="button" class="btn btn-success mt-3 mr-2 px-5" value="Duyệt"></input>
+                                                            <input type="button" class="btn btn-danger mt-3 px-5" value="Từ chối"></input>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                         <?php
                                         }
                                     ?>

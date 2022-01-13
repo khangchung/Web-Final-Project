@@ -44,17 +44,17 @@
         ?>
         <div class="page-wrap">
             
-            <div class="m-5" id="">
-                <h2 class=" mb-5" >Thêm nhân viên</h2>
+            <div class="main_wrap" id="">
+                <h2 class=" mb-5 title" >Thêm nhân viên</h2>
                 <?php
                     if (!empty($departments)) {
                     ?>
                     <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" method="POST" onsubmit="return addEmployee();">
-                        <div class="form-group field">
+                        <div class="form-group">
                             <label for="fullname">Họ & tên</label>
                             <input type="text" id="fullname" name="fullname" class="form-control">
                         </div>
-                        <div class="form-group field">
+                        <div class="form-group">
                             <label for="username">Tên tài khoản</label>
                             <input type="text" id="username" name="username" class="form-control">
                         </div>

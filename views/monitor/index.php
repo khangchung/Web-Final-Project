@@ -48,13 +48,15 @@
             
             <!-- Quản lý task -->
             <div class="main_wrap" id="task_manager_moniter">
-                <a href="create_task.php" style="text-decoration: none;">
-                    <button class="btn_add">
-                        Thêm nhiệm vụ
-                    </button>
-                </a>
-                <h2 class="title">DANH SÁCH NHIỆM VỤ</h2>
-                <table class="table_responsive">
+                <div class="header">
+                    <h2 class="title">DANH SÁCH NHIỆM VỤ</h2>
+                    <a href="create_task.php" style="text-decoration: none;">
+                        <button class="btn_add">
+                            Thêm nhiệm vụ
+                        </button>
+                    </a>
+                </div>
+                <table class="table_responsive main_table">
                     <thead>
                         <tr>
                             <th>Nhiệm vụ</th>

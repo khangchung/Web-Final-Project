@@ -46,13 +46,16 @@
         ?>
         <div class="page-wrap">
             <div class="main_wrap" id="employee_manager">
-                <a href="add_employee.php" style="text-decoration: none;">
-                    <button class="btn_add">
-                        Thêm nhân viên
-                    </button>
-                </a>
-                <h2 class="title">Quản lý Nhân viên</h2>
-                <table class="table_responsive">
+                <div class="header">
+                    <h2 class="title">Quản lý Nhân viên</h2>
+                    <a href="add_employee.php" style="text-decoration: none;">
+                        <button>
+                            Thêm nhân viên
+                        </button>
+                    </a>
+                </div>
+                
+                <table class="table_responsive main_table">
                     <thead>
                         <tr>
                             <th>STT</th>

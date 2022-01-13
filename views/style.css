@@ -37,13 +37,13 @@ body {
     margin: auto;
     max-width: 390px;
     box-shadow: 0 15px 20px var(--black-300);
-    background: var(--white-color);
+    background: rgba(0, 0, 0, 0.4);
     padding: 30px;
     border-radius: 6px;
     margin-top: 100px;
 }
 
-.wrapper .title {
+.wrapper .title1 {
     padding-bottom: 10px;
     font-size: 35px;
     text-align: center;
@@ -468,6 +468,14 @@ body {
     width: 100%;
 }
 
+.main_wrap .header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+
+
 
 .main_wrap table{
     background-color: #dff9fb;
@@ -489,16 +497,12 @@ body {
     background: linear-gradient(#777, #444);
     color: white;
 }
-.main_wrap table tbody:hover td{
-    color: transparent;
-    text-shadow: 0 0 3px #aaa;
+.main_wrap .main_table tbody tr:hover{
+    background-color: rgba(255,165,0,0.75);
+    cursor: pointer;
+    transition: 0.5s linear;
 }
 
-.main_wrap tbody:hover tr:hover td {
-	color: #444;
-	text-shadow: 0 1px 0 #fff;
-    cursor: pointer;
-}
 
 /* link form */
 
@@ -544,21 +548,20 @@ input:disabled, textarea:disabled{
     cursor: not-allowed;
 }
 /*  */
-h1,h2,h3,h4,h5{
+h1,h2,h3{
     text-transform: uppercase;
     color: #dff9fb;
 }
 
-.title{
+.main_wrap .title{
     color: white;
-    margin-bottom: 70px;
 }
 
-.btn_add{
+/* .btn_add{
     position: absolute;
     top: 110px;
     right: 60px;
-}
+} */
 
 .btn-table{
     background-color: none;
@@ -577,9 +580,22 @@ h1,h2,h3,h4,h5{
         overflow: scroll;
     }
 
+    .page-wrap button {
+        font-size: 0.7rem;
+        padding: 8px 12px;
+    }
+
     .menu_btn{
         opacity: 1;
     }
+
+    .main_wrap .header{
+        display: block;
+    }
+    .main_wrap .title{
+        font-size: 1.8rem;
+    }
+
     .main_wrap .table_responsive thead{
         display: none;
     }   
@@ -620,7 +636,38 @@ h1,h2,h3,h4,h5{
         font-weight: bold;
         text-align: left;
     }
+
+    .form-control{
+        min-width: 100px;
+        font-size: 0.7rem;
+    }
+    .form-group{
+        display: flex;
+        margin: 30px 0;
+    }
+    .form-group > label{
+        min-width: 120px;
+        color: #dff9fb;
+        font-size: 0.7rem;
+    }
+
+    .info_wrap_body h2{
+        font-size: 1.4rem;
+    }
+
+    .info_wrap_body-item label{
+        min-width: 100px;
+        font-size: 0.7rem;
+    }
+    .info_wrap_body-item input{
+        min-width: 100px;
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid lightgrey;
+    }
 }
+
 
 @media(min-width: 641px) and (max-width: 1023px){
     .sidebar{

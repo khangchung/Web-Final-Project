@@ -43,7 +43,7 @@
         <div class="page-wrap">
             <div class="container-fluid changePass" >
                 <div class="wrapper" >
-                    <div class="title">
+                    <div class="title1">
                         <p>Đổi mật khẩu</p>
                     </div>
                     <form action="#" class="login">
@@ -61,7 +61,6 @@
                         </div>
                         <div class="field btn_changePass">
                             <input type="button" value="Xác nhận">
-                            <input type="button" value="Thoát">
                         </div>
                     </form>
                 </div>

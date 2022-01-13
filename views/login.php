@@ -35,7 +35,7 @@
 <body>
     <div class="container-fluid login">
         <div class="wrapper">
-            <div class="title">
+            <div class="title1">
                 <p>Đăng nhập</p>
             </div>
             <form action="../controllers/login.php" method="POST" class="login" id="login_form" onsubmit="return checkLogin();">

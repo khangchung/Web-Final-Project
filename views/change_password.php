@@ -35,7 +35,7 @@
 <body style="background: linear-gradient(to right, #485563, #29323c);">
     <div class="container-fluid changePass">
         <div class="wrapper">
-            <div class="title">
+            <div class="title1">
                 <p>Đổi mật khẩu</p>
             </div>
             <form action="../controllers/change_password.php" method="POST" class="login">
