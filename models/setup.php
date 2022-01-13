@@ -118,7 +118,19 @@
         return $sum;
     }
     
-    // function taskSorter() {
-
-    // }
+    function taskSorter($tasks) {
+        $n = count($tasks);
+        for ($i=0; $i < $n-1; $i++) { 
+            for ($j=$i+1; $j < $n; $j++) { 
+                $task1 = unserialize($tasks[$i]);
+                $task2 = unserialize($tasks[$j]);
+                if (getDateDistance($task1->getLastModified(), $task2->getLastModified()) > 0) {
+                    $tmp = $tasks[$i];
+                    $tasks[$i] = $tasks[$j];
+                    $tasks[$j] = $tmp;
+                }
+            }
+        }
+        return $tasks;
+    }
 ?>
