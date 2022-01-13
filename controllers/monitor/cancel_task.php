@@ -7,6 +7,7 @@
         $taskOperations = new TaskOperations;
         $task = unserialize($taskOperations->read_one($id)->getList()[0]);
         $task->setStatus(2);
+        $task->setLastModified(date("Y-m-d"));
         $result = $taskOperations->update($task);
         $_SESSION["flag"] = $result;
     } else {

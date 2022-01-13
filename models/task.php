@@ -9,6 +9,7 @@
         private $receiver;
         private $created_date;
         private $deadline;
+        private $last_modified;
         private $attachment;
 
         function __construct($id, $title, $description, $status, $rate, $creator, $receiver, $created_date, $deadline, $attachment) {
@@ -59,6 +60,10 @@
         function getDeadline() {
             return $this->deadline;
         }
+
+        function getLastModified() {
+            return $this->last_modified;
+        }
         
         function getAttachment() {
             return $this->attachment;
@@ -98,6 +103,10 @@
 
         function setDeadline($deadline) {
             $this->deadline = $deadline;
+        }
+
+        function setLastModified($last_modified) {
+            $this->deadline = $last_modified;
         }
 
         function setAttachment($attachment) {

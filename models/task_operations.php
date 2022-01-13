@@ -42,6 +42,7 @@
                         $row["receiver"],
                         $row["created_date"],
                         $row["deadline"],
+                        $row["last_modified"],
                         $row["attachment"]
                     );
                     $manager->add(serialize($task));
@@ -67,6 +68,7 @@
                         $row["receiver"],
                         $row["created_date"],
                         $row["deadline"],
+                        $row["last_modified"],
                         $row["attachment"]
                     );
                     $manager->add(serialize($task));
@@ -78,11 +80,11 @@
         function update($task) {
             $conn = getConnection();
             $sql = "update task set title = ?, description = ?, status = ?, rate = ?, creator = ?, 
-            receiver = ?, created_date = ?, deadline = ?, attachment = ? where id = ?";
+            receiver = ?, created_date = ?, deadline = ?, last_modified = ?, attachment = ? where id = ?";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("ssiisssssi", $task->getTitle(), $task->getDescription(), $task->getStatus(),
+            $stm->bind_param("ssiissssssi", $task->getTitle(), $task->getDescription(), $task->getStatus(),
             $task->getRate(), $task->getCreator(), $task->getReceiver(), $task->getCreatedDate(),
-            $task->getDeadline(), $task->getAttachment(), $task->getId());
+            $task->getDeadline(), $task->getLastModified(), $task->getAttachment(), $task->getId());
             if (!$stm->execute()) {
                 die("Task updating is failed: " . $stm->error);
             }

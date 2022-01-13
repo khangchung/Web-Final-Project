@@ -16,6 +16,7 @@
         $taskOperations = new TaskOperations;
         $task = unserialize($taskOperations->read_one($id)->getList()[0]);
         $task->setStatus(3);
+        $task->setLastModified(date("Y-m-d"));
         if ($taskOperations->update($task)) {
             $taskLogOperations = new TaskLogOperations;
             $taskLog = new TaskLog($id, $comment, uploadTaskLog($attachment, $submit_date, $id, $department, $employee_id), 0);
