@@ -118,7 +118,7 @@
                                                     <td data-label="Lý do nghỉ"><?= $absence->getReason() ?></td>
                                                     <td data-label="Từ ngày"><?= dateFormatter($absence->getStartDate()) ?></td>
                                                     <td data-label="Đến ngày"><?= dateFormatter($absence->getEndDate()) ?></td>
-                                                    <td data-label="Trạng thái" class="text-<?= $text_color ?>"><?= $text ?></td>
+                                                    <td data-label="Trạng thái" class="font-weight-bold text-<?= $text_color ?>"><?= $text ?></td>
                                                 </tr>
                                             <?php
                                         }

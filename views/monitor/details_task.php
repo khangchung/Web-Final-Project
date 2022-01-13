@@ -138,7 +138,7 @@
                                             <?php
                                             }
                                             ?>
-                                                    <a class="btn btn-success mt-3 mr-2 px-5">Duyệt</a>
+                                                    <a class="btn btn-success mt-3 mr-2 px-5">Approve</a>
                                                 </div>
                                             <?php
                                         ?>
@@ -148,7 +148,7 @@
                                             <input name="comment" id="comment" type="text">
                                             <label for="attachemnt">Tệp đính kèm</label>
                                             <input name="attachment" id="attachment" type="file">
-                                            <button class="btn btn-danger mt-3 px-5">Từ chối</button>
+                                            <button class="btn btn-danger mt-3 px-5">Refuse</button>
                                         </form>
                                         <?php
                                         }
