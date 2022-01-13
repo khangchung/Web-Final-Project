@@ -39,7 +39,7 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Gửi yêu cầu nghỉ phép</title>
     </head>
     <body>
         <?php

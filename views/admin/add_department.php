@@ -34,7 +34,7 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Thêm phòng ban</title>
     </head>
     <body>
         <?php
