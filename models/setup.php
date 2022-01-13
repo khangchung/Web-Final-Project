@@ -134,6 +134,22 @@
         return $tasks;
     }
 
+    function absenceSorter($absences) {
+        $n = count($absences);
+        for ($i=0; $i < $n-1; $i++) { 
+            for ($j=$i+1; $j < $n; $j++) { 
+                $absence1 = unserialize($absences[$i]);
+                $absence2 = unserialize($absences[$j]);
+                if (getDateDistance($absence1->getCreatedDate(), $absence2->getCreatedDate()) > 0) {
+                    $tmp = $absences[$i];
+                    $absences[$i] = $absences[$j];
+                    $absences[$j] = $tmp;
+                }
+            }
+        }
+        return $absences;
+    }
+
     function isSubmitBlock($absence) {
         $current_date = date("Y-m-d");
         if (getDateDistance($absence->getCreatedDate(), $current_date) >= 7) {
