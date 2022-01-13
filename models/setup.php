@@ -179,4 +179,10 @@
         }
         return $result;
     }
+
+    function writeToErrorLog($log_message, $page_message) {
+        $_SESSION["page_message_error"] = $page_message;
+        error_log($log_message);
+        header("location: ../../views/error_page.php");
+    }
 ?>
