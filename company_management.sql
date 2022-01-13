@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 11:50 AM
+-- Generation Time: Jan 13, 2022 at 11:13 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.1.1
 
@@ -38,6 +38,15 @@ CREATE TABLE `absence` (
   `attachment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `absence`
+--
+
+INSERT INTO `absence` (`id`, `employee`, `created_date`, `start_date`, `end_date`, `reason`, `status`, `attachment`) VALUES
+(3, 'A004', '2022-01-06', '2022-01-07', '2022-01-10', 'abc', -1, '../../documents/A/A004/absense/2022-01-06.docx'),
+(4, 'A003', '2022-01-06', '2022-01-08', '2022-01-12', 'xyz', -1, '../../documents/A/A003/absense/2022-01-06.pdf'),
+(5, 'A003', '2022-01-13', '2022-01-14', '2022-01-16', 'Bận công việc gia đình', 0, '');
+
 -- --------------------------------------------------------
 
 --
@@ -55,11 +64,11 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`username`, `password`, `priority`) VALUES
-('admin', '$2y$10$uioy1sd2NAeZGOmTRIrjLOEFQU0QJszdPzkpam.v2r8vg8WX0cQVq', 0),
-('nguyenthia', '$2y$10$gqKpeW1fSQeJRlY4IQ8lwe4N7hR2HtW8S31TOlfOI73OEXC.MskOi', 1),
-('nguyenthib', '$2y$10$4/QJlr6DwmHCvcPfaeZYr.zTj8/RvbotGQovRyQvDzXAk/lZf1ZFa', 2),
-('tranvana', '$2y$10$t7hL9A1SFWIbHVpeACrDceuRF7ibBjNYuMP1DvNs2IVOYo8TAL5P6', 1),
-('tranvanb', '$2y$10$DCaR0jxwI8pWEq1McV9/ieiVo6wZWZDdLZlG.1rriyQOuoGAnAsey', 2);
+('admin', '$2y$10$1zhwkV0aXcQK1vUa8cWAX.0CjryPY.jT3chm/Z1VNl9Cj60PgMGZG', 0),
+('nguyenthia', '$2y$10$jRyBSJMa/vDoGe7AbyfRu..OxJFjxNDf6PtZoi6wasG53qOIBAHQW', 1),
+('nguyenthib', '$2y$10$AqrrI1EJ7PNa9WJIcXwFNuJD89MtRvyoLuMIYG5n2/f9NjXcf7B7u', 2),
+('tranvana', '$2y$10$iv/fIJbZtM9grAlpiI/E/eEoLKHEZ0QYk4Rw4l2Y.K24SXJBJ84jO', 1),
+('tranvanb', '$2y$10$p2Ia.FnbDLkfxShRKCqsveebhQ2khNrlUu9PzopimNXxf8qRi5GTm', 2);
 
 -- --------------------------------------------------------
 
@@ -103,10 +112,10 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `username`, `fullname`, `position`, `department`, `avatar`, `day_off`) VALUES
-('A001', 'tranvana', 'Trần Văn A', '1', 'A', '../../documents/A/tranvana/avatar.jpg', 15),
-('A002', 'tranvanb', 'Trần Văn B', '2', 'A', '../../documents/A/tranvanb/avatar.jpg', 12),
-('B003', 'nguyenthia', 'Nguyễn Thị A', '1', 'B', '../../documents/B/nguyenthia/avatar.jpg', 15),
-('B004', 'nguyenthib', 'Nguyễn Thị B', '2', 'B', '../../documents/B/nguyenthib/avatar.jpg', 12);
+('A003', 'tranvana', 'Trần Văn A', '1', 'A', '../../documents/A/A003/avatar.jpg', 15),
+('A004', 'tranvanb', 'Trần Văn B', '2', 'A', '../../documents/A/A004/avatar.jpg', 12),
+('B001', 'nguyenthia', 'Nguyễn Thị A', '1', 'B', '../../documents/B/B001/avatar.jpg', 15),
+('B002', 'nguyenthib', 'Nguyễn Thị B', '2', 'B', '../../documents/B/B002/avatar.jpg', 12);
 
 -- --------------------------------------------------------
 
@@ -124,8 +133,18 @@ CREATE TABLE `task` (
   `receiver` char(4) DEFAULT NULL,
   `created_date` date DEFAULT NULL,
   `deadline` date DEFAULT NULL,
+  `last_modified` date DEFAULT current_timestamp(),
   `attachment` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `task`
+--
+
+INSERT INTO `task` (`id`, `title`, `description`, `status`, `rate`, `creator`, `receiver`, `created_date`, `deadline`, `last_modified`, `attachment`) VALUES
+(1, 'Tuyển dụng nhân sự', 'Tuyển dụng 5 nhân viên thiết kế', 3, 0, 'A003', 'A004', '2022-01-11', '2022-01-14', '2022-01-13', ''),
+(2, 'Sắp xếp nhân sự', 'Sắp xếp vị trí nhân được tuyển dụng vào phòng ban thiết kế ', 2, 0, 'A003', 'A004', '2022-01-12', '2022-01-14', '2022-01-13', ''),
+(3, 'Điều động nhân sự', 'Điều động nhân sự phòng thiết kế hỗ trợ phòng kỹ thuật', 0, 0, 'A003', 'A004', '2022-01-12', '2022-01-13', '2022-01-13', '');
 
 -- --------------------------------------------------------
 
@@ -139,6 +158,13 @@ CREATE TABLE `task_log` (
   `attachment` varchar(100) NOT NULL,
   `owner` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `task_log`
+--
+
+INSERT INTO `task_log` (`task_id`, `comment`, `attachment`, `owner`) VALUES
+(1, 'Đã hoàn thành', '../../documents/A/A004/task/1/2022-01-11-tasklog.docx', 0);
 
 --
 -- Indexes for dumped tables
@@ -193,13 +219,13 @@ ALTER TABLE `task_log`
 -- AUTO_INCREMENT for table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

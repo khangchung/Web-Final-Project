@@ -40,7 +40,7 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Chi tiết yêu cầu nghỉ phép</title>
     </head>
     <body>
         <?php
@@ -54,6 +54,7 @@
                         foreach ($departments as $department) {
                             $department = unserialize($department);
                             if ($department->getId() == $info->getDepartment()) {
+                                $attachment = $absence->getAttachment() != "" ? getFilenameOf($absence->getAttachment()) : "...";
                             ?>
                                 <div class="form-group">
                                     <label for="fullname">Họ và tên</label> 
@@ -93,7 +94,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="attachments_offday">Tệp đính kèm (nếu có)</label>
-                                    <a href="<?= $absence->getAttachment() ?>" class="form-control-file" id="attachments_offday">Download here.</a>
+                                    <a href="<?= $absence->getAttachment() ?>" class="form-control-file" id="attachments_offday"><?= $attachment ?></a>
                                 </div>
                             <?php
                                 break;

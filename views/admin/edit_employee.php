@@ -56,7 +56,7 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Chỉnh sửa nhân viên</title>
     </head>
     <body>
         <?php

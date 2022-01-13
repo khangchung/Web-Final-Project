@@ -2,6 +2,11 @@
         session_start();
         require_once("../../models/setup.php");
         priorityChecker(1);
+        $isBlock = isset($_SESSION["offday_form"]) ? $_SESSION["offday_form"] : null;
+        $disabled = "";
+        if (!is_null($isBlock) && $isBlock) {
+            $disabled = "disabled";
+        }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -34,35 +39,34 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Gửi yêu cầu nghỉ phép</title>
     </head>
     <body>
         <?php
             require_once('../includes/sidebar_monitor.php');
         ?>
        <div class="page-wrap">
-            
             <form action="../../controllers/monitor/dayoff_form.php" method="POST" class=" mt-5 p-3" enctype="multipart/form-data">
                 <h2 class="text-center mb-5">Yêu cầu nghỉ phép</h2>
                 <div class="form-group">
                     <label for="startDay">Ngày bắt đầu</label>
-                    <input name="start_date" type="date" id="startDay" class="form-control">
+                    <input name="start_date" type="date" id="startDay" class="form-control" <?= $disabled ?>>
                 </div>
                 <div class="form-group">
                     <label for="endDay">Ngày kết thúc</label>
-                    <input name="end_date" type="date" id="endDay" class="form-control">
+                    <input name="end_date" type="date" id="endDay" class="form-control" <?= $disabled ?>>
                 </div>
                 <div class="form-group">
                     <label for="reason">Lý do</label>
-                    <textarea name="reason" id="reason" class="form-control"></textarea>
+                    <textarea name="reason" id="reason" class="form-control" <?= $disabled ?>></textarea>
                 </div>
                 <div class="form-group">
                     <label for="file">Tệp đính kèm (nếu có)</label>
-                    <input name="attachment" type="file" class="form-control-file" id="file">
+                    <input name="attachment" type="file" class="form-control-file" id="file" <?= $disabled ?>>
                 </div>
                 <div class="form-group">
                     <label for="" class=""></label>
-                    <button type="submit">Nộp đơn</button>
+                    <button type="submit" <?= $disabled ?>>Nộp đơn</button>
                 </div>
             </form>
        </div>

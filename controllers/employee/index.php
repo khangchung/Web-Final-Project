@@ -4,6 +4,7 @@
     require_once("../../models/task_operations.php");
     require_once("../../models/task_log_operations.php");
     require_once("../../models/absence_operations.php");
+    require_once("../../models/setup.php");
     
     $employeeOperations = new EmployeeOperations;
     $employeeManager = $employeeOperations->read();
@@ -35,7 +36,7 @@
                 array_push($data, serialize($task));
             }
         }
-        $_SESSION["tasks"] = $data;
+        $_SESSION["tasks"] = taskSorter($data);
         $tasklogOperations = new TaskLogOperations;
         $tasklogManager =  $tasklogOperations->read();
         $tasklogList = $tasklogManager->getList();

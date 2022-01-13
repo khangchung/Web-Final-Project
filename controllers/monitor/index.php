@@ -2,6 +2,7 @@
     session_start();
     require_once("../../models/employee_operations.php");
     require_once("../../models/task_operations.php");
+    require_once("../../models/setup.php");
     
     $employeeOperations = new EmployeeOperations;
     $employeeManager = $employeeOperations->read();
@@ -42,7 +43,7 @@
                 array_push($task_data, serialize($task));
             }
         }
-        $_SESSION["tasks"] = $task_data;
+        $_SESSION["tasks"] = taskSorter($task_data);
         if (isset($_SESSION["employees"]) && isset($_SESSION["tasks"])) {
             header("location: ../../views/monitor/index.php");
         }

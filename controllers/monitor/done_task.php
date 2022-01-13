@@ -13,10 +13,12 @@
         if (getDateDistance($submit_date, $task->getDeadline()) <= 0) {
             $task->setStatus(5);
             $task->setRate($rate);
+            $task->setLastModified(date("Y-m-d"));
         } else {
             if ($rate < 1) {
                 $task->setStatus(5);
                 $task->setRate($rate);
+                $task->setLastModified(date("Y-m-d"));
             } else {
                 $_SESSION["flag"] = false;
             }

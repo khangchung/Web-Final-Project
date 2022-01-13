@@ -38,7 +38,7 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Chi tiết nhân viên</title>
     </head>
     <body>
         <?php

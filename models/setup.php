@@ -117,4 +117,72 @@
         }
         return $sum;
     }
+    
+    function taskSorter($tasks) {
+        $n = count($tasks);
+        for ($i=0; $i < $n-1; $i++) { 
+            for ($j=$i+1; $j < $n; $j++) { 
+                $task1 = unserialize($tasks[$i]);
+                $task2 = unserialize($tasks[$j]);
+                if (getDateDistance($task1->getLastModified(), $task2->getLastModified()) > 0) {
+                    $tmp = $tasks[$i];
+                    $tasks[$i] = $tasks[$j];
+                    $tasks[$j] = $tmp;
+                }
+            }
+        }
+        return $tasks;
+    }
+
+    function absenceSorter($absences) {
+        $n = count($absences);
+        for ($i=0; $i < $n-1; $i++) { 
+            for ($j=$i+1; $j < $n; $j++) { 
+                $absence1 = unserialize($absences[$i]);
+                $absence2 = unserialize($absences[$j]);
+                if (getDateDistance($absence1->getCreatedDate(), $absence2->getCreatedDate()) > 0) {
+                    $tmp = $absences[$i];
+                    $absences[$i] = $absences[$j];
+                    $absences[$j] = $tmp;
+                }
+            }
+        }
+        return $absences;
+    }
+
+    function isSubmitBlock($absence) {
+        $current_date = date("Y-m-d");
+        if (getDateDistance($absence->getCreatedDate(), $current_date) >= 7) {
+            return false;
+        }
+        return true;
+    }
+
+    function getAbsenceNearCurrentDate($absences) {
+        $result = null;
+        $current_date = date("Y-m-d");
+        $choose_date = null;
+        $distance = null;
+        foreach ($absences as $absence) {
+            $absence = unserialize($absence);
+            if (!is_null($distance)) {
+                if (getDateDistance($absence->getCreatedDate(), $current_date) <= $distance) {
+                    $result = $absence;
+                    $choose_date = $absence->getCreatedDate();
+                    $distance = getDateDistance($absence->getCreatedDate(), $current_date);
+                }
+            } else {
+                $result = $absence;
+                $choose_date = $absence->getCreatedDate();
+                $distance = getDateDistance($absence->getCreatedDate(), $current_date);
+            }
+        }
+        return $result;
+    }
+
+    function writeToErrorLog($log_message, $page_message) {
+        $_SESSION["page_message_error"] = $page_message;
+        error_log($log_message);
+        header("location: ../../views/error_page.php");
+    }
 ?>

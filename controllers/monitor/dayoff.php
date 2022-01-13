@@ -3,6 +3,7 @@
     require_once("../../models/absence_operations.php");
     require_once("../../models/department_operations.php");
     require_once("../../models/employee.php");
+    require_once("../../models/setup.php");
     
     $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
     $absenceOperations = new AbsenceOperations;
@@ -20,7 +21,8 @@
             }
         }
     }
-    $_SESSION["absences"] = $data;
+    $_SESSION["offday_form"] = isSubmitBlock(getAbsenceNearCurrentDate($data));
+    $_SESSION["absences"] = absenceSorter($data);
     if (!empty($employees)) {
         $data2 = array();
         foreach ($absenceList as $absence) {
@@ -37,7 +39,7 @@
                 }   
             }
         }
-        $_SESSION["employee_absences"] = $data2;   
+        $_SESSION["employee_absences"] = absenceSorter($data2);   
     }
     $departmentOperations = new DepartmentOperations;
     $_SESSION["departments"] = $departmentOperations->read()->getList();

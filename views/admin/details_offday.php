@@ -2,10 +2,12 @@
         session_start();
         require_once("../../models/absence.php");
         require_once("../../models/employee.php");
+        require_once("../../models/department.php");
         require_once("../../models/setup.php");
         priorityChecker(0);
         $absence = isset($_SESSION["absence"]) ? unserialize($_SESSION["absence"]) : "";
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
+        $departments = isset($_SESSION["departments"]) ? $_SESSION["departments"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -38,7 +40,7 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Chi tiết yêu cầu nghỉ phép</title>
     </head>
     <body>
         <?php
@@ -53,62 +55,67 @@
                         foreach ($employees as $employee) {
                             $employee = unserialize($employee);
                             if ($employee->getId() == $absence->getEmployeeId()) {
-                                $fullname = $employee->getFullname();
-                                $department = $employee->getDepartment();
-                                $attachment = $absence->getAttachment();
-                                ?>
-                                    <div class="form-group">
-                                        <label for="fullname">Họ và tên</label> 
-                                        <input type="text" class="form-control" id="fullname" value="<?= $fullname ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="department">Phòng ban</label> 
-                                        <input type="text" class="form-control" id="department" value="<?= $department ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="date_submit">Ngày nộp đơn</label> 
-                                        <input type="text" class="form-control" id="date_submit" value="<?= dateFormatter($absence->getCreatedDate()) ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="count_offday">Số ngày nghỉ</label> 
-                                        <input type="number" class="form-control" id="count_offday" 
-                                            value="<?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>" 
-                                            disabled>
-                                    </div>                 
-                                    <div class="form-group">
-                                        <label for="start_offday">Ngày bắt đầu nghỉ</label> 
-                                        <input type="text" class="form-control" id="start_offday" value="<?= dateFormatter($absence->getStartDate()) ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="end_offday">Ngày đi làm lại</label> 
-                                        <input type="text" class="form-control" id="end_offday" value="<?= dateFormatter($absence->getEndDate()) ?>" disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="reason_offday">Lý do</label>
-                                        <textarea id="reason_offday" class="form-control" disabled><?= $absence->getReason() ?></textarea>
-                                    </div>
-                                    <?php
-                                    if (!is_null($attachment)) {
-                                        ?>
+                                foreach ($departments as $department) {
+                                    $department = unserialize($department);
+                                    if ($department->getId() == $employee->getDepartment()) {
+                                        $fullname = $employee->getFullname();
+                                        $attachment = $absence->getAttachment() != "" ? getFilenameOf($absence->getAttachment()) : "...";
+                                    ?>
                                         <div class="form-group">
-                                            <label for="attachments_offday">Tệp đính kèm (nếu có)</label>
-                                            <a href="<?= $attachment ?>" class="form-control-file" id="attachments_offday">Download here.</a>
+                                            <label for="fullname">Họ và tên</label> 
+                                            <input type="text" class="form-control" id="fullname" value="<?= $fullname ?>" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="department">Phòng ban</label> 
+                                            <input type="text" class="form-control" id="department" value="<?= $department->getName() ?>" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="date_submit">Ngày nộp đơn</label> 
+                                            <input type="text" class="form-control" id="date_submit" value="<?= dateFormatter($absence->getCreatedDate()) ?>" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="count_offday">Số ngày nghỉ</label> 
+                                            <input type="number" class="form-control" id="count_offday" 
+                                                value="<?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>" 
+                                                disabled>
+                                        </div>                 
+                                        <div class="form-group">
+                                            <label for="start_offday">Ngày bắt đầu nghỉ</label> 
+                                            <input type="text" class="form-control" id="start_offday" value="<?= dateFormatter($absence->getStartDate()) ?>" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="end_offday">Ngày đi làm lại</label> 
+                                            <input type="text" class="form-control" id="end_offday" value="<?= dateFormatter($absence->getEndDate()) ?>" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="reason_offday">Lý do</label>
+                                            <textarea id="reason_offday" class="form-control" disabled><?= $absence->getReason() ?></textarea>
                                         </div>
                                         <?php
-                                    }
-                                    ?>
-                                    <?php
-                                        if ($absence->getStatus() == 0) {
-                                        ?>
+                                        if (!is_null($attachment)) {
+                                            ?>
                                             <div class="form-group">
-                                                <label for=""></label>
-                                                <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>&option=approve" class="btn btn-success my-2 p-3">Approve</a>
-                                                <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>&option=refuse" class="btn btn-danger my-2 ml-3 p-3 px-4">Refuse</a>
+                                                <label for="attachments_offday">Tệp đính kèm (nếu có)</label>
+                                                <a href="<?= $absence->getAttachment() ?>" class="form-control-file" id="attachments_offday"><?= $attachment ?></a>
                                             </div>
-                                        <?php
+                                            <?php
                                         }
-                                    ?>
-                                <?php
+                                        ?>
+                                        <?php
+                                            if ($absence->getStatus() == 0) {
+                                            ?>
+                                                <div class="form-group">
+                                                    <label for=""></label>
+                                                    <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>&option=approve" class="btn btn-success my-2 p-3">Approve</a>
+                                                    <a href="../../controllers/admin/censored.php?id=<?= $absence->getId() ?>&option=refuse" class="btn btn-danger my-2 ml-3 p-3 px-4">Refuse</a>
+                                                </div>
+                                            <?php
+                                            }
+                                        ?>
+                                    <?php
+                                        break;
+                                    }
+                                }
                                 break;
                             }
                         }

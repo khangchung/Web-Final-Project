@@ -38,7 +38,7 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Thông tin cá nhân</title>
     </head>
     <body>
         <?php

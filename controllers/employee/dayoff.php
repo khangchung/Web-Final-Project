@@ -2,6 +2,7 @@
     session_start();
     require_once("../../models/absence_operations.php");
     require_once("../../models/employee.php");
+    require_once("../../models/setup.php");
     
     $absenceOperations = new AbsenceOperations;
     $absenceManager = $absenceOperations->read();
@@ -18,6 +19,7 @@
             }
         }
     }
+    $_SESSION["offday_form"] = isSubmitBlock(getAbsenceNearCurrentDate($data));
     $_SESSION["absences"] = $data;
     header("location: ../../views/employee/offday_manager.php");
 ?>

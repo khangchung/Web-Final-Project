@@ -38,7 +38,7 @@
     
         <!--Javascript-->
         <script src="../main.js"></script>
-        <title>Giao diện</title>
+        <title>Quản lý nhiệm vụ</title>
     </head>
     <body>
         <?php
