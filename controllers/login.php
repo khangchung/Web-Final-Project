@@ -23,7 +23,7 @@
         $manager = $AO->read_one($username);
         $account = $manager->getList()[0];
         $position = "";
-        $duration = 60;
+        $duration = 86400 * 30;
     
         if (!is_null($account)) {
             if ($account->getUsername() == $username && password_verify($password, $account->getPassword())) {
