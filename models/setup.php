@@ -133,4 +133,34 @@
         }
         return $tasks;
     }
+
+    function isSubmitBlock($absence) {
+        $current_date = date("Y-m-d");
+        if (getDateDistance($absence->getCreatedDate(), $current_date) >= 7) {
+            return false;
+        }
+        return true;
+    }
+
+    function getAbsenceNearCurrentDate($absences) {
+        $result = null;
+        $current_date = date("Y-m-d");
+        $choose_date = null;
+        $distance = null;
+        foreach ($absences as $absence) {
+            $absence = unserialize($absence);
+            if (!is_null($distance)) {
+                if (getDateDistance($absence->getCreatedDate(), $current_date) <= $distance) {
+                    $result = $absence;
+                    $choose_date = $absence->getCreatedDate();
+                    $distance = getDateDistance($absence->getCreatedDate(), $current_date);
+                }
+            } else {
+                $result = $absence;
+                $choose_date = $absence->getCreatedDate();
+                $distance = getDateDistance($absence->getCreatedDate(), $current_date);
+            }
+        }
+        return $result;
+    }
 ?>

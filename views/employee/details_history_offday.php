@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="date_submit">Ngày nộp đơn</label> 
-                                    <input type="text" class="form-control" id="date_submit" value="<?= $absence->getCreatedDate() ?>" disabled>
+                                    <input type="text" class="form-control" id="date_submit" value="<?= dateFormatter($absence->getCreatedDate()) ?>" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="count_offday">Số ngày nghỉ</label> 
