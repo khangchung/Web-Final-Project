@@ -23,6 +23,7 @@
         $manager = $AO->read_one($username);
         $account = $manager->getList()[0];
         $position = "";
+        $duration = 60;
     
         if (!is_null($account)) {
             if ($account->getUsername() == $username && password_verify($password, $account->getPassword())) {
@@ -45,6 +46,8 @@
         }
     
         if (!empty($position)) {
+            setcookie("username", $username, time() + $duration, "/views/login.php");
+            setcookie("password", $password, time() + $duration, "/views/login.php");
             if ($username == $password) {
                 header("location: ../views/change_password.php");
             } else {

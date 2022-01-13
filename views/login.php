@@ -1,3 +1,11 @@
+<?php
+    $username = isset($_COOKIE["username"]) ? $_COOKIE["username"] : "";
+    $password = isset($_COOKIE["password"]) ? $_COOKIE["password"] : "";
+    $bg_color = "";
+    if (!empty($username) && !empty($password)) {
+        $bg_color = "rgb(211, 227, 238)";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,14 +49,14 @@
             <form action="../controllers/login.php" method="POST" class="login" id="login_form" onsubmit="return checkLogin();">
                 <div class="field">
                     <label for="">Tên đăng nhập</label>
-                    <input name="username" type="text" placeholder="Tên đăng nhập" class="username">
+                    <input name="username" type="text" placeholder="Tên đăng nhập" class="username" value="<?= $username ?>" style="background-color: <?= $bg_color ?>;">
                     <i class="bi bi-check-circle-fill"></i>
                     <i class="bi bi-exclamation-circle-fill"></i> 
                     <small>Error Message</small>
                 </div>
                 <div class="field">
                     <label for="">Mật khẩu</label>
-                    <input name="password" type="password" placeholder="Mật khẩu" class="password">
+                    <input name="password" type="password" placeholder="Mật khẩu" class="password"  value="<?= $password ?>"  style="background-color: <?= $bg_color ?>;">
                     <i class="bi bi-check-circle-fill"></i>
                     <i class="bi bi-exclamation-circle-fill"></i> 
                     <small>Error Message</small>
