@@ -52,7 +52,7 @@
             }
         } else {
             $_SESSION["flag"] = false;
-            header("location: ../../views/login.php");
+            header("location: ../views/login.php");
         }
     }    
 ?>
