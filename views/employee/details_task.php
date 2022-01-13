@@ -51,7 +51,7 @@
             <div id="task_info">
                 <div  class="d-flex justify-content-between">
                     <div class="mr-5">
-                        <h2 class="mb-4">THÔNG TIN CHI TIẾT NHIỆM VỤ</h2>
+                        <h2 class="title">THÔNG TIN CHI TIẾT NHIỆM VỤ</h2>
                         <?php
                             if (!empty($task)) {
                                 $text_color = "primary";

@@ -45,7 +45,7 @@
         <div class="page-wrap">
             
             <div class="m-5" id="">
-                <h1 class=" mb-5" >Thêm nhân viên</h1>
+                <h2 class=" mb-5" >Thêm nhân viên</h2>
                 <?php
                     if (!empty($departments)) {
                     ?>

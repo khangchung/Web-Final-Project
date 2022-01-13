@@ -1,7 +1,6 @@
 :root {
-    --background-color: linear-gradient(to bottom right, #1b6572, #b9efff);
-    --main-color: #17a2b8;
-    --main-color-hover: #3a808e;
+    --background-color: linear-gradient(to right, #485563, #29323c);
+    --main-color: orange;
     --white-color: #fff;
     --black-color: #000;
     --black-100: rgba(0, 0, 0, 0.1);
@@ -50,6 +49,7 @@ body {
     text-align: center;
     font-weight: 500;
     letter-spacing: 1px;
+    color: var(--main-color)
 }
 
 .wrapper form {
@@ -83,7 +83,7 @@ body {
 }
 
 .wrapper form .field input:focus {
-    border-color: var(--main-color-hover);
+    border-color: var(--main-color);
 }
 
 .wrapper form .field input[type="submit"], .wrapper form .field input[type="button"] {
@@ -99,9 +99,8 @@ body {
     cursor: pointer;
 }
 
-.wrapper form .field input[type="button"]:hover {
+.wrapper form .field input[type="submit"]:hover {
     box-shadow: 4px 4px 8px var(--black-600);
-    background: var(--main-color-hover);
 }
 
 /* validate */
@@ -157,7 +156,7 @@ body {
 
 .sidebar {
     width: 300px;
-    background: rgba(0,0,0,0.8);
+    background: #2c2b30;
     position: fixed;
     top: 0;
     left: 0;
@@ -183,7 +182,7 @@ body {
     font-size: 16px;
     color: white;
     cursor: pointer;
-    background-color: #dc3545;
+    background-color: orange;
     margin-top: 15px;
     text-align: center;
     height: 70px;
@@ -219,43 +218,69 @@ body {
     min-height: 100vh;
     display: flex;
     transition: all 0.5s;
-    background:linear-gradient(to bottom right, #1b6572, #b9efff);
+    background:var(--background-color);
     overflow: hidden;
     margin-left: 300px;
+    position: relative;
+    
 }
 
 .page-wrap button{
-    background-color: #dc3545;
-    color: white;
-    border-radius: 8px;
-    padding: 20px;;
-    border: none;
-    float: right;
-    margin-bottom: 20px;
-    min-width: 180px;
-    min-height: 60px;
-    display: block;
+    color: orange;
+    border: 2px solid orange;
+    padding: 14px 30px;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: orange;
+    -webkit-transition: color 300ms;
+    transition: color 300ms;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
-.page-wrap button:hover{
-    background-color: #c82333;
+.page-wrap button::before{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ecf0f1;
+    border-radius: 100%;
+    -webkit-transform: scale(2);
+    transform: scale(2);
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition: 300ms ease-out;
+    transition: 300ms ease-out;
 }
 
-.page-wrap h1{
+.page-wrap button:hover{
     color: white;
+
 }
+
+.page-wrap button:hover::before{
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
 .menu_btn{
-    color: black;
+    color: white;
     font-size: 40px;
     cursor: pointer;
     position: fixed;
     left: 20px;
     opacity: 0;
     transition: all 0.5s;
+    z-index: 999;
 }
 
 .menu_btn:hover{
     transform: rotate(180deg);
-    color: white;
+    color: orange;
 }
 
 .close_btn{
@@ -263,13 +288,13 @@ body {
     color: #fff;
     position: absolute;
     right: 8px;
-    opacity: 0.5;
     transition: all 0.25s;
 } 
 .close_btn:hover{
     font-size: 35px;
     opacity: 1;
     cursor: pointer;
+    color: orange;
 }
 
 /* thông tin nhân viên */
@@ -339,7 +364,6 @@ body {
 .info_wrap_header-btn .info_wrap_header-change:hover,
 .info_wrap_header-btn .info_wrap_header-view:hover{
     cursor: pointer;
-    background-color: var(--main-color-hover);
     box-shadow: 2px 4px 4px var(--black-600);
 }
 .info_wrap_body{
@@ -354,6 +378,7 @@ body {
     min-width: 180px;
 }
 .info_wrap_body-item input{
+    width: 100%;
     padding: 4px 8px;
     border-radius: 4px;
     border: 1px solid lightgrey;
@@ -419,6 +444,7 @@ body {
 }
 .form-group > label{
     min-width: 200px;
+    color: #dff9fb;
 }
 
 /* Hiện thông báo bổ nhiệm */
@@ -433,6 +459,7 @@ body {
 }
 #appoint_monitor button{
     min-width: 100px;
+    
 }
 
 /* Quản lý Task */
@@ -456,10 +483,10 @@ body {
 .main_wrap table tr th, 
 .main_wrap table tr td{
     border: 1px solid black;
-    padding: 12px 20px 12px 25px;
+    padding: 12px;
 }
 .main_wrap table thead tr{
-    background: linear-gradient(#777, #444);;
+    background: linear-gradient(#777, #444);
     color: white;
 }
 .main_wrap table tbody:hover td{
@@ -517,7 +544,93 @@ input:disabled, textarea:disabled{
     cursor: not-allowed;
 }
 /*  */
-h1{
+h1,h2,h3,h4,h5{
     text-transform: uppercase;
+    color: #dff9fb;
 }
 
+.title{
+    color: white;
+    margin-bottom: 70px;
+}
+
+.btn_add{
+    position: absolute;
+    top: 110px;
+    right: 60px;
+}
+
+.btn-table{
+    background-color: none;
+    border: none;
+}
+
+/* responsove */
+
+@media(max-width: 640px){
+    .sidebar{
+        left: -300px;
+    }
+
+    .page-wrap{
+        margin-left: 0;
+        overflow: scroll;
+    }
+
+    .menu_btn{
+        opacity: 1;
+    }
+    .main_wrap .table_responsive thead{
+        display: none;
+    }   
+    .main_wrap .table_responsive, 
+    .main_wrap .table_responsive tbody,
+    .main_wrap .table_responsive tr,
+    .main_wrap .table_responsive td{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        width: 100%;
+    }
+
+
+    .main_wrap .table_responsive tr:nth-child(even){
+        background-color: orange;
+    }
+
+    .main_wrap .table_responsive td,
+    .main_wrap .table_responsive th:first-child,
+    .main_wrap .table_responsive td:first-child,
+    .main_wrap .table_responsive td:last-child,
+    .main_wrap .table_responsive th:last-child{
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .main_wrap .table_responsive td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        color: black;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+@media(min-width: 641px) and (max-width: 1023px){
+    .sidebar{
+        left: -300px;
+    }
+
+    .page-wrap{
+        margin-left: 0;
+    }
+    .menu_btn{
+        opacity: 1;
+    }
+}

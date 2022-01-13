@@ -40,7 +40,6 @@
         <script src="../main.js"></script>
         <title>Giao diện</title>
     </head>
-    
     <body>
         <?php
             require_once('../includes/sidebar_admin.php');
@@ -48,12 +47,12 @@
         <div class="page-wrap">
             <div class="main_wrap" id="employee_manager">
                 <a href="add_employee.php" style="text-decoration: none;">
-                    <button >
+                    <button class="btn_add">
                         Thêm nhân viên
                     </button>
                 </a>
-                <h1 class="text-white">Danh sách Nhân viên</h1>
-                <table>
+                <h2 class="title">Quản lý Nhân viên</h2>
+                <table class="table_responsive">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -79,11 +78,11 @@
                                     if ($department->getId() == $employee->getDepartment()) {
                                     ?>
                                         <tr id=<?= $employee->getId() ?> class="<?= $test_color?> <?= $font_weight ?>">
-                                            <td><?= $i+1 ?></td>                                   
-                                            <td><?= $employee->getId() ?></td>
-                                            <td ><?= $employee->getFullname() ?></td>
-                                            <td><?= $employee->getUsername() ?></td>
-                                            <td>
+                                            <td data-label="STT"><?= $i+1 ?></td>                                   
+                                            <td data-label="Mã nhân viên"><?= $employee->getId() ?></td>
+                                            <td data-label="Họ và tên"><?= $employee->getFullname() ?></td>
+                                            <td data-label="Tài khoản"><?= $employee->getUsername() ?></td>
+                                            <td data-label="Chức năng">
                                                 <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
                                             </td>
                                         </tr>

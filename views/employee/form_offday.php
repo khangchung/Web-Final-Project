@@ -43,7 +43,7 @@
        <div class="page-wrap">
             
             <form action="../../controllers/employee/dayoff_form.php" method="POST" class=" mt-5 p-3" enctype="multipart/form-data">
-                <h2 class="text-center mb-5">Yêu cầu nghỉ phép</h2>
+                <h2 class="title">Yêu cầu nghỉ phép</h2>
                 <div class="form-group">
                     <label for="startDay">Ngày bắt đầu</label>
                     <input name="start_date" type="date" id="startDay" class="form-control">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="form-group">
                     <label for="" class=""></label>
-                    <button type="submit" class="form-control">Nộp đơn</button>
+                    <button type="submit" >Nộp đơn</button>
                 </div>
             </form>
        </div>

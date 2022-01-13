@@ -49,12 +49,12 @@
             <!-- Quản lý task -->
             <div class="main_wrap" id="task_manager_moniter">
                 <a href="create_task.php" style="text-decoration: none;">
-                    <button>
+                    <button class="btn_add">
                         Thêm nhiệm vụ
                     </button>
                 </a>
-                <h1>DANH SÁCH NHIỆM VỤ</h1>
-                <table>
+                <h2 class="title">DANH SÁCH NHIỆM VỤ</h2>
+                <table class="table_responsive">
                     <thead>
                         <tr>
                             <th>Nhiệm vụ</th>
@@ -103,11 +103,11 @@
                                             $fullname = $employee->getFullname();
                                             ?>
                                                 <tr id="<?= $task->getId() ?>">
-                                                    <td><?= $task->getTitle() ?></th>
-                                                    <td><?= $fullname ?></th>
-                                                    <td><?= dateFormatter($task->getDeadline()) ?></th>
-                                                    <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></th>
-                                                    <td><a href="../../controllers/monitor/cancel_task.php?id=<?= $task->getId() ?>" class="btn btn-danger btn-sm <?= $disabled ?>">Hủy task</a></td>
+                                                    <td data-label="Nhiệm vụ"><?= $task->getTitle() ?></th>
+                                                    <td data-label="Nhân viên thực hiện"><?= $fullname ?></th>
+                                                    <td data-label="Deadline"><?= dateFormatter($task->getDeadline()) ?></th>
+                                                    <td data-label="Trạng thái" class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></th>
+                                                    <td data-label="Chức năng"><a href="../../controllers/monitor/cancel_task.php?id=<?= $task->getId() ?>" class="btn btn-danger btn-sm <?= $disabled ?>">Hủy task</a></td>
                                                 </tr>
                                             <?php
                                             break;

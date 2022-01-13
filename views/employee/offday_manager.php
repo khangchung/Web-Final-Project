@@ -46,14 +46,14 @@
             <!-- Quan ly ngay nghi -->
             <div class="main_wrap">
                 <a href="form_offday.php" style="text-decoration: none;">
-                    <button>
+                    <button class="btn_add">
                         Nộp đơn nghỉ phép
                     </button>
                 </a>
                 <div class="offDay_body">
                    <div class="offDay_body-manage">
-                        <h3>Quản lý ngày nghỉ</h3>
-                        <table>
+                        <h2 style="margin-bottom: 70px">Quản lý ngày nghỉ</h2>
+                        <table class="table_responsive" style="">
                             <thead>
                                 <tr>
                                     <th>Mã nhân viên</th>
@@ -68,11 +68,11 @@
                                     if (!empty($info) && !empty($absences)) {
                                     ?>
                                         <tr>
-                                            <td><?= $info->getId() ?></td>
-                                            <td><?= $info->getFullname() ?></td>
-                                            <td><?= $info->getDayOff() ?></td>
-                                            <td><?= countDayOff($absences) ?></td> 
-                                            <td><?= $info->getDayOff() - countDayOff($absences) ?></td>
+                                            <td data-label="Mã nhân viên"><?= $info->getId() ?></td>
+                                            <td data-label="Họ & tên"><?= $info->getFullname() ?></td>
+                                            <td data-label="Số ngày được nghỉ"><?= $info->getDayOff() ?></td>
+                                            <td data-label="Số ngày đã nghỉ"><?= countDayOff($absences) ?></td> 
+                                            <td data-label="Số ngày còn lại"><?= $info->getDayOff() - countDayOff($absences) ?></td>
                                         </tr>
                                     <?php
                                     }
@@ -81,8 +81,8 @@
                         </table>
                    </div>
                    <div class="offDay_body-history" id="history_offday_employee" style="margin-top: 50px;">
-                        <h3>Lịch sử ngày nghỉ</h3>
-                        <table>
+                        <h2>Lịch sử ngày nghỉ</h2>
+                        <table class="table_responsive">
                             <thead>
                                 <tr>
                                     <th>Mã nhân viên</th>
@@ -112,13 +112,13 @@
                                             }
                                             ?>
                                                 <tr id="<?= $absence->getId() ?>">
-                                                    <td><?= $info->getId() ?></td>
-                                                    <td><?= $info->getFullname() ?></td>
-                                                    <td><?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?></td>
-                                                    <td><?= $absence->getReason() ?></td>
-                                                    <td><?= dateFormatter($absence->getStartDate()) ?></td>
-                                                    <td><?= dateFormatter($absence->getEndDate()) ?></td>
-                                                    <td class="text-<?= $text_color ?>"><?= $text ?></td>
+                                                    <td data-label="Mã nhân viên"><?= $info->getId() ?></td>
+                                                    <td data-label="Họ & tên"><?= $info->getFullname() ?></td>
+                                                    <td data-label="Số ngày nghỉ"><?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?></td>
+                                                    <td data-label="Lý do nghỉ"><?= $absence->getReason() ?></td>
+                                                    <td data-label="Từ ngày"><?= dateFormatter($absence->getStartDate()) ?></td>
+                                                    <td data-label="Đến ngày"><?= dateFormatter($absence->getEndDate()) ?></td>
+                                                    <td data-label="Trạng thái" class="text-<?= $text_color ?>"><?= $text ?></td>
                                                 </tr>
                                             <?php
                                         }

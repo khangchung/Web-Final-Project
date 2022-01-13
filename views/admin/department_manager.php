@@ -48,12 +48,12 @@
         <div class="page-wrap">
             <div class="main_wrap" id="department_manager">
                 <a href="add_department.php" style="text-decoration: none;">
-                    <button class="btn_head">
+                    <button class="btn_add">
                         Thêm phòng ban
                     </button>
                 </a>
-                <h1 style="margin-bottom: 30px">Danh sách phòng ban</h1>
-                <table>
+                <h2 class="title">Danh sách phòng ban</h2>
+                <table class="table_responsive">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -81,12 +81,12 @@
                                         }
                                         ?>
                                             <tr id="<?= $department->getId() ?>">
-                                                <td><?= $i+1 ?></td>
-                                                <td><?= $department->getName() ?></td>
-                                                <td><?= $fullname ?></td>
-                                                <td><?= $department->getDescription() ?></td>
-                                                <td><?= $department->getRoom() ?></td>
-                                                <td>
+                                                <td data-label="STT"><?= $i+1 ?></td>
+                                                <td data-label="Tên phòng ban"><?= $department->getName() ?></td>
+                                                <td data-label="Trưởng phòng"><?= $fullname ?></td>
+                                                <td data-label="Mô tả"><?= $department->getDescription() ?></td>
+                                                <td data-label="Số phòng"><?= $department->getRoom() ?></td>
+                                                <td data-label="Chức năng">
                                                     <i class="bi bi-eye-fill mr-2 text-info " style="font-size: 32px"></i>
                                                     <a href="edit_department.php?id=<?= $department->getId() ?>">
                                                         <i class="bi bi-pencil-square text-warning" style="font-size: 32px"></i>

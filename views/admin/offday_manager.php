@@ -50,8 +50,8 @@
         <div class="page-wrap">
             
             <div class="main_wrap" id="offday_manager">
-                <h1 class="mb-5">Quản lý ngày nghỉ</h1>
-                <table>
+                <h2 class="title">Quản lý ngày nghỉ</h2>
+                <table class="table_responsive">
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -88,16 +88,16 @@
                                                 if ($employee->getId() == $absence->getEmployeeId()) {
                                                     ?>
                                                         <tr class="offdayId" id="<?= $absence->getId() ?>">
-                                                            <td><?= $i+1 ?></td>
-                                                            <td><?= $absence->getEmployeeId() ?></td>
-                                                            <td><?= $employee->getFullname() ?></td>
-                                                            <td><?= $department->getName() ?></td>
-                                                            <td><?= dateFormatter($absence->getCreatedDate()) ?></td>
-                                                            <td>
+                                                            <td data-label="STT"><?= $i+1 ?></td>
+                                                            <td data-label="Mã nhân viên"><?= $absence->getEmployeeId() ?></td>
+                                                            <td data-label="Họ và tên"><?= $employee->getFullname() ?></td>
+                                                            <td data-label="Phòng ban"><?= $department->getName() ?></td>
+                                                            <td data-label="Ngày nộp đơn"><?= dateFormatter($absence->getCreatedDate()) ?></td>
+                                                            <td data-label="Số ngày nghỉ">
                                                                 <?= getDateDistance($absence->getStartDate(), $absence->getEndDate()) ?>
                                                             </td>
-                                                            <td><?= $absence->getReason() ?></td>
-                                                            <td class="font-weight-bold text-<?= $text_color ?>" style="font-weight: 500;">
+                                                            <td data-label="Lý do"><?= $absence->getReason() ?></td>
+                                                            <td data-label="Trạng thái" class="font-weight-bold text-<?= $text_color ?>" style="font-weight: 500;">
                                                                 <?= $text ?>
                                                             </td>
                                                         </tr>

@@ -64,7 +64,7 @@
         ?>
         <div class="page-wrap">
             <div class="m-5" id="">
-                <h1 class="text-center mb-5" >Sửa thông tin nhân viên</h1>
+                <h2 class="text-center mb-5" >Sửa thông tin nhân viên</h2>
                 <?php
                     if (isset($employee) && isset($postion)) {
                     ?>

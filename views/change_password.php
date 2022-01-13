@@ -32,7 +32,7 @@
     <script src="main.js"></script>
     <title>Đổi mật khẩu</title>
 </head>
-<body style="background-image: linear-gradient(to bottom right, #1b6572, #b9efff);">
+<body style="background: linear-gradient(to right, #485563, #29323c);">
     <div class="container-fluid changePass">
         <div class="wrapper">
             <div class="title">

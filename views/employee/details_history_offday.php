@@ -48,7 +48,7 @@
         ?>
         <div class="page-wrap">
             <div class="m-5" >
-                <h1 style="margin-bottom: 30px">Thông tin ngày nghỉ</h1>
+                <h2 style="title">Thông tin ngày nghỉ</h2>
                 <?php
                     if (!empty($info) && !empty($departments) && !empty($absence)) {
                         foreach ($departments as $department) {

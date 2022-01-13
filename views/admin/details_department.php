@@ -45,7 +45,7 @@
         ?>
         <div class="page-wrap">
             <div class="m-5" id="">
-                <h1 class="text-center mb-5" >Thông tin phòng ban</h1>
+                <h2 class="text-center mb-5" >Thông tin phòng ban</h2>
                 <?php
                     if (!empty($department)) {
                         if (!empty($employees)) {

@@ -46,8 +46,8 @@
             
             <!-- Quản lý task -->
             <div class="main_wrap" id="task_list">
-                <h1>DANH SÁCH NHIỆM VỤ</h1>
-                <table>
+                <h2>DANH SÁCH NHIỆM VỤ</h2>
+                <table class="table_responsive">
                     <thead>
                         <tr>
                             <th>Nhiệm vụ</th>
@@ -82,10 +82,10 @@
                                     }
                                     ?>
                                         <tr id="<?= $task->getId() ?>">
-                                            <td><?= $task->getTitle() ?></th>
-                                            <td><?= dateFormatter($task->getCreatedDate()) ?></th>
-                                            <td><?= dateFormatter($task->getDeadline()) ?></th>
-                                            <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></td>
+                                            <td data-label="Nhiệm vụ"><?= $task->getTitle() ?></th>
+                                            <td data-label="Ngày bắt đầu"><?= dateFormatter($task->getCreatedDate()) ?></th>
+                                            <td data-label="Ngày kết thúc"><?= dateFormatter($task->getDeadline()) ?></th>
+                                            <td data-label="Trạng thái" class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></td>
                                         </tr>
                                     <?php   
                                 }
