@@ -1,11 +1,13 @@
     <?php
         session_start();
         require_once("../../models/employee.php");
+        require_once("../../models/task_log.php");
         require_once("../../models/task.php");
         require_once("../../models/setup.php");
         priorityChecker(1);
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
         $task = isset($_SESSION["task"]) ? unserialize($_SESSION["task"]) : "";
+        $task_logs = isset($_SESSION["task_logs"]) ? $_SESSION["task_logs"] : "";
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -176,17 +178,25 @@
                     <h2 class="mb-4">Lịch sử phản hồi</h2>
                     <table class="text-left feedback_history" style="max-width: 400px">
                         <tr>
-                            <td>Thông điệp</td>
+                            <td>Tin nhắn</td>
                             <td>Tệp đính kèm</td>
                         </tr>
-                        
-                        <tr>
-                            <td class="font-weight-normal">thongdiep</td>
-                            <td>
-                                <a href="#">tepdinhkem.rar</a>
-                            </td>
-                        </tr>
-                                    
+                        <?php
+                            if (!empty($task_logs)) {
+                                foreach ($task_logs as $task_log) {
+                                    $task_log = unserialize($task_log);
+                                    $filename = getFilenameOf($task_log->getAttachment()) != "" ? getFilenameOf($task_log->getAttachment()) : "...";
+                                    ?>
+                                        <tr>
+                                            <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
+                                            <td>
+                                                <a href="<?= $task_log->getAttachment() ?>"><?= $filename ?></a>
+                                            </td>
+                                        </tr>
+                                    <?php
+                                }
+                            }
+                        ?>    
                     </table>
                 </div>
             </div>

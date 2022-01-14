@@ -119,7 +119,7 @@
                                     <input name="id" type="text" class="form-control" value="<?= $task->getId() ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="comment" class="font-weight-bold">Tiêu đề</label>
+                                    <label for="comment" class="font-weight-bold">Tin nhắn</label>
                                     <input name="comment" type="text" id="comment" class="form-control">
                                 </div>
                                 <div class="form-group">
@@ -143,7 +143,7 @@
                     <h2 class="mb-4">Lịch sử phản hồi</h2>
                     <table class="text-left feedback_history" style="max-width: 400px">
                         <tr>
-                            <td>Thông điệp</td>
+                            <td>Tin nhắn</td>
                             <td>Tệp đính kèm</td>
                         </tr>
                         <?php
