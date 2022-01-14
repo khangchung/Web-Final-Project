@@ -10,6 +10,10 @@
     <title>Trang lỗi</title>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Lỗi!!!</h1>
+        <p><?= $error_message ?></p>
+        <p>Ấn vào <a href="../index.php">đây</a> để trở về trang chủ.</p>
+    </div>
 </body>
 </html>
