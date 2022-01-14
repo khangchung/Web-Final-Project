@@ -3,6 +3,7 @@
     require_once("operations.php");
     require_once("manager.php");
     require_once("task.php");
+    require_once("setup.php");
 
     class TaskOperations implements Operations {
         function create($task) {
@@ -14,7 +15,7 @@
             $task->getRate(), $task->getCreator(), $task->getReceiver(), $task->getCreatedDate(),
             $task->getDeadline(), $task->getAttachment());
             if (!$stm->execute()) {
-                die("Task creating is failed: " . $stm->error);
+                writeToErrorLog("Task creating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi tạo thông tin nhiệm vụ");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -86,7 +87,7 @@
             $task->getRate(), $task->getCreator(), $task->getReceiver(), $task->getCreatedDate(),
             $task->getDeadline(), $task->getLastModified(), $task->getAttachment(), $task->getId());
             if (!$stm->execute()) {
-                die("Task updating is failed: " . $stm->error);
+                writeToErrorLog("Task updating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi cập nhật thông tin nhiệm vụ");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -100,7 +101,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("i", $id);
             if (!$stm->execute()) {
-                die("Task deleting is failed: " . $stm->error);
+                writeToErrorLog("Task deleting is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi xóa thông tin nhiệm vụ");
             }
             if ($stm->affected_rows == 1) {
                 return true;

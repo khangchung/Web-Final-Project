@@ -3,6 +3,7 @@
     require_once("operations.php");
     require_once("manager.php");
     require_once("employee.php");
+    require_once("setup.php");
 
     class EmployeeOperations implements Operations {
         function create($employee) {
@@ -12,7 +13,7 @@
             $stm->bind_param("sssissi", $employee->getId(), $employee->getUsername(), $employee->getFullname(),
             $employee->getPosition(), $employee->getDepartment(), $employee->getAvatar(), $employee->getDayOff());
             if (!$stm->execute()) {
-                die("Employee creating is failed: " . $stm->error);
+                writeToErrorLog("Employee creating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi tạo thông tin nhân viên");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -76,7 +77,7 @@
             $employee->getPosition(), $employee->getDepartment(), $employee->getAvatar(),
             $employee->getDayOff(), $employee->getId());
             if (!$stm->execute()) {
-                die("Employee updating is failed: " . $stm->error);
+                writeToErrorLog("Employee updating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi cập nhật thông tin nhân viên");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -90,7 +91,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("s", $id);
             if (!$stm->execute()) {
-                die("Employee deleting is failed: " . $stm->error);
+                writeToErrorLog("Employee deleting is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi xóa thông tin nhân viên");
             }
             if ($stm->affected_rows == 1) {
                 return true;

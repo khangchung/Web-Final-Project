@@ -3,6 +3,7 @@
     require_once("operations.php");
     require_once("manager.php");
     require_once("department.php");
+    require_once("setup.php");
 
     class DepartmentOperations implements Operations {
         function create($department) {
@@ -12,7 +13,7 @@
             $stm->bind_param("sssi", $department->getId(), $department->getName(),
             $department->getDescription(), $department->getRoom());
             if (!$stm->execute()) {
-                die("Department creating is failed: " . $stm->error);
+                writeToErrorLog("Department creating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi tạo phòng ban");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -68,7 +69,7 @@
             $stm->bind_param("ssis", $department->getName(), $department->getDescription(),
             $department->getRoom(), $department->getId());
             if (!$stm->execute()) {
-                die("Department updating is failed: " . $stm->error);
+                writeToErrorLog("Department updating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi cập nhật phòng ban");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -82,7 +83,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("s", $id);
             if (!$stm->execute()) {
-                die("Department deleting is failed: " . $stm->error);
+                writeToErrorLog("Department deleting is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi xóa phòng ban");
             }
             if ($stm->affected_rows == 1) {
                 return true;

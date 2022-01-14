@@ -3,6 +3,7 @@
     require_once("operations.php");
     require_once("manager.php");
     require_once("account.php");
+    require_once("setup.php");
 
     class AccountOperations implements Operations {
         function create($account) {
@@ -11,7 +12,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("ssi", $account->getUsername(), $account->getPassword(), $account->getPriority());
             if (!$stm->execute()) {
-                die("Account creating is failed: " . $stm->error);
+                writeToErorLog("Account creating is failed: " . $stm->error, "Xảy ra lỗi trong khi tạo tài khoản");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -64,7 +65,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("sis", $account->getPassword(), $account->getPriority(), $account->getUsername());
             if (!$stm->execute()) {
-                die("Account updating is failed: " . $stm->error);
+                writeToErrorLog("Account updating is failed: " . $stm->error, "Xảy ra lỗi trong khi cập nhật tài khoản");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -78,7 +79,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("s", $username);
             if (!$stm->execute()) {
-                die("Account deleting is failed: " . $stm->error);
+                writeToErrorLog("Account deleting is failed: " . $stm->error, "Xảy ra lỗi trong khi xóa tài khoản");
             }
             if ($stm->affected_rows == 1) {
                 return true;

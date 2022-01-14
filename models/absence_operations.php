@@ -3,6 +3,7 @@
     require_once("operations.php");
     require_once("manager.php");
     require_once("absence.php");
+    require_once("setup.php");
 
     class AbsenceOperations implements Operations {
         function create($absence) {
@@ -14,7 +15,7 @@
             $absence->getStartDate(), $absence->getEndDate(), $absence->getReason(), $absence->getStatus(),
             $absence->getAttachment());
             if (!$stm->execute()) {
-                die("Absence creating is failed: " . $stm->error);
+                writeToErrorLog("Absence creating is failed: " . $stm->error, "Xảy ra lỗi trong khi tạo yêu cầu nghỉ phép");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -77,7 +78,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("ii", $absence->getStatus(), $absence->getId());
             if (!$stm->execute()) {
-                die("Absence updating is failed: " . $stm->error);
+                writeToErrorLog("Absence updating is failed: " . $stm->error, "Xảy ra lỗi trong khi cập nhật yêu cầu nghỉ phép");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -91,7 +92,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("i", $id);
             if (!$stm->execute()) {
-                die("Absence deleting is failed: " . $stm->error);
+                writeToErrorLog("Absence deleting is failed: " . $stm->error, "Xảy ra lỗi trong khi xóa yêu cầu nghỉ phép");
             }
             if ($stm->affected_rows == 1) {
                 return true;

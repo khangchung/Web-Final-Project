@@ -3,6 +3,7 @@
     require_once("operations.php");
     require_once("manager.php");
     require_once("task_log.php");
+    require_once("setup.php");
 
     class TaskLogOperations implements Operations {
         function create($task_log) {
@@ -11,7 +12,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("issi", $task_log->getTaskId(), $task_log->getComment(), $task_log->getAttachment(), $task_log->getOwner());
             if (!$stm->execute()) {
-                die("Task log creating is failed: " . $stm->error);
+                writeToErrorLog("Task log creating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi tạo thông tin lịch sử nhiệm vụ");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -66,7 +67,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("ssii", $task_log->getComment(), $task_log->getAttachment(), $task_log->getOwner(), $task_log->getTaskId());
             if (!$stm->execute()) {
-                die("Task log updating is failed: " . $stm->error);
+                writeToErrorLog("Task log updating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi cập nhật thông tin lịch sử nhiệm vụ");
             }
             if ($stm->affected_rows == 1) {
                 return true;
@@ -80,7 +81,7 @@
             $stm = $conn->prepare($sql);
             $stm->bind_param("i", $id);
             if (!$stm->execute()) {
-                die("Task log deleting is failed: " . $stm->error);
+                writeToErrorLog("Task log deleting is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi xóa thông tin lịch sử nhiệm vụ");
             }
             if ($stm->affected_rows == 1) {
                 return true;
