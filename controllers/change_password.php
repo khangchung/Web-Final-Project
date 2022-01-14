@@ -9,7 +9,7 @@
         if (!empty($new_password)) {
             $accountOperations = new AccountOperations;
             $accountManager = $accountOperations->read_one($_SESSION["username"]);
-            $account = $accountManager->getList()[0];
+            $account = unserialize($accountManager->getList()[0]);
             $account->setPassword($new_password);
             $result = $accountOperations->update($account);
             $_SESSION["flag"] = $result;

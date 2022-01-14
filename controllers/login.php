@@ -23,7 +23,7 @@
             
             $AO = new AccountOperations();
             $manager = $AO->read_one($username);
-            $account = $manager->getList()[0];
+            $account = unserialize($manager->getList()[0]);
             $position = "";
             $duration = 86400 * 30;
         

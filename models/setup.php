@@ -187,4 +187,26 @@
         error_log($log_message);
         header("location: ../../views/error_page.php");
     }
+
+    function hasMonitor($department_id, $employees) {
+        foreach ($employees as $employee) {
+            $employee = unserialize($employee);
+            if ($employee->getDepartment() == $department_id && $employee->getPosition() == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function findEmployeeByUsername($employees, $username) {
+        $result = null;
+        foreach ($employees as $employee) {
+            $employee = unserialize($employee);
+            if ($employee->getUsername() == $username) {
+                $result = $employee;
+                break;
+            }
+        }
+        return $result;
+    }
 ?>

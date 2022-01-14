@@ -206,9 +206,8 @@ $(document).ready(function(){
     });
     //Admin xem thông tin chi tiết phòng ban
     $('#department_manager tbody tr').click(function() {
-        const departmentName = $(this).closest('tr').attr('id');
-        
-        window.location = `../../controllers/admin/department_details.php?name=${departmentName}`; 
+        const departmentId = $(this).closest('tr').attr('id');
+        window.location = `../../controllers/admin/department_details.php?id=${departmentId}`; 
     });
     // Trưởng phòng xem thông tin chi tiết nhiệm vụ của nhân viên
     $('#task_manager_moniter tbody tr').click(function() {

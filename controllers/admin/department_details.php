@@ -3,7 +3,7 @@
     require_once("../../models/department_operations.php");
     require_once("../../models/setup.php");
 
-    $id = isset($_GET["name"]) ? $_GET["name"] : "";
+    $id = isset($_GET["id"]) ? $_GET["id"] : "";
     
     try {
         if (!empty($id)) {

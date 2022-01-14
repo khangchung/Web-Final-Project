@@ -35,7 +35,7 @@
                         $row["password"],
                         $row["priority"]
                     );
-                    $manager->add($account);
+                    $manager->add(serialize($account));
                 }
             }
             return $manager;
