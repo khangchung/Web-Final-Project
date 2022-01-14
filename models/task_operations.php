@@ -9,11 +9,11 @@
         function create($task) {
             $conn = getConnection();
             $sql = "insert into task(title, description, status, rate, creator, receiver, created_date,
-            deadline, attachment) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            deadline, last_modified, attachment) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stm = $conn->prepare($sql);
-            $stm->bind_param("ssiisssss", $task->getTitle(), $task->getDescription(), $task->getStatus(),
+            $stm->bind_param("ssiissssss", $task->getTitle(), $task->getDescription(), $task->getStatus(),
             $task->getRate(), $task->getCreator(), $task->getReceiver(), $task->getCreatedDate(),
-            $task->getDeadline(), $task->getAttachment());
+            $task->getDeadline(), $task->getLastModified(), $task->getAttachment());
             if (!$stm->execute()) {
                 writeToErrorLog("Task creating is failed: " . $stm->error, "Xảy ra lỗi trong khi trong khi tạo thông tin nhiệm vụ");
             }

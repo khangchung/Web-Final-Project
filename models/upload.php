@@ -30,8 +30,8 @@
             $i = 1;
             while (1) {
                 if (!file_exists($tmp_path)) {
-                    if(move_uploaded_file($attachment["tmp_name"], $path)) {
-                        return $tmp_name;
+                    if(move_uploaded_file($attachment["tmp_name"], $tmp_path)) {
+                        return $tmp_path;
                     } else {
                         return "";
                     }
@@ -57,8 +57,8 @@
             $i = 1;
             while (1) {
                 if (!file_exists($tmp_path)) {
-                    if(move_uploaded_file($attachment["tmp_name"], $path)) {
-                        return $tmp_name;
+                    if(move_uploaded_file($attachment["tmp_name"], $tmp_path)) {
+                        return $tmp_path;
                     } else {
                         return "";
                     }

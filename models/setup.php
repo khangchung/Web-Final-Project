@@ -150,14 +150,16 @@
         return $absences;
     }
 
-    function isSubmitBlock($absence) {
+    function numberOfBlockedDate($absence) {
+        $result = 0;
         $current_date = date("Y-m-d");
         if (!is_null($absence)) {
-            if (getDateDistance($absence->getCreatedDate(), $current_date) < 7) {
-                return false;
+            $date_number = getDateDistance($absence->getCreatedDate(), $current_date);
+            if ($date_number < 7) {
+                $result = 7 - $date_number;
             }
         }
-        return false;
+        return $result;
     }
 
     function getAbsenceNearCurrentDate($absences) {

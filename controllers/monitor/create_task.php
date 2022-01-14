@@ -15,7 +15,7 @@
 
     try {
         if (!empty($creator) && !empty($title) && !empty($receiver) && !empty($deadline) && !empty($desc) && !empty($attachment)) {
-            $task = new Task(null, $title, $desc, 0, 0, $creator, $receiver, $created_date, $deadline, "");
+            $task = new Task(null, $title, $desc, 0, 0, $creator, $receiver, $created_date, $deadline, date("Y-m-d"), "");
             $taskOperations = new TaskOperations;
             if ($taskOperations->create($task)) {
                 $taskManager = $taskOperations->read();
