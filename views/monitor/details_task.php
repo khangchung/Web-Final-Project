@@ -182,7 +182,7 @@
                             if (!empty($task_logs)) {
                                 foreach ($task_logs as $task_log) {
                                     $task_log = unserialize($task_log);
-                                    $filename = getFilenameOf($task_log->getAttachment()) != "" ? getFilenameOf($task_log->getAttachment()) : "...";
+                                    $filename = $task_log->getAttachment() != "" ? getFilenameOf($task_log->getAttachment()) : "...";
                                     ?>
                                         <tr>
                                             <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
