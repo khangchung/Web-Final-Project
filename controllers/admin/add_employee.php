@@ -6,19 +6,18 @@
 
     $username = isset($_POST["username"]) ? $_POST["username"] : "";
     $fullname = isset($_POST["fullname"]) ? $_POST["fullname"] : "";
-    $position = isset($_POST["position"]) ? intval($_POST["position"]) : "";
     $department = isset($_POST["department"]) ? $_POST["department"] : "";
 
     try {
         if (!empty($username) && !empty($fullname) && !empty($position) && !empty($department)) {
             $accountOperations = new AccountOperations;
             $password = password_hash($username, PASSWORD_BCRYPT);
-            $account_result = $accountOperations->create(new Account($username, $password, $position));
+            $account_result = $accountOperations->create(new Account($username, $password, 2));
             $id = getNextEmployeeID($department);
             $avatar = createEmployeeFolder($department, $id);
             $day_off = $position == 1 ? 15 : 12;
             if ($account_result && $avatar != "") {
-                $employee = new Employee($id, $username, $fullname, $position, $department, $avatar, 
+                $employee = new Employee($id, $username, $fullname, 2, $department, $avatar, 
                 $day_off);
                 $employeeOperations = new EmployeeOperations;
                 $result = $employeeOperations->create($employee);
