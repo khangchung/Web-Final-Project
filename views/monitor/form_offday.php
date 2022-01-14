@@ -2,9 +2,9 @@
         session_start();
         require_once("../../models/setup.php");
         priorityChecker(1);
-        $isBlock = isset($_SESSION["offday_form"]) ? $_SESSION["offday_form"] : null;
+        $numOfBlockedDate = isset($_SESSION["offday_form"]) ? $_SESSION["offday_form"] : "";
         $disabled = "";
-        if (!is_null($isBlock) && $isBlock) {
+        if (!empty($numOfBlockedDate) && $numOfBlockedDate > 0) {
             $disabled = "disabled";
         }
     ?>
@@ -64,6 +64,15 @@
                     <label for="file">Tệp đính kèm (nếu có)</label>
                     <input name="attachment" type="file" class="form-control-file" id="file" <?= $disabled ?>>
                 </div>
+                <?php
+                    if (!empty($numOfBlockedDate)) {
+                    ?>
+                        <div class="form-group">
+                            <p class="text-white">Bạn không thể tiếp tục gửi yêu cầu. Vui lòng quay lại sau <?= $numOfBlockedDate ?> ngày nữa!</p>
+                        </div>
+                    <?php
+                    }
+                ?>
                 <div class="form-group">
                     <label for="" class=""></label>
                     <button type="submit" <?= $disabled ?>>Nộp đơn</button>

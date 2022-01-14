@@ -22,7 +22,7 @@
                 }
             }
         }
-        $_SESSION["offday_form"] = isSubmitBlock(getAbsenceNearCurrentDate($data));
+        $_SESSION["offday_form"] = numberOfBlockedDate(getAbsenceNearCurrentDate($data));
         $_SESSION["absences"] = absenceSorter($data);
         if (!empty($employees)) {
             $data2 = array();
