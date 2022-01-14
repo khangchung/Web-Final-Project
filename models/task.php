@@ -12,7 +12,7 @@
         private $last_modified;
         private $attachment;
 
-        function __construct($id, $title, $description, $status, $rate, $creator, $receiver, $created_date, $deadline, $attachment) {
+        function __construct($id, $title, $description, $status, $rate, $creator, $receiver, $created_date, $deadline, $last_modified, $attachment) {
             $this->id = $id;
             $this->title = $title;
             $this->description = $description;
@@ -22,6 +22,7 @@
             $this->receiver = $receiver;
             $this->created_date = $created_date;
             $this->deadline = $deadline;
+            $this->last_modified = $last_modified;
             $this->attachment = $attachment;
         }
 
