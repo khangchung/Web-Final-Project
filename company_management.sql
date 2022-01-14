@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 05:19 PM
+-- Generation Time: Jan 14, 2022 at 05:24 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.1.1
 
@@ -59,19 +59,19 @@ INSERT INTO `account` (`username`, `password`, `priority`) VALUES
 ('buitrucphuong', '$2y$10$kRqOX2/YlObRdZuhSq.qNOEJZgh.3o9GqMB/NCzF0CzWf1A4mozQy', 2),
 ('caothitrucquynh', '$2y$10$LRjztqAyWYmXDp8H/tTWpOPurRG4vkPjhy4XTT8mBlswshfsze4vy', 2),
 ('chauthanhtoan', '$2y$10$keauji6Zm.Uo7vDV/W7MeegGBZeCtDZPgrkxvrV52rMtRI3WVa8RO', 2),
-('duongthithuyvy', '$2y$10$QNBWKVbPFFMMFyL8YcwkNOSjHLw2ByAkZIxdGqXjAib7kdhGA2406', 2),
+('duongthithuyvy', '$2y$10$QNBWKVbPFFMMFyL8YcwkNOSjHLw2ByAkZIxdGqXjAib7kdhGA2406', 1),
 ('hongoctuyet', '$2y$10$VBj3vPV87d.V.WFvS/o8M.46KRwW4Pojx8dQa3IvOdIwTpfhVppyK', 2),
 ('huynhlong', '$2y$10$5RYWzmllS/m8iP905Bu5aeuoGBKwMyG.tfr2Y2mDnv0pfmLRGtw7K', 2),
-('huynhthanhtrieu', '$2y$10$q1C3UhtlRlU0Y49RPgKrGuVLjY/zQBUKMBnviFFAs.IJ/mTK81d72', 2),
+('huynhthanhtrieu', '$2y$10$q1C3UhtlRlU0Y49RPgKrGuVLjY/zQBUKMBnviFFAs.IJ/mTK81d72', 1),
 ('huynhvankiet', '$2y$10$4..qZII6EViGZbRxquOu.Oz8iHW.dP0iJiopIvs.2zaCWoMddNSLy', 2),
 ('lamvotrongnhan', '$2y$10$IDpdiaSm7bsbjRveiWIIc.gxYjdBG0eaj3JLl7RZQD2n1YJvARUAG', 2),
-('letruchan', '$2y$10$6AErDExjSQvpOTHgu4ikAuQ/Vzs0Y.QM33t.KgWHNXzneFh3MHiq2', 2),
+('letruchan', '$2y$10$6AErDExjSQvpOTHgu4ikAuQ/Vzs0Y.QM33t.KgWHNXzneFh3MHiq2', 1),
 ('levohoaibao', '$2y$10$fEENOBqyTGoYNqZu8.YHUOJKpr37jCmAkNp33B1.2wMsUC1pAzsZC', 2),
 ('lythithuhuong', '$2y$10$f7jL0SYpeTffOjtSN731meYvG1Oc5/sxBwHkzItz99QR7MwmzsHga', 2),
 ('nguyenhoaingoc', '$2y$10$tYSgNgI6V7ds6MImEnt1i..uBB1axKkrv02v.8Oa15dKcBtXdQg4K', 2),
 ('nguyenphamkhang', '$2y$10$6zr8j8ree.9aQBBw554FaeIwXmS2t/ps1Q7viLMPdKWLwGyXETPgu', 2),
 ('nguyenvanthai', '$2y$10$K8pgMCifaeawUADIEgcUDOcJul7KUJ/F8meU2wzACgh4d2MKQX/zy', 2),
-('phamtam', '$2y$10$MmUC5S0ueQN8pKB9FvILK.aXn4xP3C3IBnf5bNtSLh8bf1sveHi4u', 2),
+('phamtam', '$2y$10$MmUC5S0ueQN8pKB9FvILK.aXn4xP3C3IBnf5bNtSLh8bf1sveHi4u', 1),
 ('trannguyenphuongthi', '$2y$10$3aDX7219edW0TKj9w/9QZekefhi.DPrZCkdd61FqdHRzdEsGrzmXy', 2),
 ('tranthithaoanh', '$2y$10$IMeoRFf6pg9LOQB/JSCgg.tPanK4VhYfSqhfMw/iw9OmIyWu9LHta', 1),
 ('tranvantuan', '$2y$10$bj8Axxz6XfZ8gVUn1cbAwOR77dpjUg3LPsdN2RWnEsBEc96UH1KRK', 2),
