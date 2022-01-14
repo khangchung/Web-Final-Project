@@ -74,10 +74,26 @@ function closeAppointMonitor(){
     document.querySelector('#appoint_monitor_modal').style.display = 'none';
 } 
 
-// Kiểm tra đăng nhập
+// Biến chung
     var uppercase = /[A-Z]/;
-    var special_character = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    var special_character = /[ !@#$%&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+ //Lấy ngày hiện tại   
+    var today = new Date();
+        var dd = today.getDate();
 
+        var mm = today.getMonth()+1; 
+        var yyyy = today.getFullYear();
+        if(dd<10) 
+        {
+            dd='0'+dd;
+        } 
+
+        if(mm<10) 
+        {
+            mm='0'+mm;
+        } 
+    today = yyyy+'-'+mm+'-'+dd;
+//Kiểm tra đăng nhập
     function checkLogin(){
         var username = document.querySelector('#login_form .username');
         var password = document.querySelector('#login_form .password');
@@ -114,6 +130,36 @@ function closeAppointMonitor(){
         }
         return true;
     }
+//Kiểm đổi mật khẩu
+function checkChangePassword(){
+    var newPass1 = document.querySelector('#changePassword #newPass1');
+    var newPass2 = document.querySelector('#changePassword #newPass2');
+
+    var newPass1Value = newPass1.value.trim();
+    var newPass2Value = newPass2.value.trim();
+
+    if(newPass1Value === '') {
+        setErrorFor(newPass1, 'Vui lòng nhập mật khẩu mới');
+        return false;
+    } else {
+        setSuccessFor(newPass1);
+    }
+
+    if(newPass2Value === '') {
+        setErrorFor(newPass2, 'Vui lòng nhập xác nhận mật khẩu');
+        return false;
+    } else {
+        setSuccessFor(newPass2);
+    }
+
+    if(newPass2Value !== newPass1Value) {
+        setErrorFor(newPass2, 'Xác nhận mật khẩu không chính xác');
+        return false;
+    } else {
+        setSuccessFor(newPass2);
+    }
+    return true;
+}
     // Kiểm tra thêm nhân viên
     function addEmployee(){
         var fullname = document.querySelector('#addEmployeeForm #fullname');
@@ -122,32 +168,172 @@ function closeAppointMonitor(){
         var fullnameValue = fullname.value;
         var usernameValue = username.value;
 
+
         if(fullnameValue === ''){
             setErrorMessage('Vui lòng nhập họ và tên');
+            fullname.focus();
             return false;
         }
         else if(!setCapitalize(fullnameValue)){
             setErrorMessage('Ký tự đầu của tên phải viết hoa');
+            fullname.focus();
+
             return false;
         }
         else if(usernameValue === ''){
             setErrorMessage('Vui lòng nhập tên tài khoản');
+            username.focus();
             return false;
         }
         else if(uppercase.test(usernameValue)) {
             setErrorMessage('Tên tài khoản không được chứa ký tự in hoa');
+            username.focus();
             return false;
         }
         else if(special_character.test(usernameValue)) {
             setErrorMessage('Tên tài khoản không được chứa ký tự đặc biệt');
+            username.focus();
             return false;
         }
         else if(usernameValue.length < 6) {
             setErrorMessage('Tên tài khoản phải có tối thiểu 6 ký tự');
+            username.focus();
             return false;
         }
+        else{
+            setSuccessMessage('Thêm nhân viên thành công')
+            return true;
+        }
+    }
+
+    // Kiểm tra thêm phòng ban
+    function addDepartment(){
+        var name = document.querySelector('#addDepartmentForm #department_name');
+        var desc = document.querySelector('#addDepartmentForm #department_desc');
+        var total = document.querySelector('#addDepartmentForm #total_department');
+
+        var nameValue = name.value;
+        var descValue = desc.value;
+        var totalValue = total.value;
+
+
+        if(nameValue === ''){
+            setErrorMessage('Vui lòng nhập tên phòng ban');
+            name.focus();
+            return false;
+        }
+        else if(descValue === ''){
+            setErrorMessage('Vui lòng nhập mô tả cho phòng ban');
+            desc.focus();
+            return false;
+        }
+        else if(descValue.length < 10) {
+            setErrorMessage('Mô tả phòng ban quá ngắn');
+            desc.focus();
+            return false;
+        }
+        else if(totalValue === ''){
+            setErrorMessage('Vui lòng nhập số phòng của phòng ban');
+            return false;
+        }
+        else{
+            setSuccessMessage('Thêm nhân viên thành công')
+            return true;
+        }
+    }
+
+    // Kiểm tra nộp đơn nghỉ phép của nhân viên
+    function formOffDay(){
+        var startDay = document.querySelector('#formOffDay #startDay');
+        var endDay = document.querySelector('#formOffDay #endDay');
+        var reason = document.querySelector('#formOffDay #reason');
+
+        var startDayValue = startDay.value;
+        var endDayValue = endDay.value;
+        var reasonValue = reason.value;
+
+        if(startDayValue === ''){
+            setErrorMessage('Vui lòng chọn ngày bắt đầu nghỉ');
+            startDay.focus();
+            return false;
+        }
+        else if(startDayValue < today){
+            setErrorMessage('Không được chọn ngày nghỉ trong quá khứ');
+            startDay.focus();
+            return false;
+        }
+        else if(endDayValue === ''){
+            setErrorMessage('Vui lòng chọn ngày kết thúc nghỉ');
+            endDay.focus();
+            return false;
+        }
+        else if(endDayValue < startDayValue){
+            setErrorMessage('Ngày kết thúc phải ở sau ngày nghỉ');
+            endDay.focus();
+            return false;
+        }
+        else if(reasonValue === ''){
+            setErrorMessage('Vui lòng nhập lý do nghỉ');
+            reason.focus();
+            return false;
+        }
+        
+        else{
+            setSuccessMessage('Nộp đơn thành công')
+            return true;
+        }
+    }
+
+//Kiểm tra tạo task
+function createTask(){
+    var taskName = document.querySelector('#createTask #task_name');
+    var deadline = document.querySelector('#createTask #deadline');
+    var desc = document.querySelector('#createTask #task_desc');
+    var file = document.querySelector('#createTask #file');
+
+
+    var taskNameValue = taskName.value;
+    var deadlineValue = deadline.value;
+    var descValue = desc.value;
+    var fileValue = file.value;
+
+
+    if(taskNameValue === ''){
+        setErrorMessage('Vui lòng nhập tiêu đề');
+        taskName.focus();
+        return false;
+    }
+    else if(deadlineValue === ''){
+        setErrorMessage('Vui lòng chọn ngày deadline');
+        deadline.focus();
+        return false;
+    }
+    else if(deadlineValue < today){
+        setErrorMessage('Deadline không thể chọn ngày trong quá khứ');
+        deadline.focus();
+        return false;
+    }
+    else if(descValue === ''){
+        setErrorMessage('Vui lòng nhập mô tả công việc');
+        desc.focus();
+        return false;
+    }
+    else if(descValue.length < 20){
+        setErrorMessage('Mô tả công việc quá ngắn');
+        desc.focus();
+        return false;
+    }
+    else if(fileValue === ''){
+        setErrorMessage('Vui lòng thêm vào tệp đính kèm');
+        file.focus();
+        return false;
+    }
+    else{
+        setSuccessMessage('Tạo nhiệm vụ thành công')
         return true;
     }
+}
+
 // Hàm check lỗi
 
     function setErrorFor(input, message) {
@@ -164,8 +350,21 @@ function closeAppointMonitor(){
 
     function setErrorMessage(message) {
         const errorMessage = document.querySelector('#errorMessage');
+        errorMessage.style.opacity = "1";
         errorMessage.innerHTML = message;
     }
+    
+    function clearErrorMessage(){
+        document.querySelector('#errorMessage').style.opacity = "0";
+    }
+
+
+    function setSuccessMessage(message) {
+        const successMessage = document.querySelector('#successMessage');
+        successMessage.style.opacity = "1";
+        successMessage.innerHTML = message;
+    }
+
     function setCapitalize(str){
         return /[A-Z]/.test(str.charAt(0));
     } 

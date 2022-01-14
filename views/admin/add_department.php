@@ -42,20 +42,27 @@
         ?>
         <div class="page-wrap">
             
-            <div class="main_wrap" id="">
+            <div class="main_wrap" id="addDepartmentForm">
                 <h2 class=" mb-5" >Thêm phòng ban</h2>
-                <form action="../../controllers/admin/add_department.php" method="POST">
+                <div class="form-group">
+                    <small id="successMessage"></small>
+                </div>
+                <form action="../../controllers/admin/add_department.php" method="POST" onsubmit="return addDepartment();">
                     <div class="form-group">
-                        <label for="department">Tên phòng ban</label>
-                        <input type="text" class="form-control" name="name" id="department">
+                        <label for="department">Tên phòng ban <span class="requiredField">*</span></label>
+                        <input type="text" class="form-control" onkeydown="clearErrorMessage()"  name="name" id="department_name">
                     </div>
                     <div class="form-group">
-                        <label for="department_desc">Mô tả</label>
-                        <textarea type="text" id="department_desc" name="desc" class="form-control"></textarea>
+                        <label for="department_desc">Mô tả <span class="requiredField">*</span></label>
+                        <textarea type="text" id="department_desc" onkeydown="clearErrorMessage()"  name="desc" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="total_department">Số phòng</label> 
-                        <input type="number" min="0" class="form-control" name="room" id="total_department">
+                        <label for="total_department">Số phòng <span class="requiredField">*</span></label> 
+                        <input type="number" min="0" class="form-control" onclick="clearErrorMessage()" name="room" id="total_department">
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <small id="errorMessage"></small>
                     </div>
                     <div class="form-group">
                         <label for="add_department"></label>

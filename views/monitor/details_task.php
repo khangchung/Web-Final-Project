@@ -50,8 +50,8 @@
             
             <!--Xem thông tin chi tiết task -->
             <div class="main_wrap" id="task_info">
-                <div class="d-flex justify-content-between">
-                    <div>
+                <div class="d-flex">
+                    <div class="chitiet">
                         <h2 style="margin-bottom: 30px">CHI TIẾT NHIỆM VỤ</h2>
                     <?php
                         if (!empty($employees) && !empty($task)) {
@@ -159,7 +159,7 @@
                                                                 </div>
 
                                                     </form>
-                </div>
+                    </div>
                                         <?php
                                         }
                                     ?>
