@@ -62,6 +62,6 @@ Các chức năng: (Giám đốc - A, Trưởng phòng - M, Nhân viên - E)
 
 Những lưu ý cho quản trị viên:
 1. Thiết lập thông tin của database tại database_settings.txt (Các giá trị được điền sau dấu "=", nếu giá trị rỗng thì không cần điền gì sau dấu "=").
-2. Để cập nhật lại các thông tin thiết lập cho database, quản trị viên truy cập đường dẫn localhost:8080/update-db-settings.php sau khi thay đổi thông tin cần thiết lập.
+2. Cập nhật lại các thông tin thiết lập cho database tại: localhost:8080/update-db-settings.php.
 3. Tạo tài khoản quản trị tại: localhost:8080/admin-account-creating.php?username=XXX&key=MaiVanManh (XXX: tên tài khoản, password mặc định là tên tài khoản).
 4. Xóa tài khoản quản trị tại: localhost:8080/admin-account-deleting.php?username=XXX&key=MaiVanManh (XXX: tên tài khoản).
