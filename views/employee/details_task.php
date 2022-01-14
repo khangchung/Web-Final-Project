@@ -138,7 +138,6 @@
                     </div>
                    
                        
-                <!-- Xóa comment này và thêm code giao diện bảng task log ở đây -->
                 
                 <div class="ml-5">
                     <h2 class="mb-4">Lịch sử phản hồi</h2>
