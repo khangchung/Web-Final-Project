@@ -28,15 +28,18 @@
             $extension = pathinfo($basename, PATHINFO_EXTENSION);
             $tmp_path = $path . "/" . $created_date . "." . $extension;
             $i = 1;
-            while (!file_exists($tmp_path)) {
+            while (1) {
+                if (!file_exists($tmp_path)) {
+                    if(move_uploaded_file($attachment["tmp_name"], $path)) {
+                        return $tmp_name;
+                    } else {
+                        return "";
+                    }
+                }
                 $tmp_path = $path . "/" . $created_date . "(" . $i . ")." . $extension;
                 $i++;
             }
-            if(move_uploaded_file($attachment["tmp_name"], $path)) {
-                return $path;
-            } else {
-                return "";
-            }    
+            return "";
         } else {
             return "";
         }
@@ -52,15 +55,18 @@
             $extension = pathinfo($basename, PATHINFO_EXTENSION);
             $tmp_path = $path . "/" . $created_date . "." . $extension;
             $i = 1;
-            while (!file_exists($tmp_path)) {
+            while (1) {
+                if (!file_exists($tmp_path)) {
+                    if(move_uploaded_file($attachment["tmp_name"], $path)) {
+                        return $tmp_name;
+                    } else {
+                        return "";
+                    }
+                }
                 $tmp_path = $path . "/" . $created_date . "(" . $i . ")." . $extension;
                 $i++;
             }
-            if(move_uploaded_file($attachment["tmp_name"], $path)) {
-                return $path;
-            } else {
-                return "";
-            }    
+            return ""; 
         } else {
             return "";
         }

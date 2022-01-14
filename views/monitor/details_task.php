@@ -58,10 +58,7 @@
                             foreach ($employees as $employee) {
                                 $employee = unserialize($employee);
                                 if ($employee->getId() == $task->getReceiver()) {
-                                    $attachment = "...";
-                                    if ($task->getAttachment() != "") {
-                                        $attachment = getFilenameOf($task->getAttachment());
-                                    }
+                                    $attachment = $task->getAttachment() != "" ? getFilenameOf($task->getAttachment()) : "...";
                                     $text_color = "primary";
                                     $status = "New";
                                     if ($task->getStatus() == 1) {
