@@ -171,31 +171,31 @@
                 ?>
                 
 
-                <div class="ml-5">
-                    <h2 class="mb-4">Lịch sử phản hồi</h2>
-                    <table class="text-left feedback_history" style="max-width: 400px">
-                        <tr>
-                            <td>Tin nhắn</td>
-                            <td>Tệp đính kèm</td>
-                        </tr>
-                        <?php
-                            if (!empty($task_logs)) {
-                                foreach ($task_logs as $task_log) {
-                                    $task_log = unserialize($task_log);
-                                    $filename = $task_log->getAttachment() != "" ? getFilenameOf($task_log->getAttachment()) : "...";
-                                    ?>
-                                        <tr>
-                                            <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
-                                            <td>
-                                                <a href="<?= $task_log->getAttachment() ?>"><?= $filename ?></a>
-                                            </td>
-                                        </tr>
-                                    <?php
-                                }
+            </div>
+            <div class="ml-5">
+                <h2 class="mb-4">Lịch sử phản hồi</h2>
+                <table class="text-left feedback_history" style="max-width: 400px">
+                    <tr>
+                        <td>Tin nhắn</td>
+                        <td>Tệp đính kèm</td>
+                    </tr>
+                    <?php
+                        if (!empty($task_logs)) {
+                            foreach ($task_logs as $task_log) {
+                                $task_log = unserialize($task_log);
+                                $filename = $task_log->getAttachment() != "" ? getFilenameOf($task_log->getAttachment()) : "...";
+                                ?>
+                                    <tr>
+                                        <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
+                                        <td>
+                                            <a href="<?= $task_log->getAttachment() ?>"><?= $filename ?></a>
+                                        </td>
+                                    </tr>
+                                <?php
                             }
-                        ?>    
-                    </table>
-                </div>
+                        }
+                    ?>    
+                </table>
             </div>
         </div>   
         
