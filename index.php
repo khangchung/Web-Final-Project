@@ -1,7 +1,8 @@
 <?php
-    if (!isset($_COOKIE["hostname"]) && !isset($_COOKIE["username"]) && !isset($_COOKIE["password"]) && !isset($_COOKIE["database"])) {
+    if (!isset($_COOKIE["db_hostname"]) && !isset($_COOKIE["db_username"]) && !isset($_COOKIE["db_password"]) && !isset($_COOKIE["db_database"])) {
         $db_info = array();
-        $setting_file = fopen("database_setting.txt", "r");
+        $filename = "database_settings.txt";
+        $setting_file = fopen($filename, "r");
         while (!feof($setting_file)) {
             $str = fgets($setting_file);
             $tmp = explode("=", $str);
