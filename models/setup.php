@@ -153,11 +153,11 @@
     function isSubmitBlock($absence) {
         $current_date = date("Y-m-d");
         if (!is_null($absence)) {
-            if (getDateDistance($absence->getCreatedDate(), $current_date) >= 7) {
+            if (getDateDistance($absence->getCreatedDate(), $current_date) < 7) {
                 return false;
             }
         }
-        return true;
+        return false;
     }
 
     function getAbsenceNearCurrentDate($absences) {
