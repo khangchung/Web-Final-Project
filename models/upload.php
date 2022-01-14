@@ -26,7 +26,12 @@
             }
             $basename = $attachment["name"];
             $extension = pathinfo($basename, PATHINFO_EXTENSION);
-            $path .= "/" . $created_date . "-task." . $extension;
+            $tmp_path = $path . "/" . $created_date . "." . $extension;
+            $i = 1;
+            while (!file_exists($tmp_path)) {
+                $tmp_path = $path . "/" . $created_date . "(" . $i . ")." . $extension;
+                $i++;
+            }
             if(move_uploaded_file($attachment["tmp_name"], $path)) {
                 return $path;
             } else {
@@ -45,7 +50,12 @@
             }
             $basename = $attachment["name"];
             $extension = pathinfo($basename, PATHINFO_EXTENSION);
-            $path .= "/" . $created_date . "-tasklog." . $extension;
+            $tmp_path = $path . "/" . $created_date . "." . $extension;
+            $i = 1;
+            while (!file_exists($tmp_path)) {
+                $tmp_path = $path . "/" . $created_date . "(" . $i . ")." . $extension;
+                $i++;
+            }
             if(move_uploaded_file($attachment["tmp_name"], $path)) {
                 return $path;
             } else {
