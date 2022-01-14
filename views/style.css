@@ -437,6 +437,7 @@ body {
 
 .form-control{
     min-width: 280px;
+    max-width: 325px;
 }
 .form-group{
     display: flex;

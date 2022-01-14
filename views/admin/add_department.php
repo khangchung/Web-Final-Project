@@ -42,7 +42,7 @@
         ?>
         <div class="page-wrap">
             
-            <div class="m-5" id="">
+            <div class="main_wrap" id="">
                 <h2 class=" mb-5" >Thêm phòng ban</h2>
                 <form action="../../controllers/admin/add_department.php" method="POST">
                     <div class="form-group">
