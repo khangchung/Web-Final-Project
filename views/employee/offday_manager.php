@@ -68,7 +68,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    if (!empty($info) && !empty($absences)) {
+                                    if (!empty($info)) {
                                     ?>
                                         <tr>
                                             <td data-label="Mã nhân viên"><?= $info->getId() ?></td>
@@ -76,16 +76,6 @@
                                             <td data-label="Số ngày được nghỉ"><?= $info->getDayOff() ?></td>
                                             <td data-label="Số ngày đã nghỉ"><?= countDayOff($absences) ?></td> 
                                             <td data-label="Số ngày còn lại"><?= $info->getDayOff() - countDayOff($absences) ?></td>
-                                        </tr>
-                                    <?php
-                                    } else {
-                                        ?>
-                                        <tr>
-                                            <td data-label="Mã nhân viên"><?= $info->getId() ?></td>
-                                            <td data-label="Họ & tên"><?= $info->getFullname() ?></td>
-                                            <td data-label="Số ngày được nghỉ"><?= $info->getDayOff() ?></td>
-                                            <td data-label="Số ngày đã nghỉ">0</td> 
-                                            <td data-label="Số ngày còn lại"><?= $info->getDayOff() ?></td>
                                         </tr>
                                     <?php
                                     }
