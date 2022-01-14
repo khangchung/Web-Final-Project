@@ -1,5 +1,6 @@
 <?php
-    $error_message = isset($_SESSION["page_message_error"]) ? $_SESSION["page_message_error"] : "";
+    session_start();
+    $error_message = isset($_SESSION["page_error_message"]) ? $_SESSION["page_error_message"] : "";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@
     <div class="container">
         <h1>Lỗi!!!</h1>
         <p><?= $error_message ?></p>
-        <p>Ấn vào <a href="../index.php">đây</a> để trở về trang chủ.</p>
+        <p>Ấn vào <a href="../index.php">đây</a> để quay trở về.</p>
     </div>
 </body>
 </html>
