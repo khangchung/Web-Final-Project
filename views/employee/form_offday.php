@@ -45,25 +45,32 @@
         <?php
             require_once('../includes/sidebar_employee.php');
         ?>
-       <div class="page-wrap">
+       <div class="page-wrap" id="formOffDay">
             
-            <form action="../../controllers/employee/dayoff_form.php" method="POST" class=" mt-5 p-3" enctype="multipart/form-data">
+            <form action="../../controllers/employee/dayoff_form.php" method="POST" onsubmit="return formOffDay();" class=" mt-5 p-3" enctype="multipart/form-data">
                 <h2 class="title">Yêu cầu nghỉ phép</h2>
                 <div class="form-group">
-                    <label for="startDay">Ngày bắt đầu</label>
-                    <input name="start_date" type="date" id="startDay" class="form-control" <?= $disabled ?>>
+                    <small id="successMessage"></small>
                 </div>
                 <div class="form-group">
-                    <label for="endDay">Ngày kết thúc</label>
-                    <input name="end_date" type="date" id="endDay" class="form-control" <?= $disabled ?>>
+                    <label for="startDay">Ngày bắt đầu <span class="requiredField">*</span></label>
+                    <input name="start_date" onclick="clearErrorMessage()" type="date" id="startDay" class="form-control" <?= $disabled ?>>
                 </div>
                 <div class="form-group">
-                    <label for="reason">Lý do</label>
-                    <textarea name="reason" id="reason" class="form-control" <?= $disabled ?>></textarea>
+                    <label for="endDay">Ngày kết thúc <span class="requiredField">*</span></label>
+                    <input name="end_date" onclick="clearErrorMessage()" type="date" id="endDay" class="form-control" <?= $disabled ?>>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Lý do <span class="requiredField">*</span></label>
+                    <textarea name="reason" onkeydown="clearErrorMessage()" id="reason" class="form-control" <?= $disabled ?>></textarea>
                 </div>
                 <div class="form-group">
                     <label for="file">Tệp đính kèm (nếu có)</label>
                     <input name="attachment" type="file" class="form-control-file" id="file" <?= $disabled ?>>
+                </div>
+                <div class="form-group">
+                    <label for=""></label>
+                    <small id="errorMessage"></small>
                 </div>
                 <div class="form-group">
                     <label for="" class=""></label>

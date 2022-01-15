@@ -435,6 +435,8 @@ body {
 }
 
 
+
+
 .form-control{
     min-width: 280px;
     max-width: 325px;
@@ -499,7 +501,7 @@ body {
     color: white;
 }
 .main_wrap .main_table tbody tr:hover{
-    background-color: rgba(255,165,0,0.75);
+    background-color: rgba(255,165,0,0.6);
     cursor: pointer;
     transition: 0.5s linear;
 }
@@ -554,6 +556,31 @@ h1,h2,h3{
     color: #dff9fb;
 }
 
+.requiredField{
+    color: red;
+}
+
+#errorMessage{
+    color: white;
+    background-color: #eb3b5a;
+    padding: 8px 12px;
+    border-radius: 5px;
+    min-width: 250px;
+    opacity: 0;
+    transition: all 2s;
+}
+
+#successMessage{
+    color: white;
+    background-color: #78e08f;
+    padding: 12px 16px;
+    min-width: 350px;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    opacity: 0;
+    transition: all 2s;
+}
 .main_wrap .title{
     color: white;
 }

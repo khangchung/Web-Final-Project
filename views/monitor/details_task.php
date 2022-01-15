@@ -51,8 +51,8 @@
             
             <!--Xem thông tin chi tiết task -->
             <div class="main_wrap" id="task_info">
-                <div class="d-flex justify-content-between">
-                    <div>
+                <div class="d-flex">
+                    <div class="chitiet">
                         <h2 style="margin-bottom: 30px">CHI TIẾT NHIỆM VỤ</h2>
                     <?php
                         if (!empty($employees) && !empty($task)) {
@@ -170,12 +170,18 @@
                                                                     </div>
                                                                         <button type="submit" class="btn btn-danger px-5">Refuse</button>
                                                                 </div>
+<<<<<<< HEAD
                                                             </form>
                                                         <?php
                                                         }
                                                     ?>
                                                     
                 </div>
+=======
+
+                                                    </form>
+                    </div>
+>>>>>>> e9c4a6f1de42cb7c75ee448a84f9a8d9d1721aaa
                                         <?php
                                         }
                                     ?>
@@ -187,31 +193,31 @@
                 ?>
                 
 
-                <div class="ml-5">
-                    <h2 class="mb-4">Lịch sử phản hồi</h2>
-                    <table class="text-left feedback_history" style="max-width: 400px">
-                        <tr>
-                            <td>Tin nhắn</td>
-                            <td>Tệp đính kèm</td>
-                        </tr>
-                        <?php
-                            if (!empty($task_logs)) {
-                                foreach ($task_logs as $task_log) {
-                                    $task_log = unserialize($task_log);
-                                    $filename = $task_log->getAttachment() != "" ? getFilenameOf($task_log->getAttachment()) : "...";
-                                    ?>
-                                        <tr>
-                                            <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
-                                            <td>
-                                                <a href="<?= $task_log->getAttachment() ?>"><?= $filename ?></a>
-                                            </td>
-                                        </tr>
-                                    <?php
-                                }
+            </div>
+            <div class="ml-5">
+                <h2 class="mb-4">Lịch sử phản hồi</h2>
+                <table class="text-left feedback_history" style="max-width: 400px">
+                    <tr>
+                        <td>Tin nhắn</td>
+                        <td>Tệp đính kèm</td>
+                    </tr>
+                    <?php
+                        if (!empty($task_logs)) {
+                            foreach ($task_logs as $task_log) {
+                                $task_log = unserialize($task_log);
+                                $filename = $task_log->getAttachment() != "" ? getFilenameOf($task_log->getAttachment()) : "...";
+                                ?>
+                                    <tr>
+                                        <td class="font-weight-normal"><?= $task_log->getComment() ?></td>
+                                        <td>
+                                            <a href="<?= $task_log->getAttachment() ?>"><?= $filename ?></a>
+                                        </td>
+                                    </tr>
+                                <?php
                             }
-                        ?>    
-                    </table>
-                </div>
+                        }
+                    ?>    
+                </table>
             </div>
         </div>   
         

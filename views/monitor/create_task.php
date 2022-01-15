@@ -43,17 +43,20 @@
         <?php
             require_once('../includes/sidebar_monitor.php');
         ?>
-        <div class="page-wrap">
+        <div class="page-wrap" id="createTask">
             
             <div class="main_wrap" id="">
                 <h1 class="title" >Thêm nhiệm vụ</h1>
-                <form id="" action="../../controllers/monitor/create_task.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <small id="successMessage"></small>
+                </div>
+                <form id="" action="../../controllers/monitor/create_task.php" onsubmit="return createTask();" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="task_name">Tiêu đề</label>
-                        <input name="title" type="text" id="task_name" name="task_name" class="form-control">
+                        <label for="task_name">Tiêu đề <span class="requiredField">*</span></label>
+                        <input name="title" type="text" onkeydown="clearErrorMessage()" id="task_name" name="task_name" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="fullname">Nhân viên thực hiện</label>
+                        <label for="fullname">Nhân viên thực hiện <span class="requiredField">*</span></label>
                         <select name="receiver" class="form-control">
                         <?php
                             if (!empty($employees)) {
@@ -70,20 +73,24 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="deadline">Deadline</label>
-                        <input name="deadline" type="date" id="deadline" name="deadline" class="form-control">
+                        <label for="deadline">Deadline <span class="requiredField">*</span></label>
+                        <input name="deadline" onclick = "clearErrorMessage()" type="date" id="deadline" name="deadline" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="task_desc">Mô tả công việc</label>
-                        <textarea name="desc" type="text" id="task_desc" class="form-control"></textarea>
+                        <label for="task_desc">Mô tả công việc <span class="requiredField">*</span></label>
+                        <textarea name="desc" onkeydown="clearErrorMessage()" type="text" id="task_desc" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="file">Tệp đính kèm</label>
-                        <input name="attachment" type="file" class="form-control-file" id="file">
+                        <label for="file">Tệp đính kèm <span class="requiredField">*</span></label>
+                        <input name="attachment" onclick="clearErrorMessage()" type="file" class="form-control-file" id="file">
                     </div>
                     <div class="form-group">
                         <label for=""></label>
-                        <button type="submit" class="btn btn-info  mt-5 p-2 px-4">Xác nhận</button>
+                        <small id="errorMessage"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for=""></label>
+                        <button type="submit">Xác nhận</button>
                     </div>
                 </form>
             

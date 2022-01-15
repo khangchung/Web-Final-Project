@@ -34,19 +34,26 @@
 </head>
 <body style="background: linear-gradient(to right, #485563, #29323c);">
     <div class="container-fluid changePass">
-        <div class="wrapper">
+        <div class="wrapper" id="changePassword">
             <div class="title1">
                 <p>Đổi mật khẩu</p>
             </div>
-            <form action="../controllers/change_password.php" method="POST" class="login">
+            <form action="../controllers/change_password.php" onsubmit="return checkChangePassword();" id="login_form" method="POST" class="login">
                 <div class="field">
                     <label for="">Mật khẩu mới</label>
-                    <input name="new_password" type="password" placeholder="">
+                    <input name="new_password" id="newPass1" type="password" placeholder="">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <i class="bi bi-exclamation-circle-fill"></i> 
+                    <small>Error Message</small>
                 </div>
                 <div class="field">
                     <label for="">Xác nhận mật khẩu</label>
-                    <input type="password" placeholder="">
+                    <input type="password" id="newPass2" placeholder="">
+                    <i class="bi bi-check-circle-fill"></i>
+                    <i class="bi bi-exclamation-circle-fill"></i> 
+                    <small>Error Message</small>
                 </div>
+                <small style="color: #e74c3c" class="d-none">Error Message</small>
                 <div class="field btn_changePass">
                     <input type="submit" value="Xác nhận">
                 </div>

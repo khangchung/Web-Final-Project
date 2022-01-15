@@ -107,7 +107,7 @@
                         <?php
                         if ($task->getStatus() == 0) {
                         ?>
-                            <div class="justify-content-end">
+                            <div class="d-flex justify-content-end">
                             <a href="../../controllers/employee/start_task.php?id=<?= $task->getId() ?>" class="btn btn-primary ml-auto mt-3 px-5">Start</a>
                             </div>
                         <?php
@@ -126,7 +126,11 @@
                                     <label for="file" class="font-weight-bold">Tệp đính kèm</label>
                                     <input name="attachment" type="file" class="form-control-file" id="file">
                                 </div>
-                                <button type="submit" class="btn btn-success d-block ml-auto mt-3 px-5">Submit</button>
+                                <div class="form-group">
+                                    <label></label>
+                                    <button type="submit" class="mt-3 px-5">Submit</button>
+                                </div>
+                                
                             </form>
                         <?php
                         }
@@ -165,9 +169,9 @@
                     </table>
                 </div>
 
-                </div>
+            </div>
 
-            </div>   
-        </div>
+        </div>   
+    </div>
 </body>
     </html>

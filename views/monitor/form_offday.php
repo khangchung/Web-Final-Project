@@ -45,20 +45,23 @@
         <?php
             require_once('../includes/sidebar_monitor.php');
         ?>
-       <div class="page-wrap">
-            <form action="../../controllers/monitor/dayoff_form.php" method="POST" class=" mt-5 p-3" enctype="multipart/form-data">
-                <h2 class="text-center mb-5">Yêu cầu nghỉ phép</h2>
+       <div class="page-wrap" id="formOffDay">
+            <form action="../../controllers/monitor/dayoff_form.php" method="POST" onsubmit="return formOffDay();" class=" mt-5 p-3" enctype="multipart/form-data">
+                <h2 class="title">Yêu cầu nghỉ phép</h2>
                 <div class="form-group">
-                    <label for="startDay">Ngày bắt đầu</label>
-                    <input name="start_date" type="date" id="startDay" class="form-control" <?= $disabled ?>>
+                    <small id="successMessage"></small>
                 </div>
                 <div class="form-group">
-                    <label for="endDay">Ngày kết thúc</label>
-                    <input name="end_date" type="date" id="endDay" class="form-control" <?= $disabled ?>>
+                    <label for="startDay">Ngày bắt đầu <span class="requiredField">*</span></label>
+                    <input name="start_date" type="date" onclick="clearErrorMessage()" id="startDay" class="form-control" <?= $disabled ?>>
                 </div>
                 <div class="form-group">
-                    <label for="reason">Lý do</label>
-                    <textarea name="reason" id="reason" class="form-control" <?= $disabled ?>></textarea>
+                    <label for="endDay">Ngày kết thúc <span class="requiredField">*</span></label>
+                    <input name="end_date" type="date" onclick="clearErrorMessage()" id="endDay" class="form-control" <?= $disabled ?>>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Lý do <span class="requiredField">*</span></label>
+                    <textarea name="reason" id="reason" onkeydown="clearErrorMessage()" class="form-control" <?= $disabled ?>></textarea>
                 </div>
                 <div class="form-group">
                     <label for="file">Tệp đính kèm (nếu có)</label>
@@ -73,6 +76,10 @@
                     <?php
                     }
                 ?>
+                <div class="form-group">
+                    <label for=""></label>
+                    <small id="errorMessage"></small>
+                </div>
                 <div class="form-group">
                     <label for="" class=""></label>
                     <button type="submit" <?= $disabled ?>>Nộp đơn</button>

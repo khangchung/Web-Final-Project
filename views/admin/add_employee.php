@@ -46,20 +46,23 @@
             
             <div class="main_wrap" id="">
                 <h2 class=" mb-5 title" >Thêm nhân viên</h2>
+                <div class="form-group">
+                    <small id="successMessage"></small>
+                </div>
                 <?php
                     if (!empty($departments)) {
                     ?>
-                    <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" method="POST" onsubmit="return addEmployee();">
+                    <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" onload = "setTimeout('addEmployee();', 3000)" method="POST" onsubmit="return addEmployee();">
                         <div class="form-group">
-                            <label for="fullname">Họ & tên</label>
-                            <input type="text" id="fullname" name="fullname" class="form-control">
+                            <label for="fullname">Họ & tên <span class="requiredField">*</span></label>
+                            <input type="text" id="fullname" onkeydown="clearErrorMessage()" name="fullname" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="username">Tên tài khoản</label>
-                            <input type="text" id="username" name="username" class="form-control">
+                            <label for="username">Tên tài khoản <span class="requiredField">*</span></label>
+                            <input type="text" id="username" onkeydown="clearErrorMessage()" name="username" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="department">Tên phòng ban</label>
+                            <label for="department">Tên phòng ban <span class="requiredField">*</span></label>
                             <select name="department" class="selectpicker form-control" name="department_name">
                             <?php
                                 foreach ($departments as $department) {
@@ -72,15 +75,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="type_employee">Vị trí</label> 
+                            <label for="type_employee">Vị trí <span class="requiredField">*</span></label> 
                             <select class="selectpicker form-control" name="position">
                                 <option value="2">Nhân viên</option>
-                                <option value="1">Trưởng phòng</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for=""></label>
-                            <small id="errorMessage" class="text-danger"></small>
+                            <small id="errorMessage"></small>
                         </div>
                         <div class="form-group">
                             <label for=""></label>
