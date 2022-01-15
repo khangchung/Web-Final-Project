@@ -65,34 +65,28 @@
                 <div class="field">
                     <label for="">Tên đăng nhập</label>
                     <input name="username" type="text" placeholder="Tên đăng nhập" class="username" value="<?= $username ?>" style="background-color: <?= $bg_color ?>;">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <i class="bi bi-exclamation-circle-fill"></i> 
-                    <?php
-                        // Area = 1
-                        if ($area == 1 && $validate[0] == -1) {
-                        ?>
-                            <p class="text-success"><?= $message ?></p>
-                        <?php
-                        }
-                    ?>
-                    <small>Error Message</small>
                 </div>
                 <div class="field">
                     <label for="">Mật khẩu</label>
                     <input name="password" type="password" placeholder="Mật khẩu" class="password"  value="<?= $password ?>"  style="background-color: <?= $bg_color ?>;">
-                    <i class="bi bi-check-circle-fill"></i>
-                    <i class="bi bi-exclamation-circle-fill"></i> 
-                    <?php
-                        // Area = 2
-                        if ($area == 2 && $validate[0] == -1) {
-                        ?>
-                            <p class="text-success"><?= $message ?></p>
-                        <?php
-                        }
-                    ?>
-                    <small>Error Message</small>
                 </div>
-                <small style="color: #e74c3c" class="d-none">Error Message</small>
+                <?php
+                    // Area = 2
+                    if ($area == 2 && $validate[0] == -1) {
+                    ?>
+                        <small class="text-danger"><?= $message ?></small>
+                    <?php
+                    }
+                
+                    // Area = 1
+                    else if ($area == 1 && $validate[0] == -1) {
+                    ?>
+                        <small class="text-danger"><?= $message ?></small>
+                    <?php
+                    }
+                ?>
+                <small id="errorMessage1"></small>
+                
                 <div class="field">
                     <input type="submit" value="Đăng nhập">
                 </div>
