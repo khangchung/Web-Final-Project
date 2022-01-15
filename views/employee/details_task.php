@@ -66,7 +66,7 @@
                                 } else
                                 if ($task->getStatus() == 4) {
                                     $status = "Rejected";
-                                    $text_color = "danger";
+                                    $text_color = "secondary";
                                 } else
                                 if ($task->getStatus() == 5) {
                                     $status = "Completed";

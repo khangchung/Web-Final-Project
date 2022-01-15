@@ -8,6 +8,7 @@
         $employees = isset($_SESSION["employees"]) ? $_SESSION["employees"] : "";
         $task = isset($_SESSION["task"]) ? unserialize($_SESSION["task"]) : "";
         $task_logs = isset($_SESSION["task_logs"]) ? $_SESSION["task_logs"] : "";
+        $employee_info = null;
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -58,6 +59,7 @@
                             foreach ($employees as $employee) {
                                 $employee = unserialize($employee);
                                 if ($employee->getId() == $task->getReceiver()) {
+                                    $employee_info = $employee;
                                     $attachment = $task->getAttachment() != "" ? getFilenameOf($task->getAttachment()) : "...";
                                     $text_color = "primary";
                                     $status = "New";
@@ -75,7 +77,7 @@
                                     } else
                                     if ($task->getStatus() == 4) {
                                         $status = "Rejected";
-                                        $text_color = "danger";
+                                        $text_color = "secondary";
                                     } else
                                     if ($task->getStatus() == 5) {
                                         $status = "Completed";
@@ -125,7 +127,7 @@
                                                 ?>
                                                     <div class="form-group" id="done_task_monitor" task_id="<?= $task->getId() ?>">
                                                         <?php
-                                                        if (getDateDistance($done_date, $task->getDeadline()) <= 0) {
+                                                        if (getDateDistance($done_date, $task->getDeadline()) >= 0) {
                                                         ?>
                                                             <select name="rate" id="rate" class="form-control mr-2">
                                                                 <option value="1">Good</option>
@@ -144,21 +146,35 @@
                                                         ?>
                                                                 <a class="btn btn-success ml-2 px-5 ">Approve</a>
                                                     </div>
-                                              
-                                                    <form action="../../controllers/monitor/reject_task.php" enctype="multipart/form-data" class="w-auto">
-                                                        
+                                                    
+                                                    <?php
+                                                        if (!is_null($employee_info)) {
+                                                        ?>
+                                                            <form action="../../controllers/monitor/reject_task.php" method="POST" enctype="multipart/form-data" class="w-auto">
+                                                                <div class="form-group d-none">
+                                                                    <input name="id" class="form-control" id="comment" value="<?= $task->getId() ?>" type="text">
+                                                                </div>
+                                                                <div class="form-group d-none">
+                                                                    <input name="employee_id" class="form-control" id="comment" value="<?= $employee_info->getId() ?>" type="text">
+                                                                </div>
+                                                                <div class="form-group d-none">
+                                                                    <input name="department" class="form-control" id="comment" value="<?= $employee_info->getDepartment() ?>" type="text">
+                                                                </div>
                                                                 <div class="form-group">
-                                                                    <input name="comment" class="form-control" id="comment" placeholder="Nhận xét..." type="text"></input>
+                                                                    <input name="comment" class="form-control" id="comment" placeholder="Nhận xét..." type="text">
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <div class="custom-file">
                                                                         <input type="file" class="custom-file-input" id="customFile">
                                                                         <label class="custom-file-label form-control" for="customFile">Tệp đính kèm</label>
                                                                     </div>
-                                                                        <a class="btn btn-danger px-5">Refuse</a>
+                                                                        <button type="submit" class="btn btn-danger px-5">Refuse</button>
                                                                 </div>
-
-                                                    </form>
+                                                            </form>
+                                                        <?php
+                                                        }
+                                                    ?>
+                                                    
                 </div>
                                         <?php
                                         }

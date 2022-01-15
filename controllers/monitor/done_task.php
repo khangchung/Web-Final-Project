@@ -11,15 +11,21 @@
         if (!empty($id) && !empty($rate)) {
             $taskOperations = new TaskOperations;
             $task = unserialize($taskOperations->read_one($id)->getList()[0]);
-            if (getDateDistance($submit_date, $task->getDeadline()) <= 0) {
+            if (getDateDistance($submit_date, $task->getDeadline()) >= 0) {
                 $task->setStatus(5);
                 $task->setRate($rate);
                 $task->setLastModified(date("Y-m-d"));
+                if (!$taskOperations->update($task)) {
+                    $_SESSION["flag"] = false;
+                }
             } else {
                 if ($rate < 1) {
                     $task->setStatus(5);
                     $task->setRate($rate);
                     $task->setLastModified(date("Y-m-d"));
+                    if (!$taskOperations->update($task)) {
+                        $_SESSION["flag"] = false;
+                    }
                 } else {
                     $_SESSION["flag"] = false;
                 }

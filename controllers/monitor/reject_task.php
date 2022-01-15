@@ -8,16 +8,17 @@
     $created_date = date("Y-m-d");
     $id = isset($_POST["id"]) ? $_POST["id"] : "";
     $comment = isset($_POST["comment"]) ? $_POST["comment"] : "";
-    $attachment = isset($_POST["attachment"]) ? $_POST["attachment"] : "";
+    $attachment = isset($_POST["attachment"]) ? $_POST["attachment"] : null;
     $department = isset($_POST["department"]) ? $_POST["department"] : "";
     $employee_id = isset($_POST["employee_id"]) ? $_POST["employee_id"] : "";
 
     try {
-        if (!empty($id) && !empty($comment) && !empty($attachment) && !empty($department) && !empty($employee_id)) {
+        if (!empty($id) && !empty($comment) && !empty($department) && !empty($employee_id)) {
             $taskOperations = new TaskOperations;
-            $task = unserialize($TaskOperations->read_one($id)->getList()[0]);
+            $task = unserialize($taskOperations->read_one($id)->getList()[0]);
             $task->setLastModified(date("Y-m-d"));
-            if ($TaskOperations->update($task)) {
+            $task->setStatus(4);
+            if ($taskOperations->update($task)) {
                 $taskLogOperations = new TaskLogOperations;
                 $taskLog = new TaskLog($id, $comment, uploadTaskLog($attachment, $created_date, $id, $department, $employee_id), 1);
                 $result = $taskLogOperations->create($taskLog);
