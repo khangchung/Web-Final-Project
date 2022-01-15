@@ -81,7 +81,11 @@
                             } else {
                             ?>
                                 <div class="form-group">
+<<<<<<< HEAD
                                     <p class="text-danger"><?= $message ?></p>
+=======
+                                    <small class="text-danger"><?= $message ?></small>
+>>>>>>> f57d8c197e3b0279a717e1ff9bbc76264aec6b06
                                 </div>
                             <?php
                             }

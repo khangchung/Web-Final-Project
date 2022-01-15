@@ -1,16 +1,22 @@
 Hướng dẫn sử dụng:
-    1. Cài đặt Xampp vào hệ điều hành.
+    1. Cài đặt phần mềm Xampp vào hệ điều hành.
     2. Di chuyển vào thư mục xampp sau khi đã cài đặt.
     3. Copy tất cả source code và các file text kèm theo vào thư mục xampp\htdocs.
-    4. Truy cập đường dẫn http://localhost:8080/phpmyadmin đăng nhập bằng tài khoản phpmyadmin.
-    5. Tạo database có tên company_management.
-    6. Thực hiện import file company_management.sql trong thư mục xampp\htdocs.
-    7. Thiết lập thông tin database (đề cập bên dưới).
+    4. Thiết lập thông tin đăng nhập của phpMyAdmin và tên database tại database_settings.txt.
+    5. Sử dụng đường dẫn localhost:8080/import-database.php?key=mvm để import database được thiết lập ở file của bước trên. (Lưu ý: Phải đặt file sql tạo thư mục gốc xampp\htdocs)
     8. Truy cập đường dẫn localhost:8080 bằng trình duyệt web để sử dụng website.
     9. Để thực hiện các tính năng tương ứng với từng vai trò khác nhau, vui lòng đăng nhập bằng các loại tài khoản được cung cấp bên dưới.
     10. Vì lý do bảo mật, người dùng nên đăng xuất khi không sử dụng website nữa.
 
-Tài khoản:
+Những lưu ý cho quản trị viên:
+    1. Thiết lập thông tin của database tại database_settings.txt (Các giá trị được điền sau dấu "=", nếu giá trị rỗng thì không cần điền gì sau dấu "=").
+    2. Cập nhật lại các thông tin thiết lập cho database tại: localhost:8080/update-db-settings.php.
+    3. Tạo tài khoản quản trị tại: localhost:8080/admin-account-creating.php?username=XXX&key=mvm (XXX: tên tài khoản, password mặc định là tên tài khoản).
+    4. Xóa tài khoản quản trị tại: localhost:8080/admin-account-deleting.php?username=XXX&key=mvm (XXX: tên tài khoản).
+    5. Tạo database theo thông tin được thiết lập trong database_settings.txt tại: localhost:8080/import-database.php?key=mvm.
+    5. Xóa database theo thông tin được thiết lập trong database_settings.txt tại: localhost:8080/drop-database.php?key=mvm.
+
+Danh sách tài khoản:
     - Giám đốc: admin/123456
     - Trưởng phòng:
         + Nhân sự: tranthithaoanh/123456
@@ -76,14 +82,10 @@ Các chức năng: (Giám đốc - A, Trưởng phòng - M, Nhân viên - E)
     28. Không cho phép truy cập sang trang của vai trò khác (A, M, E)
     29. Tự động reset ngày nghỉ phép khi sang năm mới (M, E)
     30. Tự động đăng nhập vào hệ thống ở lần mở lại website tiếp theo khi chưa ấn đăng xuất và chưa tắt trình duyệt web (A, M, E)
-    31. Tạo và xóa tài khoản admin thông qua url (đề cập bên dưới)
-    32. Thiết lập thông tin database thông qua file text (đề cập bên dưới)
-    33. Cập nhật thông tin database được thiết lập thông qua url (đề cập bên dưới)
-    34. Lưu tài khoản người dùng vào cookie sau khi login thành công 30 ngày
-    35. Các thông tin thiết lập cho database tồn tại trong cookie 30 ngày
-
-Những lưu ý cho quản trị viên:
-    1. Thiết lập thông tin của database tại database_settings.txt (Các giá trị được điền sau dấu "=", nếu giá trị rỗng thì không cần điền gì sau dấu "=").
-    2. Cập nhật lại các thông tin thiết lập cho database tại: localhost:8080/update-db-settings.php.
-    3. Tạo tài khoản quản trị tại: localhost:8080/admin-account-creating.php?username=XXX&key=MaiVanManh (XXX: tên tài khoản, password mặc định là tên tài khoản).
-    4. Xóa tài khoản quản trị tại: localhost:8080/admin-account-deleting.php?username=XXX&key=MaiVanManh (XXX: tên tài khoản).
+    31. Tạo và xóa tài khoản admin thông qua url (đề cập ở phần lưu ý cho quản trị viên)
+    32. Thiết lập thông tin database thông qua file text (đề cập ở phần lưu ý cho quản trị viên)
+    33. Cập nhật thông tin database được thiết lập thông qua url (đề cập ở phần lưu ý cho quản trị viên)
+    34. Khởi tạo database bằng url theo thông tin trong database_settings.txt (đề cập ở phần lưu ý cho quản trị viên)
+    35. Xóa database bằng url theo thông tin trong database_settings.txt (đề cập ở phần lưu ý cho quản trị viên)
+    36. Lưu tài khoản người dùng vào cookie sau khi login thành công 30 ngày
+    37. Các thông tin thiết lập cho database tồn tại trong cookie 30 ngày

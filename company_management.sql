@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 14, 2022 at 05:24 PM
+-- Generation Time: Jan 15, 2022 at 03:07 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.1.1
 
@@ -38,6 +38,15 @@ CREATE TABLE `absence` (
   `attachment` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `absence`
+--
+
+INSERT INTO `absence` (`id`, `employee`, `created_date`, `start_date`, `end_date`, `reason`, `status`, `attachment`) VALUES
+(6, 'A001', '2022-01-14', '2022-01-16', '2022-01-17', 'Bận công việc gia đình', 1, ''),
+(7, 'A002', '2022-01-15', '2022-01-16', '2022-01-17', 'Chăm người thân bị bệnh', 0, '../../documents/A/A002/absense/2022-01-15.pdf'),
+(10, 'A003', '2022-01-15', '2022-01-16', '2022-01-17', 'Bận việc gia đình', 0, '');
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +68,7 @@ INSERT INTO `account` (`username`, `password`, `priority`) VALUES
 ('buitrucphuong', '$2y$10$kRqOX2/YlObRdZuhSq.qNOEJZgh.3o9GqMB/NCzF0CzWf1A4mozQy', 2),
 ('caothitrucquynh', '$2y$10$LRjztqAyWYmXDp8H/tTWpOPurRG4vkPjhy4XTT8mBlswshfsze4vy', 2),
 ('chauthanhtoan', '$2y$10$keauji6Zm.Uo7vDV/W7MeegGBZeCtDZPgrkxvrV52rMtRI3WVa8RO', 2),
+('chungsungkhang', '$2y$10$u.X3aY4vVpATj3kO7njMA.dUd/6OjYSuX0IzmdNIcT3MRFotYjc9e', 2),
 ('duongthithuyvy', '$2y$10$QNBWKVbPFFMMFyL8YcwkNOSjHLw2ByAkZIxdGqXjAib7kdhGA2406', 1),
 ('hongoctuyet', '$2y$10$VBj3vPV87d.V.WFvS/o8M.46KRwW4Pojx8dQa3IvOdIwTpfhVppyK', 2),
 ('huynhlong', '$2y$10$5RYWzmllS/m8iP905Bu5aeuoGBKwMyG.tfr2Y2mDnv0pfmLRGtw7K', 2),
@@ -73,7 +83,7 @@ INSERT INTO `account` (`username`, `password`, `priority`) VALUES
 ('nguyenvanthai', '$2y$10$K8pgMCifaeawUADIEgcUDOcJul7KUJ/F8meU2wzACgh4d2MKQX/zy', 2),
 ('phamtam', '$2y$10$MmUC5S0ueQN8pKB9FvILK.aXn4xP3C3IBnf5bNtSLh8bf1sveHi4u', 1),
 ('trannguyenphuongthi', '$2y$10$3aDX7219edW0TKj9w/9QZekefhi.DPrZCkdd61FqdHRzdEsGrzmXy', 2),
-('tranthithaoanh', '$2y$10$IMeoRFf6pg9LOQB/JSCgg.tPanK4VhYfSqhfMw/iw9OmIyWu9LHta', 1),
+('tranthithaoanh', '$2y$10$LNCtgxQu2U/v0uR0EZQ2qeqCTPzkWQifUZvs4coSyIBe8PL9IAk4S', 1),
 ('tranvantuan', '$2y$10$bj8Axxz6XfZ8gVUn1cbAwOR77dpjUg3LPsdN2RWnEsBEc96UH1KRK', 2),
 ('trinhtuyetvan', '$2y$10$IyWZcgpb5.LpVO2MKWFrIe6l2pbwHi7X45ngXZfC1b9Z/o2zUDYwa', 2),
 ('vocatphuong', '$2y$10$xL.2fGHxqaLSXcG4yGxft.qBztesvRS7luNlcLxBGtvT6/6dxhQnW', 2),
@@ -104,7 +114,9 @@ INSERT INTO `department` (`id`, `name`, `description`, `room`) VALUES
 ('B', 'Thiết kế', 'Phụ trách các công việc liên quan đến thiết kế trong công ty', 2),
 ('C', 'Truyền thông', 'Phụ trách truyền thông sản phẩm, dịch vụ của công ty trên các nền tảng internet', 3),
 ('D', 'Kinh doanh', 'Phụ trách các công việc liên quan đến phân tích thị trường, chiến lược kinh doanh', 4),
-('E', 'Kỹ thuật', 'Phụ trách các công việc liên quan đến xây dựng, bảo trì, nghiên cứu sản phẩm', 5);
+('E', 'Kỹ thuật', 'Phụ trách các công việc liên quan đến xây dựng, bảo trì, nghiên cứu sản phẩm', 5),
+('F', 'Nhân sự 2', 'abcabcabcabcabc', 6),
+('G', 'Kế toán', 'abcabcabcabcabc', 7);
 
 -- --------------------------------------------------------
 
@@ -132,6 +144,7 @@ INSERT INTO `employee` (`id`, `username`, `fullname`, `position`, `department`, 
 ('A003', 'vocatphuong', 'Võ Cát Phượng', '2', 'A', '../../documents/A/A003/avatar.jpg', 12),
 ('A004', 'trannguyenphuongthi', 'Trần Nguyễn Phương Thi', '2', 'A', '../../documents/A/A004/avatar.jpg', 12),
 ('A005', 'levohoaibao', 'Lê Võ Hoài Bảo', '2', 'A', '../../documents/A/A005/avatar.jpg', 12),
+('A026', 'chungsungkhang', 'Chung Sùng Khang', '2', 'A', '../../documents/A/A026/avatar.jpg', 12),
 ('B006', 'duongthithuyvy', 'Dương Thị Thúy Vy', '1', 'B', '../../documents/B/B006/avatar.jpg', 15),
 ('B007', 'caothitrucquynh', 'Cao Thị Trúc Quỳnh', '2', 'B', '../../documents/B/B007/avatar.jpg', 12),
 ('B008', 'lamvotrongnhan', 'Lâm Võ Trọng Nhân', '2', 'B', '../../documents/B/B008/avatar.jpg', 12),
@@ -173,6 +186,16 @@ CREATE TABLE `task` (
   `attachment` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `task`
+--
+
+INSERT INTO `task` (`id`, `title`, `description`, `status`, `rate`, `creator`, `receiver`, `created_date`, `deadline`, `last_modified`, `attachment`) VALUES
+(19, 'Tuyển dụng nhân sự đợt 1', 'Tuyển dụng 5 nhân sự cho phòng thiết kế', 5, 1, 'A001', 'A002', '2022-01-14', '2022-01-14', '2022-01-14', '../../documents/A/A002/task/19/2022-01-14.docx'),
+(20, 'Tuyển dụng nhân sự đợt 1', 'Tuyển dụng 2 nhân sự cho phòng truyền thông', 3, 0, 'A001', 'A003', '2022-01-14', '2022-01-15', '2022-01-14', '../../documents/A/A003/task/20/2022-01-14.docx'),
+(21, 'Tuyển dụng nhân sự đợt 1', 'Tuyển dụng 2 nhân sự cho phòng kinh doanh', 2, 0, 'A001', 'A004', '2022-01-14', '2022-01-14', '2022-01-14', ''),
+(22, 'Tuyển dụng nhân sự đợt 1', 'Tuyển dụng 3 nhân sự cho phòng kỹ thuật', 4, 0, 'A001', 'A005', '2022-01-14', '2022-01-15', '2022-01-14', '../../documents/A/A005/task/22/2022-01-14.docx');
+
 -- --------------------------------------------------------
 
 --
@@ -185,6 +208,16 @@ CREATE TABLE `task_log` (
   `attachment` varchar(100) NOT NULL,
   `owner` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `task_log`
+--
+
+INSERT INTO `task_log` (`task_id`, `comment`, `attachment`, `owner`) VALUES
+(19, 'Tuyển dụng 5 nhân sự đạt yêu cầu', '../../documents/A/A002/task/19/2022-01-14(1).docx', 0),
+(20, 'Tuyển dụng 2 nhân sự đạt yêu cầu', '../../documents/A/A003/task/20/2022-01-15.docx', 0),
+(22, 'Tuyển dụng 3 nhân sự đạt yêu cầu', '../../documents/A/A005/task/22/2022-01-14(1).docx', 0),
+(22, 'Xem xét lại nhân sự Nguyễn Thị Minh Thư', '', 1);
 
 --
 -- Indexes for dumped tables
@@ -239,13 +272,13 @@ ALTER TABLE `task_log`
 -- AUTO_INCREMENT for table `absence`
 --
 ALTER TABLE `absence`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `task`
 --
 ALTER TABLE `task`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Constraints for dumped tables
