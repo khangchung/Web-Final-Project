@@ -1,27 +1,49 @@
 Hướng dẫn sử dụng:
     1. Cài đặt Xampp vào hệ điều hành.
-    2. Di chuyển vào thư mục xampp sau khi đã cài đặt
-    3. Copy tất cả source code và các file text kèm theo vào thư mục xampp\htdocs
-    4. Thiết lập thông tin database (đề cập bên dưới).
-    6. Truy cập đường dẫn localhost:8080 bằng trình duyệt web để sử dụng website.
-    7. Để thực hiện các tính năng tương ứng với từng vai trò khác nhau, vui lòng đăng nhập bằng các loại tài khoản được cung cấp bên dưới.
-    8. Vì lý do bảo mật, người dùng nên đăng xuất khi không sử dụng website nữa.
+    2. Di chuyển vào thư mục xampp sau khi đã cài đặt.
+    3. Copy tất cả source code và các file text kèm theo vào thư mục xampp\htdocs.
+    4. Truy cập đường dẫn http://localhost:8080/phpmyadmin đăng nhập bằng tài khoản phpmyadmin.
+    5. Tạo database có tên company_management.
+    6. Thực hiện import file company_management.sql trong thư mục xampp\htdocs.
+    7. Thiết lập thông tin database (đề cập bên dưới).
+    8. Truy cập đường dẫn localhost:8080 bằng trình duyệt web để sử dụng website.
+    9. Để thực hiện các tính năng tương ứng với từng vai trò khác nhau, vui lòng đăng nhập bằng các loại tài khoản được cung cấp bên dưới.
+    10. Vì lý do bảo mật, người dùng nên đăng xuất khi không sử dụng website nữa.
 
 Tài khoản:
-    - Giám đốc: admin/admin
+    - Giám đốc: admin/123456
     - Trưởng phòng:
-        + Nhân sự: tranvanan/tranvanan
-        + Thiết kế:
-        + Truyền thông:
-        + Kinh doanh:
-        + Kỹ thuật:
+        + Nhân sự: tranthithaoanh/123456
+        + Thiết kế: duongthithuyvy/123456
+        + Truyền thông: letruchan/123456
+        + Kinh doanh: phamtam/123456
+        + Kỹ thuật: huynhthanhtrieu/123456
     - Nhân viên:
         + Nhân sự:
-            tranthibich/tranthibich
+            tranvantuan/123456
+            vocatphuong/123456
+            trannguyenphuongthi/123456
+            levohoaibao/123456
         + Thiết kế:
+            caothitrucquynh/123456
+            lamvotrongnhan/123456
+            nguyenhoaingoc/123456
+            chauthanhtoan/123456
         + Truyền thông:
+            huynhvankiet/123456
+            nguyenvanthai/123456
+            trinhtuyetvan/123456
+            vothanhlong/123456
         + Kinh doanh:
+            vungocha/123456
+            hongoctuyet/123456
+            vulanminhtri/123456
+            lythithuhuong/123456
         + Kỹ thuật:
+            nguyenphamkhang/123456
+            buitrucphuong/123456
+            huynhlong/123456
+            vuducmanh/123456
 
 Các chức năng: (Giám đốc - A, Trưởng phòng - M, Nhân viên - E)
     1. Đăng nhập

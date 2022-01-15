@@ -75,12 +75,6 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="type_employee">Vị trí <span class="requiredField">*</span></label> 
-                            <select class="selectpicker form-control" name="position">
-                                <option value="2">Nhân viên</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label for=""></label>
                             <small id="errorMessage"></small>
                         </div>
