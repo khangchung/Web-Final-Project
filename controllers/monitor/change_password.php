@@ -2,19 +2,17 @@
     session_start();
     require_once("../../models/account_operations.php");
     require_once("../../models/setup.php");
-    
-    $option = isset($_SESSION["option"]) ? $_SESSION["option"] : "";
 
     try {
-        if (empty($option)) {
+        if (!isset($_GET["option"])) {
             $old_password = isset($_POST["old_password"]) ? $_POST["old_password"] : "";
             $new_password = isset($_POST["new_password"]) ? $_POST["new_password"] : "";
             if (!empty($old_password) && !empty($new_password)) {
                 $accountOperations = new AccountOperations;
                 $accountManager = $accountOperations->read_one($_SESSION["username"]);
-                $account = $accountManager->getList()[0];
+                $account = unserialize($accountManager->getList()[0]);
                 if (password_verify($old_password, $account->getPassword())) {
-                    $account->setPassword($new_password);
+                    $account->setPassword(password_hash($new_password, PASSWORD_BCRYPT));
                     $result = $accountOperations->update($account);
                     $_SESSION["flag"] = $result;
                 } else {

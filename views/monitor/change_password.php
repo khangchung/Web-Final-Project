@@ -46,21 +46,21 @@
                     <div class="title1">
                         <p>Đổi mật khẩu</p>
                     </div>
-                    <form action="#" class="login">
+                    <form action="../../controllers/monitor/change_password.php" method="POST" class="login">
                         <div class="field">
                             <label for="">Nhập mật khẩu cũ</label>
-                            <input type="password">
+                            <input name="old_password" type="password">
                         </div>
                         <div class="field">
                             <label for="">Nhập mật khẩu mới</label>
-                            <input type="password">
+                            <input name="new_password" type="password">
                         </div>
                         <div class="field">
                             <label for="">Xác nhận mật khẩu mới</label>
                             <input type="password">
                         </div>
                         <div class="field btn_changePass">
-                            <input type="button" value="Xác nhận">
+                            <input type="submit" value="Xác nhận">
                         </div>
                     </form>
                 </div>

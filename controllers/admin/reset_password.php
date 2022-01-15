@@ -8,7 +8,7 @@
     try {
         if (!empty($username)) {
             $accountOperations = new AccountOperations;
-            $account = $accountOperations->read_one($username)->getList()[0];
+            $account = unserialize($accountOperations->read_one($username)->getList()[0]);
             $password = password_hash($username, PASSWORD_BCRYPT);
             $account->setPassword($password);
             $result = $accountOperations->update($account);
