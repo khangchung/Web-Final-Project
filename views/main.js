@@ -59,9 +59,25 @@ function appointMonitor(){
     document.querySelector('#appoint_monitor_modal').style.display = 'block';
     return false;
 } 
+ 
 function closeAppointMonitor(){
     document.querySelector('#appoint_monitor_modal').style.display = 'none';
 } 
+
+function resetPassword(){
+    document.querySelector('#reset_password').style.display = 'block';
+    return false;
+}
+
+function closeResetPassword(){
+    document.querySelector('#reset_password').style.display = 'none';
+}
+
+function confirmResetPassword(){
+    var href = document.querySelector("#href").href;
+    window.location.href = href;
+    document.querySelector('#reset_password').style.display = 'none';
+}
 
 // Biến chung
     var uppercase = /[A-Z]/;

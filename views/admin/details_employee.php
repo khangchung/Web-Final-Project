@@ -75,9 +75,20 @@
                                     </div>
                                     <div class="form-group">
                                         <label for=""></label> 
-                                        <a href="../../controllers/admin/reset_password.php?username=<?= $employee->getUsername() ?>" >
-                                        <button class="btn btn-danger">Reset mật khẩu</button>
+                                        <a id="href" href="../../controllers/admin/reset_password.php?username=<?= $employee->getUsername() ?>" >
+                                        <button class="btn btn-success" onclick="return resetPassword();" >Reset mật khẩu</button>
                                         </a>
+                                    
+                                    </div><div class="modal" id="reset_password">
+                                        <div class="modal_overlay"></div>
+                                        <div class="modal_body" id="appoint_monitor" style="margin-top: 150px">
+                                            <p>Bạn có muốn đặt lại mật khẩu cho tài khoản <span class="text-danger"><?= $employee->getUsername() ?></span></p>
+                                            <strong>Xác nhận đặt lại mật khẩu?</strong> 
+                                            <div class="m-2 d-flex justify-content-end">
+                                                <button type="submit" class="btn btn-danger mr-2" onclick="return confirmResetPassword();" >Xác nhận</button>
+                                                <button type="button" class="btn btn-outline-danger text-center" onclick="closeResetPassword();">Hủy</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 <?php
                                 break;
@@ -87,5 +98,6 @@
                 ?>
             </div>
         </div>      
+        
     </body>
     </html>

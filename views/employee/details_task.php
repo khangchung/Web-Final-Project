@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="file" class="font-weight-bold">Tệp đính kèm</label>
-                                    <input name="attachment" type="file" class="form-control-file" id="file">
+                                    <input name="attachment" accept=".gif,.jpg,.jpeg,.png,.doc,.docx,.pdf,.xls,.xlsx,.zip,.rar,.txt" type="file" class="form-control-file" id="file">
                                 </div>
                                 <div class="form-group">
                                     <label></label>

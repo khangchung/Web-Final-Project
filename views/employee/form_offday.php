@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group">
                     <label for="file">Tệp đính kèm (nếu có)</label>
-                    <input name="attachment" type="file" accept=".gif,.jpg,.jpeg,.png,.doc,.docx,.pdf,.zip,.rar,.txt" class="form-control-file" id="file" <?= $disabled ?>>
+                    <input name="attachment" type="file" accept=".gif,.jpg,.jpeg,.png,.doc,.docx,.pdf,.xls,.xlsx,.zip,.rar,.txt" class="form-control-file" id="file" <?= $disabled ?>>
                 </div>
                 <div class="form-group">
                     <label for=""></label>

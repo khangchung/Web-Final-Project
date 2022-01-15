@@ -71,7 +71,7 @@
                             $message = "Thêm thành công";
                             ?>
                                 <div class="form-group">
-                                    <small id="successMessage"><?= $message ?></small>
+                                    <small class="text-danger"><?= $message ?></small>
                                 </div>
                             <?php
                         }

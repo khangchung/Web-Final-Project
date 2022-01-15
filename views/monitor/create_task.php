@@ -82,7 +82,7 @@
                     </div>
                     <div class="form-group">
                         <label for="file">Tệp đính kèm <span class="requiredField">*</span></label>
-                        <input name="attachment" onclick="clearErrorMessage()" type="file" class="form-control-file" id="file">
+                        <input name="attachment" onclick="clearErrorMessage()" type="file" accept=".gif,.jpg,.jpeg,.png,.doc,.docx,.pdf,.xls,.xlsx,.zip,.rar,.txt" class="form-control-file" id="file">
                     </div>
                     <div class="form-group">
                         <label for=""></label>

@@ -191,7 +191,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <input type="file" accept=".gif,.jpg,.jpeg,.png,.doc,.docx,.pdf,.xls,.xlsx,.zip,.rar,.txt" class="custom-file-input" id="customFile">
                                     <label class="custom-file-label form-control" for="customFile">Tệp đính kèm</label>
                                 </div>
                                 <button type="submit" class="btn btn-danger px-5">Refuse</button>
