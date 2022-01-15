@@ -13,7 +13,7 @@
             header("location: ../../views/admin/details_department.php");
         } else {
             $_SESSION["flag"] = false;
-            header("location: ../../views/admin/index.php");
+            header("location: department.php");
         }
     } catch (Exception $e) {
         writeToErrorLog("Error Message: " . $e, "Đã xảy ra lỗi không mong muốn");   

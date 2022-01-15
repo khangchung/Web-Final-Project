@@ -1,9 +1,19 @@
 <?php
+    session_start();
+    require_once("../models/setup.php");
     $username = isset($_COOKIE["username"]) ? $_COOKIE["username"] : "";
     $password = isset($_COOKIE["password"]) ? $_COOKIE["password"] : "";
     $bg_color = "";
     if (!empty($username) && !empty($password)) {
         $bg_color = "rgb(211, 227, 238)";
+    }
+    $validate = isValid();
+    $area = 0;
+    if ($validate[1] == "Tài khoản không tồn tại") {
+        $area = 1;
+    } else
+    if ($validate[1] == "Mật khẩu không chính xác") {
+        $area = 2;
     }
 ?>
 <!DOCTYPE html>
@@ -52,6 +62,16 @@
                     <input name="username" type="text" placeholder="Tên đăng nhập" class="username" value="<?= $username ?>" style="background-color: <?= $bg_color ?>;">
                     <i class="bi bi-check-circle-fill"></i>
                     <i class="bi bi-exclamation-circle-fill"></i> 
+                    <?php
+                        // Area = 1
+                        if ($area == 1 && $validate[0] == -1) {
+                        ?>
+                            <p class="text-success"><?= $validate[1] ?></p>
+                            <small><?= $validate[1] ?></small>
+                            <small class="field error"><?= $validate[1] ?></small>
+                        <?php
+                        }
+                    ?>
                     <small>Error Message</small>
                 </div>
                 <div class="field">
@@ -59,6 +79,14 @@
                     <input name="password" type="password" placeholder="Mật khẩu" class="password"  value="<?= $password ?>"  style="background-color: <?= $bg_color ?>;">
                     <i class="bi bi-check-circle-fill"></i>
                     <i class="bi bi-exclamation-circle-fill"></i> 
+                    <?php
+                        // Area = 2
+                        if ($area == 2 && $validate[0] == -1) {
+                        ?>
+                            <small class="field error"><?= $validate[1] ?></small>
+                        <?php
+                        }
+                    ?>
                     <small>Error Message</small>
                 </div>
                 <small style="color: #e74c3c" class="d-none">Error Message</small>

@@ -92,17 +92,24 @@
     }
 
     function isValid() {
-        $flag = isset($_SESSION["flag"]) ? $_SESSION["flag"] : "";
-        if (!empty($flag)) {
+        $flag = !is_null($_SESSION["flag"]) ? $_SESSION["flag"] : null;
+        $message = isset($_SESSION["message"]) ? $_SESSION["message"] : "";
+        $result = array();
+        if (!is_null($flag)) {
             if ($flag) {
-                return 1;
+                $result[0] = 1;
+                $result[1] = $message;
             } else {
-                return -1;
+                $result[0] = -1;
+                $result[1] = $message;
             }
-            unset($_SESSION["flag"]);
+            unset($_SESSION[0]);
+            unset($_SESSION[1]);
         } else {
-            return 0;
+            $result[0] = 0;
+            $result[1] = $message;
         }
+        return $result;
     }
 
     function countDayOff($absences) {

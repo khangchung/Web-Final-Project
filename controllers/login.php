@@ -23,12 +23,12 @@
             
             $AO = new AccountOperations();
             $manager = $AO->read_one($username);
-            $account = unserialize($manager->getList()[0]);
+            $account = !is_null($manager->getList()[0]) ? unserialize($manager->getList()[0]) : null;
             $position = "";
             $duration = 86400 * 30;
         
             if (!is_null($account)) {
-                if ($account->getUsername() == $username && password_verify($password, $account->getPassword())) {
+                if (password_verify($password, $account->getPassword())) {
                     if ($account->getPriority() == 0) {
                         $_SESSION["username"] = $username;
                         $_SESSION["priority"] = 0;
@@ -44,7 +44,11 @@
                         $_SESSION["priority"] = 2;
                         $position = "employee";
                     }
+                } else {
+                    $_SESSION["message"] = "Mật khẩu không chính xác";
                 }
+            } else {
+                $_SESSION["message"] = "Tài khoản không tồn tại";
             }
         
             if (!empty($position)) {
