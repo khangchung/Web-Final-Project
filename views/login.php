@@ -8,17 +8,9 @@
         $bg_color = "rgb(211, 227, 238)";
     }
     $validate = isValid();
-    $area = 0;
     $message = "";
-    if ($validate[1] != "" || $validate[2] != "") {
-        if ($validate[2] == "Tài khoản không tồn tại") {
-            $area = 1;
-            $message = $validate[2];
-        } else
-        if ($validate[2] == "Mật khẩu không chính xác") {
-            $area = 2;
-            $message = $validate[2];
-        }
+    if ($validate[2] != "") {
+        $message = $validate[2];
     }
 ?>
 <!DOCTYPE html>
@@ -71,18 +63,10 @@
                     <input name="password" type="password" placeholder="Mật khẩu" class="password"  value="<?= $password ?>"  style="background-color: <?= $bg_color ?>;">
                 </div>
                 <?php
-                    // Area = 2
-                    if ($area == 2 && $validate[0] == -1) {
-                    ?>
-                        <small class="text-danger"><?= $message ?></small>
-                    <?php
-                    }
-                
-                    // Area = 1
-                    else if ($area == 1 && $validate[0] == -1) {
-                    ?>
-                        <small class="text-danger"><?= $message ?></small>
-                    <?php
+                    if (!empty($message)) {
+                        ?>
+                            <small class="text-danger"><?= $message ?></small>
+                        <?php
                     }
                 ?>
                 <small id="errorMessage1"></small>
