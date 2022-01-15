@@ -107,32 +107,29 @@ function confirmResetPassword(){
         var passwordValue = password.value.trim();
         
         if(usernameValue === '') {
-            setErrorFor(username, 'Vui lòng nhập tên tài khoản');
+            setErrorMessage1('Vui lòng nhập tên đăng nhập');
+            username.focus();
             return false;
-        } else {
-            setSuccessFor(username);
         }
 
-        if(uppercase.test(usernameValue)) {
-            setErrorFor(username, 'Tên tài khoản không được chứa ký tự in hoa');
+        else if(uppercase.test(usernameValue)) {
+            setErrorMessage1('Tên tài khoản không được chứa ký tự in hoa');
+            username.focus();
             return false;
-        } else {
-            setSuccessFor(username);
+        } 
+
+        else if(special_character.test(usernameValue)) {
+            setErrorMessage1('Tên tài khoản không được chứa ký tự đặc biệt');
+            username.focus();
+            return false;
         }
 
-        if(special_character.test(usernameValue)) {
-            setErrorFor(username, 'Tên tài khoản không được chứa ký tự đặc biệt');
+        else if(passwordValue === '') {
+            setErrorMessage1('Vui lòng nhập mật khẩu');
+            password.focus();
             return false;
-        } else {
-            setSuccessFor(username);
         }
         
-        if(passwordValue === '') {
-            setErrorFor(password, 'Vui lòng nhập mật khẩu');
-            return false;
-        } else {
-            setSuccessFor(password);
-        }
         return true;
     }
 //Kiểm đổi mật khẩu
@@ -359,7 +356,7 @@ function createTask(){
 
     function setErrorFor(input, message) {
         var formControl = input.parentElement;
-        var small = formControl.querySelector('#login_form small');
+        var small = formControl.querySelector('#login_form .small');
         formControl.className = 'field error';
         small.innerText = message;
     }
@@ -371,6 +368,12 @@ function createTask(){
 
     function setErrorMessage(message) {
         const errorMessage = document.querySelector('#errorMessage');
+        errorMessage.style.opacity = "1";
+        errorMessage.innerHTML = message;
+    }
+
+    function setErrorMessage1(message) {
+        const errorMessage = document.querySelector('#errorMessage1');
         errorMessage.style.opacity = "1";
         errorMessage.innerHTML = message;
     }

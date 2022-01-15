@@ -4,6 +4,8 @@
     require_once("../models/setup.php");
 
     try {
+        var_dump(1);
+        die();
         if (!empty($_SESSION["priority"]) && !empty($_SESSION["username"])) {
             $position = $_SESSION["priority"];
             if ($position == 1) {
