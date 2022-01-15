@@ -13,8 +13,14 @@
             $account->setPassword($password);
             $result = $accountOperations->update($account);
             $_SESSION["flag"] = $result;
+            if ($result) {
+                $_SESSION["message"] = "Reset thành công";
+            } else {
+                $_SESSION["message"] = "Reset thất bại";
+            }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }    
         header("location: ../../views/admin/details_employee.php");
     } catch (Exception $e) {

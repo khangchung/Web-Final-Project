@@ -28,6 +28,7 @@
             header("location: ../../views/monitor/details_task.php");    
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
             header("location: ../../views/monitor/index.php");
         }
     } catch (Exception $e) {

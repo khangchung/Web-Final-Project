@@ -13,8 +13,14 @@
             $departmentOperations = new DepartmentOperations;
             $result = $departmentOperations->create($department);
             $_SESSION["flag"] = $result;
+            if ($result) {
+                $_SESSION["message"] = "Thêm thành công";
+            } else {
+                $_SESSION["message"] = "Thêm thất bại";
+            }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }
         header("location: ../../views/admin/add_department.php");
     } catch (Exception $e) {

@@ -15,27 +15,39 @@
                 $task->setStatus(5);
                 $task->setRate($rate);
                 $task->setLastModified(date("Y-m-d"));
-                if (!$taskOperations->update($task)) {
+                $result = $taskOperations->update($task);
+                if ($result) {
+                    $_SESSION["flag"] = true;
+                    $_SESSION["message"] = "Cập nhật thành công";
+                } else {
                     $_SESSION["flag"] = false;
+                    $_SESSION["message"] = "Cập nhật thất bại";
                 }
             } else {
                 if ($rate < 1) {
                     $task->setStatus(5);
                     $task->setRate($rate);
                     $task->setLastModified(date("Y-m-d"));
-                    if (!$taskOperations->update($task)) {
-                        $_SESSION["flag"] = false;
-                    }
+                    $result = $taskOperations->update($task);
+                    $_SESSION["flag"] = $result;
                 } else {
                     $_SESSION["flag"] = false;
+                    $_SESSION["message"] = "Thông tin không hợp lệ";
                 }
             }
-            if (!isset($_SESSION["flag"])) {
+            if (isset($_SESSION["flag"]) && $_SESSION["flag"]) {
                 $result = $taskOperations->update($task);
-                $_SESSION["flag"] = $result;
+                if ($result) {
+                    $_SESSION["flag"] = true;
+                    $_SESSION["message"] = "Cập nhật thành công";
+                } else {
+                    $_SESSION["flag"] = false;
+                    $_SESSION["message"] = "Cập nhật thất bại";
+                }
             }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }
         header("location: index.php");
     } catch (Exception $e) {

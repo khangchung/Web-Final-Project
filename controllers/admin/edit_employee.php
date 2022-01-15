@@ -19,8 +19,14 @@
             $employeeOperations = new EmployeeOperations;
             $result = $employeeOperations->update($employee);
             $_SESSION["flag"] = $result;
+            if ($result) {
+                $_SESSION["message"] = "Cập nhật thành công";
+            } else {
+                $_SESSION["message"] = "Cập nhật thất bại";
+            }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }
         header("location: ../../views/admin/edit_employee.php");
     } catch (Exception $e) {

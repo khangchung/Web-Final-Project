@@ -13,6 +13,7 @@
             header("location: ../../views/admin/details_employee.php");
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
             header("location: ../../views/admin/index.php");
         }
     } catch (Exception $e) {

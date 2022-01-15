@@ -17,6 +17,7 @@
             header("location: ../../views/monitor/details_history_offday.php");
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
             header("location: ../../views/monitor/offday_manager.php");
         }
     } catch (Exception $e) {

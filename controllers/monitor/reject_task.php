@@ -23,11 +23,18 @@
                 $taskLog = new TaskLog($id, $comment, uploadTaskLog($attachment, $created_date, $id, $department, $employee_id), 1);
                 $result = $taskLogOperations->create($taskLog);
                 $_SESSION["flag"] = $result;
+                if ($result) {
+                    $_SESSION["message"] = "Cập nhật thành công";
+                } else {
+                    $_SESSION["message"] = "Cập nhật thất bại";
+                }
             } else {
-                $_SESSION["flag"] = false;   
+                $_SESSION["flag"] = false;
+                $_SESSION["message"] = "Thông tin không hợp lệ";
             }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }
         header("location: index.php");
     } catch (Exception $e) {

@@ -12,6 +12,7 @@
             header("location: ../../views/admin/details_offday.php");
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Xảy ra lỗi không mong muốn trong quá trình xử lý";
             header("location: ../../views/admin/offday_manager.php");
         }
     } catch (Exception $e) {

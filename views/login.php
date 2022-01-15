@@ -9,11 +9,16 @@
     }
     $validate = isValid();
     $area = 0;
-    if ($validate[1] == "Tài khoản không tồn tại") {
-        $area = 1;
-    } else
-    if ($validate[1] == "Mật khẩu không chính xác") {
-        $area = 2;
+    $message = "";
+    if ($validate[1] != "" || $validate[2] != "") {
+        if ($validate[2] == "Tài khoản không tồn tại") {
+            $area = 1;
+            $message = $validate[2];
+        } else
+        if ($validate[2] == "Mật khẩu không chính xác") {
+            $area = 2;
+            $message = $validate[2];
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -66,9 +71,7 @@
                         // Area = 1
                         if ($area == 1 && $validate[0] == -1) {
                         ?>
-                            <p class="text-success"><?= $validate[1] ?></p>
-                            <small><?= $validate[1] ?></small>
-                            <small class="field error"><?= $validate[1] ?></small>
+                            <p class="text-success"><?= $message ?></p>
                         <?php
                         }
                     ?>
@@ -83,8 +86,7 @@
                         // Area = 2
                         if ($area == 2 && $validate[0] == -1) {
                         ?>
-                            <p class="text-success"><?= $validate[1] ?></p>
-                            <small class="field error"><?= $validate[1] ?></small>
+                            <p class="text-success"><?= $message ?></p>
                         <?php
                         }
                     ?>
