@@ -25,7 +25,7 @@
             $absenceOperations = new AbsenceOperations;
             $result = $absenceOperations->create($absence);
             $_SESSION["flag"] = $result;
-            header("location: ../../views/employee/form_offday.php");
+            header("location: dayoff.php");
         } else {
             $_SESSION["flag"] = false;
             header("location: ../../views/employee/form_offday.php");

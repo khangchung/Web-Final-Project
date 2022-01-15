@@ -25,10 +25,11 @@
             $absenceOperations = new AbsenceOperations;
             $result = $absenceOperations->create($absence);
             $_SESSION["flag"] = $result;
+            header("location: dayoff.php");
         } else {
             $_SESSION["flag"] = false;
+            header("location: ../../views/monitor/form_offday.php");
         }
-        header("location: ../../views/monitor/form_offday.php");
     } catch (Exception $e) {
         writeToErrorLog("Error Message: " . $e, "Đã xảy ra lỗi không mong muốn");
     }

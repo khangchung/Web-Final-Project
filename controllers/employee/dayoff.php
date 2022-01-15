@@ -20,7 +20,7 @@
                 }
             }
         }
-        $_SESSION["offday_form"] = isSubmitBlock(getAbsenceNearCurrentDate($data));
+        $_SESSION["offday_form"] = numberOfBlockedDate(getAbsenceNearCurrentDate($data));
         $_SESSION["absences"] = $data;
         header("location: ../../views/employee/offday_manager.php");
     } catch (Exception $e) {

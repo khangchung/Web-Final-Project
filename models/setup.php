@@ -156,7 +156,7 @@
         if (!is_null($absence)) {
             $date_number = getDateDistance($absence->getCreatedDate(), $current_date);
             if ($date_number < 7) {
-                $result = 7 - $date_number;
+                $result = 7 - $date_number + 1;
             }
         }
         return $result;
