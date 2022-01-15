@@ -83,6 +83,7 @@
                         // Area = 2
                         if ($area == 2 && $validate[0] == -1) {
                         ?>
+                            <p class="text-success"><?= $validate[1] ?></p>
                             <small class="field error"><?= $validate[1] ?></small>
                         <?php
                         }
