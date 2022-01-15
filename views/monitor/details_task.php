@@ -118,6 +118,25 @@
                                                     <td>Trạng thái</td>
                                                     <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></td>
                                                 </tr>
+                                                <?php
+                                                    if ($status == "Completed") {
+                                                        $rate = "OK";
+                                                        $text_color2 = "success";
+                                                        if ($task->getRate() == 1) {
+                                                            $rate = "Good";
+                                                        } else
+                                                        if ($task->getRate() == 1) {
+                                                            $rate = "Bad";
+                                                            $text_color2 = "warning";
+                                                        }
+                                                    ?>
+                                                        <tr>
+                                                            <td>Đánh giá</td>
+                                                            <td class="font-weight-bold text-<?= $text_color2 ?>"><?= $rate ?></td>
+                                                        </tr>
+                                                    <?php
+                                                    }
+                                                ?>
                                             </table>
                                            
                                         
