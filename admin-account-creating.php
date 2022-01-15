@@ -6,7 +6,7 @@
 
     $username = isset($_GET["username"]) ? $_GET["username"] : "";
     $key = isset($_GET["key"]) ? $_GET["key"] : "";
-    $teacher_name = "MaiVanManh";
+    $teacher_name = "mvm";
 
     try {
         if (!empty($username) && !empty($key)) {

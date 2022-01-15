@@ -81,11 +81,7 @@
                             } else {
                             ?>
                                 <div class="form-group">
-<<<<<<< HEAD
                                     <small class="text-danger"><?= $message ?></small>
-=======
-                                    <p class="text-danger"><?= $message ?></p>
->>>>>>> c9d283f9ea287dc6e81013573695543e9c987429
                                 </div>
                             <?php
                             }
