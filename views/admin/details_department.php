@@ -92,7 +92,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for=""></label>
-                                            <button class="btn btn-success" onclick="return appointMonitor();" >Bổ nhiệm</button>
+                                            <button class="btn btn-danger" onclick="return appointMonitor();" >Bổ nhiệm</button>
                                         </div>
                                         <div class="modal" id="appoint_monitor_modal">
                                             <div class="modal_overlay"></div>
@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for=""></label>
-                                        <button class="btn btn-success" onclick="return appointMonitor();" >Bổ nhiệm</button>
+                                        <input type="button" class="btn btn-danger" onclick="return appointMonitor();" >Bổ nhiệm</input>
                                     </div>
                                     <div class="modal" id="appoint_monitor_modal">
                                         <div class="modal_overlay"></div>
@@ -195,7 +195,7 @@
                             </div>
                             <div class="form-group">
                                 <label for=""></label>
-                                <button class="btn btn-success" onclick="return appointMonitor();" >Bổ nhiệm</button>
+                                <button class="btn btn-danger" onclick="return appointMonitor();" >Bổ nhiệm</button>
                             </div>
                             <div class="modal" id="appoint_monitor_modal">
                                 <div class="modal_overlay"></div>

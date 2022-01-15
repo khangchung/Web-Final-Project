@@ -76,7 +76,7 @@
                                     <div class="form-group">
                                         <label for=""></label> 
                                         <a href="../../controllers/admin/reset_password.php?username=<?= $employee->getUsername() ?>" >
-                                        <button>Reset mật khẩu</button>
+                                        <button class="btn btn-danger">Reset mật khẩu</button>
                                         </a>
                                     </div>
                                 <?php

@@ -54,7 +54,7 @@
                 <div class="header">
                     <h2 class="title">Quản lý ngày nghỉ</h2>
                     <a href="form_offday.php" style="text-decoration: none;">
-                        <button class="btn_add">
+                        <button class="main_button">
                             Nộp đơn nghỉ phép
                         </button>
                     </a>
@@ -75,7 +75,7 @@
                             <?php
                                 if (!empty($info)) {
                                 ?>
-                                    <tr>
+                                    <tr onMouseOver="this.style.backgroundColor='#dff9fb'">
                                         <td data-label="Mã nhân viên"><?= $info->getId() ?></td>
                                         <td data-label="Họ & tên"><?= $info->getFullname() ?></td>
                                         <td data-label="Số ngày được nghỉ"><?= $info->getDayOff() ?></td>

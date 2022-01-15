@@ -77,7 +77,7 @@
                         </div>
                         <div class="form-group">
                             <label for=""></label>
-                            <button type="submit">Thêm nhân viên</button>
+                            <button type="submit" class="btn btn-success btn-lg">Thêm nhân viên</button>
                         </div>
                     </form>
                     <?php      
