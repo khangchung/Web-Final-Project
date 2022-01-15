@@ -403,11 +403,11 @@ body {
 }
 .modal_body{
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 60%;
+    height: 60%;
     margin: auto;
     margin-top: 30px; 
-    z-index: 1  ;
+    z-index: 1;
 }
 .modal_body img{
     position: absolute;
@@ -555,6 +555,12 @@ h1,h2,h3{
     text-transform: uppercase;
     color: #dff9fb;
 }
+
+/* .confirmOffDay{
+    position: fixed;
+    top: 50%;
+    left: 30%;
+} */
 
 .requiredField{
     color: red;

@@ -1,15 +1,4 @@
 // JAVASCIPT
-// Đóng mở sidebar
-// function openSidebar(){
-//     document.querySelector('.sidebar').style.width = '270px';
-//     document.querySelector('.page-wrap').style.marginLeft = '270px';
-//     document.querySelector('.menu_btn').style.display = 'none';
-// }
-// function closeSidebar(){
-//     document.querySelector('.sidebar').style.width = '0';
-//     document.querySelector('.page-wrap').style.marginLeft = '0';
-//     document.querySelector('.menu_btn').style.display = 'block';
-// }
 // Xem ảnh đại diện
 function viewAvatar(){
     src = document.querySelector('.info_wrap_header-avatar img').src;

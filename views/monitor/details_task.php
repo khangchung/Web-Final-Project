@@ -52,9 +52,9 @@
         <div class="page-wrap">
 
             <!--Xem thông tin chi tiết task -->
-            <div class="main_wrap" id="task_info">
+            <div class="main_wrap d-flex justify-content-between" id="task_info">
                 <div class="d-flex">
-                    <div class="chitiet">
+                    <div class="chitiet mr-5">
                         <h2 style="margin-bottom: 30px">CHI TIẾT NHIỆM VỤ</h2>
                         <?php
                         if (!empty($employees) && !empty($task)) {
@@ -121,35 +121,35 @@
                                 <td class="font-weight-bold text-<?= $text_color ?>"><?= $status ?></td>
                             </tr>
                             <?php
-                                                    if ($status == "Completed") {
-                                                        $rate = "OK";
-                                                        $text_color2 = "success";
-                                                        if ($task->getRate() == 1) {
-                                                            $rate = "Good";
-                                                        } else
-                                                        if ($task->getRate() == 1) {
-                                                            $rate = "Bad";
-                                                            $text_color2 = "warning";
-                                                        }
-                                                    ?>
+                                if ($status == "Completed") {
+                                    $rate = "OK";
+                                    $text_color2 = "success";
+                                    if ($task->getRate() == 1) {
+                                        $rate = "Good";
+                                    } else
+                                    if ($task->getRate() == 1) {
+                                        $rate = "Bad";
+                                        $text_color2 = "warning";
+                                    }
+                                ?>
                             <tr>
                                 <td>Đánh giá</td>
                                 <td class="font-weight-bold text-<?= $text_color2 ?>"><?= $rate ?></td>
                             </tr>
                             <?php
-                                                    }
-                                                ?>
+                                }
+                            ?>
                         </table>
 
 
                         <?php
-                                            if ($task->getStatus() == 3) {
-                                                $done_date = date("Y-m-d");
-                                                ?>
+                            if ($task->getStatus() == 3) {
+                                $done_date = date("Y-m-d");
+                                ?>
                         <div class="form-group" id="done_task_monitor" task_id="<?= $task->getId() ?>">
                             <?php
-                                                        if (getDateDistance($done_date, $task->getDeadline()) >= 0) {
-                                                        ?>
+                                if (getDateDistance($done_date, $task->getDeadline()) >= 0) {
+                            ?>
                             <select name="rate" id="rate" class="form-control mr-2">
                                 <option value="1">Good</option>
                                 <option value="0">OK</option>
@@ -169,8 +169,8 @@
                         </div>
 
                         <?php
-                                                        if (!is_null($employee_info)) {
-                                                        ?>
+                            if (!is_null($employee_info)) {
+                        ?>
                         <form action="../../controllers/monitor/reject_task.php" method="POST"
                             enctype="multipart/form-data" class="w-auto">
                             <div class="form-group d-none">
@@ -198,8 +198,8 @@
                             </div>
                         </form>
                         <?php
-                                                        }
-                                                    ?>
+                            }
+                        ?>
 
                     </div>
                     <?php

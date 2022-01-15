@@ -46,7 +46,7 @@
                     <div class="title1">
                         <p>Đổi mật khẩu</p>
                     </div>
-                    <form action="#" onsubmit="return checkChangePassword();" id="login_form" method="POST" class="login">
+                    <form action="../../controllers/employee/change_password.php" onsubmit="return checkChangePassword();" id="login_form" method="POST" class="login">
                         <div class="field">
                             <label for="">Nhập mật khẩu cũ</label>
                             <input type="password" id="oldPass">

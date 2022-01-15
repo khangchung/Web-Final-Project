@@ -44,9 +44,6 @@
             
             <div class="main_wrap" id="addDepartmentForm">
                 <h2 class=" mb-5" >Thêm phòng ban</h2>
-                <div class="form-group">
-                    <small id="successMessage"></small>
-                </div>
                 <form action="../../controllers/admin/add_department.php" method="POST" onsubmit="return addDepartment();">
                     <div class="form-group">
                         <label for="department">Tên phòng ban <span class="requiredField">*</span></label>
@@ -60,6 +57,25 @@
                         <label for="total_department">Số phòng <span class="requiredField">*</span></label> 
                         <input type="number" min="0" class="form-control" onclick="clearErrorMessage()" name="room" id="total_department">
                     </div>
+                    <?php
+                        $flag = isValid();
+                        if ($flag == -1) {
+                            $message = "Thêm thất bại";
+                            ?>
+                                <div class="form-group">
+                                    <small id="errorMessage"><?= $message ?></small>
+                                </div>
+                            <?php
+                        } else
+                        if ($flag == 1) {
+                            $message = "Thêm thành công";
+                            ?>
+                                <div class="form-group">
+                                    <small id="successMessage"><?= $message ?></small>
+                                </div>
+                            <?php
+                        }
+                    ?>
                     <div class="form-group">
                         <label for=""></label>
                         <small id="errorMessage"></small>

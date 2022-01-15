@@ -75,7 +75,7 @@
                             <?php
                                 if (!empty($info)) {
                                 ?>
-                                    <tr>
+                                    <tr onMouseOver="this.style.backgroundColor='#dff9fb'">
                                         <td data-label="Mã nhân viên"><?= $info->getId() ?></td>
                                         <td data-label="Họ & tên"><?= $info->getFullname() ?></td>
                                         <td data-label="Số ngày được nghỉ"><?= $info->getDayOff() ?></td>

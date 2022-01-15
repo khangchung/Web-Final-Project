@@ -51,21 +51,14 @@
             
             <form action="../../controllers/employee/dayoff_form.php" method="POST" onsubmit="return formOffDay();" class=" mt-5 p-3" enctype="multipart/form-data">
                 <h2 class="title">Yêu cầu nghỉ phép</h2>
-                <div class="form-group">
-                    <small id="successMessage"></small>
-                </div>
-                <div class="form-group">
-                    <label for="total_offDay">Số ngày nghỉ<span class="requiredField">*</span></label>
-                    <select name="total_offDay" class="form-control" name="total_offDay" <?= $disabled ?>>
-                        <?php
-                            for($i = 1; $i <= ($info->getDayOff() - countDayOff($absences)); $i++ ){
-                                ?>
-                                    <option><?= $i ?></option>
-                                <?php
-                            }
-                        ?>
-                    </select>
-                </div>
+                <?php
+                    if (!empty($numOfBlockedDate)) {
+                    ?>
+                            <p class="confirmOffDay text-white bg-danger p-3">Bạn không thể tiếp tục gửi yêu cầu. Vui lòng quay lại sau <?= $numOfBlockedDate ?> ngày nữa!</p>
+                    <?php
+                    }
+                ?>
+               
                 <div class="form-group">
                     <label for="startDay">Ngày bắt đầu <span class="requiredField">*</span></label>
                     <input name="start_date" onclick="clearErrorMessage()" type="date" id="startDay" class="form-control" <?= $disabled ?>>
@@ -80,21 +73,13 @@
                 </div>
                 <div class="form-group">
                     <label for="file">Tệp đính kèm (nếu có)</label>
-                    <input name="attachment" type="file" class="form-control-file" id="file" <?= $disabled ?>>
+                    <input name="attachment" type="file" accept=".gif,.jpg,.jpeg,.png,.doc,.docx,.pdf,.zip,.rar,.txt" class="form-control-file" id="file" <?= $disabled ?>>
                 </div>
                 <div class="form-group">
                     <label for=""></label>
                     <small id="errorMessage"></small>
                 </div>
-                <?php
-                    if (!empty($numOfBlockedDate)) {
-                    ?>
-                        <div class="form-group">
-                            <p class="text-white">Bạn không thể tiếp tục gửi yêu cầu. Vui lòng quay lại sau <?= $numOfBlockedDate ?> ngày nữa!</p>
-                        </div>
-                    <?php
-                    }
-                ?>
+                
                 <div class="form-group">
                     <label for="" class=""></label>
                     <button type="submit" class="btn btn-success btn-lg" <?= $disabled ?>>Nộp đơn</button>

@@ -46,17 +46,17 @@
                     <div class="title1">
                         <p>Đổi mật khẩu</p>
                     </div>
-                    <form action="#" onsubmit="return checkChangePassword();" id="login_form" method="POST" class="login">
+                    <form action="../../controllers/monitor/change_password.php" onsubmit="return checkChangePassword();" id="login_form" method="POST" class="login">
                         <div class="field">
                             <label for="">Nhập mật khẩu cũ</label>
-                            <input type="password" id="oldPass">
+                            <input type="password" name="old_password" id="oldPass">
                             <i class="bi bi-check-circle-fill"></i>
                             <i class="bi bi-exclamation-circle-fill"></i> 
                             <small>Error Message</small>
                         </div>
                         <div class="field">
                             <label for="">Nhập mật khẩu mới</label>
-                            <input type="password" id="newPass1">
+                            <input type="password" name="new_password" id="newPass1">
                             <i class="bi bi-check-circle-fill"></i>
                             <i class="bi bi-exclamation-circle-fill"></i> 
                             <small>Error Message</small>

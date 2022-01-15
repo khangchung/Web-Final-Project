@@ -99,7 +99,7 @@
             } else {
                 return -1;
             }
-            session_unset($_SESSION["flag"]);
+            unset($_SESSION["flag"]);
         } else {
             return 0;
         }
