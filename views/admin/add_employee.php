@@ -46,13 +46,10 @@
             
             <div class="main_wrap" id="">
                 <h2 class=" mb-5 title" >Thêm nhân viên</h2>
-                <div class="form-group">
-                    <small id="successMessage"></small>
-                </div>
                 <?php
                     if (!empty($departments)) {
                     ?>
-                    <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" onload = "setTimeout('addEmployee();', 3000)" method="POST" onsubmit="return addEmployee();">
+                    <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" onsubmit = "return addEmployee();" method="POST" onsubmit="return addEmployee();">
                         <div class="form-group">
                             <label for="fullname">Họ & tên <span class="requiredField">*</span></label>
                             <input type="text" id="fullname" onkeydown="clearErrorMessage()" name="fullname" class="form-control">
@@ -63,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <label for="department">Tên phòng ban <span class="requiredField">*</span></label>
-                            <select name="department" class="selectpicker form-control" name="department_name">
+                            <select name="department" class="selectpicker form-control">
                             <?php
                                 foreach ($departments as $department) {
                                     $department = unserialize($department);

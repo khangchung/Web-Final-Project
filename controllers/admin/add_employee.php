@@ -9,7 +9,7 @@
     $department = isset($_POST["department"]) ? $_POST["department"] : "";
 
     try {
-        if (!empty($username) && !empty($fullname) && !empty($position) && !empty($department)) {
+        if (!empty($username) && !empty($fullname) && !empty($department)) {
             $accountOperations = new AccountOperations;
             $password = password_hash($username, PASSWORD_BCRYPT);
             $account_result = $accountOperations->create(new Account($username, $password, 2));
