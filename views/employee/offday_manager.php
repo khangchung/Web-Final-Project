@@ -48,7 +48,7 @@
                 <div class="header">
                     <h2 class="title">Quản lý ngày nghỉ</h2>
                     <a href="form_offday.php" style="text-decoration: none;">
-                        <button class="">
+                        <button class="main_button">
                             Nộp đơn nghỉ phép
                         </button>
                     </a>

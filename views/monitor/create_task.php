@@ -90,7 +90,7 @@
                     </div>
                     <div class="form-group">
                         <label for=""></label>
-                        <button type="submit">Xác nhận</button>
+                        <button type="submit" class="btn btn-success btn-lg">Xác nhận</button>
                     </div>
                 </form>
             

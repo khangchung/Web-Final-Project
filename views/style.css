@@ -225,7 +225,7 @@ body {
     
 }
 
-.page-wrap button{
+.page-wrap .main_button{
     color: orange;
     border: 2px solid orange;
     padding: 14px 30px;
@@ -239,7 +239,7 @@ body {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
-.page-wrap button::before{
+.page-wrap .main_button::before{
     content: "";
     position: absolute;
     z-index: -1;
@@ -257,12 +257,12 @@ body {
     transition: 300ms ease-out;
 }
 
-.page-wrap button:hover{
+.page-wrap .main_button:hover{
     color: white;
 
 }
 
-.page-wrap button:hover::before{
+.page-wrap .main_button:hover::before{
     -webkit-transform: scale(0);
     transform: scale(0);
 }
@@ -581,15 +581,21 @@ h1,h2,h3{
     opacity: 0;
     transition: all 2s;
 }
+
+.successMessage{
+    color: white;
+    background-color: #78e08f;
+    padding: 12px 16px;
+    min-width: 350px;
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    opacity: 0;
+    transition: all 2s;
+}
 .main_wrap .title{
     color: white;
 }
-
-/* .btn_add{
-    position: absolute;
-    top: 110px;
-    right: 60px;
-} */
 
 .btn-table{
     background-color: none;

@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <label for="add_department"></label>
-                        <button type="submit" id="add_department" >Thêm phòng ban</button>
+                        <button type="submit" class="btn btn-success btn-lg" id="add_department" >Thêm phòng ban</button>
                     </div>
                 </form>
             

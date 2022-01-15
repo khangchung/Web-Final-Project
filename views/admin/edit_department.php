@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for=""></label>
-                                        <button type="submit" class="btn btn-info p-2 px-4">Xác nhận</button>
+                                        <button type="submit" class=" p-2 px-4">Xác nhận</button>
                                     </div>
                                 </form>
                             <?php

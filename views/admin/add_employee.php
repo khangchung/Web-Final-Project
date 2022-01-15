@@ -52,7 +52,7 @@
                 <?php
                     if (!empty($departments)) {
                     ?>
-                    <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" onload = "setTimeout('addEmployee();', 3000)" method="POST" onsubmit="return addEmployee();">
+                    <form id="addEmployeeForm" action="../../controllers/admin/add_employee.php" method="POST" onsubmit="return addEmployee();">
                         <div class="form-group">
                             <label for="fullname">Họ & tên <span class="requiredField">*</span></label>
                             <input type="text" id="fullname" onkeydown="clearErrorMessage()" name="fullname" class="form-control">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="form-group">
                             <label for=""></label>
-                            <button type="submit">Thêm nhân viên</button>
+                            <button type="submit" class="btn btn-success btn-lg">Thêm nhân viên</button>
                         </div>
                     </form>
                     <?php      

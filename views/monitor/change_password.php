@@ -42,25 +42,35 @@
         ?>
         <div class="page-wrap">
             <div class="container-fluid changePass" >
-                <div class="wrapper" >
+                <div class="wrapper" id="changePassword">
                     <div class="title1">
                         <p>Đổi mật khẩu</p>
                     </div>
-                    <form action="#" class="login">
+                    <form action="#" onsubmit="return checkChangePassword();" id="login_form" method="POST" class="login">
                         <div class="field">
                             <label for="">Nhập mật khẩu cũ</label>
-                            <input type="password">
+                            <input type="password" id="oldPass">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <i class="bi bi-exclamation-circle-fill"></i> 
+                            <small>Error Message</small>
                         </div>
                         <div class="field">
                             <label for="">Nhập mật khẩu mới</label>
-                            <input type="password">
+                            <input type="password" id="newPass1">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <i class="bi bi-exclamation-circle-fill"></i> 
+                            <small>Error Message</small>
                         </div>
                         <div class="field">
                             <label for="">Xác nhận mật khẩu mới</label>
-                            <input type="password">
+                            <input type="password" id="newPass2">
+                            <i class="bi bi-check-circle-fill"></i>
+                            <i class="bi bi-exclamation-circle-fill"></i> 
+                            <small>Error Message</small>
                         </div>
+                        <small style="color: #e74c3c" class="d-none">Error Message</small>
                         <div class="field btn_changePass">
-                            <input type="button" value="Xác nhận">
+                            <input type="submit" value="Xác nhận">
                         </div>
                     </form>
                 </div>

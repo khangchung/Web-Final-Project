@@ -104,8 +104,8 @@
                                             ?>
                                                 <div class="form-group">
                                                     <label for=""></label>
-                                                    <a href="../../controllers/monitor/censored.php?id=<?= $absence->getId() ?>&option=approve" class="btn btn-success my-2 p-3">Approve</a>
-                                                    <a href="../../controllers/monitor/censored.php?id=<?= $absence->getId() ?>&option=refuse" class="btn btn-danger my-2 ml-3 p-3 px-4">Refuse</a>
+                                                    <a href="../../controllers/monitor/censored.php?id=<?= $absence->getId() ?>&option=approve" class="btn btn-success my-2">Approve</a>
+                                                    <a href="../../controllers/monitor/censored.php?id=<?= $absence->getId() ?>&option=refuse" class="btn btn-danger my-2 ml-3 px-4">Refuse</a>
                                                 </div>
                                             <?php
                                             }

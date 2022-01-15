@@ -51,7 +51,7 @@
                 <div class="header">
                     <h2 class="title">DANH SÁCH NHIỆM VỤ</h2>
                     <a href="create_task.php" style="text-decoration: none;">
-                        <button class="btn_add">
+                        <button class="main_button">
                             Thêm nhiệm vụ
                         </button>
                     </a>

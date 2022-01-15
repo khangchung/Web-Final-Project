@@ -49,13 +49,18 @@
                 <div class="header">
                     <h2 class="title">Quản lý Nhân viên</h2>
                     <a href="add_employee.php" style="text-decoration: none;">
-                        <button>
+                        <button class="main_button">
                             Thêm nhân viên
                         </button>
                     </a>
                 </div>
                 
                 <table class="table_responsive main_table">
+                    <col style="width:10%">
+                    <col style="width:15%">
+                    <col style="width:30%">
+                    <col style="width:30%">
+                    <col style="width:25%">
                     <thead>
                         <tr>
                             <th>STT</th>

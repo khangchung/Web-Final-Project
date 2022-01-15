@@ -50,12 +50,18 @@
                 <div class="header">
                     <h2 class="title">Danh sách phòng ban</h2>
                     <a href="add_department.php" style="text-decoration: none;">
-                        <button class="btn_add">
+                        <button class="main_button">
                             Thêm phòng ban
                         </button>
                     </a>
                 </div>
                 <table class="table_responsive main_table">
+                    <col style="width:10%">
+                    <col style="width:15%">
+                    <col style="width:20%">
+                    <col style="width:35%">
+                    <col style="width:5%">
+                    <col style="width:15%">
                     <thead>
                         <tr>
                             <th>STT</th>

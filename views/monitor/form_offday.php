@@ -2,6 +2,8 @@
         session_start();
         require_once("../../models/setup.php");
         priorityChecker(1);
+        $info = isset($_SESSION["information"]) ? unserialize($_SESSION["information"]) : "";
+        $absences = isset($_SESSION["absences"]) ? $_SESSION["absences"] : "";
         $numOfBlockedDate = isset($_SESSION["offday_form"]) ? $_SESSION["offday_form"] : "";
         $disabled = "";
         if (!empty($numOfBlockedDate) && $numOfBlockedDate > 0) {
@@ -52,6 +54,18 @@
                     <small id="successMessage"></small>
                 </div>
                 <div class="form-group">
+                    <label for="total_offDay">Số ngày nghỉ<span class="requiredField">*</span></label>
+                    <select name="total_offDay" class="form-control" name="total_offDay" <?= $disabled ?>>
+                        <?php
+                            for($i = 1; $i <= ($info->getDayOff() - countDayOff($absences)); $i++ ){
+                                ?>
+                                    <option><?= $i ?></option>
+                                <?php
+                            }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="startDay">Ngày bắt đầu <span class="requiredField">*</span></label>
                     <input name="start_date" type="date" onclick="clearErrorMessage()" id="startDay" class="form-control" <?= $disabled ?>>
                 </div>
@@ -82,7 +96,7 @@
                 </div>
                 <div class="form-group">
                     <label for="" class=""></label>
-                    <button type="submit" <?= $disabled ?>>Nộp đơn</button>
+                    <button type="submit" class="btn btn-success" <?= $disabled ?>>Nộp đơn</button>
                 </div>
             </form>
        </div>

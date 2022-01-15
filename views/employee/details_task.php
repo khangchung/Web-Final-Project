@@ -147,7 +147,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label></label>
-                                    <button type="submit" class="mt-3 px-5">Submit</button>
+                                    <button type="submit" class="btn btn-success mt-3 px-5">Submit</button>
                                 </div>
                                 
                             </form>

@@ -132,11 +132,27 @@ function closeAppointMonitor(){
     }
 //Kiểm đổi mật khẩu
 function checkChangePassword(){
+    var oldPass = document.querySelector('#changePassword #oldPass');
     var newPass1 = document.querySelector('#changePassword #newPass1');
     var newPass2 = document.querySelector('#changePassword #newPass2');
 
+    var oldPassValue = oldPass.value.trim();
     var newPass1Value = newPass1.value.trim();
     var newPass2Value = newPass2.value.trim();
+
+    if(oldPassValue === '') {
+        setErrorFor(oldPass, 'Vui lòng nhập mật khẩu cũ');
+        return false;
+    } else {
+        setSuccessFor(oldPass);
+    }
+
+    if(newPass1Value === oldPassValue) {
+        setErrorFor(newPass1, 'Mật khẩu mới không được trùng với mật khẩu cũ');
+        return false;
+    } else {
+        setSuccessFor(newPass1);
+    }
 
     if(newPass1Value === '') {
         setErrorFor(newPass1, 'Vui lòng nhập mật khẩu mới');
@@ -201,7 +217,7 @@ function checkChangePassword(){
             return false;
         }
         else{
-            setSuccessMessage('Thêm nhân viên thành công')
+            // setSuccessMessage('Thêm nhân viên thành công')
             return true;
         }
     }
@@ -237,7 +253,7 @@ function checkChangePassword(){
             return false;
         }
         else{
-            setSuccessMessage('Thêm nhân viên thành công')
+            // setSuccessMessage('Thêm nhân viên thành công')
             return true;
         }
     }
@@ -279,7 +295,7 @@ function checkChangePassword(){
         }
         
         else{
-            setSuccessMessage('Nộp đơn thành công')
+            // setSuccessMessage('Nộp đơn thành công')
             return true;
         }
     }
@@ -329,7 +345,7 @@ function createTask(){
         return false;
     }
     else{
-        setSuccessMessage('Tạo nhiệm vụ thành công')
+        // setSuccessMessage('Tạo nhiệm vụ thành công')
         return true;
     }
 }
@@ -359,11 +375,11 @@ function createTask(){
     }
 
 
-    function setSuccessMessage(message) {
-        const successMessage = document.querySelector('#successMessage');
-        successMessage.style.opacity = "1";
-        successMessage.innerHTML = message;
-    }
+    // function setSuccessMessage(message) {
+    //     const successMessage = document.querySelector('#successMessage');
+    //     successMessage.style.opacity = "1";
+    //     successMessage.innerHTML = message;
+    // }
 
     function setCapitalize(str){
         return /[A-Z]/.test(str.charAt(0));
