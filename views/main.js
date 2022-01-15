@@ -356,7 +356,7 @@ function createTask(){
 
     function setErrorFor(input, message) {
         var formControl = input.parentElement;
-        var small = formControl.querySelector('#login_form .small');
+        var small = formControl.querySelector('#login_form small');
         formControl.className = 'field error';
         small.innerText = message;
     }

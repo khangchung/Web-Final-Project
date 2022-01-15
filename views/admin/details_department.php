@@ -150,7 +150,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for=""></label>
-                                        <input type="button" class="btn btn-success btn-lg" onclick="return appointMonitor();" >Bổ nhiệm</input>
+                                        <input type="button" class="btn btn-success btn-lg" onclick="return appointMonitor();" value="Bổ nhiệm"></input>
                                     </div>
                                     <div class="modal" id="appoint_monitor_modal">
                                         <div class="modal_overlay"></div>

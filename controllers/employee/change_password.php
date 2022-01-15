@@ -6,7 +6,7 @@
     try {
         if (!isset($_GET["option"])) {
             $old_password = isset($_POST["old_password"]) ? $_POST["old_password"] : "";
-            $new_password = isset($_POST["new_password"]) ? $_POST["new_password"] : "";
+            $new_password = isset($_POST["new_password"]) ? $_POST["new_password"] : "";            
             if (!empty($old_password) && !empty($new_password)) {
                 $accountOperations = new AccountOperations;
                 $accountManager = $accountOperations->read_one($_SESSION["username"]);

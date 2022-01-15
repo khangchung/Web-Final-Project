@@ -131,7 +131,7 @@
                             </div>
                         <?php
                         } else
-                        if ($task->getStatus() == 1) {
+                        if ($task->getStatus() == 1 || $task->getStatus() == 4) {
                         ?>
                             <form action="../../controllers/employee/submit_task.php" method="POST" enctype="multipart/form-data" class=" mt-5 p-3" style="max-width: 550px;">
                                 <div class="form-group d-none">

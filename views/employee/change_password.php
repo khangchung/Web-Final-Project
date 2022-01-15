@@ -49,14 +49,14 @@
                     <form action="../../controllers/employee/change_password.php" onsubmit="return checkChangePassword();" id="login_form" method="POST" class="login">
                         <div class="field">
                             <label for="">Nhập mật khẩu cũ</label>
-                            <input type="password" id="oldPass">
+                            <input name="old_password" type="password" id="oldPass">
                             <i class="bi bi-check-circle-fill"></i>
                             <i class="bi bi-exclamation-circle-fill"></i> 
                             <small>Error Message</small>
                         </div>
                         <div class="field">
                             <label for="">Nhập mật khẩu mới</label>
-                            <input type="password" id="newPass1">
+                            <input name="new_password" type="password" id="newPass1">
                             <i class="bi bi-check-circle-fill"></i>
                             <i class="bi bi-exclamation-circle-fill"></i> 
                             <small>Error Message</small>
