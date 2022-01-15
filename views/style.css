@@ -128,14 +128,14 @@ body {
     border-color: #e74c3c;
 }
 
-.wrapper form .field .small {
+.wrapper form .field small {
     position: absolute;
     visibility: hidden;
     bottom: -20px;
     left: 0;
 }
 
-.wrapper form .field.error .small{
+.wrapper form .field.error small{
     visibility: visible;
     color: #e74c3c;
 }
