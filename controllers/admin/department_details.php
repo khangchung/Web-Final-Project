@@ -13,6 +13,7 @@
             header("location: ../../views/admin/details_department.php");
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
             header("location: department.php");
         }
     } catch (Exception $e) {

@@ -17,8 +17,14 @@
             $department->setRoom($room);
             $result = $departmentOperations->update($department);
             $_SESSION["flag"] = $result;
+            if ($result) {
+                $_SESSION["message"] = "Cập nhật thành công";
+            } else {
+                $_SESSION["message"] = "Cập nhật thất bại";
+            }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }
         header("location: department.php");
     } catch (Exception $e) {

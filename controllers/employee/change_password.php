@@ -15,11 +15,18 @@
                     $account->setPassword(password_hash($new_password, PASSWORD_BCRYPT));
                     $result = $accountOperations->update($account);
                     $_SESSION["flag"] = $result;
+                    if ($result) {
+                        $_SESSION["message"] = "Cập nhật thành công";
+                    } else {
+                        $_SESSION["message"] = "Cập nhật thất bại";
+                    }
                 } else {
                     $_SESSION["flag"] = false;
+                    $_SESSION["message"] = "Mật khẩu cũ không trùng khớp";
                 }
             } else {
                 $_SESSION["flag"] = false;
+                $_SESSION["message"] = "Thông tin không hợp lệ";
             }    
         }
         header("location: ../../views/employee/change_password.php");

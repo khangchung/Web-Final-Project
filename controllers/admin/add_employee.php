@@ -22,11 +22,18 @@
                 $employeeOperations = new EmployeeOperations;
                 $result = $employeeOperations->create($employee);
                 $_SESSION["flag"] = $result;
+                if ($result) {
+                    $_SESSION["message"] = "Thêm thành công";
+                } else {
+                    $_SESSION["message"] = "Thêm thất bại";
+                }
             } else {
                 $_SESSION["flag"] = $account_result;
+                $_SESSION["message"] = "Xảy ra lỗi không mong muốn trong quá trình xử lý";
             }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }
         header("location: ../../views/admin/add_employee.php");
     } catch (Exception $e) {

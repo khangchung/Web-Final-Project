@@ -16,9 +16,15 @@
             $absence->setStatus($status);
             $result = $absenceOperations->update($absence);
             $_SESSION["flag"] = $result;
+            if ($result) {
+                $_SESSION["message"] = "Duyệt thành công";
+            } else {
+                $_SESSION["message"] = "Duyệt thất bại";
+            }
             header("location: dayoff.php");
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
             header("location: dayoff_details.php");
         }
     } catch (Exception $e) {

@@ -46,10 +46,12 @@
                                         }
                                         if (!$taskOperations->update($task)) {
                                             $_SESSION["flag"] = false;
+                                            $_SESSION["message"] = "Xảy ra lỗi không mong muốn trong quá trình xử lý";
                                             break;
                                         }
                                     }
                                     $_SESSION["flag"] = true;
+                                    $_SESSION["message"] = "Bổ nhiệm thành công";
                                 }
                                 break;
                             }
@@ -57,6 +59,7 @@
                         break;
                     } else {
                         $_SESSION["flag"] = false;
+                        $_SESSION["message"] = "Bổ nhiệm thất bại";
                     }
                 }
             } else {
@@ -67,8 +70,10 @@
                 $account->setPriority(1);
                 if ($employeeOperations->update($employee) && $accountOperations->update($account)) {
                     $_SESSION["flag"] = true;
+                    $_SESSION["message"] = "Bổ nhiệm thành công";
                 } else {
                     $_SESSION["flag"] = false;
+                    $_SESSION["message"] = "Bổ nhiệm thất bại";
                 }
             }
         }

@@ -23,13 +23,21 @@
                 $path = uploadTask($attachment, $created_date, $task->getId(), unserialize($_SESSION["information"])->getDepartment(), $receiver);
                 if ($path != "") {
                     $task->setAttachment($path);
-                    $_SESSION["flag"] = $taskOperations->update($task);
+                    $result = $taskOperations->update($task);
+                    $_SESSION["flag"] = $result;
+                    if ($result) {
+                        $_SESSION["message"] = "Thêm thành công";
+                    } else {
+                        $_SESSION["message"] = "Thêm thất bại";
+                    }
                 } else {
                     $_SESSION["flag"] = false;
+                    $_SESSION["message"] = "Xảy ra lỗi không mong muốn trong quá trình xử lý";
                 }
             }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }
         header("location: ../../views/monitor/create_task.php");
     } catch (Exception $e) {

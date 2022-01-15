@@ -13,8 +13,14 @@
             $task->setLastModified(date("Y-m-d"));
             $result = $taskOperations->update($task);
             $_SESSION["flag"] = $result;
+            if ($result) {
+                $_SESSION["message"] = "Cập nhật thành công";
+            } else {
+                $_SESSION["message"] = "Cập nhật thất bại";
+            }
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
         }
         header("location: index.php");
     } catch (Exception $e) {

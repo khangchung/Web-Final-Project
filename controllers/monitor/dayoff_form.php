@@ -25,9 +25,15 @@
             $absenceOperations = new AbsenceOperations;
             $result = $absenceOperations->create($absence);
             $_SESSION["flag"] = $result;
+            if ($result) {
+                $_SESSION["message"] = "Cập nhật thành công";
+            } else {
+                $_SESSION["message"] = "Cập nhật thất bại";
+            }
             header("location: dayoff.php");
         } else {
             $_SESSION["flag"] = false;
+            $_SESSION["message"] = "Thông tin không hợp lệ";
             header("location: ../../views/monitor/form_offday.php");
         }
     } catch (Exception $e) {

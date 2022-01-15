@@ -2,6 +2,19 @@
         session_start();
         require_once("../../models/setup.php");
         priorityChecker(0);
+        $validate = isValid();
+        $isSuccess = null;
+        $message = "";
+        if ($validate[1] != "" || $validate[2] != "") {
+            if ($validate[1] != "") {
+                $message = $validate[1];
+                $isSuccess = true;
+            } else
+            if ($validate[2] != "") {
+                $message = $validate[2];
+                $isSuccess = false;
+            }
+        }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -58,22 +71,24 @@
                         <input type="number" min="0" class="form-control" onclick="clearErrorMessage()" name="room" id="total_department">
                     </div>
                     <?php
-                        $flag = isValid();
-                        if ($flag == -1) {
-                            $message = "Thêm thất bại";
+                        if (!empty($message) && !is_null($isSuccess)) {
+                            if ($isSuccess) {
                             ?>
                                 <div class="form-group">
-                                    <small id="errorMessage"><?= $message ?></small>
+                                    <p class="text-success"><?= $message ?></p>
                                 </div>
                             <?php
-                        } else
-                        if ($flag == 1) {
-                            $message = "Thêm thành công";
+                            } else {
                             ?>
                                 <div class="form-group">
+<<<<<<< HEAD
                                     <small class="text-danger"><?= $message ?></small>
+=======
+                                    <p class="text-danger"><?= $message ?></p>
+>>>>>>> c9d283f9ea287dc6e81013573695543e9c987429
                                 </div>
                             <?php
+                            }
                         }
                     ?>
                     <div class="form-group">
