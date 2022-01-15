@@ -189,18 +189,12 @@
                                                                     </div>
                                                                         <button type="submit" class="btn btn-danger px-5">Refuse</button>
                                                                 </div>
-<<<<<<< HEAD
                                                             </form>
                                                         <?php
                                                         }
                                                     ?>
                                                     
                 </div>
-=======
-
-                                                    </form>
-                    </div>
->>>>>>> e9c4a6f1de42cb7c75ee448a84f9a8d9d1721aaa
                                         <?php
                                         }
                                     ?>
